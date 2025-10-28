@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Contact | Lumina7">
+  <Header />
+  
+  <!-- Hero Section with Image -->
+  <section class="pt-24 pb-20 px-6 lg:px-8 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+        
+        <!-- Left side - Hero Content and Contact Options -->
+        <div class="space-y-16">
+          <!-- Hero Content -->
+          <div>
+            <h1 class="text-4xl md:text-6xl font-medium text-gray-900 mb-8 leading-tight mt-8">
+              Let's Talk
+            </h1>
+            <p class="text-lg text-gray-600 leading-relaxed mb-16">
+              We'd love to learn more about you and what we can design and build together.
+            </p>
+          </div>
+
+          <!-- Contact Options - Side by Side -->
+          <div class="grid md:grid-cols-2 gap-12">
+            <!-- Become a Client -->
+            <div class="space-y-4">
+              <h2 class="text-lg text-gray-500 font-medium">
+                Become a Client
+              </h2>
+              <a 
+                href="mailto:hello@lumina7.co.ca" 
+                class="block text-xl text-gray-900 hover:text-gray-600 transition-colors font-medium underline"
+              >
+                hello@lumina7.co.ca
+              </a>
+            </div>
+
+            <!-- Book a Discovery Call -->
+            <div class="space-y-4">
+              <h2 class="text-lg text-gray-500 font-medium">
+                Book a Discovery Call
+              </h2>
+              <a 
+                href="https://calendly.com/lumina7/discovery-call" 
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block text-xl text-gray-900 hover:text-gray-600 transition-colors font-medium underline"
+              >
+                Schedule a Call
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right side - Office Image -->
+        <div class="aspect-square bg-gray-100 overflow-hidden">
+          <img 
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=800&fit=crop&auto=format" 
+            alt="Modern office workspace"
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

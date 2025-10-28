@@ -1,0 +1,44 @@
+---
+export interface Props {
+  variant?: 'default' | 'dark' | 'gray' | 'gradient';
+  padding?: 'sm' | 'md' | 'lg' | 'xl';
+  class?: string;
+  id?: string;
+}
+
+const { 
+  variant = 'default', 
+  padding = 'lg', 
+  class: className = '',
+  id,
+  ...rest 
+} = Astro.props;
+
+const baseClasses = 'relative';
+
+const variants = {
+  default: 'bg-white',
+  dark: 'bg-gray-900 text-white',
+  gray: 'bg-gray-50',
+  gradient: 'bg-gradient-to-br from-gray-50 to-white'
+};
+
+const paddings = {
+  sm: 'py-12 px-6 lg:px-8',
+  md: 'py-16 px-6 lg:px-8',
+  lg: 'py-20 px-6 lg:px-8',
+  xl: 'py-32 px-6 lg:px-8'
+};
+
+const classes = `${baseClasses} ${variants[variant]} ${paddings[padding]} ${className}`;
+---
+
+<section 
+  class={classes}
+  id={id}
+  {...rest}
+>
+  <div class="max-w-7xl mx-auto">
+    <slot />
+  </div>
+</section>

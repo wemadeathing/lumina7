@@ -1,0 +1,69 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const blogPosts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+---
+
+<Layout title="Insights | Lumina7">
+  <Header />
+  
+  <!-- Hero Section -->
+  <section class="pt-24 pb-20 px-6 lg:px-8 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-6xl font-medium text-gray-900 mb-8 leading-tight mt-8">
+          Discover practical knowledge and inspiration in branding, design and communication strategy.
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Posts Grid -->
+  <section class="py-20 px-6 lg:px-8 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+        {blogPosts.map(post => (
+          <article class="group cursor-pointer border-t border-gray-200 pt-6">
+            <a href={`/insights/${post.slug}`} class="block space-y-4">
+              {post.data.heroImage && (
+                <div class="bg-gray-100 overflow-hidden">
+                  <img
+                    src={post.data.heroImage}
+                    alt={post.data.title}
+                    class="w-full aspect-[4/3] object-cover"
+                  />
+                </div>
+              )}
+              <div class="text-sm text-gray-500 tracking-wide">
+                {formatDate(post.data.pubDate)} • {post.data.readTime}
+              </div>
+              <div>
+                <span class="text-xs uppercase tracking-[0.3em] text-gray-500 block mb-3">
+                  {post.data.category}
+                </span>
+                <h2 class="text-xl font-medium text-gray-900 leading-tight group-hover:text-gray-600 transition-colors">
+                  {post.data.title}
+                </h2>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

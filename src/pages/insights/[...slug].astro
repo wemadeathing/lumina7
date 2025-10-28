@@ -1,0 +1,228 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import CTA from '../../components/CTA.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+const { Content } = await post.render();
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+
+// Get related posts
+const allPosts = await getCollection('blog');
+const relatedPosts = allPosts
+  .filter(p => p.slug !== post.slug && p.data.category === post.data.category)
+  .slice(0, 3);
+---
+
+<Layout title={`${post.data.title} | Lumina7`} description={post.data.description}>
+  <Header />
+  
+  <!-- Hero Section -->
+  <section class="pt-24 pb-0 px-6 lg:px-8 bg-white">
+    <div class="max-w-5xl mx-auto">
+      <span class="text-xs uppercase tracking-[0.5em] text-gray-500 block mb-10">
+        {post.data.category}
+      </span>
+      <h1 class="text-[3rem] md:text-[3.75rem] text-gray-900 leading-[1.08] font-medium mb-8">
+        {post.data.title}
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-600 leading-tight max-w-3xl mb-12">
+        {post.data.description}
+      </p>
+    </div>
+  </section>
+
+  <!-- Hero Image -->
+  {post.data.heroImage && (
+    <section class="px-6 lg:px-8 bg-white mb-20">
+      <div class="max-w-7xl mx-auto">
+        <img 
+          src={post.data.heroImage} 
+          alt={post.data.title}
+          class="w-full h-[320px] md:h-[500px] lg:h-[620px] object-cover"
+        />
+      </div>
+    </section>
+  )}
+
+  <!-- Article Content -->
+  <section class="py-24 px-6 lg:px-8 bg-white border-t border-gray-200">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-16">
+      <aside class="space-y-12 md:sticky md:top-32 self-start">
+        <div>
+          <h2 class="text-xs font-semibold uppercase tracking-[0.35em] text-gray-500 mb-4">Author</h2>
+          <p class="text-gray-800 text-sm tracking-wide">{post.data.author}</p>
+        </div>
+        <div>
+          <h2 class="text-xs font-semibold uppercase tracking-[0.35em] text-gray-500 mb-4">Published</h2>
+          <p class="text-gray-800 text-sm tracking-wide">{formatDate(post.data.pubDate)}</p>
+        </div>
+        <div>
+          <h2 class="text-xs font-semibold uppercase tracking-[0.35em] text-gray-500 mb-4">Read Time</h2>
+          <p class="text-gray-800 text-sm tracking-wide">{post.data.readTime}</p>
+        </div>
+        {post.data.tags && post.data.tags.length > 0 && (
+          <div>
+            <h2 class="text-xs font-semibold uppercase tracking-[0.35em] text-gray-500 mb-4">Tags</h2>
+            <ul class="space-y-3">
+              {post.data.tags.map(tag => (
+                <li class="text-gray-600 text-sm tracking-wide">{tag}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </aside>
+      <article class="prose prose-lg prose-gray max-w-none leading-relaxed text-gray-700 space-y-8">
+        <Content />
+      </article>
+    </div>
+  </section>
+
+  <!-- Related Posts -->
+  {relatedPosts.length > 0 && (
+    <section class="py-24 px-6 lg:px-8 bg-gray-50">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-medium mb-4 text-gray-900">Related Articles</h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">Continue exploring insight-driven stories</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-10">
+          {relatedPosts.map(relatedPost => (
+            <article class="group cursor-pointer border-t border-gray-200 pt-6">
+              <a href={`/insights/${relatedPost.slug}`} class="block">
+                {relatedPost.data.heroImage && (
+                  <div class="mb-6 bg-gray-100 overflow-hidden">
+                    <img 
+                      src={relatedPost.data.heroImage} 
+                      alt={relatedPost.data.title}
+                      class="w-full aspect-[4/3] object-cover"
+                    />
+                  </div>
+                )}
+                <div class="space-y-3">
+                  <span class="text-xs uppercase tracking-[0.3em] text-gray-500 block">
+                    {relatedPost.data.category}
+                  </span>
+                  <h3 class="text-xl font-medium text-gray-900 group-hover:text-gray-600 transition-colors">
+                    {relatedPost.data.title}
+                  </h3>
+                  <p class="text-sm text-gray-600 leading-relaxed line-clamp-3">
+                    {relatedPost.data.description}
+                  </p>
+                  <div class="text-sm text-gray-500 tracking-wide">
+                    {formatDate(relatedPost.data.pubDate)} • {relatedPost.data.readTime}
+                  </div>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <CTA />
+
+  <Footer />
+</Layout>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .prose {
+    color: #374151;
+  }
+  
+  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    color: #111827;
+    font-weight: 600;
+  }
+  
+  .prose h1 {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .prose h2 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .prose h3 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .prose p {
+    margin-bottom: 1.25rem;
+    line-height: 1.75;
+  }
+  
+  .prose ul, .prose ol {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+  }
+  
+  .prose li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .prose a {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+  
+  .prose a:hover {
+    color: #1d4ed8;
+  }
+  
+  .prose strong {
+    font-weight: 600;
+    color: #111827;
+  }
+  
+  .prose code {
+    background-color: #f3f4f6;
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+  }
+  
+  .prose blockquote {
+    border-left: 4px solid #e5e7eb;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #6b7280;
+  }
+</style>

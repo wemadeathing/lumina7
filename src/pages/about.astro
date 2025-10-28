@@ -1,0 +1,201 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTA from '../components/CTA.astro';
+
+const whyLumina7 = [
+  {
+    number: "01",
+    title: "Teams Led by Co-Founders",
+    description: "We differentiate ourselves from large agencies where junior talent typically handles most of the work, and interactions with design leaders are limited. At Lumina7, our co-founders lead dedicated, senior-level teams with cross-disciplinary expertise to ensure project success.",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop&auto=format"
+  },
+  {
+    number: "02", 
+    title: "Collaboration Is Key",
+    description: "We prioritize communication and transparency in all our interactions with the aim of providing a premium client experience from the beginning to the end of the project. Our work with startups has made us more agile, and our experience with enterprise companies has allowed us to develop a refined approach to project management.",
+    image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=300&fit=crop&auto=format"
+  },
+  {
+    number: "03",
+    title: "Our Work Is Future-Proof", 
+    description: "We create designs that can easily scale and sustain your business goals for years to come. Our portfolio features multiple websites and products that have remained untouched for 5+ years, proving our work is future-proof.",
+    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop&auto=format"
+  }
+];
+
+const capabilities = [
+  {
+    category: "Branding",
+    services: [
+      "Brand Strategy",
+      "Brand Architecture", 
+      "Verbal Identity",
+      "Visual Identity",
+      "Brand Guidelines",
+      "Brand Experiences"
+    ]
+  },
+  {
+    category: "Digital Products",
+    services: [
+      "Consumer & Enterprise Software",
+      "User Research & Testing",
+      "CX, UX & Interaction Design", 
+      "UI Design",
+      "Motion Design",
+      "Design Systems"
+    ]
+  },
+  {
+    category: "Websites",
+    services: [
+      "Content Strategy",
+      "Web Design",
+      "Interactive Experiences",
+      "Content Production", 
+      "Frontend & Backend Development",
+      "CMS Implementation"
+    ]
+  },
+  {
+    category: "Content",
+    services: [
+      "Art Direction",
+      "Illustration & Graphic Design",
+      "Iconography",
+      "Animation",
+      "Photo & Video",
+      "3D"
+    ]
+  },
+  {
+    category: "Development", 
+    services: [
+      "Technology Consulting",
+      "Architecture Planning",
+      "Mobile App Development",
+      "Frontend Web Development",
+      "Backend Development & API Integration",
+      "Emerging Tech (AI, AR/VR, Wearables, Web3)"
+    ]
+  }
+];
+---
+
+<Layout title="About | Lumina7">
+  <Header />
+  
+  <!-- Hero Section -->
+  <section class="pt-24 pb-20 px-6 lg:px-8 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-6xl font-medium text-gray-900 mb-8 leading-tight mt-8">
+          We transform brands through elevated digital experiences
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Image Section -->
+  <section class="px-6 lg:px-8 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="aspect-[16/9] bg-gray-100 overflow-hidden mb-16">
+        <img 
+          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&h=675&fit=crop&auto=format" 
+          alt="Lumina7 team members"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      
+      <!-- Stats and Description -->
+      <div class="grid lg:grid-cols-2 gap-16 mb-20">
+        <div class="space-y-8">
+          <div>
+            <div class="text-4xl font-bold text-gray-900 mb-2">Cape Town</div>
+            <div class="text-lg text-gray-600">Headquarters</div>
+          </div>
+        </div>
+        
+        <div class="space-y-6">
+          <p class="text-lg text-gray-600 leading-relaxed">
+            We're a global group of strategists, designers, and engineers building notable brands and premier digital experiences that captivate users worldwide.
+          </p>
+          <p class="text-lg text-gray-600 leading-relaxed">
+            Our unified, AI-infused creative approach ensures scalability and consistency across all brand touchpoints by building robust design systems.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Lumina7 Section -->
+  <section class="py-20 px-6 lg:px-8 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-medium text-gray-900 mb-16">Why Lumina7</h2>
+      
+      <div class="space-y-20">
+        {whyLumina7.map((item, index) => (
+          <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+              <div class="aspect-[4/3] bg-gray-100 overflow-hidden">
+                <img 
+                  src={item.image} 
+                  alt={item.title}
+                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+            </div>
+            
+            <div class={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+              <div class="flex items-start gap-6 mb-6">
+                <span class="text-sm text-gray-500 font-medium mt-1">{item.number}</span>
+                <div>
+                  <h3 class="text-2xl font-medium text-gray-900 mb-4">{item.title}</h3>
+                  <p class="text-gray-600 leading-relaxed">{item.description}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities Section -->
+  <section class="py-20 px-6 lg:px-8 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-medium text-gray-900 mb-16">Capabilities</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+        {capabilities.map(capability => (
+          <div class="space-y-6">
+            <h3 class="text-xl font-medium text-gray-900">{capability.category}</h3>
+            <ul class="space-y-3">
+              {capability.services.map(service => (
+                <li class="text-gray-600 leading-relaxed">{service}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA />
+  <Footer />
+</Layout>
+
+<style>
+  /* Scroll effect for images */
+  @media (prefers-reduced-motion: no-preference) {
+    .aspect-\[4\/3\] img {
+      transition: transform 0.5s ease;
+    }
+    
+    .aspect-\[4\/3\]:hover img {
+      transform: scale(1.05);
+    }
+  }
+</style>

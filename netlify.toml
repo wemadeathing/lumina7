@@ -1,0 +1,77 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/insights/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/blog"
+  to = "/insights"
+  status = 301
+
+# Handle client-side routing for dynamic pages
+[[redirects]]
+  from = "/work/*"
+  to = "/work/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/insights/*"
+  to = "/insights/:splat"
+  status = 200
+
+# Fallback for SPA-like behavior
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+[dev]
+  command = "npm run dev"
+  port = 4321
+  publish = "dist"
+
+# Headers for better performance and security
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

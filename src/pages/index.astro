@@ -1,0 +1,654 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTA from '../components/CTA.astro';
+import FAQ from '../components/FAQ.astro';
+
+const services = [
+  {
+    number: "01",
+    title: "Brand Strategy",
+    duration: "From 4 weeks",
+    content: "We help define your brand's core purpose, values, and positioning. Through strategic workshops and market research, we create a foundation that guides all your brand decisions and ensures consistent messaging across all touchpoints."
+  },
+  {
+    number: "02", 
+    title: "Visual Identity",
+    duration: "From 2 weeks",
+    content: "Creating distinctive visual systems that capture your brand's essence. From logos and color palettes to typography and imagery, we design cohesive identities that make your brand instantly recognizable and memorable."
+  },
+  {
+    number: "03",
+    title: "UI/UX Design",
+    duration: "From 2 weeks", 
+    content: "Designing digital experiences that users love. We combine user research, interface design, and usability testing to create websites and applications that are both beautiful and functional, driving engagement and conversions."
+  },
+  {
+    number: "04",
+    title: "Web Development",
+    duration: "From 4 weeks",
+    content: "Building fast, scalable, and secure websites that perform flawlessly across all devices. Our development team uses modern technologies and best practices to bring your designs to life with clean, maintainable code."
+  }
+];
+
+const clients = [
+  "Meta", "Google", "Discover", "Stripe", "Coca-Cola", "Coinbase", "Uber", "Sony", 
+  "Slack", "Amazon", "Fiverr", "Credit Karma", "Cisco", "ADP", "UPS", "VMware", 
+  "Fossil", "Western Digital", "Toyota", "Samsung", "Grayscale"
+];
+
+const featuredCaseStudies = [
+  {
+    company: "Slack",
+    title: "Designing and building Slack's interactive demo experience",
+    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
+    tags: ["Web Design", "Enterprise", "Development"]
+  },
+  {
+    company: "Snapchat", 
+    title: "Integrating augmented reality to elevate social commerce",
+    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop",
+    tags: ["UI/UX", "Mobile App", "Ecommerce"]
+  },
+  {
+    company: "Sky",
+    title: "Branding and visual identity for an innovative DeFi platform", 
+    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=400&fit=crop",
+    tags: ["Branding", "Design System", "UI/UX", "Illustration", "3D"]
+  },
+  {
+    company: "STC Bank",
+    title: "Accelerating the future of digital banking in Saudi Arabia",
+    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop", 
+    tags: ["Web App", "Mobile", "Website", "Fintech", "UI/UX"]
+  }
+];
+
+const caseStudies = [
+  {
+    company: "Joe & The Juice",
+    title: "A digital commerce and loyalty app for a global coffee shop chain",
+    image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=250&fit=crop",
+    tags: ["UI/UX", "Mobile App", "Consumer"]
+  },
+  {
+    company: "Marqeta", 
+    title: "Website and digital branding for a modern card-issuing platform",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop",
+    tags: ["Web Design", "3D", "Development", "Fintech"]
+  },
+  {
+    company: "Grayscale",
+    title: "Web redesign for the world's largest crypto asset manager", 
+    image: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=400&h=250&fit=crop",
+    tags: ["Web Design", "Design System", "Illustration"]
+  },
+  {
+    company: "Discover",
+    title: "Design partnership focused on mobile app innovation",
+    image: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=400&h=250&fit=crop", 
+    tags: ["UI/UX", "Design System", "Fintech"]
+  },
+  {
+    company: "Tipalti",
+    title: "Web redesign for a modern payables automation platform",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop",
+    tags: ["Web Design", "Fintech"]
+  },
+  {
+    company: "Yahoo! Games",
+    title: "Website design and development for Yahoo Games", 
+    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=250&fit=crop",
+    tags: ["Web Design", "Design System", "Illustration", "Development"]
+  }
+];
+
+const testimonials = [
+  {
+    id: 1,
+    name: "Sarah Johnson",
+    role: "Founding Partner, CCO",
+    company: "TechFlow",
+    content: "From the very beginning, we felt they understood what we were dealing with – and where we wanted to go. The new strategy, visual identity, and website – everything is cohesive, fresh, and on our terms. Working with this team isn't just briefing and execution, it's a real, partnership-based design process."
+  },
+  {
+    id: 2,
+    name: "Michael Chen",
+    role: "CEO & Founder",
+    company: "InnovateLab",
+    content: "Working with this studio is something more than branding for us. It's a process that changes how we look at our own company. We feel like we're doing something really important together – and it will stay with us for a long time. We felt cared for from the first meeting."
+  },
+  {
+    id: 3,
+    name: "Emma Rodriguez",
+    role: "Marketing Director",
+    company: "GrowthCorp",
+    content: "The collaboration was a great experience. What impressed us most was the very high graphic level of their work – the design we received fully met our expectations and stood out from the competition. The process went smoothly, and all organizational challenges were well resolved."
+  },
+  {
+    id: 4,
+    name: "David Park",
+    role: "Co-Owner",
+    company: "StartupVentures",
+    content: "The rebranding we managed to carry out gave momentum to our development and implementation of the chosen strategy. Perhaps the greatest value of this collaboration was the breath of fresh air in our heads for new ideas – in addition to delivering materials according to the order, we also received a lot of inspiration."
+  }
+];
+
+const faqItems = [
+  {
+    number: "01",
+    question: "What are your core services as a design and branding studio?",
+    answer: "We specialize in brand strategy, visual identity, UX/UI design, and web development. Our approach combines strategic thinking with creative execution to build brands that truly connect with their audiences and drive business growth."
+  },
+  {
+    number: "02",
+    question: "What separates us from other design agencies?", 
+    answer: "We believe in building genuine partnerships with our clients. Rather than just delivering services, we work as an extension of your team, understanding your challenges deeply and crafting solutions that create lasting impact. Our process is collaborative, transparent, and results-driven."
+  },
+  {
+    number: "03",
+    question: "Do you work with clients in different industries?",
+    answer: "Yes, we work across various industries including technology, fintech, healthcare, e-commerce, and professional services. Our diverse experience allows us to bring fresh perspectives and proven strategies to each project."
+  },
+  {
+    number: "04",
+    question: "How much does a typical project cost?",
+    answer: "Project costs vary based on scope, complexity, and timeline. We offer flexible engagement models and work with clients to find solutions that fit their budget while delivering maximum value. Contact us for a detailed proposal tailored to your needs."
+  },
+  {
+    number: "05",
+    question: "Do you work with startups and small businesses?",
+    answer: "Absolutely. We work with companies at all stages, from early-stage startups to established enterprises. We understand the unique challenges of growing businesses and offer scalable solutions that grow with you."
+  },
+  {
+    number: "06",
+    question: "What's your typical project timeline?",
+    answer: "Timelines depend on project scope. Brand strategy typically takes 4-6 weeks, visual identity 2-4 weeks, and web development 4-8 weeks. We'll provide a detailed timeline during our initial consultation based on your specific requirements."
+  }
+];
+---
+
+<Layout title="Lumina7 | Trusted Partner in Building Effective Brands">
+  <Header />
+  
+  <!-- Hero Section -->
+  <section class="pt-24 pb-20 px-6 lg:px-8 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-6xl font-medium text-gray-900 mb-8 leading-tight mt-8">
+          We design brand experiences that help businesses attract premium clients
+        </h1>
+        
+        <p class="text-lg text-gray-600 max-w-3xl leading-relaxed">
+          We help companies at various stages of development stand out in the market and more effectively reach customers, creating brands based on strategy and authentic character.
+        </p>
+        <div class="mt-8 text-sm text-gray-500">
+          [ Scroll down ]
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero Image Section -->
+  <section class="px-6 lg:px-8 bg-white">
+    <div class="max-w-7xl mx-auto pb-20">
+      <div class="relative w-full h-96 lg:h-[500px] bg-neutral-100 overflow-hidden">
+        <img 
+          src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&h=500&fit=crop" 
+          alt="Design work showcase"
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients Section -->
+  <section id="clients" class="py-20 px-6 lg:px-8 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-16">
+        <h2 class="text-2xl md:text-3xl font-medium text-neutral-900 leading-tight max-w-2xl">
+          Join the brands that trust us to boldly set new standards in their industry.
+        </h2>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-x-8 gap-y-16">
+        <!-- Client 01 -->
+        <div class="group cursor-pointer transition-all duration-500 hover:-translate-y-2 hover:scale-105">
+          <div class="space-y-6 p-4 rounded-lg group-hover:bg-neutral-50 transition-all duration-300">
+            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider group-hover:text-neutral-600 transition-colors duration-300">01</div>
+            <div class="h-16 flex items-center">
+              <img src="https://logo.clearbit.com/meta.com" alt="Meta" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-all duration-500 group-hover:scale-125 filter group-hover:drop-shadow-lg" />
+            </div>
+          </div>
+          <div class="mt-6 h-px bg-neutral-200 group-hover:bg-gradient-to-r group-hover:from-neutral-300 group-hover:to-neutral-400 transition-all duration-300"></div>
+        </div>
+
+        <!-- Client 02 -->
+        <div class="group cursor-pointer transition-all duration-500 hover:-translate-y-2 hover:scale-105">
+          <div class="space-y-6 p-4 rounded-lg group-hover:bg-neutral-50 transition-all duration-300">
+            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider group-hover:text-neutral-600 transition-colors duration-300">02</div>
+            <div class="h-16 flex items-center">
+              <img src="https://logo.clearbit.com/google.com" alt="Google" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-all duration-500 group-hover:scale-125 filter group-hover:drop-shadow-lg" />
+            </div>
+          </div>
+          <div class="mt-6 h-px bg-neutral-200 group-hover:bg-gradient-to-r group-hover:from-neutral-300 group-hover:to-neutral-400 transition-all duration-300"></div>
+        </div>
+
+        <!-- Client 03 -->
+        <div class="group cursor-pointer">
+          <div class="space-y-6">
+            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider">03</div>
+            <div class="h-16 flex items-center">
+              <img src="https://logo.clearbit.com/netflix.com" alt="Netflix" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+          </div>
+          <div class="mt-6 h-px bg-neutral-200"></div>
+        </div>
+
+        <!-- Client 04 -->
+        <div class="group cursor-pointer">
+          <div class="space-y-6">
+            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider">04</div>
+            <div class="h-16 flex items-center">
+              <img src="https://logo.clearbit.com/stripe.com" alt="Stripe" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+          </div>
+          <div class="mt-6 h-px bg-neutral-200"></div>
+        </div>
+
+        <!-- Client 05 -->
+        <div class="group cursor-pointer">
+          <div class="space-y-6">
+            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider">05</div>
+            <div class="h-16 flex items-center">
+              <img src="https://logo.clearbit.com/spotify.com" alt="Spotify" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+          </div>
+          <div class="mt-6 h-px bg-neutral-200"></div>
+        </div>
+
+        <!-- Client 06 -->
+        <div class="group cursor-pointer">
+          <div class="space-y-6">
+            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider">06</div>
+            <div class="h-16 flex items-center">
+              <img src="https://logo.clearbit.com/airbnb.com" alt="Airbnb" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+          </div>
+          <div class="mt-6 h-px bg-neutral-200"></div>
+        </div>
+
+        <!-- Client 07 -->
+        <div class="group cursor-pointer">
+          <div class="space-y-6">
+            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider">07</div>
+            <div class="h-16 flex items-center">
+              <img src="https://logo.clearbit.com/uber.com" alt="Uber" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+          </div>
+          <div class="mt-6 h-px bg-neutral-200"></div>
+        </div>
+
+        <!-- Client 08 -->
+        <div class="group cursor-pointer">
+          <div class="space-y-6">
+            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider">08</div>
+            <div class="h-16 flex items-center">
+              <img src="https://logo.clearbit.com/adobe.com" alt="Adobe" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+          </div>
+          <div class="mt-6 h-px bg-neutral-200"></div>
+        </div>
+
+        <!-- Client 09 -->
+        <div class="group cursor-pointer">
+          <div class="space-y-6">
+            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider">09</div>
+            <div class="h-16 flex items-center">
+              <img src="https://logo.clearbit.com/slack.com" alt="Slack" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+          </div>
+          <div class="mt-6 h-px bg-neutral-200"></div>
+        </div>
+
+        <!-- Client 10 -->
+        <div class="group cursor-pointer">
+          <div class="space-y-6">
+            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider">10</div>
+            <div class="h-16 flex items-center">
+              <img src="https://logo.clearbit.com/amazon.com" alt="Amazon" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+          </div>
+          <div class="mt-6 h-px bg-neutral-200"></div>
+        </div>
+
+        <!-- Client 11 -->
+        <div class="group cursor-pointer">
+          <div class="space-y-6">
+            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider">11</div>
+            <div class="h-16 flex items-center">
+              <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+          </div>
+          <div class="mt-6 h-px bg-neutral-200"></div>
+        </div>
+
+        <!-- Client 12 -->
+        <div class="group cursor-pointer">
+          <div class="space-y-6">
+            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider">12</div>
+            <div class="h-16 flex items-center">
+              <img src="https://logo.clearbit.com/apple.com" alt="Apple" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+          </div>
+          <div class="mt-6 h-px bg-neutral-200"></div>
+        </div>
+      </div>
+      
+      <div class="text-right mt-16">
+        <span class="text-neutral-400 text-sm uppercase tracking-wider">[ and many more... ]</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-20 px-6 lg:px-8 bg-black text-white relative overflow-hidden">
+    <!-- Background pattern -->
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 20px 20px;"></div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="grid lg:grid-cols-2 gap-16 items-start mb-20">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-medium text-white mb-6 leading-tight">
+            <span class="text-white">Design & Technology</span>
+            <span class="text-neutral-400"> that drives the growth of your business.</span>
+          </h2>
+        </div>
+        <div class="lg:text-right">
+          <p class="text-neutral-400 mb-8 leading-relaxed">
+            We create solutions that combine strategy, design, and digital, based on partnership with our clients.
+          </p>
+          <button class="inline-flex items-center justify-between bg-white text-black px-6 py-3 hover:bg-neutral-100 transition-all duration-300 font-medium text-sm w-full lg:w-auto min-w-[280px] hover:scale-105 hover:shadow-lg group">
+            <span>GET TO KNOW THE SERVICES</span>
+            <span class="ml-4 group-hover:rotate-90 transition-transform duration-300">+</span>
+          </button>
+        </div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-0 border-t border-neutral-800">
+        {services.map((service, index) => (
+          <div class="group cursor-pointer border-r border-neutral-800 last:border-r-0 transition-all duration-500 hover:-translate-y-2 hover:scale-105">
+            <div class="p-8 h-full hover:bg-neutral-900 transition-all duration-500 relative overflow-hidden hover:shadow-2xl">
+              <div class="text-sm text-neutral-500 mb-4">{service.number}</div>
+              <div class="inline-block bg-neutral-800 text-neutral-300 text-xs px-3 py-1 mb-6 group-hover:bg-neutral-700 transition-colors">
+                {service.duration}
+              </div>
+              <h3 class="text-2xl font-semibold text-white mb-6 group-hover:text-neutral-300 transition-colors leading-tight">
+                {service.title}
+              </h3>
+              <p class="text-neutral-400 text-sm leading-relaxed mb-8 group-hover:text-neutral-300 transition-colors">
+                {service.content}
+              </p>
+              <div class="text-sm text-white font-medium group-hover:text-neutral-300 transition-colors">
+                Learn details →
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects Section with We Deliver Results Header -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <!-- We Deliver Results Header -->
+      <div class="mb-20">
+        <div class="grid lg:grid-cols-3 gap-16 items-start">
+          <!-- Left Column - Title -->
+          <div class="lg:col-span-1">
+            <h2 class="text-2xl md:text-3xl font-medium text-neutral-900 mb-8">
+              We deliver results
+            </h2>
+          </div>
+          
+          <!-- Right Columns - Content and Button -->
+          <div class="lg:col-span-2 space-y-8 text-right">
+            <p class="text-base text-neutral-600 leading-relaxed">
+              For 10 years, we've been working with clients across various industries, delivering proven solutions that go beyond the norm. We help brands expand into new markets, reach a broader audience, and effectively differentiate themselves.
+            </p>
+            
+            <div>
+              <a 
+                href="/work" 
+                class="inline-flex items-center justify-between bg-neutral-900 text-white px-8 py-4 hover:bg-neutral-800 transition-colors font-medium text-sm group min-w-[280px]"
+              >
+                <span>View projects</span>
+                <span class="ml-4 group-hover:translate-x-1 transition-transform duration-300">+</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Projects Masonry Grid - Only 4 Projects -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 lg:gap-8">
+        <!-- Project 1 - Large -->
+        <article class="group cursor-pointer lg:col-span-7">
+          <div class="space-y-4">
+            <div class="relative overflow-hidden bg-neutral-100">
+              <img 
+                src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop" 
+                alt="Slack project" 
+                class="w-full h-[400px] lg:h-[500px] object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+            </div>
+            <div class="space-y-2">
+              <h3 class="text-lg font-medium text-neutral-900">
+                Slack
+              </h3>
+              <p class="text-sm text-neutral-500">
+                Design Strategy, 3D, Animation
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 - Medium -->
+        <article class="group cursor-pointer lg:col-span-5 lg:mt-20">
+          <div class="space-y-4">
+            <div class="relative overflow-hidden bg-neutral-100">
+              <img 
+                src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop" 
+                alt="Nutrisense project" 
+                class="w-full h-[300px] lg:h-[350px] object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+            </div>
+            <div class="space-y-2">
+              <h3 class="text-lg font-medium text-neutral-900">
+                Nutrisense
+              </h3>
+              <p class="text-sm text-neutral-500">
+                Web, App, Social, Packaging
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 - Medium -->
+        <article class="group cursor-pointer lg:col-span-5">
+          <div class="space-y-4">
+            <div class="relative overflow-hidden bg-neutral-100">
+              <img 
+                src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&h=400&fit=crop" 
+                alt="Kleen project" 
+                class="w-full h-[300px] lg:h-[350px] object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+            </div>
+            <div class="space-y-2">
+              <h3 class="text-lg font-medium text-neutral-900">
+                Kleen
+              </h3>
+              <p class="text-sm text-neutral-500">
+                Web, Advertising, Print
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 - Large -->
+        <article class="group cursor-pointer lg:col-span-7 lg:-mt-10">
+          <div class="space-y-4">
+            <div class="relative overflow-hidden bg-neutral-100">
+              <img 
+                src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=500&fit=crop" 
+                alt="Seichi project" 
+                class="w-full h-[400px] lg:h-[450px] object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+            </div>
+            <div class="space-y-2">
+              <h3 class="text-lg font-medium text-neutral-900">
+                Seichi
+              </h3>
+              <p class="text-sm text-neutral-500">
+                Web, Advertising, Print
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Testimonials Section -->
+  <section class="py-20 px-6 lg:px-8 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-12">
+        <h2 class="text-2xl md:text-3xl font-medium text-neutral-900 mb-4 max-w-3xl">
+          We build partnership relationships based on trust and responsibility.
+        </h2>
+        
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {testimonials.map((testimonial, index) => (
+          <article class="group cursor-pointer space-y-8 p-6 bg-neutral-50 hover:bg-neutral-100 transition-colors">
+            <div class="text-sm text-neutral-400 font-medium">
+              {String(index + 1).padStart(2, '0')}
+            </div>
+            
+            <div class="space-y-6">
+              <div class="text-neutral-400 text-lg font-medium group-hover:text-neutral-600 transition-colors">
+                {testimonial.company}
+              </div>
+              
+              <blockquote class="text-sm text-neutral-600 leading-relaxed group-hover:text-neutral-800 transition-colors">
+                {testimonial.content}
+              </blockquote>
+              
+              <footer class="space-y-2">
+                <div class="flex items-center space-x-4">
+                  <div class="w-12 h-12 bg-neutral-200 rounded-full flex items-center justify-center group-hover:bg-neutral-300 transition-colors">
+                    <span class="text-xs font-medium text-neutral-600">
+                      {testimonial.name.split(' ').map(n => n[0]).join('')}
+                    </span>
+                  </div>
+                  <div>
+                    <div class="text-sm font-medium text-neutral-900 group-hover:text-neutral-700 transition-colors">
+                      {testimonial.name}
+                    </div>
+                    <div class="text-xs text-neutral-500 group-hover:text-neutral-600 transition-colors">
+                      {testimonial.role}
+                    </div>
+                  </div>
+                </div>
+              </footer>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Knowledge Section -->
+  <section class="py-20 px-6 lg:px-8 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-medium text-neutral-900 mb-16 max-w-4xl">
+        Knowledge that builds <span class="text-neutral-400">strong brands.</span>
+      </h2>
+      
+      <div class="grid lg:grid-cols-2 gap-16">
+        <!-- Left Column - Featured Article -->
+        <div class="space-y-8">
+          <article class="group cursor-pointer">
+            <div class="space-y-6">
+              <div class="text-xs text-neutral-500 uppercase tracking-wider font-medium">
+                24.09.2025
+              </div>
+              <div>
+                <span class="inline-block bg-neutral-200 text-neutral-700 text-xs px-3 py-1 uppercase tracking-wider font-medium mb-4">
+                  DESIGN
+                </span>
+              </div>
+              <h3 class="text-xl md:text-2xl font-medium text-neutral-900 group-hover:text-neutral-600 transition-colors leading-tight">
+                How to stimulate creativity through experience, not copying?
+              </h3>
+            </div>
+          </article>
+        </div>
+
+        <!-- Right Column - Article List -->
+        <div class="space-y-12">
+          <article class="group cursor-pointer">
+            <div class="space-y-4">
+              <div class="text-xs text-neutral-500 uppercase tracking-wider font-medium">
+                04.08.2025
+              </div>
+              <div>
+                <span class="inline-block bg-neutral-200 text-neutral-700 text-xs px-3 py-1 uppercase tracking-wider font-medium">
+                  BUSINESS PROCESSES
+                </span>
+              </div>
+              <h3 class="text-lg font-medium text-neutral-900 group-hover:text-neutral-600 transition-colors leading-tight">
+                When is rebranding and when is redesign necessary?
+              </h3>
+            </div>
+          </article>
+
+          <article class="group cursor-pointer">
+            <div class="space-y-4">
+              <div class="text-xs text-neutral-500 uppercase tracking-wider font-medium">
+                05.06.2025
+              </div>
+              <div>
+                <span class="inline-block bg-neutral-200 text-neutral-700 text-xs px-3 py-1 uppercase tracking-wider font-medium">
+                  BUSINESS PROCESSES
+                </span>
+              </div>
+              <h3 class="text-lg font-medium text-neutral-900 group-hover:text-neutral-600 transition-colors leading-tight">
+                Feedback that works - how to speak to be understood (and build great branding)?
+              </h3>
+            </div>
+          </article>
+        </div>
+      </div>
+      
+      <div class="flex items-center justify-between mt-20">
+        <div class="text-4xl font-bold text-neutral-900">+</div>
+        <a href="/insights" class="text-lg font-medium text-neutral-900 hover:text-neutral-600 transition-colors">
+          View all entries
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <FAQ faqItems={faqItems} />
+
+  <CTA />
+
+  <Footer />
+</Layout>

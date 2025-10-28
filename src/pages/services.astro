@@ -1,0 +1,321 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTA from '../components/CTA.astro';
+import FAQ from '../components/FAQ.astro';
+
+const services = [
+  {
+    number: "01",
+    duration: "From 4 weeks",
+    title: "Brand Strategy",
+    description: "A strong brand starts with strategy – a direction that drives your business and builds advantage for years. At Lumina7, we help brands find their unique place in the market, refine their message, and build a cohesive identity that attracts the right customers and increases their engagement.",
+    capabilities: [
+      "Discovery Workshop",
+      "Research",
+      "Brand Positioning",
+      "Brand Language"
+    ]
+  },
+  {
+    number: "02",
+    duration: "From 4 weeks", 
+    title: "Visual Identity",
+    description: "We create branding that not only attracts attention, but above all supports business development. Visual identity is the face of your brand. It's the first signal that tells audiences who you are and why they should trust you. We translate brand strategy into a unique, cohesive visual narrative that supports your business growth.",
+    capabilities: [
+      "Discovery Workshop",
+      "Key Visual",
+      "Brand Manual",
+      "Motion Design System"
+    ]
+  },
+  {
+    number: "03",
+    duration: "From 4 weeks",
+    title: "UI/UX Design", 
+    description: "We combine strategy, design and technology to create products that really work. At Lumina7, we combine aesthetics with functionality, designing websites, applications and digital products that are not only visually attractive, but above all intuitive and effective.",
+    capabilities: [
+      "Prototyping / UX",
+      "User Journey",
+      "Design System",
+      "Motion",
+      "Microinteractions"
+    ]
+  },
+  {
+    number: "04",
+    duration: "From 4 weeks",
+    title: "Web Development",
+    description: "We combine the competencies of the design and programming team, creating tailor-made solutions that not only perfectly reflect the previously approved visual design, but also enable easy management of your website after its launch.",
+    capabilities: [
+      "Pixel Perfect Development",
+      "Motion",
+      "SEO",
+      "Integrations",
+      "Maintenance",
+      "React, Next.js, Sanity CMS, Webflow"
+    ]
+  }
+];
+
+const processSteps = [
+  {
+    number: "01",
+    phase: "Discover Phase",
+    title: "Research - Workshops",
+    duration: "01-04",
+    description: "Strategic workshops and project brief - Branding work begins not with design, but with strategy. At this stage, it is crucial to understand the brand, its audience and market context.",
+    details: [
+      "We conduct workshops",
+      "We analyze the competition and unique value proposition", 
+      "We define the target group and key customer insights",
+      "We create the foundations of visual and verbal communication strategy"
+    ]
+  },
+  {
+    number: "02", 
+    phase: "Define Phase",
+    title: "Synthesis & Prioritization",
+    duration: "02-04",
+    description: "In the DEFINE phase, we focus on what is most important for the brand – its values, strengths and unique features. This is the moment when we specify what the brand should stand out for and how it should be perceived.",
+    details: [
+      "Naming",
+      "Domain availability", 
+      "Brand positioning",
+      "Language and communication style"
+    ]
+  },
+  {
+    number: "03",
+    phase: "Design Phase", 
+    title: "Idea & Creating Solutions",
+    duration: "03-04",
+    description: "Based on the conclusions from the previous stages, we move on to conceptual work. Our team develops unique creative directions that reflect the character of the brand.",
+    details: [
+      "Creative direction",
+      "Visual identification",
+      "User experience",
+      "User brand experience",
+      "Copywriting",
+      "Icon design",
+      "Wayfinding",
+      "Packaging design",
+      "Social media design",
+      "Logo design",
+      "Web design"
+    ]
+  },
+  {
+    number: "04",
+    phase: "Deliver Phase",
+    title: "Product Delivery", 
+    duration: "04-04",
+    description: "The last stage, and at the same time one of the key moments of the process, is DELIVER. This is where we finalize all developed concepts and refine them to their final form.",
+    details: [
+      "Brand manual & guidelines",
+      "Tone of voice guidelines", 
+      "Production supervision and coordination",
+      "Programming implementation",
+      "Brand materials"
+    ]
+  }
+];
+
+const faqItems = [
+  {
+    number: "01",
+    question: "I only have an idea, is that enough?",
+    answer: "Yes! Just an idea is enough – we'll help you structure it and translate it into strategy and visual brand identity. We can lead a Discovery workshop where together we'll develop key assumptions, creative directions and branding fundamentals. Thanks to this, the final effect will be not only aesthetic, but above all business effective."
+  },
+  {
+    number: "02", 
+    question: "What do you specialize in?",
+    answer: "We feel best in branding, rebranding and website design for companies from fintech, SaaS, IT, AI, education and new technology industries. We create comprehensive visual identifications, combining strategy with design, which allows brands to stand out in the market and effectively communicate their value."
+  },
+  {
+    number: "03",
+    question: "What billing model do you prefer?",
+    answer: "We adapt the billing model to the specifics of the project. We can work in a Fixed Price system, where we set the scope and budget in advance, or Time & Materials, which gives greater flexibility and allows for ongoing project refinement. We help choose the best model depending on the client's needs and expectations."
+  },
+  {
+    number: "04",
+    question: "Do you also design and implement websites?", 
+    answer: "Yes! We have been creating websites since the beginning of the studio's operation - and even earlier as designers gaining experience in various companies. Thanks to close cooperation between designers and programmers and the use of modern technologies, we create even faster, safer and more advanced websites that will be not only a showcase of your company, but also a functional sales tool."
+  },
+  {
+    number: "05",
+    question: "What sets you apart from other branding studios?",
+    answer: "We combine strategy, design and technology, creating branding that not only looks good, but above all works. Our process is flexible and adapted to individual client needs – we focus on close cooperation, workshops and refining every detail. Thanks to this, we create coherent brands that really support business development and stand out from the competition."
+  }
+];
+---
+
+<Layout title="Services | Lumina7">
+  <Header />
+  
+  <!-- Hero Section -->
+  <section class="pt-24 pb-20 px-6 lg:px-8 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-6xl font-medium text-gray-900 mb-8 leading-tight mt-8">
+          We create brands that move, evoke emotions, make you think, and are unforgettable.
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services-hero bg-black text-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="space-y-0">
+        {services.map((service, index) => (
+          <div class="service-card group cursor-pointer border-b border-gray-800 last:border-b-0" data-service={index}>
+            <div class="px-6 lg:px-8 py-12">
+              <div class="grid lg:grid-cols-12 gap-8 items-start">
+                <!-- Left side - Duration and Title -->
+                <div class="lg:col-span-5">
+                  <span class="text-xs text-black bg-white px-3 py-1 font-medium uppercase tracking-wide mb-4 inline-block">
+                    {service.duration}
+                  </span>
+                  <h2 class="text-2xl md:text-3xl font-medium text-white leading-tight">
+                    {service.title}
+                  </h2>
+                </div>
+                
+                <!-- Right side - Description and Capabilities -->
+                <div class="lg:col-span-7">
+                  <p class="text-gray-300 leading-relaxed text-lg mb-6">
+                    {service.description}
+                  </p>
+                  
+                  <div class="flex flex-wrap gap-3 mb-6">
+                    {service.capabilities.map(capability => (
+                      <span class="text-xs text-white border border-gray-600 px-4 py-2 hover:bg-white hover:text-black transition-colors cursor-pointer uppercase tracking-wide">
+                        {capability}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <button class="text-white hover:text-gray-300 transition-colors flex items-center gap-2 group">
+                    <span class="text-2xl group-hover:translate-x-2 transition-transform duration-300">→</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="py-32 px-6 lg:px-8 bg-gray-100">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-20">
+        <h2 class="text-4xl md:text-5xl font-medium text-black mb-8">
+          Get to know our process
+        </h2>
+      </div>
+      
+      <div class="space-y-8">
+        {processSteps.map((step, index) => (
+          <div class="process-step bg-gray-300 p-8 lg:p-12">
+            <div class="grid lg:grid-cols-12 gap-8 items-start">
+              <!-- Left side - Number, Phase, Title -->
+              <div class="lg:col-span-4">
+                <h2 class="text-2xl md:text-3xl font-bold text-black leading-none mb-4">
+                  {step.number}
+                </h2>
+                <h2 class="text-2xl md:text-3xl font-medium text-black mb-4">{step.phase}</h2>
+                <h3 class="text-lg font-medium text-black mb-4">{step.title}</h3>
+                <p class="text-sm text-gray-600 uppercase tracking-wide">{step.duration}</p>
+              </div>
+              
+              <!-- Spacer -->
+              <div class="lg:col-span-1"></div>
+              
+              <!-- Right side - Description and Details -->
+              <div class="lg:col-span-7">
+                <p class="text-gray-700 leading-relaxed mb-6">
+                  {step.description}
+                </p>
+                
+                <ul class="space-y-3">
+                  {step.details.map(detail => (
+                    <li class="text-sm text-gray-700 flex items-start gap-3">
+                      <span class="w-1 h-1 bg-gray-600 rounded-full mt-2 flex-shrink-0"></span>
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FAQ faqItems={faqItems} />
+
+  <CTA />
+
+  <Footer />
+</Layout>
+
+<script>
+  // Service card hover effects
+  document.addEventListener('DOMContentLoaded', function() {
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    serviceCards.forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-2px)';
+        this.style.transition = 'transform 0.3s ease';
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+      });
+    });
+  });
+</script>
+
+<style>
+  .services-hero {
+    background-color: #050505;
+  }
+
+  .services-hero::before,
+  .services-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .services-hero::before {
+    background-image:
+      radial-gradient(at 20% 18%, rgba(110, 110, 120, 0.38) 0%, rgba(5, 5, 5, 0) 55%),
+      radial-gradient(at 78% 30%, rgba(85, 85, 95, 0.32) 0%, rgba(5, 5, 5, 0) 45%),
+      radial-gradient(at 50% 82%, rgba(155, 155, 155, 0.24) 0%, rgba(5, 5, 5, 0) 52%),
+      radial-gradient(at 60% 10%, rgba(70, 70, 80, 0.28) 0%, rgba(5, 5, 5, 0) 55%),
+      linear-gradient(200deg, rgba(5, 5, 5, 0.65) 0%, rgba(5, 5, 5, 0.95) 100%);
+    opacity: 0.98;
+    mix-blend-mode: screen;
+  }
+
+  .services-hero::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320' viewBox='0 0 320 320'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23noise)' opacity='0.35'/%3E%3C/svg%3E");
+    background-size: 80px 80px;
+    background-repeat: repeat;
+    opacity: 0.65;
+    mix-blend-mode: overlay;
+  }
+
+  .services-hero > .max-w-7xl {
+    position: relative;
+    z-index: 1;
+  }
+</style>

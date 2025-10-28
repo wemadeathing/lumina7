@@ -1,0 +1,45 @@
+---
+export interface Props {
+  variant?: 'spinner' | 'dots' | 'pulse' | 'skeleton';
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+}
+
+const { 
+  variant = 'spinner', 
+  size = 'md', 
+  class: className = '',
+  ...rest 
+} = Astro.props;
+
+const sizes = {
+  sm: 'w-4 h-4',
+  md: 'w-8 h-8',
+  lg: 'w-12 h-12'
+};
+
+const sizeClass = sizes[size];
+---
+
+{variant === 'spinner' && (
+  <div class={`animate-spin rounded-full border-2 border-gray-300 border-t-gray-900 ${sizeClass} ${className}`} {...rest}></div>
+)}
+
+{variant === 'dots' && (
+  <div class={`flex space-x-1 ${className}`} {...rest}>
+    <div class="w-2 h-2 bg-gray-900 rounded-full animate-bounce"></div>
+    <div class="w-2 h-2 bg-gray-900 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+    <div class="w-2 h-2 bg-gray-900 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+  </div>
+)}
+
+{variant === 'pulse' && (
+  <div class={`bg-gray-200 rounded animate-pulse ${sizeClass} ${className}`} {...rest}></div>
+)}
+
+{variant === 'skeleton' && (
+  <div class={`bg-gray-200 rounded animate-pulse ${className}`} {...rest}>
+    <div class="h-4 bg-gray-300 rounded w-3/4 mb-2"></div>
+    <div class="h-4 bg-gray-300 rounded w-1/2"></div>
+  </div>
+)}

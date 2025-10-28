@@ -1,0 +1,239 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+}
+
+const { 
+  title, 
+  description = "Trusted partner in building effective brands, efficient websites, scalable systems, targeted insights, and smart strategies.",
+  image = "/favicon.svg",
+  canonical
+} = Astro.props;
+
+const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site);
+const socialImage = new URL(image, Astro.site);
+
+// Import design tokens
+import '../styles/design-tokens.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImage} />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={socialImage} />
+    
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Lumina7" />
+    
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-white text-gray-900 antialiased">
+    <div id="page-transition-overlay" class="fixed inset-0 bg-white z-50 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out"></div>
+    <div id="main-content" class="transition-opacity duration-300 ease-in-out">
+      <slot />
+    </div>
+  </body>
+  <style is:global>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@300;400;500;600;700&display=swap');
+    
+    * {
+      font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    
+    body {
+      font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+    }
+    
+    html {
+      scroll-padding-top: 80px;
+      scroll-behavior: smooth;
+    }
+
+    /* 247studio inspired typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+    }
+
+    .text-display {
+      font-size: clamp(2.5rem, 8vw, 6rem);
+      font-weight: 500;
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+    }
+
+    .text-large {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    /* Hide scrollbar for horizontal scroll */
+    .scrollbar-hide {
+      -ms-overflow-style: none;  /* Internet Explorer 10+ */
+      scrollbar-width: none;  /* Firefox */
+    }
+    .scrollbar-hide::-webkit-scrollbar { 
+      display: none;  /* Safari and Chrome */
+    }
+
+    /* Page transition styles */
+    .page-transition-enter {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .page-transition-enter-active {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    }
+
+    .page-transition-exit {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .page-transition-exit-active {
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease-in, transform 0.3s ease-in;
+    }
+
+    /* Smooth link hover effects */
+    a {
+      transition: all 0.2s ease-in-out;
+    }
+
+    /* Enhanced button interactions */
+    button, .btn {
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    button:hover, .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    button:active, .btn:active {
+      transform: translateY(0);
+    }
+  </style>
+
+  <script>
+    // Smooth page transitions
+    document.addEventListener('DOMContentLoaded', function() {
+      const overlay = document.getElementById('page-transition-overlay');
+      const mainContent = document.getElementById('main-content');
+      
+      // Add entrance animation
+      if (mainContent) {
+        mainContent.style.opacity = '0';
+        mainContent.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+          mainContent.style.opacity = '1';
+          mainContent.style.transform = 'translateY(0)';
+        }, 100);
+      }
+
+      // Handle navigation clicks
+      document.addEventListener('click', function(e) {
+        const link = e.target.closest('a');
+        if (!link) return;
+        
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || link.target === '_blank') {
+          return;
+        }
+
+        // Check if it's an internal link
+        if (href.startsWith('/') || href.includes(window.location.hostname)) {
+          e.preventDefault();
+          
+          // Start transition
+          if (overlay && mainContent) {
+            overlay.style.opacity = '1';
+            overlay.style.pointerEvents = 'all';
+            mainContent.style.opacity = '0.8';
+            
+            setTimeout(() => {
+              window.location.href = href;
+            }, 150);
+          } else {
+            window.location.href = href;
+          }
+        }
+      });
+
+      // Enhanced hover effects for interactive elements
+      const interactiveElements = document.querySelectorAll('button, .btn, a[href], [role="button"]');
+      
+      interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', function() {
+          if (!this.disabled) {
+            this.style.transform = 'translateY(-1px)';
+          }
+        });
+        
+        element.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0)';
+        });
+        
+        element.addEventListener('mousedown', function() {
+          if (!this.disabled) {
+            this.style.transform = 'translateY(0) scale(0.98)';
+          }
+        });
+        
+        element.addEventListener('mouseup', function() {
+          if (!this.disabled) {
+            this.style.transform = 'translateY(-1px) scale(1)';
+          }
+        });
+      });
+    });
+
+    // Smooth scroll for anchor links
+    document.addEventListener('click', function(e) {
+      const link = e.target.closest('a[href^="#"]');
+      if (!link) return;
+      
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  </script>
+</html>
