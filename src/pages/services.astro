@@ -170,7 +170,7 @@ const faqItems = [
     <div class="max-w-7xl mx-auto">
       <div class="space-y-0">
         {services.map((service, index) => (
-          <div class="service-card group cursor-pointer border-b border-gray-800 last:border-b-0" data-service={index}>
+          <div class="service-card group cursor-pointer" data-service={index}>
             <div class="px-6 lg:px-8 py-12">
               <div class="grid lg:grid-cols-12 gap-8 items-start">
                 <!-- Left side - Duration and Title -->
@@ -296,14 +296,7 @@ const faqItems = [
   }
 
   .services-hero::before {
-    background-image:
-      radial-gradient(at 20% 18%, rgba(110, 110, 120, 0.38) 0%, rgba(5, 5, 5, 0) 55%),
-      radial-gradient(at 78% 30%, rgba(85, 85, 95, 0.32) 0%, rgba(5, 5, 5, 0) 45%),
-      radial-gradient(at 50% 82%, rgba(155, 155, 155, 0.24) 0%, rgba(5, 5, 5, 0) 52%),
-      radial-gradient(at 60% 10%, rgba(70, 70, 80, 0.28) 0%, rgba(5, 5, 5, 0) 55%),
-      linear-gradient(200deg, rgba(5, 5, 5, 0.65) 0%, rgba(5, 5, 5, 0.95) 100%);
-    opacity: 0.98;
-    mix-blend-mode: screen;
+    display: none;
   }
 
   .services-hero::after {

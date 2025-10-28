@@ -11,7 +11,7 @@ export default defineConfig({
     sitemap(),
     mdx()
   ],
-  site: 'https://lumina7.co.ca',
+  site: 'https://lumina7.co.za',
   output: 'static',
   build: {
     inlineStylesheets: 'auto',

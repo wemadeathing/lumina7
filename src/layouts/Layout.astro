@@ -9,7 +9,7 @@ export interface Props {
 const { 
   title, 
   description = "Trusted partner in building effective brands, efficient websites, scalable systems, targeted insights, and smart strategies.",
-  image = "/favicon.svg",
+  image = "/assets/logos/L7-logo-blk.png",
   canonical
 } = Astro.props;
 
@@ -26,7 +26,7 @@ import '../styles/design-tokens.css';
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/assets/favicon/L7-favicon-blk.png" />
     <meta name="generator" content={Astro.generator} />
     
     <!-- Canonical URL -->
@@ -53,8 +53,7 @@ import '../styles/design-tokens.css';
     <title>{title}</title>
   </head>
   <body class="min-h-screen bg-white text-gray-900 antialiased">
-    <div id="page-transition-overlay" class="fixed inset-0 bg-white z-50 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out"></div>
-    <div id="main-content" class="transition-opacity duration-300 ease-in-out">
+    <div id="main-content">
       <slot />
     </div>
   </body>
@@ -82,6 +81,20 @@ import '../styles/design-tokens.css';
       letter-spacing: -0.025em;
     }
 
+    /* H1 entrance animation */
+    h1 {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .text-display {
       font-size: clamp(2.5rem, 8vw, 6rem);
       font-weight: 500;
@@ -105,129 +118,35 @@ import '../styles/design-tokens.css';
       display: none;  /* Safari and Chrome */
     }
 
-    /* Page transition styles */
-    .page-transition-enter {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    .page-transition-enter-active {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-    }
-
-    .page-transition-exit {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .page-transition-exit-active {
-      opacity: 0;
-      transform: translateY(-10px);
-      transition: opacity 0.3s ease-in, transform 0.3s ease-in;
-    }
-
-    /* Smooth link hover effects */
-    a {
-      transition: all 0.2s ease-in-out;
-    }
-
-    /* Enhanced button interactions */
-    button, .btn {
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    button:hover, .btn:hover {
-      transform: translateY(-1px);
-    }
-
-    button:active, .btn:active {
-      transform: translateY(0);
+    /* Smooth link hover effects - only apply to links without specific transitions */
+    a:not([class*="transition"]) {
+      transition: color 0.2s ease-in-out;
     }
   </style>
 
   <script>
-    // Smooth page transitions
     document.addEventListener('DOMContentLoaded', function() {
-      const overlay = document.getElementById('page-transition-overlay');
+      // Simple fade-in on page load
       const mainContent = document.getElementById('main-content');
-      
-      // Add entrance animation
       if (mainContent) {
         mainContent.style.opacity = '0';
-        mainContent.style.transform = 'translateY(20px)';
-        
-        setTimeout(() => {
+        requestAnimationFrame(() => {
+          mainContent.style.transition = 'opacity 0.3s ease-out';
           mainContent.style.opacity = '1';
-          mainContent.style.transform = 'translateY(0)';
-        }, 100);
+        });
       }
-
-      // Handle navigation clicks
-      document.addEventListener('click', function(e) {
-        const link = e.target.closest('a');
-        if (!link) return;
-        
-        const href = link.getAttribute('href');
-        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || link.target === '_blank') {
-          return;
-        }
-
-        // Check if it's an internal link
-        if (href.startsWith('/') || href.includes(window.location.hostname)) {
-          e.preventDefault();
-          
-          // Start transition
-          if (overlay && mainContent) {
-            overlay.style.opacity = '1';
-            overlay.style.pointerEvents = 'all';
-            mainContent.style.opacity = '0.8';
-            
-            setTimeout(() => {
-              window.location.href = href;
-            }, 150);
-          } else {
-            window.location.href = href;
-          }
-        }
-      });
-
-      // Enhanced hover effects for interactive elements
-      const interactiveElements = document.querySelectorAll('button, .btn, a[href], [role="button"]');
-      
-      interactiveElements.forEach(element => {
-        element.addEventListener('mouseenter', function() {
-          if (!this.disabled) {
-            this.style.transform = 'translateY(-1px)';
-          }
-        });
-        
-        element.addEventListener('mouseleave', function() {
-          this.style.transform = 'translateY(0)';
-        });
-        
-        element.addEventListener('mousedown', function() {
-          if (!this.disabled) {
-            this.style.transform = 'translateY(0) scale(0.98)';
-          }
-        });
-        
-        element.addEventListener('mouseup', function() {
-          if (!this.disabled) {
-            this.style.transform = 'translateY(-1px) scale(1)';
-          }
-        });
-      });
     });
 
     // Smooth scroll for anchor links
     document.addEventListener('click', function(e) {
-      const link = e.target.closest('a[href^="#"]');
+      if (!e.target) return;
+      const link = (e.target as HTMLElement).closest('a[href^="#"]');
       if (!link) return;
       
       e.preventDefault();
-      const target = document.querySelector(link.getAttribute('href'));
+      const href = link.getAttribute('href');
+      if (!href) return;
+      const target = document.querySelector(href);
       if (target) {
         target.scrollIntoView({
           behavior: 'smooth',
