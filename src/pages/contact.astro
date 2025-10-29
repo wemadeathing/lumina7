@@ -2,9 +2,36 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import FAQ from '../components/FAQ.astro';
+
+const faqItems = [
+  {
+    number: "01",
+    question: "How quickly will you respond to my inquiry?",
+    answer: "We typically respond within 24 hours to emails and 2 hours to WhatsApp messages during business hours."
+  },
+  {
+    number: "02",
+    question: "Do I need to have a detailed project plan?",
+    answer: "No. Just tell us what you're thinking about. We'll ask questions and help refine the concept during our discovery conversation."
+  },
+  {
+    number: "03",
+    question: "What if I don't know what service I need?",
+    answer: "That's exactly what the discovery call is for. We'll ask about your goals and recommend the right solution."
+  },
+  {
+    number: "04",
+    question: "Can you work with my budget?",
+    answer: "We work with a range of budgets. If you share what you're working with, we can tell you what's possible at that investment level."
+  }
+];
 ---
 
-<Layout title="Contact | Lumina7">
+<Layout 
+  title="Contact | Lumina7 - Get in Touch with Our Design Studio"
+  description="Ready to work with Lumina7? Send us an email or chat via WhatsApp. Let's discuss your design project. Mon-Fri 9am-5pm SAST."
+>
   <Header />
   
   <!-- Hero Section with Image -->
@@ -24,33 +51,39 @@ import Footer from '../components/Footer.astro';
             </p>
           </div>
 
-          <!-- Contact Options - Side by Side -->
-          <div class="grid md:grid-cols-2 gap-12">
-            <!-- Become a Client -->
+          <!-- Contact Options -->
+          <div class="space-y-12">
+            <!-- Email -->
             <div class="space-y-4">
               <h2 class="text-lg text-gray-500 font-medium">
-                Become a Client
+                Send us an email
               </h2>
+              <p class="text-sm text-gray-600 leading-relaxed">
+                For detailed inquiries or project briefs. We typically respond within 24 hours.
+              </p>
               <a 
-                href="mailto:hello@lumina7.co.ca" 
+                href="mailto:hello@lumina7.co.za" 
                 class="block text-xl text-gray-900 hover:text-gray-600 transition-colors font-medium underline"
               >
-                hello@lumina7.co.ca
+                hello@lumina7.co.za
               </a>
             </div>
 
-            <!-- Book a Discovery Call -->
+            <!-- WhatsApp -->
             <div class="space-y-4">
               <h2 class="text-lg text-gray-500 font-medium">
-                Book a Discovery Call
+                Chat via WhatsApp
               </h2>
+              <p class="text-sm text-gray-600 leading-relaxed">
+                For quick questions or to get started immediately. We typically respond within 2 hours during business hours.
+              </p>
               <a 
-                href="https://calendly.com/lumina7/discovery-call" 
+                href="https://wa.me/27814623628" 
                 target="_blank"
                 rel="noopener noreferrer"
                 class="block text-xl text-gray-900 hover:text-gray-600 transition-colors font-medium underline"
               >
-                Schedule a Call
+                +27 81 462 3628
               </a>
             </div>
           </div>
@@ -60,12 +93,62 @@ import Footer from '../components/Footer.astro';
         <div class="aspect-square bg-gray-100 overflow-hidden">
           <img 
             src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=800&fit=crop&auto=format" 
-            alt="Modern office workspace"
+            alt="Lumina7 office in Cape Town"
             class="w-full h-full object-cover"
           />
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- Business Hours & Location Section -->
+  <section class="py-20 px-6 lg:px-8 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+        
+        <!-- Business Hours -->
+        <div class="space-y-4">
+          <h3 class="text-xl font-medium text-gray-900">Our Hours</h3>
+          <div class="text-gray-600 space-y-2">
+            <p>Monday - Friday</p>
+            <p class="font-medium">9:00 AM - 5:00 PM SAST</p>
+            <p class="text-sm">Saturday - Sunday: Closed</p>
+          </div>
+        </div>
+
+        <!-- Response Times -->
+        <div class="space-y-4">
+          <h3 class="text-xl font-medium text-gray-900">Response Times</h3>
+          <div class="text-gray-600 space-y-2">
+            <p>WhatsApp: 2 hours</p>
+            <p>Email: 24 hours</p>
+            <p class="text-sm text-gray-500">(during business hours)</p>
+          </div>
+        </div>
+
+        <!-- Location -->
+        <div class="space-y-4">
+          <h3 class="text-xl font-medium text-gray-900">Where we are</h3>
+          <div class="text-gray-600 space-y-2">
+            <p>Cape Town, South Africa</p>
+            <p class="text-sm text-gray-500">We serve South African businesses and work with international clients</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <FAQ faqItems={faqItems} />
+
+  <!-- Privacy Note -->
+  <section class="py-12 px-6 lg:px-8 bg-white border-t border-gray-100">
+    <div class="max-w-7xl mx-auto">
+      <p class="text-sm text-gray-500 text-center max-w-3xl mx-auto">
+        We respect your privacy. Your information will only be used to contact you about your potential project. We comply with POPIA (Protection of Personal Information Act).
+      </p>
     </div>
   </section>
 

@@ -8,34 +8,57 @@ import FAQ from '../components/FAQ.astro';
 const services = [
   {
     number: "01",
-    title: "Brand Strategy",
-    duration: "From 4 weeks",
-    content: "We help define your brand's core purpose, values, and positioning. Through strategic workshops and market research, we create a foundation that guides all your brand decisions and ensures consistent messaging across all touchpoints."
-  },
-  {
-    number: "02", 
     title: "Visual Identity",
     duration: "From 2 weeks",
     content: "Creating distinctive visual systems that capture your brand's essence. From logos and color palettes to typography and imagery, we design cohesive identities that make your brand instantly recognizable and memorable."
   },
   {
-    number: "03",
-    title: "UI/UX Design",
+    number: "02",
+    title: "Digital Design",
     duration: "From 2 weeks", 
     content: "Designing digital experiences that users love. We combine user research, interface design, and usability testing to create websites and applications that are both beautiful and functional, driving engagement and conversions."
   },
   {
-    number: "04",
+    number: "03",
     title: "Web Development",
     duration: "From 4 weeks",
-    content: "Building fast, scalable, and secure websites that perform flawlessly across all devices. Our development team uses modern technologies and best practices to bring your designs to life with clean, maintainable code."
+    content: "Building fast, scalable websites, micro-apps, and web applications that perform flawlessly across all devices. Using modern technologies and best practices, with thorough developer testing and support for Agile and Scrum workflows."
+  },
+  {
+    number: "04",
+    title: "Graphic Design",
+    duration: "From 2 weeks",
+    content: "Creative graphic design that brings your ideas to life. From posters and illustrations to marketing materials and brand presentations. We also handle corporate documents including annual reports, user manuals, and typesetting projects."
+  },
+  {
+    number: "05",
+    title: "Branding",
+    duration: "From 2 weeks",
+    content: "Complete branding design and production for all your physical brand needs. From business cards and promotional materials to large format printing, indoor and outdoor signage, and billboards. We design, print, and install where needed."
+  },
+  {
+    number: "06",
+    title: "Digital Marketing",
+    duration: "From 3 weeks",
+    content: "Strategic digital marketing campaigns that drive measurable results. From SEO and content marketing to social media and paid advertising, we help you reach your target audience and convert them into loyal customers."
+  },
+  {
+    number: "07",
+    title: "Rapid Prototyping",
+    duration: "From 1 week",
+    content: "Turn your ideas into working prototypes. We build interactive web and mobile prototypes that let you test concepts, gather feedback, and prove value before committing to full development. Move fast and reduce risk with real functionality."
   }
 ];
 
 const clients = [
-  "Meta", "Google", "Discover", "Stripe", "Coca-Cola", "Coinbase", "Uber", "Sony", 
-  "Slack", "Amazon", "Fiverr", "Credit Karma", "Cisco", "ADP", "UPS", "VMware", 
-  "Fossil", "Western Digital", "Toyota", "Samsung", "Grayscale"
+  { name: "Arabica", logo: "/assets/logos/clients/Arabica Logo Dark.png" },
+  { name: "Cloud", logo: "/assets/logos/clients/Cloud-logo-250w.png" },
+  { name: "ECOS", logo: "/assets/logos/clients/ECOS Logo dark.png" },
+  { name: "Edge Cycles", logo: "/assets/logos/clients/Edge Cycles Main Logo blk.png" },
+  { name: "HP", logo: "/assets/logos/clients/HP Logo dark.png" },
+  { name: "Nexevo", logo: "/assets/logos/clients/nexevo-logo-x-light-mode.png" },
+  { name: "Straptec", logo: "/assets/logos/clients/Straptec-logo.png" },
+  { name: "YP", logo: "/assets/logos/clients/YP_Logo_Dark.png" }
 ];
 
 const featuredCaseStudies = [
@@ -169,19 +192,22 @@ const faqItems = [
 ];
 ---
 
-<Layout title="Lumina7 | Trusted Partner in Building Effective Brands">
+<Layout 
+  title="Lumina7 | Strategic Design Studio - Brand Identity & Web Design"
+  description="We design brand experiences that help businesses attract premium clients. Strategic branding, UI/UX design, and web development for South African businesses."
+>
   <Header />
   
   <!-- Hero Section -->
   <section class="pt-24 pb-20 px-6 lg:px-8 bg-white">
     <div class="max-w-7xl mx-auto">
-      <div class="max-w-3xl">
-        <h1 class="text-4xl md:text-6xl font-medium text-gray-900 mb-8 leading-tight mt-8">
-          We design brand experiences that help businesses attract premium clients
+      <div class="max-w-4xl">
+        <h1 class="text-5xl md:text-7xl font-medium text-gray-900 mb-8 leading-tight mt-8">
+          We design complete brand experiences that work
         </h1>
         
         <p class="text-lg text-gray-600 max-w-3xl leading-relaxed">
-          We help companies at various stages of development stand out in the market and more effectively reach customers, creating brands based on strategy and authentic character.
+          We partner with established South African businesses to create delightful brand experiences that build genuine trust with their customers.
         </p>
         <div class="mt-8 text-sm text-gray-500">
           [ Scroll down ]
@@ -208,142 +234,36 @@ const faqItems = [
     <div class="max-w-7xl mx-auto">
       <div class="mb-16">
         <h2 class="text-2xl md:text-3xl font-medium text-neutral-900 leading-tight max-w-2xl">
-          Join the brands that trust us to boldly set new standards in their industry.
+          Trusted by South African businesses who want professional brands that work
         </h2>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-x-8 gap-y-16">
-        <!-- Client 01 -->
-        <div class="group cursor-pointer">
-          <div class="space-y-6 p-4 rounded-lg group-hover:bg-neutral-50 transition-colors duration-300">
-            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider group-hover:text-neutral-600 transition-colors duration-300">01</div>
-            <div class="h-16 flex items-center">
-              <img src="https://logo.clearbit.com/meta.com" alt="Meta" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16">
+        {clients.map((client, index) => {
+          // Custom sizing for specific logos
+          let logoHeight = "h-8"; // default 32px
+          if (client.name === "Cloud") logoHeight = "h-12"; // +40% total = ~46px
+          if (client.name === "Nexevo") logoHeight = "h-7"; // -10% = ~28px
+          if (client.name === "Arabica" || client.name === "ECOS") logoHeight = "h-9"; // +10% = ~35px
+          
+          return (
+            <div class="group cursor-pointer">
+              <div class="space-y-6 p-4 rounded-lg group-hover:bg-neutral-50 transition-colors duration-300">
+                <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider group-hover:text-neutral-600 transition-colors duration-300">
+                  {String(index + 1).padStart(2, '0')}
+                </div>
+                <div class="h-16 flex items-center">
+                  <img 
+                    src={client.logo} 
+                    alt={client.name} 
+                    class={`${logoHeight} w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300`}
+                  />
+                </div>
+              </div>
+              <div class="mt-6 h-px bg-neutral-200 group-hover:bg-neutral-300 transition-colors duration-300"></div>
             </div>
-          </div>
-          <div class="mt-6 h-px bg-neutral-200 group-hover:bg-neutral-300 transition-colors duration-300"></div>
-        </div>
-
-        <!-- Client 02 -->
-        <div class="group cursor-pointer">
-          <div class="space-y-6 p-4 rounded-lg group-hover:bg-neutral-50 transition-colors duration-300">
-            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider group-hover:text-neutral-600 transition-colors duration-300">02</div>
-            <div class="h-16 flex items-center">
-              <img src="https://logo.clearbit.com/google.com" alt="Google" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-          </div>
-          <div class="mt-6 h-px bg-neutral-200 group-hover:bg-neutral-300 transition-colors duration-300"></div>
-        </div>
-
-        <!-- Client 03 -->
-        <div class="group cursor-pointer">
-          <div class="space-y-6 p-4 rounded-lg group-hover:bg-neutral-50 transition-colors duration-300">
-            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider group-hover:text-neutral-600 transition-colors duration-300">03</div>
-            <div class="h-16 flex items-center">
-              <img src="https://logo.clearbit.com/netflix.com" alt="Netflix" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-          </div>
-          <div class="mt-6 h-px bg-neutral-200 group-hover:bg-neutral-300 transition-colors duration-300"></div>
-        </div>
-
-        <!-- Client 04 -->
-        <div class="group cursor-pointer">
-          <div class="space-y-6 p-4 rounded-lg group-hover:bg-neutral-50 transition-colors duration-300">
-            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider group-hover:text-neutral-600 transition-colors duration-300">04</div>
-            <div class="h-16 flex items-center">
-              <img src="https://logo.clearbit.com/stripe.com" alt="Stripe" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-          </div>
-          <div class="mt-6 h-px bg-neutral-200 group-hover:bg-neutral-300 transition-colors duration-300"></div>
-        </div>
-
-        <!-- Client 05 -->
-        <div class="group cursor-pointer">
-          <div class="space-y-6 p-4 rounded-lg group-hover:bg-neutral-50 transition-colors duration-300">
-            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider group-hover:text-neutral-600 transition-colors duration-300">05</div>
-            <div class="h-16 flex items-center">
-              <img src="https://logo.clearbit.com/spotify.com" alt="Spotify" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-          </div>
-          <div class="mt-6 h-px bg-neutral-200 group-hover:bg-neutral-300 transition-colors duration-300"></div>
-        </div>
-
-        <!-- Client 06 -->
-        <div class="group cursor-pointer">
-          <div class="space-y-6 p-4 rounded-lg group-hover:bg-neutral-50 transition-colors duration-300">
-            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider group-hover:text-neutral-600 transition-colors duration-300">06</div>
-            <div class="h-16 flex items-center">
-              <img src="https://logo.clearbit.com/airbnb.com" alt="Airbnb" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-          </div>
-          <div class="mt-6 h-px bg-neutral-200 group-hover:bg-neutral-300 transition-colors duration-300"></div>
-        </div>
-
-        <!-- Client 07 -->
-        <div class="group cursor-pointer">
-          <div class="space-y-6 p-4 rounded-lg group-hover:bg-neutral-50 transition-colors duration-300">
-            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider group-hover:text-neutral-600 transition-colors duration-300">07</div>
-            <div class="h-16 flex items-center">
-              <img src="https://logo.clearbit.com/uber.com" alt="Uber" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-          </div>
-          <div class="mt-6 h-px bg-neutral-200 group-hover:bg-neutral-300 transition-colors duration-300"></div>
-        </div>
-
-        <!-- Client 08 -->
-        <div class="group cursor-pointer">
-          <div class="space-y-6 p-4 rounded-lg group-hover:bg-neutral-50 transition-colors duration-300">
-            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider group-hover:text-neutral-600 transition-colors duration-300">08</div>
-            <div class="h-16 flex items-center">
-              <img src="https://logo.clearbit.com/adobe.com" alt="Adobe" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-          </div>
-          <div class="mt-6 h-px bg-neutral-200 group-hover:bg-neutral-300 transition-colors duration-300"></div>
-        </div>
-
-        <!-- Client 09 -->
-        <div class="group cursor-pointer">
-          <div class="space-y-6 p-4 rounded-lg group-hover:bg-neutral-50 transition-colors duration-300">
-            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider group-hover:text-neutral-600 transition-colors duration-300">09</div>
-            <div class="h-16 flex items-center">
-              <img src="https://logo.clearbit.com/slack.com" alt="Slack" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-          </div>
-          <div class="mt-6 h-px bg-neutral-200 group-hover:bg-neutral-300 transition-colors duration-300"></div>
-        </div>
-
-        <!-- Client 10 -->
-        <div class="group cursor-pointer">
-          <div class="space-y-6 p-4 rounded-lg group-hover:bg-neutral-50 transition-colors duration-300">
-            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider group-hover:text-neutral-600 transition-colors duration-300">10</div>
-            <div class="h-16 flex items-center">
-              <img src="https://logo.clearbit.com/amazon.com" alt="Amazon" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-          </div>
-          <div class="mt-6 h-px bg-neutral-200 group-hover:bg-neutral-300 transition-colors duration-300"></div>
-        </div>
-
-        <!-- Client 11 -->
-        <div class="group cursor-pointer">
-          <div class="space-y-6 p-4 rounded-lg group-hover:bg-neutral-50 transition-colors duration-300">
-            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider group-hover:text-neutral-600 transition-colors duration-300">11</div>
-            <div class="h-16 flex items-center">
-              <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-          </div>
-          <div class="mt-6 h-px bg-neutral-200 group-hover:bg-neutral-300 transition-colors duration-300"></div>
-        </div>
-
-        <!-- Client 12 -->
-        <div class="group cursor-pointer">
-          <div class="space-y-6 p-4 rounded-lg group-hover:bg-neutral-50 transition-colors duration-300">
-            <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider group-hover:text-neutral-600 transition-colors duration-300">12</div>
-            <div class="h-16 flex items-center">
-              <img src="https://logo.clearbit.com/apple.com" alt="Apple" class="h-8 w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-          </div>
-          <div class="mt-6 h-px bg-neutral-200 group-hover:bg-neutral-300 transition-colors duration-300"></div>
-        </div>
+          );
+        })}
       </div>
       
       <div class="text-right mt-16">
@@ -363,44 +283,119 @@ const faqItems = [
       <div class="grid lg:grid-cols-2 gap-16 items-start mb-20">
         <div>
           <h2 class="text-2xl md:text-3xl font-medium text-white mb-6 leading-tight">
-            <span class="text-white">Design & Technology</span>
-            <span class="text-neutral-400"> that drives the growth of your business.</span>
+            <span class="text-white">Strategic design</span>
+            <span class="text-neutral-400"> that supports your business growth.</span>
           </h2>
         </div>
         <div class="lg:text-right">
           <p class="text-neutral-400 mb-8 leading-relaxed">
-            We create solutions that combine strategy, design, and digital, based on partnership with our clients.
+            We partner with you to create complete brand experiences that work. From strategy and design to development, we help your business build genuine trust with customers.
           </p>
-          <button class="inline-flex items-center justify-between bg-white text-black px-6 py-3 hover:bg-neutral-100 transition-all duration-300 font-medium text-sm w-full lg:w-auto min-w-[280px] hover:scale-105 hover:shadow-lg group">
-            <span>GET TO KNOW THE SERVICES</span>
+          <a href="/services" class="inline-flex items-center justify-between bg-white text-black px-6 py-3 hover:bg-neutral-100 transition-all duration-300 font-medium text-sm w-full lg:w-auto min-w-[280px] hover:scale-105 hover:shadow-lg group">
+            <span>View Our Services</span>
             <span class="ml-4 group-hover:rotate-90 transition-transform duration-300">+</span>
-          </button>
+          </a>
         </div>
       </div>
       
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-0 border-t border-neutral-800">
-        {services.map((service, index) => (
-          <div class="group cursor-pointer border-r border-neutral-800 last:border-r-0">
-            <div class="p-8 h-full group-hover:bg-neutral-900 transition-colors duration-300 relative overflow-hidden">
-              <div class="text-sm text-neutral-500 mb-4 group-hover:text-neutral-400 transition-colors duration-300">{service.number}</div>
-              <div class="inline-block bg-neutral-800 text-neutral-300 text-xs px-3 py-1 mb-6 group-hover:bg-neutral-700 transition-colors duration-300">
-                {service.duration}
+      <!-- Services Container with Scroll -->
+      <div class="relative">
+        <div id="services-container" class="overflow-x-auto scrollbar-hide border-t border-neutral-800 scroll-smooth">
+          <div class="flex">
+            {services.map((service, index) => (
+              <div class="group cursor-pointer border-r border-neutral-800 flex-shrink-0 w-[85vw] md:w-[45vw] lg:w-[calc(100%/3.5)]">
+                <div class="p-8 h-full group-hover:bg-neutral-900 transition-colors duration-300 relative overflow-hidden">
+                  <div class="text-sm text-neutral-500 mb-4 group-hover:text-neutral-400 transition-colors duration-300">{service.number}</div>
+                  <div class="inline-block bg-neutral-800 text-neutral-300 text-xs px-3 py-1 mb-6 group-hover:bg-neutral-700 transition-colors duration-300">
+                    {service.duration}
+                  </div>
+                  <h3 class="text-2xl font-semibold text-white mb-6 leading-tight">
+                    {service.title}
+                  </h3>
+                  <p class="text-neutral-400 text-sm leading-relaxed mb-8 group-hover:text-neutral-300 transition-colors duration-300">
+                    {service.content}
+                  </p>
+                  <div class="text-sm text-white font-medium group-hover:text-neutral-300 transition-colors duration-300">
+                    Learn details →
+                  </div>
+                </div>
               </div>
-              <h3 class="text-2xl font-semibold text-white mb-6 leading-tight">
-                {service.title}
-              </h3>
-              <p class="text-neutral-400 text-sm leading-relaxed mb-8 group-hover:text-neutral-300 transition-colors duration-300">
-                {service.content}
-              </p>
-              <div class="text-sm text-white font-medium group-hover:text-neutral-300 transition-colors duration-300">
-                Learn details →
-              </div>
-            </div>
+            ))}
           </div>
-        ))}
+        </div>
+        
+        <!-- Scroll Controls -->
+        <div class="flex gap-2 justify-end mt-8">
+          <button 
+            id="scroll-left" 
+            class="bg-neutral-800 hover:bg-neutral-700 text-white p-3 transition-colors duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
+            aria-label="Scroll left"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </button>
+          <button 
+            id="scroll-right" 
+            class="bg-neutral-800 hover:bg-neutral-700 text-white p-3 transition-colors duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
+            aria-label="Scroll right"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </section>
+  
+  <script>
+    // Services horizontal scroll functionality
+    const servicesContainer = document.getElementById('services-container') as HTMLElement | null;
+    const scrollLeftBtn = document.getElementById('scroll-left') as HTMLButtonElement | null;
+    const scrollRightBtn = document.getElementById('scroll-right') as HTMLButtonElement | null;
+    
+    if (servicesContainer && scrollLeftBtn && scrollRightBtn) {
+      const scrollAmount = 400;
+      
+      // Update button states based on scroll position
+      function updateButtonStates(): void {
+        if (!servicesContainer || !scrollLeftBtn || !scrollRightBtn) return;
+        const { scrollLeft, scrollWidth, clientWidth } = servicesContainer;
+        scrollLeftBtn.disabled = scrollLeft <= 0;
+        scrollRightBtn.disabled = scrollLeft + clientWidth >= scrollWidth - 10;
+      }
+      
+      // Initial state
+      updateButtonStates();
+      
+      // Scroll left
+      scrollLeftBtn.addEventListener('click', (): void => {
+        if (!servicesContainer) return;
+        servicesContainer.scrollBy({
+          left: -scrollAmount,
+          behavior: 'smooth'
+        });
+        setTimeout(updateButtonStates, 300);
+      });
+      
+      // Scroll right
+      scrollRightBtn.addEventListener('click', (): void => {
+        if (!servicesContainer) return;
+        servicesContainer.scrollBy({
+          left: scrollAmount,
+          behavior: 'smooth'
+        });
+        setTimeout(updateButtonStates, 300);
+      });
+      
+      // Update on scroll
+      servicesContainer.addEventListener('scroll', updateButtonStates);
+      
+      // Update on resize
+      window.addEventListener('resize', updateButtonStates);
+    }
+  </script>
 
   <!-- Featured Projects Section with We Deliver Results Header -->
   <section class="py-20 bg-white">
@@ -418,7 +413,7 @@ const faqItems = [
           <!-- Right Columns - Content and Button -->
           <div class="lg:col-span-2 space-y-8 text-right">
             <p class="text-base text-neutral-600 leading-relaxed">
-              For 10 years, we've been working with clients across various industries, delivering proven solutions that go beyond the norm. We help brands expand into new markets, reach a broader audience, and effectively differentiate themselves.
+              For 15 years, we've partnered with South African businesses across various industries. We help companies build professional brands that attract the right customers and support real business growth.
             </p>
             
             <div>
@@ -524,8 +519,8 @@ const faqItems = [
   </section>
 
 
-  <!-- Testimonials Section -->
-  <section class="py-20 px-6 lg:px-8 bg-white">
+  <!-- Testimonials Section - HIDDEN FOR NOW -->
+  <!-- <section class="py-20 px-6 lg:px-8 bg-white">
     <div class="max-w-7xl mx-auto">
       <div class="mb-12">
         <h2 class="text-2xl md:text-3xl font-medium text-neutral-900 mb-4 max-w-3xl">
@@ -572,17 +567,16 @@ const faqItems = [
         ))}
       </div>
     </div>
-  </section>
+  </section> -->
 
-  <!-- Knowledge Section -->
-  <section class="py-20 px-6 lg:px-8 bg-white">
+  <!-- Knowledge/Insights Section - HIDDEN FOR NOW -->
+  <!-- <section class="py-20 px-6 lg:px-8 bg-white">
     <div class="max-w-7xl mx-auto">
       <h2 class="text-2xl md:text-3xl font-medium text-neutral-900 mb-16 max-w-4xl">
         Knowledge that builds <span class="text-neutral-400">strong brands.</span>
       </h2>
       
       <div class="grid lg:grid-cols-2 gap-16">
-        <!-- Left Column - Featured Article -->
         <div class="space-y-8">
           <article class="group cursor-pointer">
             <div class="space-y-6">
@@ -601,7 +595,6 @@ const faqItems = [
           </article>
         </div>
 
-        <!-- Right Column - Article List -->
         <div class="space-y-12">
           <article class="group cursor-pointer">
             <div class="space-y-4">
@@ -644,7 +637,7 @@ const faqItems = [
         </a>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <FAQ faqItems={faqItems} />
 
