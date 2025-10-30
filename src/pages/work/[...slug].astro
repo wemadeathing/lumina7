@@ -26,6 +26,52 @@ const relatedProjects = allProjects
 ---
 
 <Layout title={`${project.data.title} | Lumina7`} description={project.data.description}>
+  <!-- BreadcrumbList Structured Data -->
+  <script type="application/ld+json" slot="head">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lumina7.co.za"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Work",
+          "item": "https://lumina7.co.za/work"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": project.data.company,
+          "item": `https://lumina7.co.za/work/${project.slug}`
+        }
+      ]
+    })}
+  </script>
+  
+  <!-- CreativeWork Structured Data -->
+  <script type="application/ld+json" slot="head">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": project.data.title,
+      "description": project.data.description,
+      "image": project.data.heroImage,
+      "creator": {
+        "@type": "Organization",
+        "name": "Lumina7"
+      },
+      "datePublished": project.data.year,
+      "keywords": project.data.services.join(", "),
+      "genre": project.data.category,
+      "url": `https://lumina7.co.za/work/${project.slug}`
+    })}
+  </script>
   <Header />
   
   <!-- Hero Section -->

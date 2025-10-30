@@ -122,7 +122,7 @@ The site is configured for Netlify deployment via `netlify.toml`:
 - Security headers and caching policies are configured
 
 ### Site Configuration
-- Production URL: https://lumina7.co.ca
+- Production URL: https://lumina7.co.za
 - Update `site` in `astro.config.mjs` if deploying to a different domain
 
 ## Key Technical Details

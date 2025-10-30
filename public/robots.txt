@@ -1,0 +1,16 @@
+# Lumina7 Robots.txt
+# Allow all search engines to access the site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://lumina7.co.za/sitemap-index.xml
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
+
+# Block access to admin/private areas (if any in future)
+# Disallow: /admin/
+# Disallow: /private/
+

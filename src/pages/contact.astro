@@ -32,6 +32,54 @@ const faqItems = [
   title="Contact | Lumina7 - Get in Touch with Our Design Studio"
   description="Ready to work with Lumina7? Send us an email or chat via WhatsApp. Let's discuss your design project. Mon-Fri 9am-5pm SAST."
 >
+  <!-- LocalBusiness Structured Data -->
+  <script type="application/ld+json" slot="head">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Lumina7",
+      "image": "https://lumina7.co.za/assets/logos/L7-logo-blk.png",
+      "url": "https://lumina7.co.za",
+      "telephone": "+27814623628",
+      "email": "hello@lumina7.co.za",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cape Town",
+        "addressRegion": "Western Cape",
+        "addressCountry": "ZA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -33.9249,
+        "longitude": 18.4241
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "17:00"
+      },
+      "priceRange": "$$",
+      "areaServed": {
+        "@type": "Country",
+        "name": "South Africa"
+      },
+      "serviceType": [
+        "Brand Design",
+        "Visual Identity",
+        "UI/UX Design",
+        "Web Development",
+        "Graphic Design",
+        "Digital Marketing"
+      ]
+    })}
+  </script>
   <Header />
   
   <!-- Hero Section with Image -->
@@ -93,7 +141,7 @@ const faqItems = [
         <div class="aspect-square bg-gray-100 overflow-hidden">
           <img 
             src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=800&fit=crop&auto=format" 
-            alt="Lumina7 office in Cape Town"
+            alt="Modern design studio office workspace in Cape Town, South Africa"
             class="w-full h-full object-cover"
           />
         </div>

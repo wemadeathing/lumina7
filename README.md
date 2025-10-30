@@ -137,11 +137,11 @@ npm run build
 
 ### Site URL
 
-The live site is hosted at [https://lumina7.co.ca](https://lumina7.co.ca). Update the site URL in `astro.config.mjs` if deploying elsewhere:
+The live site is hosted at [https://lumina7.co.za](https://lumina7.co.za). Update the site URL in `astro.config.mjs` if deploying elsewhere:
 
 ```js
 export default defineConfig({
-  site: 'https://lumina7.co.ca',
+  site: 'https://lumina7.co.za',
   // ...
 });
 ```

@@ -34,6 +34,36 @@ const relatedPosts = allPosts
 ---
 
 <Layout title={`${post.data.title} | Lumina7`} description={post.data.description}>
+  <!-- Article Structured Data -->
+  <script type="application/ld+json" slot="head">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": post.data.title,
+      "description": post.data.description,
+      "image": post.data.heroImage || "https://lumina7.co.za/assets/logos/L7-logo-blk.png",
+      "datePublished": post.data.pubDate.toISOString(),
+      "dateModified": post.data.pubDate.toISOString(),
+      "author": {
+        "@type": "Person",
+        "name": post.data.author
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Lumina7",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://lumina7.co.za/assets/logos/L7-logo-blk.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `https://lumina7.co.za/insights/${post.slug}`
+      },
+      "keywords": post.data.tags ? post.data.tags.join(", ") : "",
+      "articleSection": post.data.category
+    })}
+  </script>
   <Header />
   
   <!-- Hero Section -->

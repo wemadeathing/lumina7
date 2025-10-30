@@ -27,6 +27,10 @@ import '../styles/design-tokens.css';
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/assets/favicon/L7-favicon-blk.png" />
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <meta name="generator" content={Astro.generator} />
     
     <!-- Canonical URL -->
@@ -50,7 +54,42 @@ import '../styles/design-tokens.css';
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Lumina7" />
     
+    <!-- Structured Data - Organization -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Lumina7",
+        "url": "https://lumina7.co.za",
+        "logo": "https://lumina7.co.za/assets/logos/L7-logo-blk.png",
+        "description": "Strategic design studio specializing in brand identity, UI/UX design, and web development for South African businesses.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Cape Town",
+          "addressRegion": "Western Cape",
+          "addressCountry": "ZA"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+27-81-462-3628",
+          "contactType": "Customer Service",
+          "availableLanguage": ["en"],
+          "areaServed": "ZA"
+        },
+        "sameAs": [
+          "https://wa.me/27814623628"
+        ],
+        "founder": {
+          "@type": "Person",
+          "name": "Naasif Salaam"
+        }
+      })}
+    </script>
+    
     <title>{title}</title>
+    
+    <!-- Named slot for additional head content (e.g., structured data) -->
+    <slot name="head" />
   </head>
   <body class="min-h-screen bg-white text-gray-900 antialiased">
     <div id="main-content">
