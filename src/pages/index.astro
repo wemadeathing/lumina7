@@ -207,11 +207,16 @@ const faqItems = [
   <Header />
   
   <!-- Hero Section -->
-  <section class="pt-24 pb-20 px-6 lg:px-8 bg-white">
+  <section class="pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-white">
     <div class="max-w-7xl mx-auto">
       <div class="max-w-4xl">
-        <h1 class="text-5xl md:text-7xl font-medium text-gray-900 mb-8 leading-tight mt-8">
-          We design complete brand experiences that work
+        <h1 
+          id="animated-hero" 
+          class="text-[2.75rem] sm:text-[3.3rem] md:text-[4.95rem] font-medium text-gray-900 mb-8 leading-[0.95] mt-8 uppercase tracking-tight"
+        >
+          <span class="block">WE <span id="design-word" class="design-word">DESIGN</span> COMPLETE</span>
+          <span class="block">BRAND <span id="experiences-word" class="experiences-word">EXPERIENCES</span></span>
+          <span class="block">THAT WORK</span>
         </h1>
         
         <p class="text-lg text-gray-600 max-w-3xl leading-relaxed">
@@ -223,6 +228,190 @@ const faqItems = [
       </div>
     </div>
   </section>
+
+  <style>
+    /* Design word with text color fill reveal */
+    .design-word {
+      position: relative;
+      display: inline-block;
+      background: linear-gradient(to right, #6B7280 0%, #6B7280 0%, #111827 0%, #111827 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Experiences word with text color fill reveal */
+    .experiences-word {
+      position: relative;
+      display: inline-block;
+      background: linear-gradient(to right, #6B7280 0%, #6B7280 0%, #111827 0%, #111827 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Respect user motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      .design-word,
+      .experiences-word {
+        background: none;
+        -webkit-text-fill-color: currentColor;
+        color: #111827;
+      }
+    }
+  </style>
+
+  <script is:inline>
+    // Two-stage bidirectional color fill animation on scroll - optimized
+    (function() {
+      let scrollAccumulator = 0;
+      const SCROLL_THRESHOLD_PER_WORD = 250; // Amount of scroll needed per word (increased for slower fill)
+      const TOTAL_THRESHOLD = SCROLL_THRESHOLD_PER_WORD * 2; // Two words total
+      let canScrollPage = false;
+      let rafId = null;
+      let needsUpdate = false;
+
+      document.addEventListener('DOMContentLoaded', function() {
+        // Check if user prefers reduced motion
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return; // Skip animation entirely
+
+        const designWord = document.getElementById('design-word');
+        const experiencesWord = document.getElementById('experiences-word');
+        if (!designWord || !experiencesWord) return;
+
+        // Initialize style element once
+        const style = document.createElement('style');
+        style.id = 'color-fill-style';
+        document.head.appendChild(style);
+
+        // Easing function for smoother animation
+        function easeInOutCubic(t) {
+          return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        }
+
+        function updateColorFill(scrollProgress) {
+          // Stage 1: Fill DESIGN (0-250 scroll) with easing
+          const designRawProgress = Math.min(scrollProgress / SCROLL_THRESHOLD_PER_WORD, 1);
+          const designProgress = easeInOutCubic(designRawProgress);
+          const designFillPercent = Math.max(0, Math.min(designProgress * 100, 100));
+          
+          // Stage 2: Fill EXPERIENCES (250-500 scroll) with easing
+          const experiencesRawProgress = Math.max(0, Math.min((scrollProgress - SCROLL_THRESHOLD_PER_WORD) / SCROLL_THRESHOLD_PER_WORD, 1));
+          const experiencesProgress = easeInOutCubic(experiencesRawProgress);
+          const experiencesFillPercent = Math.max(0, Math.min(experiencesProgress * 100, 100));
+          
+          // Update styles using requestAnimationFrame for smoothness
+          style.textContent = `
+            #design-word {
+              background: linear-gradient(to right, #6B7280 0%, #6B7280 ${designFillPercent}%, #111827 ${designFillPercent}%, #111827 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+            }
+            #experiences-word {
+              background: linear-gradient(to right, #6B7280 0%, #6B7280 ${experiencesFillPercent}%, #111827 ${experiencesFillPercent}%, #111827 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+            }
+          `;
+        }
+
+        // Smooth update function using requestAnimationFrame
+        function smoothUpdate() {
+          if (needsUpdate) {
+            updateColorFill(scrollAccumulator);
+            needsUpdate = false;
+          }
+          rafId = null;
+        }
+
+        // Handle wheel events (mouse scroll)
+        function handleWheel(e) {
+          const scrollingDown = e.deltaY > 0;
+          const scrollingUp = e.deltaY < 0;
+          
+          // If scrolling down and animation not complete, or scrolling up and animation exists
+          if ((scrollingDown && scrollAccumulator < TOTAL_THRESHOLD) || 
+              (scrollingUp && scrollAccumulator > 0)) {
+            e.preventDefault();
+            
+            // Update accumulator based on direction
+            if (scrollingDown) {
+              scrollAccumulator += Math.abs(e.deltaY);
+            } else {
+              scrollAccumulator -= Math.abs(e.deltaY);
+            }
+            
+            // Clamp between 0 and total threshold
+            scrollAccumulator = Math.max(0, Math.min(scrollAccumulator, TOTAL_THRESHOLD));
+            
+            // Mark for update and use requestAnimationFrame for smooth rendering
+            needsUpdate = true;
+            if (!rafId) {
+              rafId = requestAnimationFrame(smoothUpdate);
+            }
+            
+            // Check if we can allow page scrolling (both words complete)
+            if (scrollAccumulator >= TOTAL_THRESHOLD && scrollingDown) {
+              canScrollPage = true;
+            } else if (scrollAccumulator <= 0 && scrollingUp) {
+              canScrollPage = true;
+            } else {
+              canScrollPage = false;
+            }
+          } else if (canScrollPage) {
+            // Allow normal scrolling when animation is complete
+            canScrollPage = false;
+          }
+        }
+
+        // Handle touch events (mobile scroll)
+        let touchStartY = 0;
+
+        function handleTouchStart(e) {
+          touchStartY = e.touches[0].clientY;
+        }
+
+        function handleTouchMove(e) {
+          const touchCurrentY = e.touches[0].clientY;
+          const touchDelta = touchStartY - touchCurrentY;
+          const scrollingDown = touchDelta > 0;
+          const scrollingUp = touchDelta < 0;
+          
+          // If scrolling down and animation not complete, or scrolling up and animation exists
+          if ((scrollingDown && scrollAccumulator < TOTAL_THRESHOLD) || 
+              (scrollingUp && scrollAccumulator > 0)) {
+            e.preventDefault();
+            
+            // Update accumulator based on direction
+            if (scrollingDown) {
+              scrollAccumulator += Math.abs(touchDelta);
+            } else {
+              scrollAccumulator -= Math.abs(touchDelta);
+            }
+            
+            // Clamp between 0 and total threshold
+            scrollAccumulator = Math.max(0, Math.min(scrollAccumulator, TOTAL_THRESHOLD));
+            
+            // Mark for update and use requestAnimationFrame for smooth rendering
+            needsUpdate = true;
+            if (!rafId) {
+              rafId = requestAnimationFrame(smoothUpdate);
+            }
+            
+            touchStartY = touchCurrentY;
+          }
+        }
+
+        // Add event listeners
+        window.addEventListener('wheel', handleWheel, { passive: false });
+        window.addEventListener('touchstart', handleTouchStart, { passive: false });
+        window.addEventListener('touchmove', handleTouchMove, { passive: false });
+      });
+    })();
+  </script>
 
   <!-- Hero Image Section -->
   <section class="px-6 lg:px-8 bg-white">
