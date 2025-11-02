@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CTA from '../components/CTA.astro';
 import FAQ from '../components/FAQ.astro';
+import heroVideoSrc from '../assets/videos/scene-exported.mp4';
 import { getCollection } from 'astro:content';
 
 // Get portfolio projects
@@ -211,7 +212,6 @@ const faqItems = [
     <div class="max-w-7xl mx-auto">
       <div class="max-w-4xl">
         <h1 
-          id="animated-hero" 
           class="text-[2.75rem] sm:text-[3.3rem] md:text-[4.95rem] font-medium text-gray-900 mb-8 leading-[0.95] mt-8 uppercase tracking-tight"
         >
           <span class="block">WE <span class="text-neutral-400">DESIGN</span> COMPLETE</span>
@@ -220,7 +220,7 @@ const faqItems = [
         </h1>
         
         <p class="text-lg text-gray-600 max-w-3xl leading-relaxed">
-          We partner with established South African businesses to create delightful brand experiences that build genuine trust with their customers.
+          We partner with startups and established South African companies across visual identity, branding, product design, prototyping, and web development to create brand experiences that build genuine trust.
         </p>
         <div class="mt-8 text-sm text-gray-500">
           [ Scroll down ]
@@ -232,17 +232,18 @@ const faqItems = [
   <!-- Hero Image Section -->
   <section class="px-6 lg:px-8 bg-white">
     <div class="max-w-7xl mx-auto pb-20">
-      <div class="relative w-full h-96 lg:h-[500px] bg-neutral-100 overflow-hidden">
+      <div class="relative w-full h-[440px] lg:h-[580px] bg-neutral-100 overflow-hidden">
         <video
-          src="/assets/videos/Scene Exported.mp4"
           class="w-full h-full object-cover"
           autoplay
           muted
           loop
           playsinline
-          preload="metadata"
+          preload="auto"
           aria-label="Lumina7 brand design and web development work for South African businesses"
-        ></video>
+        >
+          <source src={heroVideoSrc} type="video/mp4" />
+        </video>
       </div>
     </div>
   </section>
