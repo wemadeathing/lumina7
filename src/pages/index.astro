@@ -11,7 +11,7 @@ const allProjects = await getCollection('portfolio');
 const featuredProjects = allProjects
   .filter(project => project.data.featured)
   .sort((a, b) => a.data.order - b.data.order)
-  .slice(0, 3);
+  .slice(0, 4);
 
 const services = [
   {
@@ -214,8 +214,8 @@ const faqItems = [
           id="animated-hero" 
           class="text-[2.75rem] sm:text-[3.3rem] md:text-[4.95rem] font-medium text-gray-900 mb-8 leading-[0.95] mt-8 uppercase tracking-tight"
         >
-          <span class="block">WE <span id="design-word" class="design-word">DESIGN</span> COMPLETE</span>
-          <span class="block">BRAND <span id="experiences-word" class="experiences-word">EXPERIENCES</span></span>
+          <span class="block">WE <span class="text-neutral-400">DESIGN</span> COMPLETE</span>
+          <span class="block">BRAND <span class="text-neutral-400">EXPERIENCES</span></span>
           <span class="block">THAT WORK</span>
         </h1>
         
@@ -229,199 +229,20 @@ const faqItems = [
     </div>
   </section>
 
-  <style>
-    /* Design word with text color fill reveal */
-    .design-word {
-      position: relative;
-      display: inline-block;
-      background: linear-gradient(to right, #6B7280 0%, #6B7280 0%, #111827 0%, #111827 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* Experiences word with text color fill reveal */
-    .experiences-word {
-      position: relative;
-      display: inline-block;
-      background: linear-gradient(to right, #6B7280 0%, #6B7280 0%, #111827 0%, #111827 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* Respect user motion preferences */
-    @media (prefers-reduced-motion: reduce) {
-      .design-word,
-      .experiences-word {
-        background: none;
-        -webkit-text-fill-color: currentColor;
-        color: #111827;
-      }
-    }
-  </style>
-
-  <script is:inline>
-    // Two-stage bidirectional color fill animation on scroll - optimized
-    (function() {
-      let scrollAccumulator = 0;
-      const SCROLL_THRESHOLD_PER_WORD = 250; // Amount of scroll needed per word (increased for slower fill)
-      const TOTAL_THRESHOLD = SCROLL_THRESHOLD_PER_WORD * 2; // Two words total
-      let canScrollPage = false;
-      let rafId = null;
-      let needsUpdate = false;
-
-      document.addEventListener('DOMContentLoaded', function() {
-        // Check if user prefers reduced motion
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (prefersReducedMotion) return; // Skip animation entirely
-
-        const designWord = document.getElementById('design-word');
-        const experiencesWord = document.getElementById('experiences-word');
-        if (!designWord || !experiencesWord) return;
-
-        // Initialize style element once
-        const style = document.createElement('style');
-        style.id = 'color-fill-style';
-        document.head.appendChild(style);
-
-        // Easing function for smoother animation
-        function easeInOutCubic(t) {
-          return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-        }
-
-        function updateColorFill(scrollProgress) {
-          // Stage 1: Fill DESIGN (0-250 scroll) with easing
-          const designRawProgress = Math.min(scrollProgress / SCROLL_THRESHOLD_PER_WORD, 1);
-          const designProgress = easeInOutCubic(designRawProgress);
-          const designFillPercent = Math.max(0, Math.min(designProgress * 100, 100));
-          
-          // Stage 2: Fill EXPERIENCES (250-500 scroll) with easing
-          const experiencesRawProgress = Math.max(0, Math.min((scrollProgress - SCROLL_THRESHOLD_PER_WORD) / SCROLL_THRESHOLD_PER_WORD, 1));
-          const experiencesProgress = easeInOutCubic(experiencesRawProgress);
-          const experiencesFillPercent = Math.max(0, Math.min(experiencesProgress * 100, 100));
-          
-          // Update styles using requestAnimationFrame for smoothness
-          style.textContent = `
-            #design-word {
-              background: linear-gradient(to right, #6B7280 0%, #6B7280 ${designFillPercent}%, #111827 ${designFillPercent}%, #111827 100%);
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-              background-clip: text;
-            }
-            #experiences-word {
-              background: linear-gradient(to right, #6B7280 0%, #6B7280 ${experiencesFillPercent}%, #111827 ${experiencesFillPercent}%, #111827 100%);
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-              background-clip: text;
-            }
-          `;
-        }
-
-        // Smooth update function using requestAnimationFrame
-        function smoothUpdate() {
-          if (needsUpdate) {
-            updateColorFill(scrollAccumulator);
-            needsUpdate = false;
-          }
-          rafId = null;
-        }
-
-        // Handle wheel events (mouse scroll)
-        function handleWheel(e) {
-          const scrollingDown = e.deltaY > 0;
-          const scrollingUp = e.deltaY < 0;
-          
-          // If scrolling down and animation not complete, or scrolling up and animation exists
-          if ((scrollingDown && scrollAccumulator < TOTAL_THRESHOLD) || 
-              (scrollingUp && scrollAccumulator > 0)) {
-            e.preventDefault();
-            
-            // Update accumulator based on direction
-            if (scrollingDown) {
-              scrollAccumulator += Math.abs(e.deltaY);
-            } else {
-              scrollAccumulator -= Math.abs(e.deltaY);
-            }
-            
-            // Clamp between 0 and total threshold
-            scrollAccumulator = Math.max(0, Math.min(scrollAccumulator, TOTAL_THRESHOLD));
-            
-            // Mark for update and use requestAnimationFrame for smooth rendering
-            needsUpdate = true;
-            if (!rafId) {
-              rafId = requestAnimationFrame(smoothUpdate);
-            }
-            
-            // Check if we can allow page scrolling (both words complete)
-            if (scrollAccumulator >= TOTAL_THRESHOLD && scrollingDown) {
-              canScrollPage = true;
-            } else if (scrollAccumulator <= 0 && scrollingUp) {
-              canScrollPage = true;
-            } else {
-              canScrollPage = false;
-            }
-          } else if (canScrollPage) {
-            // Allow normal scrolling when animation is complete
-            canScrollPage = false;
-          }
-        }
-
-        // Handle touch events (mobile scroll)
-        let touchStartY = 0;
-
-        function handleTouchStart(e) {
-          touchStartY = e.touches[0].clientY;
-        }
-
-        function handleTouchMove(e) {
-          const touchCurrentY = e.touches[0].clientY;
-          const touchDelta = touchStartY - touchCurrentY;
-          const scrollingDown = touchDelta > 0;
-          const scrollingUp = touchDelta < 0;
-          
-          // If scrolling down and animation not complete, or scrolling up and animation exists
-          if ((scrollingDown && scrollAccumulator < TOTAL_THRESHOLD) || 
-              (scrollingUp && scrollAccumulator > 0)) {
-            e.preventDefault();
-            
-            // Update accumulator based on direction
-            if (scrollingDown) {
-              scrollAccumulator += Math.abs(touchDelta);
-            } else {
-              scrollAccumulator -= Math.abs(touchDelta);
-            }
-            
-            // Clamp between 0 and total threshold
-            scrollAccumulator = Math.max(0, Math.min(scrollAccumulator, TOTAL_THRESHOLD));
-            
-            // Mark for update and use requestAnimationFrame for smooth rendering
-            needsUpdate = true;
-            if (!rafId) {
-              rafId = requestAnimationFrame(smoothUpdate);
-            }
-            
-            touchStartY = touchCurrentY;
-          }
-        }
-
-        // Add event listeners
-        window.addEventListener('wheel', handleWheel, { passive: false });
-        window.addEventListener('touchstart', handleTouchStart, { passive: false });
-        window.addEventListener('touchmove', handleTouchMove, { passive: false });
-      });
-    })();
-  </script>
-
   <!-- Hero Image Section -->
   <section class="px-6 lg:px-8 bg-white">
     <div class="max-w-7xl mx-auto pb-20">
       <div class="relative w-full h-96 lg:h-[500px] bg-neutral-100 overflow-hidden">
-        <img 
-          src="/assets/images/hero-1.png" 
-          alt="Lumina7 brand design and web development work for South African businesses"
+        <video
+          src="/assets/videos/Scene Exported.mp4"
           class="w-full h-full object-cover"
-        />
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          aria-label="Lumina7 brand design and web development work for South African businesses"
+        ></video>
       </div>
     </div>
   </section>
@@ -621,63 +442,57 @@ const faqItems = [
       </div>
 
       <!-- Projects Grid - Staggered Layout -->
-      <div class="grid md:grid-cols-12 gap-8">
-        {featuredProjects.map((project, index) => {
-          // Staggered layout: first project spans 7 cols, second spans 5, third spans 7
-          const colSpan = index === 1 ? 'md:col-span-5' : 'md:col-span-7';
-          const marginTop = index === 1 ? 'md:mt-16' : '';
-          
-          return (
-            <a 
-              href={`/work/${project.slug}`}
-              class={`group block ${colSpan} ${marginTop}`}
-            >
-              <article class="space-y-6">
-                <!-- Project Number -->
-                <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider group-hover:text-neutral-600 transition-colors duration-300">
-                  {String(index + 1).padStart(2, '0')}
+      <div class="grid gap-12 md:grid-cols-2">
+        {featuredProjects.map((project, index) => (
+          <a 
+            href={`/work/${project.slug}`}
+            class="group block space-y-6"
+          >
+            <article class="space-y-6">
+              <!-- Project Number -->
+              <div class="text-xs text-neutral-400 font-medium uppercase tracking-wider group-hover:text-neutral-600 transition-colors duration-300">
+                {String(index + 1).padStart(2, '0')}
+              </div>
+
+              <!-- Project Image -->
+              <div class="relative aspect-[16/10] bg-neutral-100 overflow-hidden">
+                <img 
+                  src={project.data.heroImage} 
+                  alt={project.data.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+
+              <!-- Project Info -->
+              <div class="space-y-4">
+                <div class="flex items-start justify-between gap-4">
+                  <h3 class="text-2xl font-medium text-neutral-900 group-hover:text-neutral-600 transition-colors duration-300">
+                    {project.data.title}
+                  </h3>
+                  <span class="text-sm text-neutral-500 whitespace-nowrap">
+                    {project.data.year}
+                  </span>
                 </div>
 
-                <!-- Project Image - Larger -->
-                <div class="relative aspect-[16/10] bg-neutral-100 overflow-hidden">
-                  <img 
-                    src={project.data.heroImage} 
-                    alt={project.data.title}
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
+                <p class="text-base text-neutral-600 leading-relaxed">
+                  {project.data.description}
+                </p>
 
-                <!-- Project Info -->
-                <div class="space-y-4">
-                  <div class="flex items-start justify-between gap-4">
-                    <h3 class="text-2xl font-medium text-neutral-900 group-hover:text-neutral-600 transition-colors duration-300">
-                      {project.data.title}
-                    </h3>
-                    <span class="text-sm text-neutral-500 whitespace-nowrap">
-                      {project.data.year}
+                <!-- Services Tags -->
+                <div class="flex flex-wrap gap-2">
+                  {project.data.services.slice(0, 3).map((service: string) => (
+                    <span class="text-xs text-neutral-500 px-3 py-1 bg-neutral-50 group-hover:bg-neutral-100 transition-colors duration-300">
+                      {service}
                     </span>
-                  </div>
-
-                  <p class="text-base text-neutral-600 leading-relaxed">
-                    {project.data.description}
-                  </p>
-
-                  <!-- Services Tags -->
-                  <div class="flex flex-wrap gap-2">
-                    {project.data.services.slice(0, 3).map((service: string) => (
-                      <span class="text-xs text-neutral-500 px-3 py-1 bg-neutral-50 group-hover:bg-neutral-100 transition-colors duration-300">
-                        {service}
-                      </span>
-                    ))}
-                  </div>
+                  ))}
                 </div>
+              </div>
 
-                <!-- Divider -->
-                <div class="h-px bg-neutral-200 group-hover:bg-neutral-300 transition-colors duration-300"></div>
-              </article>
-            </a>
-          );
-        })}
+              <!-- Divider -->
+              <div class="h-px bg-neutral-200 group-hover:bg-neutral-300 transition-colors duration-300"></div>
+            </article>
+          </a>
+        ))}
       </div>
     </div>
   </section>
