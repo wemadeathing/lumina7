@@ -88,15 +88,12 @@ const faqItems = [
     <div class="max-w-7xl mx-auto">
       <div class="max-w-4xl">
         <h1 
-          class="text-[2.75rem] sm:text-[3.3rem] md:text-[4.95rem] font-medium text-gray-900 dark:text-gray-100 mb-8 leading-[0.95] mt-8 tracking-tight"
+          class="text-[2.75rem] sm:text-[3.3rem] md:text-[4.95rem] font-medium text-gray-900 dark:text-gray-100 mb-8 leading-[0.95] mt-8 tracking-tight transition-colors duration-300"
         >
-          <span class="block overflow-hidden">
-            <span id="hero-text-main" class="inline-block transition-transform duration-75 ease-linear">We design brands and websites, </span>
-            <span id="hero-text-fast" class="inline-block italic transition-transform duration-75 ease-linear">fast.</span>
-          </span>
+          <span class="block">We design brands and websites, <span class="italic">fast.</span></span>
         </h1>
         
-        <p id="hero-subtext" class="text-body-lg text-primary max-w-3xl transition-transform duration-75 ease-linear">
+        <p class="text-body-lg text-primary max-w-3xl">
           Premium Brand and Website Sprints delivered in 2 weeks. Optimized for humans and AI agents. South African studio serving ambitious businesses.
         </p>
         <div class="mt-8 text-caption text-tertiary">
@@ -321,39 +318,6 @@ const faqItems = [
         scrollContainer.scrollBy({ left: 420, behavior: 'smooth' });
       });
     }
-
-    // Hero Scroll Animation
-    const heroFast = document.getElementById('hero-text-fast');
-    const heroMain = document.getElementById('hero-text-main');
-    const heroSub = document.getElementById('hero-subtext');
-
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      
-      // Only animate if we are in the top portion of the page
-      if (scrollY < window.innerHeight) {
-        if (heroFast) {
-          // "fast" moves faster to the right
-          heroFast.style.transform = `translateX(${scrollY * 1.5}px)`;
-          // Fade out as it moves
-          heroFast.style.opacity = `${1 - scrollY / 400}`;
-        }
-        
-        if (heroMain) {
-          // Main text follows slower
-          heroMain.style.transform = `translateX(${scrollY * 1.5}px)`;
-          // Fade out
-          heroMain.style.opacity = `${1 - scrollY / 400}`;
-        }
-        
-        if (heroSub) {
-          // Subtext follows even slower
-          heroSub.style.transform = `translateX(${scrollY * 1.5}px)`;
-          // Fade out
-          heroSub.style.opacity = `${1 - scrollY / 400}`;
-        }
-      }
-    });
   </script>
 
   <FAQ faqItems={faqItems} />

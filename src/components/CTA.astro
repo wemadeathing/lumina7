@@ -1,32 +1,29 @@
 ---
 import Section from './Section.astro';
-import Button from './Button.astro';
 ---
-<Section variant="default" padding="lg" id="contact">
-  <div class="bg-neutral-900 text-white px-8 py-12">
-    <div class="max-w-4xl mx-auto">
-      <!-- CTA Content -->
-      <div class="space-y-10">
-        <div>
-          <h2 class="text-xl md:text-2xl lg:text-3xl font-medium text-white leading-tight">
-            Let's work together <span class="text-neutral-400">to build a brand that supports your business growth.</span>
-          </h2>
-        </div>
-        
-        <div class="border-t border-neutral-700 pt-10">
-          <div class="flex items-end justify-between">
-            <div class="text-xs text-neutral-500 uppercase tracking-wider leading-tight">
-              WE RESPOND WITHIN<br />24 HOURS
-            </div>
-            
-            <a 
-              href="/contact" 
-              class="inline-flex items-center text-white text-xl font-medium hover:text-neutral-300 transition-colors duration-300 group"
-            >
-              <span>Let's talk</span>
-              <span class="ml-4 group-hover:translate-x-1 transition-transform duration-300">→</span>
-            </a>
+<Section variant="dark" padding="lg" id="contact">
+  <div class="max-w-4xl mx-auto">
+    <!-- CTA Content -->
+    <div class="space-y-10">
+      <div>
+        <h2 class="text-xl md:text-2xl lg:text-3xl font-semibold text-white leading-tight">
+          Let's work together <span class="text-gray-400">to build a brand that supports your business growth.</span>
+        </h2>
+      </div>
+      
+      <div class="border-t border-gray-700 pt-10">
+        <div class="flex items-end justify-between">
+          <div class="text-caption text-gray-500 leading-tight">
+            WE RESPOND WITHIN<br />24 HOURS
           </div>
+          
+          <a 
+            href="/contact" 
+            class="inline-flex items-center text-white text-xl font-medium hover:text-gray-300 group"
+          >
+            <span>Let's talk</span>
+            <span class="ml-4 group-hover:translate-x-1 transition-transform">→</span>
+          </a>
         </div>
       </div>
     </div>
