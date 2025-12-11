@@ -255,16 +255,28 @@ const faqItems = [
   <!-- Recent Work Section -->
   <section class="py-20 bg-white dark:bg-black transition-colors duration-300 overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="mb-12 text-left">
+      <div class="mb-12 flex items-center justify-between">
         <h2 class="text-3xl md:text-4xl font-medium text-neutral-900 dark:text-gray-100 transition-colors duration-300">
           Recent Work
         </h2>
+        <div class="flex gap-4">
+          <button id="scroll-left" class="p-2 rounded-full border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors group" aria-label="Scroll left">
+            <svg class="w-6 h-6 text-neutral-900 dark:text-white group-hover:-translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button id="scroll-right" class="p-2 rounded-full border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors group" aria-label="Scroll right">
+            <svg class="w-6 h-6 text-neutral-900 dark:text-white group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
 
     <!-- Scrollable Gallery -->
     <div class="max-w-7xl mx-auto">
-      <div class="flex overflow-x-auto gap-6 px-6 lg:px-8 pb-8 snap-x snap-mandatory scrollbar-hide">
+      <div id="projects-gallery" class="flex overflow-x-auto gap-6 px-6 lg:px-8 pb-8 snap-x snap-mandatory scrollbar-hide">
         {featuredProjects.map((project) => (
           <div class="flex-none w-[85vw] sm:w-[400px] snap-center group rounded-[4px] overflow-hidden bg-white dark:bg-black shadow-lg border border-neutral-200 dark:border-neutral-800">
             <!-- Image -->
@@ -291,6 +303,22 @@ const faqItems = [
     </div>
       
   </section>
+
+  <script>
+    const scrollContainer = document.getElementById('projects-gallery');
+    const scrollLeftBtn = document.getElementById('scroll-left');
+    const scrollRightBtn = document.getElementById('scroll-right');
+
+    if (scrollContainer && scrollLeftBtn && scrollRightBtn) {
+      scrollLeftBtn.addEventListener('click', () => {
+        scrollContainer.scrollBy({ left: -420, behavior: 'smooth' });
+      });
+
+      scrollRightBtn.addEventListener('click', () => {
+        scrollContainer.scrollBy({ left: 420, behavior: 'smooth' });
+      });
+    }
+  </script>
 
   <FAQ faqItems={faqItems} />
 
