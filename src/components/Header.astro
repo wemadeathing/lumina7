@@ -2,7 +2,7 @@
 import ThemeToggle from './ThemeToggle.astro';
 ---
 
-<header class="sticky top-0 left-0 right-0 z-50 transition-colors duration-300 border-b border-gray-200 dark:border-gray-900 bg-white/80 dark:bg-black/80 backdrop-blur-md">
+<header id="main-header" class="sticky top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
   <nav class="mx-auto max-w-7xl px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
       <!-- Lumina7 Logo -->
@@ -106,4 +106,38 @@ import ThemeToggle from './ThemeToggle.astro';
       }
     });
   });
+
+  // Scroll effect for header
+  const header = document.getElementById('main-header');
+  const scrollThreshold = 10;
+
+  function updateHeaderOnScroll() {
+    if (!header) return;
+    
+    if (window.scrollY > scrollThreshold) {
+      header.classList.add(
+        'border-b',
+        'border-gray-200',
+        'dark:border-gray-900',
+        'bg-white/80',
+        'dark:bg-black/80',
+        'backdrop-blur-md'
+      );
+      header.classList.remove('bg-transparent');
+    } else {
+      header.classList.remove(
+        'border-b',
+        'border-gray-200',
+        'dark:border-gray-900',
+        'bg-white/80',
+        'dark:bg-black/80',
+        'backdrop-blur-md'
+      );
+      header.classList.add('bg-transparent');
+    }
+  }
+
+  window.addEventListener('scroll', updateHeaderOnScroll);
+  // Initial check
+  updateHeaderOnScroll();
 </script>
