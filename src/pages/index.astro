@@ -356,39 +356,6 @@ const faqItems = [
     });
   </script>
 
-  // Hero Scroll Animation
-  const heroFast = document.getElementById('hero-text-fast');
-  const heroMain = document.getElementById('hero-text-main');
-  const heroSub = document.getElementById('hero-subtext');
-
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    
-    // Only animate if we are in the top portion of the page
-    if (scrollY < window.innerHeight) {
-      if (heroFast) {
-        // "fast" moves faster to the right
-        heroFast.style.transform = `translateX(${scrollY * 1.5}px)`;
-        // Fade out as it moves
-        heroFast.style.opacity = `${1 - scrollY / 400}`;
-      }
-      
-      if (heroMain) {
-        // Main text follows slower
-        heroMain.style.transform = `translateX(${scrollY * 0.8}px)`;
-        // Fade out
-        heroMain.style.opacity = `${1 - scrollY / 500}`;
-      }
-      
-      if (heroSub) {
-        // Subtext follows even slower
-        heroSub.style.transform = `translateX(${scrollY * 0.5}px)`;
-        // Fade out
-        heroSub.style.opacity = `${1 - scrollY / 600}`;
-      }
-    }
-  });
-
   <FAQ faqItems={faqItems} />
 
   <CTA />
