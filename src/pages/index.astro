@@ -218,8 +218,9 @@ const faqItems = [
   <!-- Hero Image Section -->
   <section class="px-6 lg:px-8 bg-primary">
     <div class="max-w-7xl mx-auto pb-20">
-      <div class="relative w-full h-[440px] lg:h-[580px] bg-tertiary overflow-hidden rounded">
+      <div class="relative w-full h-[440px] lg:h-[580px] bg-tertiary overflow-hidden rounded group">
         <video
+          id="hero-video"
           class="w-full h-full object-cover rounded"
           autoplay
           muted
@@ -230,6 +231,19 @@ const faqItems = [
         >
           <source src={heroVideoSrc} type="video/mp4" />
         </video>
+        
+        <button 
+          id="video-control-btn"
+          class="absolute top-6 left-6 z-20 p-2.5 rounded-[4px] bg-black/10 hover:bg-black/30 text-white backdrop-blur-[2px] transition-all duration-300 opacity-0 group-hover:opacity-100 focus:opacity-100"
+          aria-label="Pause video"
+        >
+          <svg id="pause-icon" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6" />
+          </svg>
+          <svg id="play-icon" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+          </svg>
+        </button>
       </div>
     </div>
   </section>
@@ -438,6 +452,28 @@ const faqItems = [
       
       // Update on resize
       window.addEventListener('resize', updateButtonStates);
+    }
+
+    // Video Play/Pause Toggle
+    const video = document.getElementById('hero-video') as HTMLVideoElement | null;
+    const toggleBtn = document.getElementById('video-control-btn');
+    const playIcon = document.getElementById('play-icon');
+    const pauseIcon = document.getElementById('pause-icon');
+
+    if (video && toggleBtn && playIcon && pauseIcon) {
+      toggleBtn.addEventListener('click', () => {
+        if (video.paused) {
+          video.play();
+          playIcon.classList.add('hidden');
+          pauseIcon.classList.remove('hidden');
+          toggleBtn.setAttribute('aria-label', 'Pause video');
+        } else {
+          video.pause();
+          pauseIcon.classList.add('hidden');
+          playIcon.classList.remove('hidden');
+          toggleBtn.setAttribute('aria-label', 'Play video');
+        }
+      });
     }
   </script>
 
