@@ -16,142 +16,30 @@ const featuredProjects = allProjects
 
 const services = [
   {
-    number: "01",
-    title: "Brand Identity",
-    duration: "Delivered with innovative speed",
-    content: "Build a brand that commands trust. Creating distinctive visual systems that capture your brand's essence. From logos and color palettes to typography and imagery, we design cohesive identities that make your brand instantly recognizable and memorable."
+    title: "Brand Sprint",
+    tagline: "Your complete brand identity in 2 weeks",
+    duration: "2 WEEKS",
+    features: [
+      "2 distinct brand directions to choose from",
+      "Logo system (primary, secondary, icon marks)",
+      "Typography and color palette",
+      "Brand guidelines document",
+      "Homepage design concept",
+      "5 brand application mockups"
+    ]
   },
   {
-    number: "02",
-    title: "Digital Design",
-    duration: "Developed at the speed of light", 
-    content: "Digital presence that converts. Designing digital experiences that users love. We combine user research, interface design, and usability testing to create websites and applications that are both beautiful and functional, driving engagement and conversions."
-  },
-  {
-    number: "03",
-    title: "Rapid Prototyping",
-    duration: "Faster than traditional development",
-    content: "Innovative ideas to working reality. Turn your ideas into working prototypes. We build interactive web and mobile prototypes that let you test concepts, gather feedback, and prove value before committing to full development. Move fast and reduce risk with real functionality."
-  },
-  {
-    number: "04",
-    title: "Web Development",
-    duration: "Rapid development",
-    content: "Building fast, scalable websites, micro-apps, and web applications that perform flawlessly across all devices. Using modern technologies and best practices, with thorough developer testing and support for Agile and Scrum workflows."
-  },
-  {
-    number: "05",
-    title: "Design & Production",
-    duration: "With seamless execution",
-    content: "Professional materials that reinforce your brand. From graphic design and illustrations to marketing materials and brand presentations. We also handle print production, large format printing, signage, and installation—bringing your brand to life across all touchpoints."
-  }
-];
-
-const clients = [
-  { name: "Arabica", logo: "/assets/logos/clients/Arabica Logo Dark.png" },
-  { name: "Cloud", logo: "/assets/logos/clients/Cloud-logo-250w.png" },
-  { name: "ECOS", logo: "/assets/logos/clients/ECOS Logo dark.png" },
-  { name: "Edge Cycles", logo: "/assets/logos/clients/Edge Cycles Main Logo blk.png" },
-  { name: "HP", logo: "/assets/logos/clients/HP Logo dark.png" },
-  { name: "Nexevo", logo: "/assets/logos/clients/nexevo-logo-x-light-mode.png" },
-  { name: "Straptec", logo: "/assets/logos/clients/Straptec-logo.png" },
-  { name: "YP", logo: "/assets/logos/clients/YP_Logo_Dark.png" }
-];
-
-const featuredCaseStudies = [
-  {
-    company: "Slack",
-    title: "Designing and building Slack's interactive demo experience",
-    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
-    tags: ["Web Design", "Enterprise", "Development"]
-  },
-  {
-    company: "Snapchat", 
-    title: "Integrating augmented reality to elevate social commerce",
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop",
-    tags: ["UI/UX", "Mobile App", "Ecommerce"]
-  },
-  {
-    company: "Sky",
-    title: "Branding and visual identity for an innovative DeFi platform", 
-    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=400&fit=crop",
-    tags: ["Branding", "Design System", "UI/UX", "Illustration", "3D"]
-  },
-  {
-    company: "STC Bank",
-    title: "Accelerating the future of digital banking in Saudi Arabia",
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop", 
-    tags: ["Web App", "Mobile", "Website", "Fintech", "UI/UX"]
-  }
-];
-
-const caseStudies = [
-  {
-    company: "Joe & The Juice",
-    title: "A digital commerce and loyalty app for a global coffee shop chain",
-    image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=250&fit=crop",
-    tags: ["UI/UX", "Mobile App", "Consumer"]
-  },
-  {
-    company: "Marqeta", 
-    title: "Website and digital branding for a modern card-issuing platform",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop",
-    tags: ["Web Design", "3D", "Development", "Fintech"]
-  },
-  {
-    company: "Grayscale",
-    title: "Web redesign for the world's largest crypto asset manager", 
-    image: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=400&h=250&fit=crop",
-    tags: ["Web Design", "Design System", "Illustration"]
-  },
-  {
-    company: "Discover",
-    title: "Design partnership focused on mobile app innovation",
-    image: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=400&h=250&fit=crop", 
-    tags: ["UI/UX", "Design System", "Fintech"]
-  },
-  {
-    company: "Tipalti",
-    title: "Web redesign for a modern payables automation platform",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop",
-    tags: ["Web Design", "Fintech"]
-  },
-  {
-    company: "Yahoo! Games",
-    title: "Website design and development for Yahoo Games", 
-    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=250&fit=crop",
-    tags: ["Web Design", "Design System", "Illustration", "Development"]
-  }
-];
-
-const testimonials = [
-  {
-    id: 1,
-    name: "Sarah Johnson",
-    role: "Founding Partner, CCO",
-    company: "TechFlow",
-    content: "From the very beginning, we felt they understood what we were dealing with – and where we wanted to go. The new strategy, visual identity, and website – everything is cohesive, fresh, and on our terms. Working with this team isn't just briefing and execution, it's a real, partnership-based design process."
-  },
-  {
-    id: 2,
-    name: "Michael Chen",
-    role: "CEO & Founder",
-    company: "InnovateLab",
-    content: "Working with this studio is something more than branding for us. It's a process that changes how we look at our own company. We feel like we're doing something really important together – and it will stay with us for a long time. We felt cared for from the first meeting."
-  },
-  {
-    id: 3,
-    name: "Emma Rodriguez",
-    role: "Marketing Director",
-    company: "GrowthCorp",
-    content: "The collaboration was a great experience. What impressed us most was the very high graphic level of their work – the design we received fully met our expectations and stood out from the competition. The process went smoothly, and all organizational challenges were well resolved."
-  },
-  {
-    id: 4,
-    name: "David Park",
-    role: "Co-Owner",
-    company: "StartupVentures",
-    content: "The rebranding we managed to carry out gave momentum to our development and implementation of the chosen strategy. Perhaps the greatest value of this collaboration was the breath of fresh air in our heads for new ideas – in addition to delivering materials according to the order, we also received a lot of inspiration."
+    title: "Website Sprint",
+    tagline: "A high-performance website in 2 weeks",
+    duration: "2 WEEKS",
+    features: [
+      "Strategic sitemap & user journey",
+      "Custom UI/UX design (Figma)",
+      "Responsive development (Webflow/Framer)",
+      "Content structure optimization",
+      "Basic SEO setup",
+      "CMS training for your team"
+    ]
   }
 ];
 
@@ -234,7 +122,7 @@ const faqItems = [
         
         <button 
           id="video-control-btn"
-          class="absolute top-6 left-6 z-20 p-2.5 rounded-[4px] bg-black/10 hover:bg-black/30 text-white backdrop-blur-[2px] transition-all duration-300 opacity-0 group-hover:opacity-100 focus:opacity-100"
+          class="absolute top-6 left-6 z-20 p-2.5 rounded-[4px] bg-black/30 hover:bg-black/50 text-white backdrop-blur-[2px] transition-all duration-300 opacity-0 group-hover:opacity-100 focus:opacity-100"
           aria-label="Pause video"
         >
           <svg id="pause-icon" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -248,165 +136,7 @@ const faqItems = [
     </div>
   </section>
 
-  <!-- Clients Section - HIDDEN FOR NOW -->
-  <!-- <section id="clients" class="py-20 px-6 lg:px-8 transition-colors duration-300 bg-white dark:bg-[#0a0a0a]">
-    <div class="max-w-7xl mx-auto">
-      <div class="mb-16">
-        <h2 class="text-2xl md:text-3xl font-medium text-neutral-900 dark:text-gray-100 leading-tight max-w-2xl transition-colors duration-300">
-          Trusted by South African businesses who want professional brands that work
-        </h2>
-      </div>
-      
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16">
-        {clients.map((client, index) => {
-          // Custom sizing for specific logos
-          let logoHeight = "h-8"; // default 32px
-          if (client.name === "Cloud") logoHeight = "h-12"; // +40% total = ~46px
-          if (client.name === "Nexevo") logoHeight = "h-7"; // -10% = ~28px
-          if (client.name === "Arabica" || client.name === "ECOS") logoHeight = "h-9"; // +10% = ~35px
-          
-          return (
-            <div class="group cursor-pointer">
-              <div class="space-y-6 p-4 rounded-[4px] group-hover:bg-neutral-50 dark:group-hover:bg-gray-800 transition-colors duration-300">
-                <div class="text-xs text-neutral-500 dark:text-gray-500 font-medium uppercase tracking-wider group-hover:text-neutral-700 dark:group-hover:text-gray-400 transition-colors duration-300">
-                  {String(index + 1).padStart(2, '0')}
-                </div>
-                <div class="h-16 flex items-center">
-                  <img 
-                    src={client.logo} 
-                    alt={client.name} 
-                    class={`${logoHeight} w-auto opacity-60 group-hover:opacity-100 transition-opacity duration-300`}
-                  />
-                </div>
-              </div>
-              <div class="mt-6 h-px bg-neutral-200 dark:bg-gray-700 group-hover:bg-neutral-300 dark:group-hover:bg-gray-600 transition-colors duration-300"></div>
-            </div>
-          );
-        })}
-      </div>
-      
-      <div class="text-right mt-16">
-        <span class="text-neutral-500 dark:text-gray-500 text-sm uppercase tracking-wider transition-colors duration-300">[ and many more... ]</span>
-      </div>
-    </div>
-  </section> -->
-
-  
-
-  <!-- How We're Different Section - HIDDEN FOR NOW
-  <section class="py-20 px-6 lg:px-8 bg-secondary">
-    <div class="max-w-7xl mx-auto">
-      <div class="mb-16">
-        <h2 class="text-heading-2 text-primary max-w-2xl">
-          How we're different
-        </h2>
-      </div>
-      
-      <div class="grid md:grid-cols-3 gap-12">
-        <div class="space-y-6">
-          <div class="text-caption text-tertiary">01</div>
-          <h3 class="text-heading-3 text-primary">AI-Augmented Innovation</h3>
-          <p class="text-body text-secondary">
-            Cutting-edge AI tools enhance our creative process—enabling more exploration, breakthrough solutions, and innovative outcomes.
-          </p>
-        </div>
-        
-        <div class="space-y-6">
-          <div class="text-caption text-tertiary">02</div>
-          <h3 class="text-heading-3 text-primary">Speed Without Sacrifice</h3>
-          <p class="text-body text-secondary">
-            Lumina7 means light—we deliver at the speed of light. Rapid development and iteration without compromising thoughtful execution or quality.
-          </p>
-        </div>
-        
-        <div class="space-y-6">
-          <div class="text-caption text-tertiary">03</div>
-          <h3 class="text-heading-3 text-primary">Business-Focused Design</h3>
-          <p class="text-body text-secondary">
-            Every decision drives business outcomes. We create brand experiences that attract customers and fuel growth.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-  -->
-
-  <!-- Services Section - OLD VERSION HIDDEN
-  <section class="py-20 px-6 lg:px-8 bg-black dark:bg-gray-950 text-white relative overflow-hidden transition-colors duration-300">
-    <div class="absolute inset-0 opacity-5">
-      <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 20px 20px;"></div>
-    </div>
-    
-    <div class="max-w-7xl mx-auto relative z-10">
-      <div class="grid lg:grid-cols-2 gap-16 items-start mb-20">
-        <div>
-          <h2 class="text-2xl md:text-3xl font-medium text-white mb-6 leading-tight transition-colors duration-300">
-            <span class="text-white">Design</span>
-            <span class="text-neutral-400 dark:text-gray-500"> that supports<br>your business growth.</span>
-          </h2>
-        </div>
-        <div class="lg:text-right">
-          <p class="text-neutral-700 dark:text-gray-500 mb-8 leading-relaxed transition-colors duration-300">
-            We partner with you to create complete brand experiences that work. From planning and design to development, we help your business build genuine trust with customers.
-          </p>
-          <a href="/services" class="inline-flex items-center justify-between bg-white dark:bg-gray-100 text-black dark:text-gray-900 px-6 py-3 hover:bg-neutral-100 dark:hover:bg-gray-200 transition-all duration-300 font-medium text-sm w-full lg:w-auto min-w-[280px] hover:scale-105 hover:shadow-lg group rounded-[4px]">
-            <span>View Our Services</span>
-            <span class="ml-4 group-hover:rotate-90 transition-transform duration-300">+</span>
-          </a>
-        </div>
-      </div>
-      
-      <div class="relative">
-        <div id="services-container" class="overflow-x-auto scrollbar-hide border-t border-neutral-800 dark:border-gray-800 scroll-smooth transition-colors duration-300">
-          <div class="flex">
-            {services.map((service, index) => (
-              <a href="/services" class="group cursor-pointer border-r border-neutral-800 dark:border-gray-800 flex-shrink-0 w-[85vw] md:w-[45vw] lg:w-[calc(100%/3.5)] block">
-                <div class="p-8 h-full group-hover:bg-neutral-900 dark:group-hover:bg-gray-900 transition-colors duration-300 relative overflow-hidden">
-                  <div class="text-sm text-neutral-500 dark:text-gray-600 mb-4 group-hover:text-neutral-400 dark:group-hover:text-gray-500 transition-colors duration-300">{service.number}</div>
-                  <div class="inline-block bg-neutral-800 dark:bg-gray-800 text-neutral-300 dark:text-gray-400 text-xs px-3 py-1 mb-6 group-hover:bg-neutral-700 dark:group-hover:bg-gray-700 transition-colors duration-300 rounded-[4px]">
-                    {service.duration}
-                  </div>
-                  <h3 class="text-2xl font-semibold text-white mb-6 leading-tight transition-colors duration-300">
-                    {service.title}
-                  </h3>
-                  <p class="text-neutral-400 dark:text-gray-500 text-sm leading-relaxed mb-8 group-hover:text-neutral-300 dark:group-hover:text-gray-400 transition-colors duration-300">
-                    {service.content}
-                  </p>
-                  <div class="text-sm text-white font-medium group-hover:text-neutral-300 dark:group-hover:text-gray-400 transition-colors duration-300">
-                    Learn details →
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-        
-        <div class="flex gap-2 justify-end mt-8">
-          <button 
-            id="scroll-left" 
-            class="bg-neutral-800 dark:bg-gray-800 hover:bg-neutral-700 dark:hover:bg-gray-700 text-white p-3 transition-colors duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
-            aria-label="Scroll left"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg>
-          </button>
-          <button 
-            id="scroll-right" 
-            class="bg-neutral-800 dark:bg-gray-800 hover:bg-neutral-700 dark:hover:bg-gray-700 text-white p-3 transition-colors duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
-            aria-label="Scroll right"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-  -->
-
-  <!-- New Services Section (2 Columns / 4 Quadrants) -->
+  <!-- Services Section (2 Columns / 4 Quadrants) -->
   <section class="py-20 px-6 lg:px-8 bg-black dark:bg-gray-950 text-white relative overflow-hidden transition-colors duration-300">
     <!-- Background pattern -->
     <div class="absolute inset-0 opacity-5">
@@ -416,68 +146,80 @@ const faqItems = [
     <div class="max-w-7xl mx-auto relative z-10">
       <div class="grid md:grid-cols-2 border border-neutral-800 dark:border-gray-800">
         
-        <!-- Service 1: Brand Identity (Content Left) -->
+        <!-- Service 1: Brand Sprint (Content Left) -->
         <div class="p-8 md:p-12 group hover:bg-neutral-900/50 dark:hover:bg-gray-900/50 transition-colors duration-300 border-b border-neutral-800 dark:border-gray-800 md:border-r">
-          <div class="text-sm text-neutral-500 dark:text-gray-600 mb-6 group-hover:text-neutral-400 dark:group-hover:text-gray-500 transition-colors duration-300">
-            {services[0].number}
-          </div>
-          
-          <div class="inline-block bg-neutral-800 dark:bg-gray-800 text-neutral-300 dark:text-gray-400 text-xs px-3 py-1 mb-8 group-hover:bg-neutral-700 dark:group-hover:bg-gray-700 transition-colors duration-300 rounded-[4px]">
+          <div class="inline-block bg-neutral-800 text-neutral-300 text-xs px-3 py-1 mb-8 rounded-[4px] font-medium tracking-wide">
             {services[0].duration}
           </div>
           
-          <h3 class="text-3xl font-semibold text-white mb-6 leading-tight transition-colors duration-300">
+          <h3 class="text-4xl font-semibold text-white mb-2 leading-tight transition-colors duration-300">
             {services[0].title}
           </h3>
           
-          <p class="text-neutral-400 dark:text-gray-500 text-sm leading-relaxed mb-12 group-hover:text-neutral-300 dark:group-hover:text-gray-400 transition-colors duration-300 max-w-md">
-            {services[0].content}
+          <p class="text-neutral-400 text-lg mb-10 leading-relaxed">
+            {services[0].tagline}
           </p>
-          
-          <a href="/services" class="inline-flex items-center text-white font-medium group-hover:text-neutral-300 dark:group-hover:text-gray-400 transition-colors duration-300">
-            Learn details <span class="ml-2">→</span>
-          </a>
+
+          <div class="mb-6">
+            <h4 class="text-xs font-bold text-neutral-500 uppercase tracking-wider mb-4">WHAT'S INCLUDED</h4>
+            <ul class="space-y-3">
+              {services[0].features.map(feature => (
+                <li class="flex items-start text-sm text-neutral-300">
+                  <svg class="w-5 h-5 text-neutral-500 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <!-- Service 1 Image (Right) -->
-        <div class="relative min-h-[300px] border-b border-neutral-800 dark:border-gray-800 overflow-hidden group">
+        <div class="relative min-h-[400px] border-b border-neutral-800 dark:border-gray-800 overflow-hidden group">
            <img 
-            src="https://images.unsplash.com/photo-1586717791821-3f44a5638d0f?q=80&w=2070&auto=format&fit=crop" 
-            alt="Brand Identity" 
+            src="/assets/work/lumina7-arabica-1.jpg" 
+            alt="Brand Sprint" 
             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
           />
         </div>
 
         <!-- Service 2 Image (Left) -->
-        <div class="relative min-h-[300px] border-b md:border-b-0 border-neutral-800 dark:border-gray-800 md:border-r overflow-hidden group">
+        <div class="relative min-h-[400px] border-b md:border-b-0 border-neutral-800 dark:border-gray-800 md:border-r overflow-hidden group">
           <img 
-            src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=2070&auto=format&fit=crop" 
-            alt="Digital Design" 
+            src="/assets/images/work/nexevo-website.jpeg" 
+            alt="Website Sprint" 
             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
           />
         </div>
 
-        <!-- Service 2: Digital Design (Content Right) -->
+        <!-- Service 2: Website Sprint (Content Right) -->
         <div class="p-8 md:p-12 group hover:bg-neutral-900/50 dark:hover:bg-gray-900/50 transition-colors duration-300">
-          <div class="text-sm text-neutral-500 dark:text-gray-600 mb-6 group-hover:text-neutral-400 dark:group-hover:text-gray-500 transition-colors duration-300">
-            {services[1].number}
-          </div>
-          
-          <div class="inline-block bg-neutral-800 dark:bg-gray-800 text-neutral-300 dark:text-gray-400 text-xs px-3 py-1 mb-8 group-hover:bg-neutral-700 dark:group-hover:bg-gray-700 transition-colors duration-300 rounded-[4px]">
+          <div class="inline-block bg-neutral-800 text-neutral-300 text-xs px-3 py-1 mb-8 rounded-[4px] font-medium tracking-wide">
             {services[1].duration}
           </div>
           
-          <h3 class="text-3xl font-semibold text-white mb-6 leading-tight transition-colors duration-300">
+          <h3 class="text-4xl font-semibold text-white mb-2 leading-tight transition-colors duration-300">
             {services[1].title}
           </h3>
           
-          <p class="text-neutral-400 dark:text-gray-500 text-sm leading-relaxed mb-12 group-hover:text-neutral-300 dark:group-hover:text-gray-400 transition-colors duration-300 max-w-md">
-            {services[1].content}
+          <p class="text-neutral-400 text-lg mb-10 leading-relaxed">
+            {services[1].tagline}
           </p>
-          
-          <a href="/services" class="inline-flex items-center text-white font-medium group-hover:text-neutral-300 dark:group-hover:text-gray-400 transition-colors duration-300">
-            Learn details <span class="ml-2">→</span>
-          </a>
+
+          <div class="mb-6">
+            <h4 class="text-xs font-bold text-neutral-500 uppercase tracking-wider mb-4">WHAT'S INCLUDED</h4>
+            <ul class="space-y-3">
+              {services[1].features.map(feature => (
+                <li class="flex items-start text-sm text-neutral-300">
+                  <svg class="w-5 h-5 text-neutral-500 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
       </div>
@@ -485,52 +227,6 @@ const faqItems = [
   </section>
   
   <script>
-    // Services horizontal scroll functionality
-    const servicesContainer = document.getElementById('services-container') as HTMLElement | null;
-    const scrollLeftBtn = document.getElementById('scroll-left') as HTMLButtonElement | null;
-    const scrollRightBtn = document.getElementById('scroll-right') as HTMLButtonElement | null;
-    
-    if (servicesContainer && scrollLeftBtn && scrollRightBtn) {
-      const scrollAmount = 400;
-      
-      // Update button states based on scroll position
-      function updateButtonStates(): void {
-        if (!servicesContainer || !scrollLeftBtn || !scrollRightBtn) return;
-        const { scrollLeft, scrollWidth, clientWidth } = servicesContainer;
-        scrollLeftBtn.disabled = scrollLeft <= 0;
-        scrollRightBtn.disabled = scrollLeft + clientWidth >= scrollWidth - 10;
-      }
-      
-      // Initial state
-      updateButtonStates();
-      
-      // Scroll left
-      scrollLeftBtn.addEventListener('click', (): void => {
-        if (!servicesContainer) return;
-        servicesContainer.scrollBy({
-          left: -scrollAmount,
-          behavior: 'smooth'
-        });
-        setTimeout(updateButtonStates, 300);
-      });
-      
-      // Scroll right
-      scrollRightBtn.addEventListener('click', (): void => {
-        if (!servicesContainer) return;
-        servicesContainer.scrollBy({
-          left: scrollAmount,
-          behavior: 'smooth'
-        });
-        setTimeout(updateButtonStates, 300);
-      });
-      
-      // Update on scroll
-      servicesContainer.addEventListener('scroll', updateButtonStates);
-      
-      // Update on resize
-      window.addEventListener('resize', updateButtonStates);
-    }
-
     // Video Play/Pause Toggle
     const video = document.getElementById('hero-video') as HTMLVideoElement | null;
     const toggleBtn = document.getElementById('video-control-btn');
@@ -554,207 +250,63 @@ const faqItems = [
     }
   </script>
 
-  <!-- Featured Projects Section with We Deliver Results Header -->
-  <section class="py-20 transition-colors duration-300 bg-white dark:bg-[#0a0a0a]">
+  <!-- Recent Work Section -->
+  <section class="py-20 bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="mb-20">
-        <div class="grid lg:grid-cols-3 gap-16 items-start">
-          <!-- Left Column - Title -->
-          <div class="lg:col-span-1">
-            <h2 class="text-2xl md:text-3xl font-medium text-neutral-900 dark:text-gray-100 mb-8 transition-colors duration-300">
-              We deliver results
-            </h2>
-          </div>
-          
-          <!-- Right Columns - Content and Button -->
-          <div class="lg:col-span-2 space-y-8 text-right">
-            <p class="text-base text-neutral-800 dark:text-gray-400 leading-relaxed transition-colors duration-300">
-              We've partnered with South African businesses across various industries. We help companies build professional brands that attract the right customers and support real business growth.
-            </p>
-            <div>
-              <a href="/work" class="inline-block text-sm font-medium text-neutral-900 dark:text-gray-100 hover:text-neutral-600 dark:hover:text-gray-400 transition-colors duration-300 border-b border-neutral-900 dark:border-gray-100 hover:border-neutral-600 dark:hover:border-gray-400 pb-1">
-                VIEW OUR PROJECTS
-              </a>
-            </div>
-          </div>
-        </div>
+      <div class="mb-16 text-center">
+        <h2 class="text-3xl md:text-4xl font-medium text-neutral-900 dark:text-gray-100 transition-colors duration-300">
+          Recent Work
+        </h2>
       </div>
 
-      <!-- Projects Grid - Staggered Layout -->
-      <div class="grid gap-12 md:grid-cols-2">
-        {featuredProjects.map((project, index) => (
+      <!-- Projects Grid -->
+      <div class="grid gap-x-8 gap-y-16 md:grid-cols-2">
+        {featuredProjects.map((project) => (
           <a 
             href={`/work/${project.slug}`}
-            class="group block space-y-6"
+            class="group block"
           >
-            <article class="space-y-6">
-              <!-- Project Number -->
-              <div class="text-xs text-neutral-500 dark:text-gray-500 font-medium uppercase tracking-wider group-hover:text-neutral-700 dark:group-hover:text-gray-400 transition-colors duration-300">
-                {String(index + 1).padStart(2, '0')}
-              </div>
-
+            <article>
               <!-- Project Image -->
-              <div class="relative aspect-[16/10] bg-neutral-100 dark:bg-gray-800 overflow-hidden rounded-[4px] transition-colors duration-300">
+              <div class="relative aspect-[3/2] bg-neutral-100 dark:bg-gray-800 overflow-hidden mb-6">
                 <img 
                   src={project.data.heroImage} 
                   alt={project.data.title}
-                  class="w-full h-full object-cover rounded-[4px] group-hover:scale-105 transition-transform duration-700"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
 
               <!-- Project Info -->
-              <div class="space-y-4">
-                <div class="flex items-start justify-between gap-4">
-                  <h3 class="text-2xl font-medium text-neutral-900 dark:text-gray-100 group-hover:text-neutral-600 dark:group-hover:text-gray-400 transition-colors duration-300">
-                    {project.data.title}
-                  </h3>
-                  <span class="text-sm text-neutral-500 dark:text-gray-500 whitespace-nowrap transition-colors duration-300">
-                    {project.data.year}
-                  </span>
-                </div>
-
-                <p class="text-base text-neutral-700 dark:text-gray-400 leading-relaxed transition-colors duration-300">
-                  {project.data.description}
-                </p>
-
-                <!-- Services Tags -->
-                <div class="flex flex-wrap gap-2">
-                  {project.data.services.slice(0, 3).map((service: string) => (
-                    <span class="text-xs text-neutral-500 dark:text-gray-500 px-3 py-1 bg-neutral-50 dark:bg-gray-800 group-hover:bg-neutral-100 dark:group-hover:bg-gray-700 transition-colors duration-300">
-                      {service}
-                    </span>
-                  ))}
-                </div>
+              <div class="flex items-start justify-between gap-4">
+                <h3 class="text-xl font-medium text-neutral-900 dark:text-gray-100 group-hover:text-gray-500 dark:group-hover:text-gray-400 transition-colors duration-300">
+                  {project.data.title}
+                </h3>
+                <span class="text-sm text-neutral-500 dark:text-gray-500 whitespace-nowrap pt-1">
+                  {project.data.year}
+                </span>
               </div>
 
-              <!-- Divider -->
-              <div class="h-px bg-neutral-200 dark:bg-gray-700 group-hover:bg-neutral-300 dark:group-hover:bg-gray-600 transition-colors duration-300"></div>
+              <!-- Services Tags -->
+              <div class="flex flex-wrap gap-2 mt-3">
+                {project.data.services.slice(0, 3).map((service: string) => (
+                  <span class="text-xs text-neutral-400 dark:text-gray-600">
+                    {service}
+                  </span>
+                ))}
+              </div>
             </article>
           </a>
         ))}
       </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Section - HIDDEN FOR NOW -->
-  <!-- <section class="py-20 px-6 lg:px-8 bg-white">
-    <div class="max-w-7xl mx-auto">
-      <div class="mb-12">
-        <h2 class="text-2xl md:text-3xl font-medium text-neutral-900 mb-4 max-w-3xl">
-          We build partnership relationships based on trust and responsibility.
-        </h2>
-        
-      </div>
       
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {testimonials.map((testimonial, index) => (
-          <article class="group cursor-pointer space-y-8 p-6 bg-neutral-50 hover:bg-neutral-100 transition-colors">
-            <div class="text-sm text-neutral-400 font-medium">
-              {String(index + 1).padStart(2, '0')}
-            </div>
-            
-            <div class="space-y-6">
-              <div class="text-neutral-400 text-lg font-medium group-hover:text-neutral-600 transition-colors">
-                {testimonial.company}
-              </div>
-              
-              <blockquote class="text-sm text-neutral-600 leading-relaxed group-hover:text-neutral-800 transition-colors">
-                {testimonial.content}
-              </blockquote>
-              
-              <footer class="space-y-2">
-                <div class="flex items-center space-x-4">
-                  <div class="w-12 h-12 bg-neutral-200 rounded-full flex items-center justify-center group-hover:bg-neutral-300 transition-colors">
-                    <span class="text-xs font-medium text-neutral-600">
-                      {testimonial.name.split(' ').map(n => n[0]).join('')}
-                    </span>
-                  </div>
-                  <div>
-                    <div class="text-sm font-medium text-neutral-900 group-hover:text-neutral-700 transition-colors">
-                      {testimonial.name}
-                    </div>
-                    <div class="text-xs text-neutral-500 group-hover:text-neutral-600 transition-colors">
-                      {testimonial.role}
-                    </div>
-                  </div>
-                </div>
-              </footer>
-            </div>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section> -->
-
-  <!-- Knowledge/Insights Section - HIDDEN FOR NOW -->
-  <!-- <section class="py-20 px-6 lg:px-8 bg-white">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="text-2xl md:text-3xl font-medium text-neutral-900 mb-16 max-w-4xl">
-        Knowledge that builds <span class="text-neutral-400">strong brands.</span>
-      </h2>
-      
-      <div class="grid lg:grid-cols-2 gap-16">
-        <div class="space-y-8">
-          <article class="group cursor-pointer">
-            <div class="space-y-6">
-              <div class="text-xs text-neutral-500 uppercase tracking-wider font-medium">
-                24.09.2025
-              </div>
-              <div>
-                <span class="inline-block bg-neutral-200 text-neutral-700 text-xs px-3 py-1 uppercase tracking-wider font-medium mb-4">
-                  DESIGN
-                </span>
-              </div>
-              <h3 class="text-xl md:text-2xl font-medium text-neutral-900 group-hover:text-neutral-600 transition-colors leading-tight">
-                How to stimulate creativity through experience, not copying?
-              </h3>
-            </div>
-          </article>
-        </div>
-
-        <div class="space-y-12">
-          <article class="group cursor-pointer">
-            <div class="space-y-4">
-              <div class="text-xs text-neutral-500 uppercase tracking-wider font-medium">
-                04.08.2025
-              </div>
-              <div>
-                <span class="inline-block bg-neutral-200 text-neutral-700 text-xs px-3 py-1 uppercase tracking-wider font-medium">
-                  BUSINESS PROCESSES
-                </span>
-              </div>
-              <h3 class="text-lg font-medium text-neutral-900 group-hover:text-neutral-600 transition-colors leading-tight">
-                When is rebranding and when is redesign necessary?
-              </h3>
-            </div>
-          </article>
-
-          <article class="group cursor-pointer">
-            <div class="space-y-4">
-              <div class="text-xs text-neutral-500 uppercase tracking-wider font-medium">
-                05.06.2025
-              </div>
-              <div>
-                <span class="inline-block bg-neutral-200 text-neutral-700 text-xs px-3 py-1 uppercase tracking-wider font-medium">
-                  BUSINESS PROCESSES
-                </span>
-              </div>
-              <h3 class="text-lg font-medium text-neutral-900 group-hover:text-neutral-600 transition-colors leading-tight">
-                Feedback that works - how to speak to be understood (and build great branding)?
-              </h3>
-            </div>
-          </article>
-        </div>
-      </div>
-      
-      <div class="flex items-center justify-between mt-20">
-        <div class="text-4xl font-bold text-neutral-900">+</div>
-        <a href="/insights" class="text-lg font-medium text-neutral-900 hover:text-neutral-600 transition-colors">
-          View all entries
+      <!-- View All Projects Button -->
+      <div class="mt-20 text-center">
+        <a href="/work" class="inline-block px-8 py-3 bg-neutral-900 dark:bg-white text-white dark:text-black font-medium text-sm rounded-[4px] hover:bg-neutral-800 dark:hover:bg-gray-200 transition-colors duration-300">
+          View All Projects
         </a>
       </div>
     </div>
-  </section> -->
+  </section>
 
   <FAQ faqItems={faqItems} />
 
