@@ -1,13 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
-        sans: ['IBM Plex Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        sans: ['Urbanist', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
         serif: ['IBM Plex Serif', 'Georgia', 'Times New Roman', 'serif'],
       },
       colors: {
+        // Primary gray scale - use this consistently
         gray: {
           50: '#fafafa',
           100: '#f4f4f5',
@@ -21,19 +23,17 @@ export default {
           900: '#18181b',
           950: '#09090b',
         },
-        neutral: {
-          50: '#fafafa',
-          100: '#f5f5f5',
-          200: '#e5e5e5',
-          300: '#d4d4d4',
-          400: '#a3a3a3',
-          500: '#737373',
-          600: '#525252',
-          700: '#404040',
-          800: '#262626',
-          900: '#171717',
-          950: '#0a0a0a',
+        // Semantic color aliases for better maintainability
+        brand: {
+          dark: '#18181b',
+          light: '#fafafa',
         },
+      },
+      // Custom font sizes for design system
+      fontSize: {
+        'display-lg': ['4.95rem', { lineHeight: '0.95', letterSpacing: '-0.02em' }],
+        'display-md': ['3.3rem', { lineHeight: '0.95', letterSpacing: '-0.02em' }],
+        'display-sm': ['2.75rem', { lineHeight: '0.95', letterSpacing: '-0.02em' }],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
@@ -104,6 +104,20 @@ export default {
         '18': '4.5rem',
         '88': '22rem',
         '128': '32rem',
+      },
+      // Consistent border radius
+      borderRadius: {
+        'DEFAULT': '0.25rem', // 4px
+        'sm': '0.125rem',    // 2px
+        'md': '0.375rem',    // 6px
+        'lg': '0.5rem',      // 8px
+        'xl': '0.75rem',     // 12px
+        '2xl': '1rem',       // 16px
+        'full': '9999px',
+      },
+      // Consistent transitions
+      transitionDuration: {
+        'DEFAULT': '300ms',
       },
     },
   },
