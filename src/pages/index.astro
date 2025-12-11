@@ -30,15 +30,15 @@ const services = [
   },
   {
     title: "Website Sprint",
-    tagline: "A high-performance website in 2 weeks",
+    tagline: "AI-optimized websites that work everywhere",
     duration: "2 WEEKS",
     features: [
-      "Strategic sitemap & user journey",
-      "Custom UI/UX design (Figma)",
-      "Responsive development (Webflow/Framer)",
-      "Content structure optimization",
-      "Basic SEO setup",
-      "CMS training for your team"
+      "2 distinct design directions to choose from",
+      "5-7 page responsive website (Astro framework)",
+      "AI optimization (Schema.org, semantic markup)",
+      "Optimized for Google, ChatGPT, and Perplexity",
+      "Fast loading and mobile responsive",
+      "1-hour handover training session"
     ]
   }
 ];
@@ -148,9 +148,6 @@ const faqItems = [
         
         <!-- Service 1: Brand Sprint (Content Left) -->
         <div class="p-8 md:p-12 group hover:bg-neutral-900/50 dark:hover:bg-gray-900/50 transition-colors duration-300 border-b border-neutral-800 dark:border-gray-800 md:border-r">
-          <div class="inline-block bg-neutral-800 text-neutral-300 text-xs px-3 py-1 mb-8 rounded-[4px] font-medium tracking-wide">
-            {services[0].duration}
-          </div>
           
           <h3 class="text-4xl font-semibold text-white mb-2 leading-tight transition-colors duration-300">
             {services[0].title}
@@ -173,6 +170,10 @@ const faqItems = [
               ))}
             </ul>
           </div>
+
+          <a href="/services" class="inline-block w-full text-center px-6 py-3 bg-white text-black font-medium text-sm rounded-[4px] hover:bg-neutral-200 transition-colors duration-300">
+            Learn more
+          </a>
         </div>
 
         <!-- Service 1 Image (Right) -->
@@ -195,9 +196,6 @@ const faqItems = [
 
         <!-- Service 2: Website Sprint (Content Right) -->
         <div class="p-8 md:p-12 group hover:bg-neutral-900/50 dark:hover:bg-gray-900/50 transition-colors duration-300">
-          <div class="inline-block bg-neutral-800 text-neutral-300 text-xs px-3 py-1 mb-8 rounded-[4px] font-medium tracking-wide">
-            {services[1].duration}
-          </div>
           
           <h3 class="text-4xl font-semibold text-white mb-2 leading-tight transition-colors duration-300">
             {services[1].title}
@@ -220,6 +218,10 @@ const faqItems = [
               ))}
             </ul>
           </div>
+
+          <a href="/services" class="inline-block w-full text-center px-6 py-3 bg-white text-black font-medium text-sm rounded-[4px] hover:bg-neutral-200 transition-colors duration-300">
+            Learn more
+          </a>
         </div>
 
       </div>
