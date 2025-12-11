@@ -1,38 +1,33 @@
 /* Design Tokens for Lumina7 */
 
 :root {
-  /* Colors */
-  --color-primary: #18181b;
-  --color-primary-light: #27272a;
-  --color-secondary: #71717a;
+  /* Core Brand Colors */
+  --color-brand-dark: #18181b;
+  --color-brand-light: #fafafa;
   --color-accent: #2563eb;
   
-  /* Grays */
-  --color-gray-50: #fafafa;
-  --color-gray-100: #f4f4f5;
-  --color-gray-200: #e4e4e7;
-  --color-gray-300: #d4d4d8;
-  --color-gray-400: #a1a1aa;
-  --color-gray-500: #71717a;
-  --color-gray-600: #52525b;
-  --color-gray-700: #3f3f46;
-  --color-gray-800: #27272a;
-  --color-gray-900: #18181b;
+  /* Semantic Colors - Light Mode */
+  --bg-primary: #ffffff;
+  --bg-secondary: #fafafa;
+  --bg-tertiary: #f4f4f5;
+  --bg-elevated: #ffffff;
+  --bg-overlay: rgba(0, 0, 0, 0.5);
   
-  /* Neutrals */
-  --color-neutral-50: #fafafa;
-  --color-neutral-100: #f5f5f5;
-  --color-neutral-200: #e5e5e5;
-  --color-neutral-300: #d4d4d4;
-  --color-neutral-400: #a3a3a3;
-  --color-neutral-500: #737373;
-  --color-neutral-600: #525252;
-  --color-neutral-700: #404040;
-  --color-neutral-800: #262626;
-  --color-neutral-900: #171717;
+  --text-primary: #18181b;
+  --text-secondary: #52525b;
+  --text-tertiary: #71717a;
+  --text-inverse: #ffffff;
+  
+  --border-primary: #e4e4e7;
+  --border-secondary: #f4f4f5;
+  --border-hover: #d4d4d8;
+  
+  --surface-base: #ffffff;
+  --surface-raised: #fafafa;
+  --surface-overlay: #ffffff;
   
   /* Typography */
-  --font-family-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-sans: 'Zalando Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-family-serif: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
   
   /* Font Sizes */
@@ -80,13 +75,13 @@
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   
-  /* Border Radius */
+  /* Border Radius - 4px for softer look */
   --radius-sm: 0.125rem;
   --radius: 0.25rem;
-  --radius-md: 0.375rem;
-  --radius-lg: 0.5rem;
-  --radius-xl: 0.75rem;
-  --radius-2xl: 1rem;
+  --radius-md: 0.25rem; /* 4px */
+  --radius-lg: 0.25rem; /* 4px */
+  --radius-xl: 0.25rem; /* 4px */
+  --radius-2xl: 0.5rem; /* 8px for larger elements */
   --radius-full: 9999px;
   
   /* Transitions */
@@ -105,6 +100,31 @@
   --z-modal: 1050;
   --z-popover: 1060;
   --z-tooltip: 1070;
+}
+
+/* Dark Mode Colors */
+html.dark {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #18181b;
+  --bg-tertiary: #27272a;
+  --bg-elevated: #18181b;
+  --bg-overlay: rgba(0, 0, 0, 0.8);
+  
+  --text-primary: #fafafa;
+  --text-secondary: #d4d4d8;
+  --text-tertiary: #a1a1aa;
+  --text-inverse: #0a0a0a;
+  
+  --border-primary: #27272a;
+  --border-secondary: #18181b;
+  --border-hover: #3f3f46;
+  
+  --surface-base: #0a0a0a;
+  --surface-raised: #18181b;
+  --surface-overlay: #27272a;
+  
+  /* Adjust accent for better dark mode visibility */
+  --color-accent: #3b82f6;
 }
 
 /* Base Styles */
@@ -127,6 +147,66 @@ body {
 }
 
 /* Utility Classes */
+
+/* Typography Hierarchy */
+.text-display {
+  @apply text-4xl md:text-5xl lg:text-6xl font-medium leading-tight tracking-tight;
+}
+
+.text-heading-1 {
+  @apply text-3xl md:text-4xl lg:text-5xl font-medium leading-tight tracking-tight;
+}
+
+.text-heading-2 {
+  @apply text-2xl md:text-3xl font-medium leading-tight;
+}
+
+.text-heading-3 {
+  @apply text-xl md:text-2xl font-medium leading-tight;
+}
+
+.text-body-lg {
+  @apply text-lg leading-relaxed;
+}
+
+.text-body {
+  @apply text-base leading-relaxed;
+}
+
+.text-body-sm {
+  @apply text-sm leading-normal;
+}
+
+.text-caption {
+  @apply text-xs uppercase tracking-wider font-medium;
+}
+
+/* Color Utilities */
+.text-primary {
+  @apply text-gray-900 dark:text-gray-100;
+}
+
+.text-secondary {
+  @apply text-gray-600 dark:text-gray-400;
+}
+
+.text-tertiary {
+  @apply text-gray-500 dark:text-gray-500;
+}
+
+.bg-primary {
+  @apply bg-white dark:bg-[#0a0a0a];
+}
+
+.bg-secondary {
+  @apply bg-gray-50 dark:bg-[#18181b];
+}
+
+.bg-tertiary {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+/* Transition Utilities */
 .transition-smooth {
   transition: all var(--transition-normal);
 }
@@ -157,6 +237,11 @@ body {
 
 .transition-opacity {
   transition: opacity var(--transition-fast);
+}
+
+/* Default transitions for common elements */
+a, button {
+  @apply transition-colors duration-300;
 }
 
 .hover-lift:hover {
@@ -213,31 +298,32 @@ body {
 }
 
 .btn-primary {
-  background-color: var(--color-primary);
-  color: white;
+  background-color: var(--text-primary);
+  color: var(--text-inverse);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary-light);
+  opacity: 0.9;
 }
 
 .btn-secondary {
   background-color: transparent;
-  color: var(--color-primary);
-  border-color: var(--color-gray-300);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
 }
 
 .btn-secondary:hover {
-  background-color: var(--color-gray-50);
-  border-color: var(--color-gray-400);
+  background-color: var(--bg-secondary);
+  border-color: var(--border-hover);
 }
 
 .card {
-  background-color: white;
+  background-color: var(--surface-raised);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
   overflow: hidden;
   transition: all var(--transition-normal);
+  border: 1px solid var(--border-primary);
 }
 
 .card:hover {
@@ -270,6 +356,14 @@ body {
 }
 
 /* Responsive Utilities */
+.glass {
+  @apply bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-md border border-white/20 dark:border-white/10;
+}
+
+.glass-hover {
+  @apply hover:bg-white/90 dark:hover:bg-[#0a0a0a]/90 transition-colors duration-300;
+}
+
 .responsive-grid {
   display: grid;
   grid-template-columns: 1fr;
