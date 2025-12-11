@@ -1,6 +1,6 @@
 ---
 export interface Props {
-  variant?: 'default' | 'hover' | 'bordered' | 'flat' | 'glass';
+  variant?: 'default' | 'hover' | 'bordered' | 'flat';
   padding?: 'none' | 'sm' | 'md' | 'lg';
   class?: string;
   href?: string;
@@ -18,14 +18,13 @@ const {
   ...rest 
 } = Astro.props;
 
-const baseClasses = 'overflow-hidden transition-all duration-300';
+const baseClasses = 'bg-white dark:bg-gray-800 overflow-hidden transition-all duration-300';
 
 const variants = {
-  default: 'bg-white dark:bg-gray-800 rounded-[4px] shadow-sm dark:shadow-gray-900/50',
-  hover: 'bg-white dark:bg-gray-800 rounded-[4px] shadow-sm dark:shadow-gray-900/50 hover:shadow-lg dark:hover:shadow-gray-900/70 hover:-translate-y-1 cursor-pointer',
-  bordered: 'bg-white dark:bg-gray-800 rounded-[4px] border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600',
-  flat: 'bg-white dark:bg-gray-800 rounded-[4px]',
-  glass: 'bg-white/70 dark:bg-gray-900/70 backdrop-blur-md rounded-[4px] border border-white/20 dark:border-white/10 shadow-lg'
+  default: 'rounded-[4px] shadow-sm dark:shadow-gray-900/50',
+  hover: 'rounded-[4px] shadow-sm dark:shadow-gray-900/50 hover:shadow-lg dark:hover:shadow-gray-900/70 hover:-translate-y-1 cursor-pointer',
+  bordered: 'rounded-[4px] border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600',
+  flat: 'rounded-[4px]'
 };
 
 const paddings = {
