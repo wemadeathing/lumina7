@@ -406,7 +406,7 @@ const faqItems = [
   </section>
   -->
 
-  <!-- New Services Section (2 Columns) -->
+  <!-- New Services Section (2 Columns / 4 Quadrants) -->
   <section class="py-20 px-6 lg:px-8 bg-black dark:bg-gray-950 text-white relative overflow-hidden transition-colors duration-300">
     <!-- Background pattern -->
     <div class="absolute inset-0 opacity-5">
@@ -415,29 +415,71 @@ const faqItems = [
     
     <div class="max-w-7xl mx-auto relative z-10">
       <div class="grid md:grid-cols-2 border border-neutral-800 dark:border-gray-800">
-        {services.slice(0, 2).map((service, index) => (
-          <div class={`p-8 md:p-12 group hover:bg-neutral-900/50 dark:hover:bg-gray-900/50 transition-colors duration-300 ${index === 0 ? 'border-b md:border-b-0 md:border-r border-neutral-800 dark:border-gray-800' : ''}`}>
-            <div class="text-sm text-neutral-500 dark:text-gray-600 mb-6 group-hover:text-neutral-400 dark:group-hover:text-gray-500 transition-colors duration-300">
-              {service.number}
-            </div>
-            
-            <div class="inline-block bg-neutral-800 dark:bg-gray-800 text-neutral-300 dark:text-gray-400 text-xs px-3 py-1 mb-8 group-hover:bg-neutral-700 dark:group-hover:bg-gray-700 transition-colors duration-300 rounded-[4px]">
-              {service.duration}
-            </div>
-            
-            <h3 class="text-3xl font-semibold text-white mb-6 leading-tight transition-colors duration-300">
-              {service.title}
-            </h3>
-            
-            <p class="text-neutral-400 dark:text-gray-500 text-sm leading-relaxed mb-12 group-hover:text-neutral-300 dark:group-hover:text-gray-400 transition-colors duration-300 max-w-md">
-              {service.content}
-            </p>
-            
-            <a href="/services" class="inline-flex items-center text-white font-medium group-hover:text-neutral-300 dark:group-hover:text-gray-400 transition-colors duration-300">
-              Learn details <span class="ml-2">→</span>
-            </a>
+        
+        <!-- Service 1: Brand Identity (Content Left) -->
+        <div class="p-8 md:p-12 group hover:bg-neutral-900/50 dark:hover:bg-gray-900/50 transition-colors duration-300 border-b border-neutral-800 dark:border-gray-800 md:border-r">
+          <div class="text-sm text-neutral-500 dark:text-gray-600 mb-6 group-hover:text-neutral-400 dark:group-hover:text-gray-500 transition-colors duration-300">
+            {services[0].number}
           </div>
-        ))}
+          
+          <div class="inline-block bg-neutral-800 dark:bg-gray-800 text-neutral-300 dark:text-gray-400 text-xs px-3 py-1 mb-8 group-hover:bg-neutral-700 dark:group-hover:bg-gray-700 transition-colors duration-300 rounded-[4px]">
+            {services[0].duration}
+          </div>
+          
+          <h3 class="text-3xl font-semibold text-white mb-6 leading-tight transition-colors duration-300">
+            {services[0].title}
+          </h3>
+          
+          <p class="text-neutral-400 dark:text-gray-500 text-sm leading-relaxed mb-12 group-hover:text-neutral-300 dark:group-hover:text-gray-400 transition-colors duration-300 max-w-md">
+            {services[0].content}
+          </p>
+          
+          <a href="/services" class="inline-flex items-center text-white font-medium group-hover:text-neutral-300 dark:group-hover:text-gray-400 transition-colors duration-300">
+            Learn details <span class="ml-2">→</span>
+          </a>
+        </div>
+
+        <!-- Service 1 Image (Right) -->
+        <div class="relative min-h-[300px] border-b border-neutral-800 dark:border-gray-800 overflow-hidden group">
+           <img 
+            src="/assets/work/lumina7-arabica-1.jpg" 
+            alt="Brand Identity" 
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+          />
+        </div>
+
+        <!-- Service 2 Image (Left) -->
+        <div class="relative min-h-[300px] border-b md:border-b-0 border-neutral-800 dark:border-gray-800 md:border-r overflow-hidden group">
+          <img 
+            src="/assets/images/work/nexevo-website.jpeg" 
+            alt="Digital Design" 
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+          />
+        </div>
+
+        <!-- Service 2: Digital Design (Content Right) -->
+        <div class="p-8 md:p-12 group hover:bg-neutral-900/50 dark:hover:bg-gray-900/50 transition-colors duration-300">
+          <div class="text-sm text-neutral-500 dark:text-gray-600 mb-6 group-hover:text-neutral-400 dark:group-hover:text-gray-500 transition-colors duration-300">
+            {services[1].number}
+          </div>
+          
+          <div class="inline-block bg-neutral-800 dark:bg-gray-800 text-neutral-300 dark:text-gray-400 text-xs px-3 py-1 mb-8 group-hover:bg-neutral-700 dark:group-hover:bg-gray-700 transition-colors duration-300 rounded-[4px]">
+            {services[1].duration}
+          </div>
+          
+          <h3 class="text-3xl font-semibold text-white mb-6 leading-tight transition-colors duration-300">
+            {services[1].title}
+          </h3>
+          
+          <p class="text-neutral-400 dark:text-gray-500 text-sm leading-relaxed mb-12 group-hover:text-neutral-300 dark:group-hover:text-gray-400 transition-colors duration-300 max-w-md">
+            {services[1].content}
+          </p>
+          
+          <a href="/services" class="inline-flex items-center text-white font-medium group-hover:text-neutral-300 dark:group-hover:text-gray-400 transition-colors duration-300">
+            Learn details <span class="ml-2">→</span>
+          </a>
+        </div>
+
       </div>
     </div>
   </section>
