@@ -341,16 +341,16 @@ const faqItems = [
         
         if (heroMain) {
           // Main text follows slower
-          heroMain.style.transform = `translateX(${scrollY * 0.8}px)`;
+          heroMain.style.transform = `translateX(${scrollY * 1.5}px)`;
           // Fade out
-          heroMain.style.opacity = `${1 - scrollY / 500}`;
+          heroMain.style.opacity = `${1 - scrollY / 400}`;
         }
         
         if (heroSub) {
           // Subtext follows even slower
-          heroSub.style.transform = `translateX(${scrollY * 0.5}px)`;
+          heroSub.style.transform = `translateX(${scrollY * 1.5}px)`;
           // Fade out
-          heroSub.style.opacity = `${1 - scrollY / 600}`;
+          heroSub.style.opacity = `${1 - scrollY / 400}`;
         }
       }
     });
