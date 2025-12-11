@@ -171,10 +171,10 @@ const faqItems = [
   <Header />
   
   <!-- Hero Section -->
-  <section class="pt-24 pb-20 px-6 lg:px-8 bg-white">
+  <section class="pt-24 pb-20 px-6 lg:px-8 bg-primary">
     <div class="max-w-7xl mx-auto">
       <div class="max-w-3xl">
-        <h1 class="text-4xl md:text-6xl font-medium text-gray-900 mb-8 leading-tight mt-8">
+        <h1 class="text-4xl md:text-6xl font-medium text-gray-900 dark:text-gray-100 mb-8 leading-tight mt-8 transition-colors duration-300">
           Innovation-powered design services delivered at the speed of light
         </h1>
       </div>
@@ -182,7 +182,7 @@ const faqItems = [
   </section>
 
   <!-- Services Section -->
-  <section class="services-hero bg-black text-white relative overflow-hidden">
+  <section class="services-hero bg-gray-900 text-white relative overflow-hidden">
     <div class="max-w-7xl mx-auto">
       <div class="space-y-0">
         {services.map((service, index) => (
@@ -191,10 +191,10 @@ const faqItems = [
               <div class="grid lg:grid-cols-12 gap-8 items-start">
                 <!-- Left side - Duration and Title -->
                 <div class="lg:col-span-5">
-                  <span class="text-xs text-black bg-white px-3 py-1 font-medium uppercase tracking-wide mb-4 inline-block">
+                  <span class="text-caption text-gray-900 bg-white px-3 py-1 mb-4 inline-block rounded-[4px]">
                     {service.duration}
                   </span>
-                  <h2 class="text-2xl md:text-3xl font-medium text-white leading-tight">
+                  <h2 class="text-heading-2 text-white leading-tight">
                     {service.title}
                   </h2>
                 </div>
@@ -207,7 +207,7 @@ const faqItems = [
                   
                   <div class="flex flex-wrap gap-3 mb-6">
                     {service.capabilities.map(capability => (
-                      <span class="text-xs text-white border border-gray-600 px-4 py-2 hover:bg-white hover:text-black transition-colors cursor-pointer uppercase tracking-wide">
+                      <span class="text-xs text-white border border-gray-600 px-4 py-2 hover:bg-white hover:text-black transition-colors cursor-pointer uppercase tracking-wide rounded-[4px]">
                         {capability}
                       </span>
                     ))}
@@ -226,26 +226,26 @@ const faqItems = [
   </section>
 
   <!-- Process Section -->
-  <section class="py-32 px-6 lg:px-8 bg-gray-100">
+  <section class="py-32 px-6 lg:px-8 bg-secondary">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-20">
-        <h2 class="text-4xl md:text-5xl font-medium text-black mb-8">
+        <h2 class="text-heading-1 text-primary mb-8">
           Get to know our process
         </h2>
       </div>
       
       <div class="space-y-8">
         {processSteps.map((step, index) => (
-          <div class="process-step bg-gray-300 p-8 lg:p-12">
+          <div class="process-step bg-gray-200 dark:bg-gray-800 p-8 lg:p-12 rounded">
             <div class="grid lg:grid-cols-12 gap-8 items-start">
               <!-- Left side - Number, Phase, Title -->
               <div class="lg:col-span-4">
-                <h2 class="text-2xl md:text-3xl font-bold text-black leading-none mb-4">
+                <h2 class="text-2xl md:text-3xl font-bold text-primary leading-none mb-4">
                   {step.number}
                 </h2>
-                <h2 class="text-2xl md:text-3xl font-medium text-black mb-4">{step.phase}</h2>
-                <h3 class="text-lg font-medium text-black mb-4">{step.title}</h3>
-                <p class="text-sm text-gray-600 uppercase tracking-wide">{step.duration}</p>
+                <h2 class="text-heading-2 text-primary mb-4">{step.phase}</h2>
+                <h3 class="text-body-lg text-primary mb-4">{step.title}</h3>
+                <p class="text-caption text-tertiary">{step.duration}</p>
               </div>
               
               <!-- Spacer -->
@@ -253,14 +253,14 @@ const faqItems = [
               
               <!-- Right side - Description and Details -->
               <div class="lg:col-span-7">
-                <p class="text-gray-700 leading-relaxed mb-6">
+                <p class="text-body text-secondary mb-6">
                   {step.description}
                 </p>
                 
                 <ul class="space-y-3">
                   {step.details.map(detail => (
-                    <li class="text-sm text-gray-700 flex items-start gap-3">
-                      <span class="w-1 h-1 bg-gray-600 rounded-full mt-2 flex-shrink-0"></span>
+                    <li class="text-body-sm text-secondary flex items-start gap-3">
+                      <span class="w-1 h-1 bg-gray-600 dark:bg-gray-400 rounded-full mt-2 flex-shrink-0"></span>
                       {detail}
                     </li>
                   ))}
