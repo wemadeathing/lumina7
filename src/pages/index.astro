@@ -10,7 +10,7 @@ const allProjects = await getCollection('portfolio');
 const featuredProjects = allProjects
   .filter(project => project.data.featured)
   .sort((a, b) => a.data.order - b.data.order)
-  .slice(0, 4);
+  .slice(0, 3);
 
 const services = [
   { title: 'Brand Identity', tagline: 'Logo, colour, typography and brand guidelines. From R5,000', link: '/services/brand-identity' },

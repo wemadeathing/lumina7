@@ -4,7 +4,7 @@ import ThemeToggle from './ThemeToggle.astro';
 
 <!-- Logo top left - gloss blur bar (visible on load, backdrop shows on scroll) -->
 <header id="main-header" class="fixed top-0 left-0 right-0 z-50 h-20 pointer-events-none transition-all duration-300 bg-transparent">
-  <div id="header-backdrop" class="absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-300" aria-hidden="true"></div>
+  <div id="header-backdrop" class="absolute inset-0 opacity-0 invisible pointer-events-none transition-opacity duration-300" aria-hidden="true"></div>
   <div class="absolute top-0 left-0 right-0 h-20 flex items-center justify-between px-6 lg:px-8 pointer-events-none">
     <a href="/" class="header-logo pointer-events-auto flex items-center hover:opacity-80 transition-opacity relative z-10">
       <img src="/assets/logos/L7-logo-blk.svg" alt="Lumina7" class="header-logo-light h-7 dark:hidden" />
@@ -121,18 +121,18 @@ import ThemeToggle from './ThemeToggle.astro';
   }
   document.addEventListener('astro:page-load', initFloatingNav);
 
-  // Top header backdrop: transparent on load, shows on scroll
+  // Top header backdrop: no background on load, glass effect on scroll
   const headerBackdrop = document.getElementById('header-backdrop');
   if (headerBackdrop) {
     function updateHeaderScroll() {
       const el = document.getElementById('header-backdrop');
       if (el) {
         if (window.scrollY > 20) {
-          el.classList.remove('opacity-0');
-          el.classList.add('opacity-100');
+          el.classList.remove('opacity-0', 'invisible');
+          el.classList.add('opacity-100', 'visible', 'header-backdrop-visible');
         } else {
-          el.classList.add('opacity-0');
-          el.classList.remove('opacity-100');
+          el.classList.add('opacity-0', 'invisible');
+          el.classList.remove('opacity-100', 'visible', 'header-backdrop-visible');
         }
       }
     }
@@ -158,22 +158,29 @@ import ThemeToggle from './ThemeToggle.astro';
     background-color: #f4f4f5;
   }
 
-  /* Top header - subtle dark mode background so nav is visible on load */
-  :global(.dark) #main-header {
-    background: rgba(18, 18, 18, 0.4);
+  /* Top header - light: transparent on load; dark: subtle bar on load (like bottom nav) */
+  :global(#main-header) {
+    background-color: transparent !important;
+    background-image: none !important;
+  }
+  :global(html.dark) :global(#main-header) {
+    background-color: rgba(18, 18, 18, 0.6) !important;
+    backdrop-filter: blur(20px) saturate(120%);
+    -webkit-backdrop-filter: blur(20px) saturate(120%);
   }
 
-  /* Top header backdrop - glass effect on scroll (both modes) */
+  /* Top header backdrop - light: glass on scroll; dark: stronger glass on scroll */
   #header-backdrop {
+    background: transparent;
+  }
+  #header-backdrop.header-backdrop-visible {
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
-  :global(.dark) #header-backdrop {
-    background: rgba(0, 0, 0, 0.35);
+  :global(html.dark) #header-backdrop.header-backdrop-visible {
+    background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(20px) saturate(120%);
     -webkit-backdrop-filter: blur(20px) saturate(120%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 </style>

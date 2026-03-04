@@ -17,10 +17,10 @@ const {
 const baseClasses = 'relative';
 
 const variants = {
-  default: 'bg-white dark:bg-[#0a0a0a] text-gray-900 dark:text-gray-100',
-  dark: 'bg-gray-900 dark:bg-[#0a0a0a] text-white',
-  gray: 'bg-gray-50 dark:bg-[#141414] text-gray-900 dark:text-gray-100',
-  gradient: 'bg-gray-50 dark:bg-[#141414] text-gray-900 dark:text-gray-100'
+  default: 'bg-white dark:bg-black text-gray-900 dark:text-gray-100',
+  dark: 'bg-gray-900 dark:bg-black text-white',
+  gray: 'bg-gray-50 dark:bg-neutral-900 text-gray-900 dark:text-gray-100',
+  gradient: 'bg-gray-50 dark:bg-neutral-900 text-gray-900 dark:text-gray-100'
 };
 
 const paddings = {
@@ -38,7 +38,7 @@ const classes = `${baseClasses} ${variants[variant]} ${paddings[padding]} ${clas
   id={id}
   {...rest}
 >
-  <div class="max-w-[1400px] mx-auto">
+  <div class="max-w-7xl mx-auto">
     <slot />
   </div>
 </section>
