@@ -28,6 +28,7 @@ const portfolio = defineCollection({
     images: z.array(z.string()).default([]),
     client: z.string().optional(),
     website: z.string().optional(),
+    outcome: z.string().optional(),
     featured: z.boolean().default(false),
     order: z.number().default(0),
   }),

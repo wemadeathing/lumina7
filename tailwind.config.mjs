@@ -5,8 +5,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Instrument Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
-        serif: ['IBM Plex Serif', 'Georgia', 'Times New Roman', 'serif'],
+        sans: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        serif: ['Plus Jakarta Sans', 'Georgia', 'sans-serif'],
       },
       colors: {
         // Primary gray scale - use this consistently
@@ -34,6 +34,7 @@ export default {
         'display-lg': ['4.95rem', { lineHeight: '0.95', letterSpacing: '-0.02em' }],
         'display-md': ['3.3rem', { lineHeight: '0.95', letterSpacing: '-0.02em' }],
         'display-sm': ['2.75rem', { lineHeight: '0.95', letterSpacing: '-0.02em' }],
+        '2.5xl': ['1.75rem', { lineHeight: '1.2' }],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

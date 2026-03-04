@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CTA from '../components/CTA.astro';
 import FAQ from '../components/FAQ.astro';
@@ -168,13 +167,11 @@ const faqItems = [
   title="Services | Lumina7 - Innovation-Powered Design & Development"
   description="AI-augmented design services delivered at the speed of light. Brand identity, website design, rapid prototyping, and development—with breakthrough innovation and strategic speed."
 >
-  <Header />
-  
   <!-- Hero Section -->
-  <section class="pt-24 pb-20 px-6 lg:px-8 bg-primary">
+  <section class="pt-24 pb-20 px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
       <div class="max-w-3xl">
-        <h1 class="text-4xl md:text-6xl font-medium text-gray-900 dark:text-gray-100 mb-8 leading-tight mt-8 transition-colors duration-300">
+        <h1 class="text-4xl md:text-6xl font-medium text-gray-900 dark:text-white mb-8 leading-tight mt-8 tracking-tight transition-colors duration-300" style="letter-spacing: -0.05rem;">
           Innovation-powered design services delivered at the speed of light
         </h1>
       </div>
@@ -182,7 +179,7 @@ const faqItems = [
   </section>
 
   <!-- Services Section -->
-  <section class="services-hero bg-gray-900 text-white relative overflow-hidden">
+  <section class="services-hero bg-white dark:bg-gray-900 text-gray-900 dark:text-white relative overflow-hidden transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
       <div class="space-y-0">
         {services.map((service, index) => (
@@ -191,29 +188,29 @@ const faqItems = [
               <div class="grid lg:grid-cols-12 gap-8 items-start">
                 <!-- Left side - Duration and Title -->
                 <div class="lg:col-span-5">
-                  <span class="text-caption text-gray-900 bg-white px-3 py-1 mb-4 inline-block rounded-[4px]">
+                  <span class="text-caption text-gray-900 dark:text-white bg-gray-200 dark:bg-white px-3 py-1 mb-4 inline-block rounded-full">
                     {service.duration}
                   </span>
-                  <h2 class="text-heading-2 text-white leading-tight">
+                  <h2 class="text-heading-2 text-gray-900 dark:text-white leading-tight">
                     {service.title}
                   </h2>
                 </div>
                 
                 <!-- Right side - Description and Capabilities -->
                 <div class="lg:col-span-7">
-                  <p class="text-gray-300 leading-relaxed text-lg mb-6">
+                  <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-lg mb-6">
                     {service.description}
                   </p>
                   
                   <div class="flex flex-wrap gap-3 mb-6">
                     {service.capabilities.map(capability => (
-                      <span class="text-xs text-white border border-gray-600 px-4 py-2 hover:bg-white hover:text-black transition-colors cursor-pointer uppercase tracking-wide rounded-[4px]">
+                      <span class="text-xs text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 px-4 py-2 hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors cursor-pointer uppercase tracking-wide rounded-full">
                         {capability}
                       </span>
                     ))}
                   </div>
                   
-                  <button class="text-white hover:text-gray-300 transition-colors flex items-center gap-2 group">
+                  <button class="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors flex items-center gap-2 group">
                     <span class="text-2xl group-hover:translate-x-2 transition-transform duration-300">→</span>
                   </button>
                 </div>
@@ -226,7 +223,7 @@ const faqItems = [
   </section>
 
   <!-- Process Section -->
-  <section class="py-32 px-6 lg:px-8 bg-secondary">
+  <section class="py-32 px-6 lg:px-8 bg-gray-50 dark:bg-neutral-900 transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-20">
         <h2 class="text-heading-1 text-primary mb-8">
@@ -236,7 +233,7 @@ const faqItems = [
       
       <div class="space-y-8">
         {processSteps.map((step, index) => (
-          <div class="process-step bg-gray-200 dark:bg-gray-800 p-8 lg:p-12 rounded">
+          <div class="process-step bg-white dark:bg-neutral-800 p-8 lg:p-12 rounded-2xl border border-gray-200 dark:border-neutral-700 transition-colors duration-300">
             <div class="grid lg:grid-cols-12 gap-8 items-start">
               <!-- Left side - Number, Phase, Title -->
               <div class="lg:col-span-4">
@@ -285,14 +282,14 @@ const faqItems = [
   document.addEventListener('DOMContentLoaded', function() {
     const serviceCards = document.querySelectorAll('.service-card');
     
-    serviceCards.forEach(card => {
-      card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-2px)';
-        this.style.transition = 'transform 0.3s ease';
+    serviceCards.forEach((card) => {
+      card.addEventListener('mouseenter', () => {
+        (card as HTMLElement).style.transform = 'translateY(-2px)';
+        (card as HTMLElement).style.transition = 'transform 0.3s ease';
       });
       
-      card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
+      card.addEventListener('mouseleave', () => {
+        (card as HTMLElement).style.transform = 'translateY(0)';
       });
     });
   });
@@ -300,7 +297,7 @@ const faqItems = [
 
 <style>
   .services-hero {
-    background-color: #050505;
+    background-color: inherit;
   }
 
   .services-hero::before,

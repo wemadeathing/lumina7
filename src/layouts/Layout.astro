@@ -18,6 +18,7 @@ const socialImage = new URL(image, Astro.site);
 
 // Import design tokens
 import '../styles/design-tokens.css';
+import Header from '../components/Header.astro';
 ---
 
 <!doctype html>
@@ -110,6 +111,7 @@ import '../styles/design-tokens.css';
     <slot name="head" />
   </head>
   <body class="min-h-screen antialiased transition-colors duration-300 bg-white dark:bg-black text-gray-900 dark:text-gray-100">
+    <Header />
     <div id="main-content">
       <slot />
     </div>

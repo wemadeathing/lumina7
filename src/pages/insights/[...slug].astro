@@ -1,7 +1,6 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
 import CTA from '../../components/CTA.astro';
 import Footer from '../../components/Footer.astro';
 
@@ -64,18 +63,17 @@ const relatedPosts = allPosts
       "articleSection": post.data.category
     })}
   </script>
-  <Header />
   
   <!-- Hero Section -->
-  <section class="pt-24 pb-0 px-6 lg:px-8 bg-white">
+  <section class="pt-24 pb-0 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
     <div class="max-w-5xl mx-auto">
-      <span class="text-xs uppercase tracking-[0.5em] text-gray-500 block mb-10">
+      <span class="text-xs uppercase tracking-[0.5em] text-gray-500 dark:text-gray-400 block mb-10 transition-colors duration-300">
         {post.data.category}
       </span>
-      <h1 class="text-[3rem] md:text-[3.75rem] text-gray-900 leading-[1.08] font-medium mb-8">
+      <h1 class="text-[3rem] md:text-[3.75rem] text-gray-900 dark:text-gray-100 leading-[1.08] font-medium mb-8 transition-colors duration-300">
         {post.data.title}
       </h1>
-      <p class="text-xl md:text-2xl text-gray-600 leading-tight max-w-3xl mb-12">
+      <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 leading-tight max-w-3xl mb-12 transition-colors duration-300">
         {post.data.description}
       </p>
     </div>
@@ -83,45 +81,45 @@ const relatedPosts = allPosts
 
   <!-- Hero Image -->
   {post.data.heroImage && (
-    <section class="px-6 lg:px-8 bg-white mb-20">
+    <section class="px-6 lg:px-8 bg-white dark:bg-[#0a0a0a] mb-20 transition-colors duration-300">
       <div class="max-w-7xl mx-auto">
         <img 
           src={post.data.heroImage} 
           alt={post.data.title}
-          class="w-full h-[320px] md:h-[500px] lg:h-[620px] object-cover"
+          class="w-full h-[320px] md:h-[500px] lg:h-[620px] object-cover rounded-[4px]"
         />
       </div>
     </section>
   )}
 
   <!-- Article Content -->
-  <section class="py-24 px-6 lg:px-8 bg-white border-t border-gray-200">
+  <section class="py-24 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a] border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
     <div class="max-w-7xl mx-auto grid md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-16">
       <aside class="space-y-12 md:sticky md:top-32 self-start">
         <div>
-          <h2 class="text-xs font-semibold uppercase tracking-[0.35em] text-gray-500 mb-4">Author</h2>
-          <p class="text-gray-800 text-sm tracking-wide">{post.data.author}</p>
+          <h2 class="text-xs font-semibold uppercase tracking-[0.35em] text-gray-500 dark:text-gray-400 mb-4 transition-colors duration-300">Author</h2>
+          <p class="text-gray-800 dark:text-gray-300 text-sm tracking-wide transition-colors duration-300">{post.data.author}</p>
         </div>
         <div>
-          <h2 class="text-xs font-semibold uppercase tracking-[0.35em] text-gray-500 mb-4">Published</h2>
-          <p class="text-gray-800 text-sm tracking-wide">{formatDate(post.data.pubDate)}</p>
+          <h2 class="text-xs font-semibold uppercase tracking-[0.35em] text-gray-500 dark:text-gray-400 mb-4 transition-colors duration-300">Published</h2>
+          <p class="text-gray-800 dark:text-gray-300 text-sm tracking-wide transition-colors duration-300">{formatDate(post.data.pubDate)}</p>
         </div>
         <div>
-          <h2 class="text-xs font-semibold uppercase tracking-[0.35em] text-gray-500 mb-4">Read Time</h2>
-          <p class="text-gray-800 text-sm tracking-wide">{post.data.readTime}</p>
+          <h2 class="text-xs font-semibold uppercase tracking-[0.35em] text-gray-500 dark:text-gray-400 mb-4 transition-colors duration-300">Read Time</h2>
+          <p class="text-gray-800 dark:text-gray-300 text-sm tracking-wide transition-colors duration-300">{post.data.readTime}</p>
         </div>
         {post.data.tags && post.data.tags.length > 0 && (
           <div>
-            <h2 class="text-xs font-semibold uppercase tracking-[0.35em] text-gray-500 mb-4">Tags</h2>
+            <h2 class="text-xs font-semibold uppercase tracking-[0.35em] text-gray-500 dark:text-gray-400 mb-4 transition-colors duration-300">Tags</h2>
             <ul class="space-y-3">
               {post.data.tags.map(tag => (
-                <li class="text-gray-600 text-sm tracking-wide">{tag}</li>
+                <li class="text-gray-600 dark:text-gray-400 text-sm tracking-wide transition-colors duration-300">{tag}</li>
               ))}
             </ul>
           </div>
         )}
       </aside>
-      <article class="prose prose-lg prose-gray max-w-none leading-relaxed text-gray-700 space-y-8">
+      <article class="prose prose-lg prose-gray dark:prose-invert max-w-none leading-relaxed text-gray-700 dark:text-gray-300 space-y-8 transition-colors duration-300">
         <Content />
       </article>
     </div>
@@ -129,18 +127,18 @@ const relatedPosts = allPosts
 
   <!-- Related Posts -->
   {relatedPosts.length > 0 && (
-    <section class="py-24 px-6 lg:px-8 bg-gray-50">
+    <section class="py-24 px-6 lg:px-8 bg-gray-50 dark:bg-[#18181b] transition-colors duration-300">
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16">
-          <h2 class="text-3xl md:text-4xl font-medium mb-4 text-gray-900">Related Articles</h2>
-          <p class="text-lg text-gray-600 max-w-2xl mx-auto">Continue exploring insight-driven stories</p>
+          <h2 class="text-3xl md:text-4xl font-medium mb-4 text-gray-900 dark:text-gray-100 transition-colors duration-300">Related Articles</h2>
+          <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto transition-colors duration-300">Continue exploring insight-driven stories</p>
         </div>
         <div class="grid md:grid-cols-3 gap-10">
           {relatedPosts.map(relatedPost => (
-            <article class="group cursor-pointer border-t border-gray-200 pt-6">
+            <article class="group cursor-pointer border-t border-gray-200 dark:border-gray-800 pt-6 transition-colors duration-300">
               <a href={`/insights/${relatedPost.slug}`} class="block">
                 {relatedPost.data.heroImage && (
-                  <div class="mb-6 bg-gray-100 overflow-hidden">
+                  <div class="mb-6 bg-gray-100 dark:bg-gray-800 overflow-hidden rounded-[4px] transition-colors duration-300">
                     <img 
                       src={relatedPost.data.heroImage} 
                       alt={relatedPost.data.title}
@@ -149,16 +147,16 @@ const relatedPosts = allPosts
                   </div>
                 )}
                 <div class="space-y-3">
-                  <span class="text-xs uppercase tracking-[0.3em] text-gray-500 block">
+                  <span class="text-xs uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400 block transition-colors duration-300">
                     {relatedPost.data.category}
                   </span>
-                  <h3 class="text-xl font-medium text-gray-900 group-hover:text-gray-600 transition-colors">
+                  <h3 class="text-xl font-medium text-gray-900 dark:text-gray-100 group-hover:text-gray-600 dark:group-hover:text-gray-400 transition-colors">
                     {relatedPost.data.title}
                   </h3>
-                  <p class="text-sm text-gray-600 leading-relaxed line-clamp-3">
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3 transition-colors duration-300">
                     {relatedPost.data.description}
                   </p>
-                  <div class="text-sm text-gray-500 tracking-wide">
+                  <div class="text-sm text-gray-500 dark:text-gray-400 tracking-wide transition-colors duration-300">
                     {formatDate(relatedPost.data.pubDate)} • {relatedPost.data.readTime}
                   </div>
                 </div>
@@ -187,9 +185,22 @@ const relatedPosts = allPosts
     color: #374151;
   }
   
+  :global(.dark) .prose {
+    color: #d4d4d8;
+  }
+  
   .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
     color: #111827;
     font-weight: 600;
+  }
+  
+  :global(.dark) .prose h1, 
+  :global(.dark) .prose h2, 
+  :global(.dark) .prose h3, 
+  :global(.dark) .prose h4, 
+  :global(.dark) .prose h5, 
+  :global(.dark) .prose h6 {
+    color: #fafafa;
   }
   
   .prose h1 {
@@ -241,11 +252,19 @@ const relatedPosts = allPosts
     color: #111827;
   }
   
+  :global(.dark) .prose strong {
+    color: #fafafa;
+  }
+  
   .prose code {
     background-color: #f3f4f6;
     padding: 0.125rem 0.25rem;
     border-radius: 0.25rem;
     font-size: 0.875rem;
+  }
+  
+  :global(.dark) .prose code {
+    background-color: #27272a;
   }
   
   .prose blockquote {
@@ -254,5 +273,10 @@ const relatedPosts = allPosts
     margin: 1.5rem 0;
     font-style: italic;
     color: #6b7280;
+  }
+  
+  :global(.dark) .prose blockquote {
+    border-left-color: #3f3f46;
+    color: #a1a1aa;
   }
 </style>

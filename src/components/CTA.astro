@@ -1,30 +1,25 @@
 ---
 import Section from './Section.astro';
 ---
-<Section variant="dark" padding="lg" id="contact">
-  <div class="max-w-4xl mx-auto">
-    <!-- CTA Content -->
-    <div class="space-y-10">
+<Section variant="default" padding="lg" id="contact" class="border-t border-gray-200 dark:border-gray-800 !pb-24 md:!pb-32">
+  <div class="w-full">
+    <div class="w-full flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10">
       <div>
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight">
-          Let's work together <span class="text-gray-400">to build a brand that supports your business growth.</span>
+        <h2 class="text-heading-2 md:text-heading-1 text-gray-900 dark:text-white leading-tight max-w-2xl">
+          Ready to get started? Let's talk.
         </h2>
       </div>
-      
-      <div class="border-t border-gray-700 pt-10">
-        <div class="flex items-end justify-between">
-          <div class="text-caption text-gray-500 leading-tight">
-            WE RESPOND WITHIN<br />24 HOURS
-          </div>
-          
-          <a 
-            href="/contact" 
-            class="inline-flex items-center text-white text-xl font-medium hover:text-gray-300 group"
-          >
-            <span>Let's talk</span>
-            <span class="ml-4 group-hover:translate-x-1 transition-transform">→</span>
-          </a>
-        </div>
+      <div class="border-t lg:border-t-0 lg:border-l border-gray-200 dark:border-gray-800 pt-10 lg:pt-0 lg:pl-10 w-full lg:max-w-md">
+        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+          Tell us what you need and we'll come back to you within a few hours — usually on WhatsApp. No long forms, no commitment.
+        </p>
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-gray-900 dark:bg-white dark:text-gray-900 rounded-full hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors duration-200 group"
+        >
+          <span>Get in Touch</span>
+          <span class="group-hover:translate-x-0.5 transition-transform duration-200">+</span>
+        </a>
       </div>
     </div>
   </div>

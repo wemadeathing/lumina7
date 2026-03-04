@@ -25,16 +25,16 @@ const {
 const baseClasses = 'inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
 
 const variants = {
-  primary: 'bg-gray-900 text-white hover:bg-gray-800 focus:ring-gray-500',
-  secondary: 'bg-gray-100 text-gray-900 hover:bg-gray-200 focus:ring-gray-500',
-  outline: 'border border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-gray-500',
-  ghost: 'text-gray-700 hover:bg-gray-100 focus:ring-gray-500'
+  primary: 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-500 hover:to-purple-500 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 focus:ring-purple-500 border-transparent relative overflow-hidden group',
+  secondary: 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 focus:ring-gray-500 relative overflow-hidden group',
+  outline: 'border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 focus:ring-gray-500 relative overflow-hidden group',
+  ghost: 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:ring-gray-500 relative overflow-hidden group'
 };
 
 const sizes = {
-  sm: 'px-3 py-2 text-sm rounded',
-  md: 'px-6 py-3 text-sm rounded',
-  lg: 'px-8 py-4 text-base rounded-lg'
+  sm: 'px-3 py-2 text-sm rounded-full',
+  md: 'px-6 py-3 text-sm rounded-full',
+  lg: 'px-8 py-4 text-base rounded-full'
 };
 
 const classes = `${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`;
@@ -51,5 +51,12 @@ const Element = href ? 'a' : 'button';
   rel={rel}
   {...rest}
 >
-  <slot />
+  <!-- Hover Glow Effect (Only for non-primary) -->
+  {variant !== 'primary' && (
+    <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></span>
+  )}
+  
+  <span class="relative z-10 flex items-center justify-center gap-2">
+    <slot />
+  </span>
 </Element>

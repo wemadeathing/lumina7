@@ -1,0 +1,55 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('portfolio'))
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<Layout
+  title="Work | Lumina7 - Portfolio & Case Studies"
+  description="Explore our portfolio of brand identity, web design, and digital projects for South African businesses."
+>
+  <section class="pt-20 pb-12 px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300">
+    <div class="max-w-[1400px] mx-auto">
+      <h1 class="text-heading-1 text-gray-900 dark:text-white mb-8 transition-colors duration-300">Our Work</h1>
+      <p class="text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed text-lg">Brand identity, websites, print, and signage — built for South African businesses.</p>
+    </div>
+  </section>
+
+  <section class="py-12 px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-10">
+        {projects.map((project) => (
+          <a href={`/work/${project.slug}`} class="group block">
+            <div class="aspect-[4/3] bg-gray-200 dark:bg-gray-800 overflow-hidden mb-4 rounded-2xl">
+              <img
+                src={project.data.heroImage}
+                alt={project.data.title}
+                class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
+              />
+            </div>
+            <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 mt-3">
+              <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400">{project.data.category}</span>
+              <span class="text-xs text-gray-400 dark:text-gray-500">{project.data.year}</span>
+            </div>
+            <h2 class="text-xl font-medium text-gray-900 dark:text-white mt-2 group-hover:text-gray-600 dark:group-hover:text-gray-400 transition-colors duration-300">
+              {project.data.company}
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 mt-1 text-sm leading-relaxed">
+              {project.data.title}
+            </p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              {project.data.services.slice(0, 3).map((service) => (
+                <span class="text-xs text-gray-500 dark:text-gray-400">{service}</span>
+              ))}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

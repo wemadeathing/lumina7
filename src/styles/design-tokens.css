@@ -1,34 +1,34 @@
-/* Design Tokens for Lumina7 */
+/* Design Tokens for Lumina7 - Becklyn-inspired minimal design system */
 
 :root {
-  /* Core Brand Colors */
-  --color-brand-dark: #18181b;
+  /* Core Brand Colors - Minimal monochrome palette */
+  --color-brand-dark: #0a0a0a;
   --color-brand-light: #fafafa;
-  --color-accent: #2563eb;
+  --color-accent: #0a0a0a;
   
   /* Semantic Colors - Light Mode */
   --bg-primary: #ffffff;
   --bg-secondary: #fafafa;
-  --bg-tertiary: #f4f4f5;
+  --bg-tertiary: #f5f5f5;
   --bg-elevated: #ffffff;
   --bg-overlay: rgba(0, 0, 0, 0.5);
   
-  --text-primary: #18181b;
-  --text-secondary: #52525b;
-  --text-tertiary: #71717a;
+  --text-primary: #0a0a0a;
+  --text-secondary: #525252;
+  --text-tertiary: #737373;
   --text-inverse: #ffffff;
   
-  --border-primary: #e4e4e7;
-  --border-secondary: #f4f4f5;
-  --border-hover: #d4d4d8;
+  --border-primary: #e5e5e5;
+  --border-secondary: #f5f5f5;
+  --border-hover: #d4d4d4;
   
   --surface-base: #ffffff;
   --surface-raised: #fafafa;
   --surface-overlay: #ffffff;
   
-  /* Typography */
-  --font-family-sans: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-family-serif: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
+  /* Typography - Becklyn-style geometric sans-serif */
+  --font-family-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-serif: 'Plus Jakarta Sans', Georgia, sans-serif;
   
   /* Font Sizes */
   --text-xs: 0.75rem;
@@ -105,27 +105,44 @@
 /* Dark Mode Colors */
 html.dark {
   --bg-primary: #0a0a0a;
-  --bg-secondary: #18181b;
-  --bg-tertiary: #27272a;
-  --bg-elevated: #18181b;
+  --bg-secondary: #141414;
+  --bg-tertiary: #1a1a1a;
+  --bg-elevated: #141414;
   --bg-overlay: rgba(0, 0, 0, 0.8);
   
   --text-primary: #fafafa;
-  --text-secondary: #d4d4d8;
-  --text-tertiary: #a1a1aa;
+  --text-secondary: #a3a3a3;
+  --text-tertiary: #737373;
   --text-inverse: #0a0a0a;
   
-  --border-primary: #27272a;
-  --border-secondary: #18181b;
-  --border-hover: #3f3f46;
+  --border-primary: #262626;
+  --border-secondary: #1a1a1a;
+  --border-hover: #404040;
   
   --surface-base: #0a0a0a;
-  --surface-raised: #18181b;
-  --surface-overlay: #27272a;
+  --surface-raised: #141414;
+  --surface-overlay: #262626;
   
-  /* Adjust accent for better dark mode visibility */
-  --color-accent: #3b82f6;
+  --color-accent: #fafafa;
 }
+
+/* Twingate-style utilities */
+.noise-overlay {
+  position: relative;
+}
+.noise-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/assets/textures/noise.svg");
+  background-repeat: repeat;
+  background-size: 64px 64px;
+  opacity: 0.10;
+  border-radius: inherit;
+}
+
+/* Becklyn: minimal - no conic gradient */
 
 /* Base Styles */
 * {
@@ -138,6 +155,7 @@ html {
   -webkit-text-size-adjust: 100%;
   -moz-tab-size: 4;
   tab-size: 4;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -148,21 +166,21 @@ body {
 
 /* Utility Classes */
 
-/* Typography Hierarchy */
+/* Typography Hierarchy - Becklyn-style large display, tight tracking */
 .text-display {
-  @apply text-4xl md:text-5xl lg:text-6xl font-medium leading-tight tracking-tight;
+  @apply text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[0.9] tracking-[-0.04em];
 }
 
 .text-heading-1 {
-  @apply text-3xl md:text-4xl lg:text-5xl font-medium leading-tight tracking-tight;
+  @apply text-3xl md:text-4xl lg:text-5xl font-medium leading-[1.05] tracking-[-0.03em];
 }
 
 .text-heading-2 {
-  @apply text-2xl md:text-3xl font-medium leading-tight;
+  @apply text-2xl md:text-3xl font-medium leading-tight tracking-[-0.02em];
 }
 
 .text-heading-3 {
-  @apply text-xl md:text-2xl font-medium leading-tight;
+  @apply text-xl md:text-2xl font-medium leading-tight tracking-[-0.02em];
 }
 
 .text-body-lg {
@@ -279,6 +297,55 @@ a, button {
 .focus-ring:focus {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
+}
+
+/* Focus visible for keyboard navigation */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Entrance animations - respect reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+  .animate-fade-in-up-delay-1 { animation: fade-in-up 0.6s ease-out 0.1s forwards; opacity: 0; }
+  .animate-fade-in-up-delay-2 { animation: fade-in-up 0.6s ease-out 0.2s forwards; opacity: 0; }
+  .animate-fade-in-up-delay-3 { animation: fade-in-up 0.6s ease-out 0.3s forwards; opacity: 0; }
+  .animate-fade-in-up-delay-4 { animation: fade-in-up 0.6s ease-out 0.4s forwards; opacity: 0; }
+}
+
+/* Link underline slide - Becklyn style */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 /* Component Base Classes */

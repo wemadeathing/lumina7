@@ -1,0 +1,107 @@
+---
+const pricingTiers = [
+  {
+    name: "Brand Sprint",
+    price: "R45,000",
+    description: "Your complete brand identity in 2 weeks",
+    features: [
+      "Logo system & guidelines",
+      "Typography & color palette",
+      "5 brand application mockups",
+      "2 design directions"
+    ],
+    highlight: false
+  },
+  {
+    name: "Website Sprint",
+    price: "R40,000",
+    description: "AI-optimized website in 2 weeks",
+    features: [
+      "5-7 page responsive site",
+      "AI & SEO optimization",
+      "Mobile responsive",
+      "1-hour training session"
+    ],
+    highlight: false
+  },
+  {
+    name: "Launch Package",
+    price: "R75,000",
+    description: "Brand + Website sequentially",
+    features: [
+      "Everything in Brand Sprint",
+      "Everything in Website Sprint",
+      "Integrated strategy",
+      "Priority scheduling"
+    ],
+    highlight: true
+  }
+];
+---
+
+<section class="py-20 px-6 lg:px-8 bg-white dark:bg-black border-t border-gray-200 dark:border-gray-900 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-12 flex flex-col justify-center items-center text-center overflow-hidden">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 dark:text-white mb-4 text-center">
+        Simple, transparent pricing
+      </h2>
+      <p class="text-gray-600 dark:text-gray-400 text-lg max-w-2xl text-center w-full">
+        No hidden fees. No hourly billing surprises. Just fixed prices for fixed scopes.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 relative">
+      <!-- Ambient Glow Behind Cards -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl max-h-[500px] bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 blur-[100px] opacity-0 dark:opacity-100 -z-10 pointer-events-none rounded-full"></div>
+
+      {pricingTiers.map((tier) => (
+        <div class={`relative p-8 rounded-3xl border transition-all duration-300 flex flex-col group overflow-hidden ${
+          tier.highlight 
+            ? 'bg-gray-900 dark:bg-gray-900/90 border-gray-900 dark:border-gray-700 hover:bg-gray-800 dark:hover:bg-gray-800 shadow-xl' 
+            : 'bg-white/60 dark:bg-gray-900/30 backdrop-blur-md border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 hover:shadow-lg'
+        }`}>
+          {tier.highlight && (
+            <div class="absolute top-6 right-6 px-3 py-1 bg-white text-black text-[11px] font-medium uppercase tracking-wider rounded-full">
+              Best Value
+            </div>
+          )}
+          
+          <div class="mb-8">
+            <h3 class={`text-xl font-medium mb-2 relative z-10 ${tier.highlight ? 'text-white' : 'text-gray-900 dark:text-white'}`}>{tier.name}</h3>
+            <p class={`text-sm mb-6 relative z-10 ${tier.highlight ? 'text-gray-400' : 'text-gray-500 dark:text-gray-400'}`}>
+              {tier.description}
+            </p>
+            <div class={`text-3xl font-medium relative z-10 ${tier.highlight ? 'text-white' : 'text-gray-900 dark:text-white'}`}>{tier.price}</div>
+          </div>
+
+          <ul class="space-y-4 mb-8 flex-1 relative z-10">
+            {tier.features.map((feature) => (
+              <li class="flex items-start text-sm">
+                <svg class={`w-5 h-5 mr-3 flex-shrink-0 ${tier.highlight ? 'text-white' : 'text-gray-400 dark:text-gray-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class={tier.highlight ? 'text-gray-300' : 'text-gray-600 dark:text-gray-300'}>{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a 
+            href="/book" 
+            class={`block w-full py-3 text-center font-medium text-sm rounded-full transition-colors relative z-10 ${
+              tier.highlight 
+                ? 'bg-white text-black hover:bg-gray-100' 
+                : 'bg-gray-900 dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200'
+            }`}
+          >
+            Book Discovery Call
+          </a>
+        </div>
+      ))}
+    </div>
+    
+    <div class="mt-8 text-center text-sm text-gray-500 dark:text-gray-500">
+      Custom scopes available. Book a discovery call to discuss your specific needs.
+    </div>
+  </div>
+</section>
+

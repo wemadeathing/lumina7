@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FAQ from '../components/FAQ.astro';
 
@@ -80,10 +79,9 @@ const faqItems = [
       ]
     })}
   </script>
-  <Header />
   
   <!-- Hero Section with Image -->
-  <section class="pt-24 pb-20 px-6 lg:px-8 bg-white">
+  <section class="pt-24 pb-20 px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
       <div class="grid lg:grid-cols-2 gap-16 items-start">
         
@@ -91,10 +89,10 @@ const faqItems = [
         <div class="space-y-16">
           <!-- Hero Content -->
           <div>
-            <h1 class="text-4xl md:text-6xl font-medium text-gray-900 mb-8 leading-tight mt-8">
+            <h1 class="text-4xl md:text-6xl font-medium text-gray-900 dark:text-white mb-8 leading-tight mt-8 tracking-tight transition-colors duration-300" style="letter-spacing: -0.05rem;">
               Let's Talk
             </h1>
-            <p class="text-lg text-gray-600 leading-relaxed mb-16">
+            <p class="text-lg text-gray-600 dark:text-neutral-400 leading-relaxed mb-16 transition-colors">
               We'd love to learn more about you and what we can design and build together.
             </p>
           </div>
@@ -103,15 +101,15 @@ const faqItems = [
           <div class="space-y-12">
             <!-- Email -->
             <div class="space-y-4">
-              <h2 class="text-lg text-gray-500 font-medium">
+              <h2 class="text-lg text-gray-500 dark:text-neutral-500 font-medium">
                 Send us an email
               </h2>
-              <p class="text-sm text-gray-600 leading-relaxed">
+              <p class="text-sm text-gray-600 dark:text-neutral-400 leading-relaxed">
                 For detailed inquiries or project briefs. We typically respond within 24 hours.
               </p>
               <a 
                 href="mailto:hello@lumina7.co.za" 
-                class="block text-xl text-gray-900 hover:text-gray-600 transition-colors font-medium underline"
+                class="block text-xl text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-neutral-300 transition-colors font-medium underline"
               >
                 hello@lumina7.co.za
               </a>
@@ -119,17 +117,17 @@ const faqItems = [
 
             <!-- WhatsApp -->
             <div class="space-y-4">
-              <h2 class="text-lg text-gray-500 font-medium">
+              <h2 class="text-lg text-gray-500 dark:text-neutral-500 font-medium">
                 Chat via WhatsApp
               </h2>
-              <p class="text-sm text-gray-600 leading-relaxed">
+              <p class="text-sm text-gray-600 dark:text-neutral-400 leading-relaxed">
                 For quick questions or to get started immediately. We typically respond within 2 hours during business hours.
               </p>
               <a 
                 href="https://wa.me/27814623628" 
                 target="_blank"
                 rel="noopener noreferrer"
-                class="block text-xl text-gray-900 hover:text-gray-600 transition-colors font-medium underline"
+                class="block text-xl text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-neutral-300 transition-colors font-medium underline"
               >
                 +27 81 462 3628
               </a>
@@ -138,7 +136,7 @@ const faqItems = [
         </div>
 
         <!-- Right side - Office Image -->
-        <div class="aspect-square bg-gray-100 overflow-hidden">
+        <div class="aspect-square bg-gray-100 dark:bg-neutral-900 overflow-hidden rounded-2xl">
           <img 
             src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=800&fit=crop&auto=format" 
             alt="Modern design studio office workspace in Cape Town, South Africa"
@@ -151,14 +149,14 @@ const faqItems = [
   </section>
 
   <!-- Business Hours & Location Section -->
-  <section class="py-20 px-6 lg:px-8 bg-gray-50">
+  <section class="py-20 px-6 lg:px-8 bg-gray-50 dark:bg-neutral-900 transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
         
         <!-- Business Hours -->
         <div class="space-y-4">
-          <h3 class="text-xl font-medium text-gray-900">Our Hours</h3>
-          <div class="text-gray-600 space-y-2">
+          <h3 class="text-xl font-medium text-gray-900 dark:text-white transition-colors">Our Hours</h3>
+          <div class="text-gray-600 dark:text-neutral-400 space-y-2 transition-colors">
             <p>Monday - Friday</p>
             <p class="font-medium">9:00 AM - 5:00 PM SAST</p>
             <p class="text-sm">Saturday - Sunday: Closed</p>
@@ -167,8 +165,8 @@ const faqItems = [
 
         <!-- Response Times -->
         <div class="space-y-4">
-          <h3 class="text-xl font-medium text-gray-900">Response Times</h3>
-          <div class="text-gray-600 space-y-2">
+          <h3 class="text-xl font-medium text-gray-900 dark:text-white transition-colors">Response Times</h3>
+          <div class="text-gray-600 dark:text-neutral-400 space-y-2 transition-colors">
             <p>WhatsApp: 2 hours</p>
             <p>Email: 24 hours</p>
             <p class="text-sm text-gray-500">(during business hours)</p>
@@ -177,8 +175,8 @@ const faqItems = [
 
         <!-- Location -->
         <div class="space-y-4">
-          <h3 class="text-xl font-medium text-gray-900">Where we are</h3>
-          <div class="text-gray-600 space-y-2">
+          <h3 class="text-xl font-medium text-gray-900 dark:text-white transition-colors">Where we are</h3>
+          <div class="text-gray-600 dark:text-neutral-400 space-y-2 transition-colors">
             <p>Cape Town, South Africa</p>
             <p class="text-sm text-gray-500">We serve South African businesses and work with international clients</p>
           </div>
@@ -192,9 +190,9 @@ const faqItems = [
   <FAQ faqItems={faqItems} />
 
   <!-- Privacy Note -->
-  <section class="py-12 px-6 lg:px-8 bg-white border-t border-gray-100">
+  <section class="py-12 px-6 lg:px-8 bg-white dark:bg-black border-t border-gray-100 dark:border-neutral-800 transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
-      <p class="text-sm text-gray-500 text-center max-w-3xl mx-auto">
+      <p class="text-sm text-gray-500 dark:text-neutral-500 text-center max-w-3xl mx-auto">
         We respect your privacy. Your information will only be used to contact you about your potential project. We comply with POPIA (Protection of Personal Information Act).
       </p>
     </div>

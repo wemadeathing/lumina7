@@ -10,70 +10,44 @@ export interface Props {
 const { faqItems } = Astro.props;
 ---
 
-<!-- FAQ Section -->
-<section class="py-32 px-6 lg:px-8 bg-white">
-  <div class="max-w-7xl mx-auto">
-    <div class="grid lg:grid-cols-12 gap-16">
-      <!-- Left side - FAQ Title -->
-      <div class="lg:col-span-4">
-        <h2 class="text-4xl md:text-5xl font-medium text-black leading-tight">
-          FAQ:<br />
-          <span class="text-gray-400">frequently asked questions</span>
-        </h2>
-      </div>
+<!-- FAQ Section - Becklyn minimal -->
+<section class="pt-20 md:pt-28 pb-24 md:pb-36 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a] transition-colors duration-300 border-t border-gray-200 dark:border-gray-800" id="faq">
+  <div class="max-w-[1400px] mx-auto">
+    <div class="mb-16">
+      <h2 class="text-heading-2 text-gray-900 dark:text-white max-w-2xl">
+        Frequently Asked Questions
+      </h2>
+    </div>
       
-      <!-- Right side - FAQ Items -->
-      <div class="lg:col-span-8">
-        <div class="space-y-0">
-          {faqItems.map((item, index) => (
-            <div class="faq-item border-b border-gray-200 last:border-b-0 opacity-0" data-faq={index} style={`animation-delay: ${index * 0.1}s`}>
-              <button class="faq-trigger w-full text-left py-8 hover:bg-gray-50 transition-all duration-300 group active:scale-[0.99]">
-                <div class="flex items-start justify-between gap-8">
-                  <div class="flex items-start gap-6">
-                    <span class="text-sm font-medium text-gray-400 mt-1 min-w-[2rem] transition-colors duration-300 group-hover:text-gray-600">{item.number}</span>
-                    <h3 class="text-xl md:text-2xl font-medium text-black group-hover:text-gray-600 transition-colors duration-300 leading-tight">
-                      {item.question}
-                    </h3>
-                  </div>
-                  <span class="faq-icon text-2xl text-gray-400 group-hover:text-gray-600 transition-all duration-300 min-w-[3rem] text-center inline-block transform origin-center">+</span>
-                </div>
-              </button>
-              
-              <div class="faq-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
-                <div class="ml-14 pb-8 opacity-0 transition-opacity duration-300 delay-150">
-                  <p class="text-gray-600 leading-relaxed">
-                    {item.answer}
-                  </p>
-                </div>
-              </div>
+    <div class="space-y-0 max-w-4xl mx-auto">
+      {faqItems.map((item, index) => (
+        <div class="faq-item border-b border-gray-200 dark:border-gray-800 last:border-b-0" data-faq={index}>
+          <button class="faq-trigger w-full text-left py-6 group">
+            <div class="flex items-center justify-between gap-8">
+              <h3 class="text-lg font-medium text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-400 transition-colors">
+                {item.question}
+              </h3>
+              <span class="faq-icon text-xl text-gray-400 dark:text-gray-500 group-hover:text-gray-900 dark:group-hover:text-white transition-all duration-300 transform origin-center">+</span>
             </div>
-          ))}
+          </button>
+          
+          <div class="faq-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+            <div class="pb-6 opacity-0 transition-opacity duration-300 delay-150">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                {item.answer}
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
+      ))}
     </div>
   </div>
 </section>
 
 <style>
-  /* Staggered fade-in animation for FAQ items */
-  .faq-item {
-    animation: fadeInUp 0.6s ease-out forwards;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
   /* Active state for open FAQ items */
   .faq-item.is-open .faq-content {
-    max-height: 1000px;
+    max-height: 500px;
   }
 
   .faq-item.is-open .faq-content > div {
@@ -83,78 +57,54 @@ const { faqItems } = Astro.props;
   .faq-item.is-open .faq-icon {
     transform: rotate(45deg);
   }
-
-  /* Smooth hover scale effect */
-  .faq-trigger:hover {
-    transform: translateX(4px);
-  }
-
-  .faq-trigger:active {
-    transform: translateX(4px) scale(0.99);
-  }
 </style>
 
 <script>
-  // FAQ Accordion functionality with smooth animations
-  document.addEventListener('DOMContentLoaded', function() {
-    const faqTriggers = document.querySelectorAll('.faq-trigger');
-    
+  function initFAQ() {
+    const faqTriggers = document.querySelectorAll<HTMLButtonElement>('.faq-trigger');
     faqTriggers.forEach(trigger => {
-      trigger.addEventListener('click', function() {
-        const faqItem = this.closest('.faq-item');
-        const content = faqItem.querySelector('.faq-content');
-        const icon = faqItem.querySelector('.faq-icon');
+      trigger.addEventListener('click', () => {
+        const faqItem = trigger.closest('.faq-item');
+        const content = faqItem?.querySelector<HTMLElement>('.faq-content');
+        if (!faqItem || !content) return;
         const isOpen = faqItem.classList.contains('is-open');
-        
-        // Close all other FAQ items with animation
         faqTriggers.forEach(otherTrigger => {
           if (otherTrigger !== trigger) {
             const otherItem = otherTrigger.closest('.faq-item');
-            const otherContent = otherItem.querySelector('.faq-content');
-            const otherIcon = otherItem.querySelector('.faq-icon');
-            
-            if (otherItem.classList.contains('is-open')) {
+            const otherContent = otherItem?.querySelector<HTMLElement>('.faq-content');
+            if (otherItem?.classList.contains('is-open') && otherContent) {
               otherItem.classList.remove('is-open');
               otherContent.style.maxHeight = '0';
               setTimeout(() => {
-                otherContent.querySelector('div').style.opacity = '0';
+                const innerDiv = otherContent.querySelector<HTMLElement>('div');
+                if (innerDiv) innerDiv.style.opacity = '0';
               }, 50);
-              otherIcon.textContent = '+';
-              otherIcon.style.transform = 'rotate(0deg)';
             }
           }
         });
-        
-        // Toggle current FAQ item
         if (isOpen) {
-          // Close
           faqItem.classList.remove('is-open');
           content.style.maxHeight = '0';
           setTimeout(() => {
-            content.querySelector('div').style.opacity = '0';
+            const innerDiv = content.querySelector<HTMLElement>('div');
+            if (innerDiv) innerDiv.style.opacity = '0';
           }, 50);
-          icon.textContent = '+';
-          icon.style.transform = 'rotate(0deg)';
         } else {
-          // Open
           faqItem.classList.add('is-open');
           const contentHeight = content.scrollHeight;
           content.style.maxHeight = contentHeight + 'px';
           setTimeout(() => {
-            content.querySelector('div').style.opacity = '1';
+            const innerDiv = content.querySelector<HTMLElement>('div');
+            if (innerDiv) innerDiv.style.opacity = '1';
           }, 150);
-          icon.textContent = '+';
-          icon.style.transform = 'rotate(45deg)';
-        }
-      });
-
-      // Add keyboard support
-      trigger.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          this.click();
         }
       });
     });
-  });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFAQ);
+  } else {
+    initFAQ();
+  }
+  document.addEventListener('astro:page-load', initFAQ);
 </script>

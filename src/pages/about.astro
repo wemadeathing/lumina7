@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CTA from '../components/CTA.astro';
 
@@ -87,13 +86,11 @@ const capabilities = [
   title="About Lumina7 | Innovation-Powered Design Studio"
   description="Learn about Lumina7's innovation and speed approach. We combine AI-augmented workflows with strategic expertise to deliver breakthrough brand experiences at the speed of light."
 >
-  <Header />
-  
   <!-- Hero Section -->
-  <section class="pt-24 pb-20 px-6 lg:px-8 bg-white">
+  <section class="pt-24 pb-20 px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
       <div class="max-w-3xl">
-        <h1 class="text-4xl md:text-6xl font-medium text-gray-900 mb-8 leading-tight mt-8">
+        <h1 class="text-4xl md:text-6xl font-medium text-gray-900 dark:text-white mb-8 leading-tight mt-8 tracking-tight transition-colors duration-300" style="letter-spacing: -0.05rem;">
           Innovation-powered design studio operating at the speed of light
         </h1>
       </div>
@@ -101,9 +98,9 @@ const capabilities = [
   </section>
 
   <!-- Team Image Section -->
-  <section class="px-6 lg:px-8 bg-white">
+  <section class="px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
-      <div class="aspect-[21/9] bg-gray-100 overflow-hidden mb-16">
+      <div class="aspect-[21/9] bg-gray-100 dark:bg-neutral-900 overflow-hidden mb-16 rounded-2xl">
         <img 
           src="/assets/images/hero.png" 
           alt="Lumina7 design studio workspace in Cape Town, South Africa"
@@ -115,16 +112,16 @@ const capabilities = [
       <div class="grid lg:grid-cols-2 gap-16 mb-20">
         <div class="space-y-8">
           <div>
-            <div class="text-4xl font-bold text-gray-900 mb-2">Cape Town</div>
-            <div class="text-lg text-gray-600">Headquarters</div>
+            <div class="text-4xl font-bold text-gray-900 dark:text-white mb-2 transition-colors">Cape Town</div>
+            <div class="text-lg text-gray-600 dark:text-neutral-400 transition-colors">Headquarters</div>
           </div>
         </div>
         
         <div class="space-y-6">
-          <p class="text-lg text-gray-600 leading-relaxed">
+          <p class="text-lg text-gray-600 dark:text-neutral-400 leading-relaxed transition-colors">
             Lumina7 is an innovation-powered design studio that operates at the speed of light. We help ambitious businesses compete through professional brand experiences—delivered faster than traditional agencies through AI-augmented workflows.
           </p>
-          <p class="text-lg text-gray-600 leading-relaxed">
+          <p class="text-lg text-gray-600 dark:text-neutral-400 leading-relaxed transition-colors">
             Our name reflects our approach: Lumina (light) represents both illumination and speed—we bring clarity and rapid execution to every project. By combining breakthrough thinking with expert insight, we deliver professional results without the traditional timeline.
           </p>
         </div>
@@ -133,15 +130,15 @@ const capabilities = [
   </section>
 
   <!-- Why Lumina7 Section -->
-  <section class="py-20 px-6 lg:px-8 bg-white">
+  <section class="py-20 px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-medium text-gray-900 mb-16">Why Lumina7</h2>
+      <h2 class="text-3xl md:text-4xl font-medium text-gray-900 dark:text-white mb-16 transition-colors">Why Lumina7</h2>
       
       <div class="space-y-20">
         {whyLumina7.map((item, index) => (
           <div class="grid lg:grid-cols-2 gap-16 items-center">
             <div class={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-              <div class="aspect-[4/3] bg-gray-100 overflow-hidden">
+              <div class="aspect-[4/3] bg-gray-100 dark:bg-neutral-900 overflow-hidden rounded-2xl">
                 <img 
                   src={item.image} 
                   alt={item.title}
@@ -152,10 +149,10 @@ const capabilities = [
             
             <div class={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
               <div class="flex items-start gap-6 mb-6">
-                <span class="text-sm text-gray-500 font-medium mt-1">{item.number}</span>
+                <span class="text-sm text-gray-500 dark:text-neutral-500 font-medium mt-1">{item.number}</span>
                 <div>
-                  <h3 class="text-2xl font-medium text-gray-900 mb-4">{item.title}</h3>
-                  <p class="text-gray-600 leading-relaxed">{item.description}</p>
+                  <h3 class="text-2xl font-medium text-gray-900 dark:text-white mb-4 transition-colors">{item.title}</h3>
+                  <p class="text-gray-600 dark:text-neutral-400 leading-relaxed transition-colors">{item.description}</p>
                 </div>
               </div>
             </div>
@@ -166,17 +163,17 @@ const capabilities = [
   </section>
 
   <!-- Capabilities Section -->
-  <section class="py-20 px-6 lg:px-8 bg-gray-50">
+  <section class="py-20 px-6 lg:px-8 bg-gray-50 dark:bg-neutral-900 transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-medium text-gray-900 mb-16">Capabilities</h2>
+      <h2 class="text-3xl md:text-4xl font-medium text-gray-900 dark:text-white mb-16 transition-colors">Capabilities</h2>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
         {capabilities.map(capability => (
           <div class="space-y-6">
-            <h3 class="text-xl font-medium text-gray-900">{capability.category}</h3>
+            <h3 class="text-xl font-medium text-gray-900 dark:text-white transition-colors">{capability.category}</h3>
             <ul class="space-y-3">
               {capability.services.map(service => (
-                <li class="text-gray-600 leading-relaxed">{service}</li>
+                <li class="text-gray-600 dark:text-neutral-400 leading-relaxed transition-colors">{service}</li>
               ))}
             </ul>
           </div>
