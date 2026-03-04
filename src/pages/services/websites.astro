@@ -1,0 +1,121 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/Footer.astro';
+import WhatsAppButton from '../../components/WhatsAppButton.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('portfolio'))
+  .filter(p => p.data.services.some(s => /web|website|ui|digital/i.test(s)))
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+
+const included = [
+  'Custom design (mobile-first)',
+  'Up to 8 pages (additional pages quoted)',
+  'Contact form and WhatsApp integration',
+  'Basic SEO setup',
+  'Google Analytics',
+  'Hosting guidance and handover',
+  '30 days of post-launch support'
+];
+
+const steps = [
+  { title: 'Brief & structure', body: "We define the pages you need, key messages, and what you want visitors to do. We agree on a sitemap and timeline." },
+  { title: 'Design & build', body: "We design the look and feel, then build it. You review at key stages and give feedback. We iterate until it's right." },
+  { title: 'Launch & handover', body: "We go live, connect your domain, and hand over everything. You get 30 days of post-launch support for tweaks." }
+];
+
+const faqs = [
+  { q: "How much does a website cost?", a: "Our websites start from R8,000 for a professional 5-page brochure site. Custom or e-commerce sites are quoted based on scope. We always provide a fixed quote before starting — no surprises." },
+  { q: "Do I own my website after the project?", a: "Yes. All intellectual property transfers to you in full once final payment is received. You own the code, design files, and everything we create." }
+];
+---
+
+<Layout 
+  title="Website Design & Development | Lumina7 Cape Town"
+  description="Professional websites that look great, load fast, and work on any device. From R8,000. Fixed quotes."
+>
+  <section class="pt-24 pb-20 px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300">
+    <div class="max-w-3xl">
+      <h1 class="text-4xl md:text-5xl font-medium text-gray-900 dark:text-white mb-6 leading-tight tracking-tight">
+        Website Design & Development
+      </h1>
+      <p class="text-lg text-gray-600 dark:text-neutral-400 mb-8">
+        Professional websites that look great, load fast, and turn visitors into enquiries.
+      </p>
+      <WhatsAppButton label="Get a quote" />
+    </div>
+  </section>
+
+  <section class="py-16 px-6 lg:px-8 bg-gray-50 dark:bg-neutral-900 transition-colors duration-300">
+    <div class="max-w-3xl">
+      <h2 class="text-2xl font-medium text-gray-900 dark:text-white mb-6">What's included</h2>
+      <ul class="space-y-3">
+        {included.map((item) => (
+          <li class="flex items-start gap-3 text-gray-600 dark:text-neutral-400">
+            <span class="w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-neutral-500 mt-2 flex-shrink-0"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="py-16 px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300">
+    <div class="max-w-3xl">
+      <h2 class="text-2xl font-medium text-gray-900 dark:text-white mb-8">How it works</h2>
+      <div class="space-y-8">
+        {steps.map((step, i) => (
+          <div>
+            <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">Step {i + 1}: {step.title}</h3>
+            <p class="text-gray-600 dark:text-neutral-400">{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {projects.length > 0 && (
+    <section class="py-16 px-6 lg:px-8 bg-gray-50 dark:bg-neutral-900 transition-colors duration-300">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-2xl font-medium text-gray-900 dark:text-white mb-8">Recent work</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project) => (
+            <a href={`/work/${project.slug}`} class="group block rounded-2xl overflow-hidden bg-white dark:bg-neutral-800">
+              <div class="aspect-[4/3] overflow-hidden">
+                <img src={project.data.heroImage} alt={project.data.title} class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" loading="lazy" />
+              </div>
+              <div class="p-4">
+                <h3 class="font-medium text-gray-900 dark:text-white">{project.data.company}</h3>
+                <p class="text-sm text-gray-600 dark:text-neutral-400">{project.data.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="py-16 px-6 lg:px-8 bg-white dark:bg-black border-t border-gray-200 dark:border-neutral-800 transition-colors duration-300">
+    <div class="max-w-3xl">
+      <p class="text-xl font-medium text-gray-900 dark:text-white mb-6">Starting from R8,000</p>
+      <div class="space-y-6">
+        {faqs.map((faq) => (
+          <div>
+            <h3 class="font-medium text-gray-900 dark:text-white mb-2">{faq.q}</h3>
+            <p class="text-gray-600 dark:text-neutral-400">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 px-6 lg:px-8 bg-gray-50 dark:bg-neutral-900 transition-colors duration-300">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-2xl font-medium text-gray-900 dark:text-white mb-4">Ready to get started?</h2>
+      <WhatsAppButton label="Get a quote" />
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

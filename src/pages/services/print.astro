@@ -1,0 +1,120 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/Footer.astro';
+import WhatsAppButton from '../../components/WhatsAppButton.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('portfolio'))
+  .filter(p => p.data.services.some(s => /print|design|marketing/i.test(s)))
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+
+const included = [
+  'Business cards',
+  'Flyers and leaflets',
+  'Brochures and company profiles',
+  'Menus and price lists',
+  'Presentations and pitch decks',
+  'Print production management (optional)'
+];
+
+const steps = [
+  { title: 'Brief & specs', body: "We define what you need — sizes, quantities, and where it will be used. We'll recommend the right format and paper for your budget." },
+  { title: 'Design & proof', body: "We design the materials and send you a proof. You review and approve. We can manage print production with trusted SA suppliers." },
+  { title: 'Delivery', body: "We deliver print-ready files or coordinate production and delivery. You get exactly what you need, when you need it." }
+];
+
+const faqs = [
+  { q: "Can you handle print production as well as design?", a: "Yes. We design and manage print production for flyers, menus, signage, business cards, brochures, and large format. We work with trusted SA print suppliers and can manage the full process on your behalf." },
+  { q: "What's the minimum order quantity?", a: "It depends on the item. Business cards can be printed in small runs; brochures and flyers typically have minimum quantities. We'll advise based on your needs and budget." }
+];
+---
+
+<Layout 
+  title="Print & Marketing Materials | Lumina7 Cape Town"
+  description="Flyers, brochures, business cards, menus, and presentations that reinforce your brand. From R800 per item."
+>
+  <section class="pt-24 pb-20 px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300">
+    <div class="max-w-3xl">
+      <h1 class="text-4xl md:text-5xl font-medium text-gray-900 dark:text-white mb-6 leading-tight tracking-tight">
+        Print & Marketing Materials
+      </h1>
+      <p class="text-lg text-gray-600 dark:text-neutral-400 mb-8">
+        Flyers, brochures, business cards, menus, and presentations that reinforce your brand everywhere.
+      </p>
+      <WhatsAppButton label="Get a quote" />
+    </div>
+  </section>
+
+  <section class="py-16 px-6 lg:px-8 bg-gray-50 dark:bg-neutral-900 transition-colors duration-300">
+    <div class="max-w-3xl">
+      <h2 class="text-2xl font-medium text-gray-900 dark:text-white mb-6">What's included</h2>
+      <ul class="space-y-3">
+        {included.map((item) => (
+          <li class="flex items-start gap-3 text-gray-600 dark:text-neutral-400">
+            <span class="w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-neutral-500 mt-2 flex-shrink-0"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="py-16 px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300">
+    <div class="max-w-3xl">
+      <h2 class="text-2xl font-medium text-gray-900 dark:text-white mb-8">How it works</h2>
+      <div class="space-y-8">
+        {steps.map((step, i) => (
+          <div>
+            <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">Step {i + 1}: {step.title}</h3>
+            <p class="text-gray-600 dark:text-neutral-400">{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {projects.length > 0 && (
+    <section class="py-16 px-6 lg:px-8 bg-gray-50 dark:bg-neutral-900 transition-colors duration-300">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-2xl font-medium text-gray-900 dark:text-white mb-8">Recent work</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project) => (
+            <a href={`/work/${project.slug}`} class="group block rounded-2xl overflow-hidden bg-white dark:bg-neutral-800">
+              <div class="aspect-[4/3] overflow-hidden">
+                <img src={project.data.heroImage} alt={project.data.title} class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" loading="lazy" />
+              </div>
+              <div class="p-4">
+                <h3 class="font-medium text-gray-900 dark:text-white">{project.data.company}</h3>
+                <p class="text-sm text-gray-600 dark:text-neutral-400">{project.data.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="py-16 px-6 lg:px-8 bg-white dark:bg-black border-t border-gray-200 dark:border-neutral-800 transition-colors duration-300">
+    <div class="max-w-3xl">
+      <p class="text-xl font-medium text-gray-900 dark:text-white mb-6">Starting from R800 per item</p>
+      <div class="space-y-6">
+        {faqs.map((faq) => (
+          <div>
+            <h3 class="font-medium text-gray-900 dark:text-white mb-2">{faq.q}</h3>
+            <p class="text-gray-600 dark:text-neutral-400">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 px-6 lg:px-8 bg-gray-50 dark:bg-neutral-900 transition-colors duration-300">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-2xl font-medium text-gray-900 dark:text-white mb-4">Ready to get started?</h2>
+      <WhatsAppButton label="Get a quote" />
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

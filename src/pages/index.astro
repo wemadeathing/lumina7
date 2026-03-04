@@ -1,86 +1,92 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
 import CTA from '../components/CTA.astro';
 import FAQ from '../components/FAQ.astro';
 import { getCollection } from 'astro:content';
 
-// Get portfolio projects
 const allProjects = await getCollection('portfolio');
 const featuredProjects = allProjects
   .filter(project => project.data.featured)
   .sort((a, b) => a.data.order - b.data.order)
-  .slice(0, 3);
+  .slice(0, 4);
 
 const services = [
-  {
-    title: "Brand Sprint",
-    tagline: "Your complete brand identity in 2 weeks"
-  },
-  {
-    title: "Website Sprint",
-    tagline: "AI-optimized websites that work everywhere"
-  },
-  {
-    title: "Print & Signage Sprint",
-    tagline: "Print, signage, and marketing materials in 2 weeks"
-  }
+  { title: 'Brand Identity', tagline: 'Logo, colour, typography and brand guidelines. From R5,000', link: '/services/brand-identity' },
+  { title: 'Print & Marketing Materials', tagline: 'Flyers, brochures, business cards, menus. From R800', link: '/services/print' },
+  { title: 'Signage & Installations', tagline: 'Shopfront signage, banners, vehicle branding. From R1,500', link: '/services/signage' },
+  { title: 'Website Design & Development', tagline: 'Professional websites that look great and load fast. From R8,000', link: '/services/websites' },
+  { title: 'Social Media & Digital Assets', tagline: 'Profile graphics, post templates, digital ads. From R1,200', link: '/services/print' }
+];
+
+const processSteps = [
+  { title: 'We talk', body: "Tell us what you need. We'll ask the right questions and come back with a fixed quote within 24 hours." },
+  { title: 'We design', body: "You approve the direction, we build it. Regular check-ins, structured feedback rounds, no guessing games." },
+  { title: 'You launch', body: "Final files, live site, print-ready artwork — whatever the project needs, handed over once final payment clears." }
+];
+
+const testimonials = [
+  { quote: "Lumina7 delivered our full rebrand in under three weeks. The quality was exceptional and Nasif really understood what we were trying to achieve.", name: "Client Name", business: "Business Name" },
+  { quote: "We needed a website fast before a big corporate event. They delivered on time and it looked better than agencies charging three times as much.", name: "Client Name", business: "Business Name" },
+  { quote: "Professional, communicative and genuinely good at what they do. I've already referred two other businesses.", name: "Client Name", business: "Business Name" }
+];
+
+const clientLogos = [
+  { src: '/assets/logos/clients/Arabica Logo Dark.png', alt: 'Arabica Coffee' },
+  { src: '/assets/logos/clients/ECOS Logo dark.png', alt: 'ECOS' },
+  { src: '/assets/logos/clients/HP Logo dark.png', alt: 'HP' },
+  { src: '/assets/logos/clients/Straptec-logo.png', alt: 'Straptec' },
+  { src: '/assets/logos/clients/YP_Logo_Dark.png', alt: 'YP' }
 ];
 
 const faqItems = [
-  {
-    number: "01",
-    question: "What makes Lumina7 different from other design studios?",
-    answer: "We combine innovation and speed through AI-augmented workflows. This enables more exploration, breakthrough solutions, and rapid execution—without compromising thoughtful execution or quality. Like our name suggests (Lumina = light), we deliver at the speed of light while maintaining the highest standards."
-  },
-  {
-    number: "02",
-    question: "How do AI-augmented workflows benefit my project?", 
-    answer: "AI-augmented design processes enable more creative exploration, faster iteration, and better solutions. We use cutting-edge tools to enhance our capabilities, allowing us to deliver innovative outcomes in shorter timeframes while maintaining focused execution and quality."
-  },
-  {
-    number: "03",
-    question: "Do you work with clients in different industries?",
-    answer: "Yes, we work across various industries including technology, fintech, healthcare, e-commerce, and professional services. Our diverse experience allows us to bring fresh perspectives and proven approaches to each project."
-  },
-  {
-    number: "04",
-    question: "What is your approach to branding and design?",
-    answer: "We focus on business outcomes first. Every decision drives tangible results—attracting customers and fueling growth. We combine expert thinking with innovative workflows to create brand experiences that work for your business goals."
-  },
-  {
-    number: "05",
-    question: "Do you work with startups and established businesses?",
-    answer: "Absolutely. We partner with ambitious businesses at all stages, from early-stage startups to established enterprises. Our rapid, innovation-powered approach is especially valuable for businesses that need to compete and grow quickly."
-  },
-  {
-    number: "06",
-    question: "How do you ensure quality with rapid delivery?",
-    answer: "Speed doesn't mean rushed work. We move fast through AI-augmented innovation and efficient processes, but every project receives focused attention and expert refinement. Our approach enables rapid iteration while maintaining professional quality throughout."
-  }
+  { number: "01", question: "How much does a website cost?", answer: "Our websites start from R8,000 for a professional 5-page brochure site. Custom or e-commerce sites are quoted based on scope. We always provide a fixed quote before starting — no surprises." },
+  { number: "02", question: "How much does a logo or brand identity cost?", answer: "Logo and brand identity packages start from R5,000 and include logo files, colour palette, typography, and basic brand guidelines. Full brand identity systems with comprehensive guidelines start from R12,000." },
+  { number: "03", question: "How long does a project take?", answer: "Most projects are completed within 2–4 working weeks from the day we receive your deposit and brief. Timeline depends on scope and how quickly you can review and approve work. We'll agree on a specific timeline before we start." },
+  { number: "04", question: "Do I own my website and logo after the project?", answer: "Yes. All intellectual property transfers to you in full once final payment is received. You own everything — files, code, domain, and hosting credentials." },
+  { number: "05", question: "Can you handle print production as well as design?", answer: "Yes. We design and manage print production for flyers, menus, signage, business cards, brochures, and large format. We work with trusted SA print suppliers and can manage the full process on your behalf." },
+  { number: "06", question: "Do you work with small businesses and startups?", answer: "Yes — most of our clients are owner-run businesses and growing SMEs. We work with businesses at all stages, from brand new startups to established companies refreshing their identity." }
 ];
 ---
 
 <Layout 
-  title="Lumina7 | Innovation-Powered Design at the Speed of Light"
-  description="AI-augmented design studio delivering breakthrough brand experiences faster. We combine strategic thinking with innovative workflows to help ambitious businesses compete and grow."
+  title="Lumina7 | Brand Identity, Websites & Print Design — Cape Town"
+  description="Cape Town design studio specialising in brand identity, websites, print and signage for South African businesses. Fast turnaround. Fixed quotes. B-BBEE Level 1."
 >
   <!-- Hero Section -->
   <section class="pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-primary">
     <div class="max-w-7xl mx-auto">
       <div class="max-w-4xl">
-        <h1 
-          class="text-[2.75rem] sm:text-[3.3rem] md:text-[4.95rem] font-medium text-gray-900 dark:text-gray-100 mb-8 leading-[0.95] mt-8 tracking-tight transition-colors duration-300"
-        >
-          <span class="block">We design brands and websites, <span class="italic">fast.</span></span>
+        <h1 class="text-[2.75rem] sm:text-[3.3rem] md:text-[4.95rem] font-medium text-gray-900 dark:text-gray-100 mb-8 leading-[0.95] mt-8 tracking-tight transition-colors duration-300">
+          <span class="block">We design brands and websites for South African businesses.</span>
         </h1>
-        
         <p class="text-body-lg text-primary max-w-3xl">
-          Premium Brand and Website Sprints delivered in 2 weeks. Optimized for humans and AI agents. South African studio serving ambitious businesses.
+          Branding, print, signage, and websites — delivered in weeks, not months.
         </p>
-        <div class="mt-8 text-caption text-tertiary">
-          [ Scroll down ]
+        <div class="mt-8">
+          <WhatsAppButton label="WhatsApp Us" size="lg" prefillText="Hi%2C%20I%27d%20like%20to%20enquire%20about%20your%20design%20services" />
         </div>
+        <p class="mt-6 text-caption text-tertiary">
+          Fixed quotes   Fast turnaround   B-BBEE Level 1
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Logo Bar -->
+  <section class="py-16 px-6 lg:px-8 bg-white dark:bg-black border-t border-gray-200 dark:border-neutral-900 transition-colors duration-300">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-caption text-tertiary mb-8 text-center">Trusted by South African businesses</p>
+      <div class="flex flex-nowrap gap-12 md:gap-16 justify-center items-center py-4">
+        {clientLogos.map((logo, i) => (
+          <img
+            src={logo.src}
+            alt={logo.alt}
+            class={`object-contain opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-200 flex-shrink-0 ${i === 0 ? 'h-[2.2rem]' : 'h-8'}`}
+            loading="lazy"
+          />
+        ))}
       </div>
     </div>
   </section>
@@ -88,97 +94,56 @@ const faqItems = [
   <!-- Services Section - Becklyn style numbered list -->
   <section class="py-24 px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300 border-t border-gray-200 dark:border-neutral-900">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl md:text-3xl font-medium text-gray-900 dark:text-white mb-4">
-        Our Services & Solutions
-      </h2>
+      <h2 class="text-2xl md:text-3xl font-medium text-gray-900 dark:text-white mb-4">How we help</h2>
+      <p class="text-gray-600 dark:text-neutral-400 leading-relaxed max-w-2xl mb-8">From first impression to final install — we handle every design touchpoint.</p>
       <div class="space-y-1 mt-12">
         {services.map((service, index) => (
-          <a 
-            href="/services" 
-            class="group flex items-baseline gap-4 md:gap-8 py-6 border-b border-gray-200 dark:border-neutral-800 last:border-b-0 hover:bg-gray-50 dark:hover:bg-neutral-900/50 transition-colors duration-200 -mx-4 px-4 rounded-[4px]"
-          >
-            <span class="text-sm font-medium text-gray-400 dark:text-neutral-500 tabular-nums min-w-[2rem]">
-              {(index + 1).toString().padStart(2, '0')}
-            </span>
+          <a href={service.link} class="group flex items-baseline gap-4 md:gap-8 py-6 border-b border-gray-200 dark:border-neutral-800 last:border-b-0 hover:bg-gray-50 dark:hover:bg-neutral-900/50 transition-colors duration-200 -mx-4 px-4 rounded-[4px]">
+            <span class="text-sm font-medium text-gray-400 dark:text-neutral-500 tabular-nums min-w-[2rem]">{(index + 1).toString().padStart(2, '0')}</span>
             <div class="flex-1 min-w-0">
-              <span class="text-lg md:text-xl font-medium text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-neutral-300 transition-colors">
-                {service.title}
-              </span>
-              <span class="text-gray-500 dark:text-neutral-400 ml-2">
-                {service.tagline}
-              </span>
+              <span class="text-lg md:text-xl font-medium text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-neutral-300 transition-colors">{service.title}</span>
+              <span class="text-gray-500 dark:text-neutral-400 ml-2">{service.tagline}</span>
             </div>
             <span class="text-gray-400 dark:text-neutral-500 group-hover:translate-x-1 transition-transform">→</span>
           </a>
         ))}
       </div>
-      <p class="mt-16 text-gray-600 dark:text-neutral-400 leading-relaxed max-w-2xl">
-        As a design studio, we combine strategic thinking with a keen sense for outstanding design and innovative workflows. We believe that brand and digital products are powerful when they clearly address real needs – functionally, visually and thoughtfully detailed.
-      </p>
+      <p class="mt-16 text-gray-600 dark:text-neutral-400 leading-relaxed max-w-2xl">All projects include a fixed quote before we start. No surprises.</p>
     </div>
   </section>
 
-  <!-- Cases Section - Becklyn style: first full-width, rest 2-col grid, text overlay on desktop -->
+  <!-- Cases Section - Becklyn style: first full-width, rest 2-col grid -->
   <section class="py-24 bg-white dark:bg-black transition-colors duration-300 border-t border-gray-200 dark:border-neutral-900">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="mb-16 flex items-end justify-between">
-        <h2 class="text-2xl md:text-3xl font-medium text-gray-900 dark:text-white tracking-tight" style="letter-spacing: -0.05rem;">
-          Cases – Insights & Results
-        </h2>
-        <a href="/work" class="text-sm font-medium text-gray-500 dark:text-neutral-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-          All cases →
-        </a>
+        <h2 class="text-2xl md:text-3xl font-medium text-gray-900 dark:text-white tracking-tight" style="letter-spacing: -0.05rem;">Recent work</h2>
+        <a href="/work" class="text-sm font-medium text-gray-500 dark:text-neutral-400 hover:text-gray-900 dark:hover:text-white transition-colors">View all projects</a>
       </div>
-
-      <!-- Becklyn layout: first card full-width, rest 2-col grid -->
       <div class="flex flex-col md:flex-row md:flex-wrap gap-6 md:gap-8">
         {featuredProjects.map((project, index) => (
-          <a 
-            href={`/work/${project.slug}`}
-            class={`group block rounded-2xl overflow-hidden bg-gray-200 dark:bg-neutral-800 ${
-              index === 0 ? 'w-full' : 'w-full md:w-[calc(50%-1rem)]'
-            }`}
-          >
+          <a href={`/work/${project.slug}`} class={`group block rounded-2xl overflow-hidden bg-gray-200 dark:bg-neutral-800 ${index === 0 ? 'w-full' : 'w-full md:w-[calc(50%-1rem)]'}`}>
             <div class="relative aspect-square md:aspect-video overflow-hidden">
-              <img 
-                src={project.data.heroImage} 
-                alt={project.data.title}
-                class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
-              />
-              <!-- Desktop: text overlay on image - visible on hover only -->
+              <img src={project.data.heroImage} alt={project.data.title} class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
               <div class="hidden md:flex absolute inset-0 p-8 lg:p-12 flex-col justify-between bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div class="flex flex-wrap gap-2">
                   {project.data.services.slice(0, 3).map((service) => (
-                    <span class="inline-flex items-center px-4 py-2 rounded-full text-xs font-medium bg-white/95 dark:bg-neutral-100 text-gray-900 min-h-[2.25rem]">
-                      {service}
-                    </span>
+                    <span class="inline-flex items-center px-4 py-2 rounded-full text-xs font-medium bg-white/95 dark:bg-neutral-100 text-gray-900 min-h-[2.25rem]">{service}</span>
                   ))}
                 </div>
                 <div>
-                  <h3 class="text-2xl md:text-3xl font-medium text-white mb-2 tracking-tight" style="letter-spacing: -0.05rem;">
-                    {project.data.company}
-                  </h3>
-                  <p class="text-white/90 text-sm md:text-base leading-relaxed max-w-xl">
-                    {project.data.description}
-                  </p>
+                  <h3 class="text-2xl md:text-3xl font-medium text-white mb-2 tracking-tight" style="letter-spacing: -0.05rem;">{project.data.company}</h3>
+                  <p class="text-white/90 text-sm md:text-base leading-relaxed max-w-xl">{project.data.description}</p>
                 </div>
               </div>
             </div>
-            <!-- Mobile: content below image -->
             <div class="md:hidden p-6 bg-gray-100 dark:bg-neutral-900">
               <div class="flex flex-wrap gap-2 mb-3">
                 {project.data.services.slice(0, 3).map((service) => (
-                  <span class="inline-flex items-center px-4 py-2 rounded-full text-xs font-medium bg-white dark:bg-neutral-800 text-gray-900 dark:text-white">
-                    {service}
-                  </span>
+                  <span class="inline-flex items-center px-4 py-2 rounded-full text-xs font-medium bg-white dark:bg-neutral-800 text-gray-900 dark:text-white">{service}</span>
                 ))}
               </div>
-              <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-2">
-                {project.data.company}
-              </h3>
-              <p class="text-sm text-gray-600 dark:text-neutral-400 leading-relaxed">
-                {project.data.description}
-              </p>
+              <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-2">{project.data.company}</h3>
+              <p class="text-sm text-gray-600 dark:text-neutral-400 leading-relaxed">{project.data.description}</p>
             </div>
           </a>
         ))}
@@ -186,8 +151,47 @@ const faqItems = [
     </div>
   </section>
 
+  <!-- How It Works -->
+  <section class="py-24 px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300 border-t border-gray-200 dark:border-neutral-900">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-medium text-gray-900 dark:text-white mb-4">Simple process. Fast results.</h2>
+      <p class="text-gray-600 dark:text-neutral-400 leading-relaxed max-w-2xl mb-12">Most clients go from first conversation to final delivery in 2–4 weeks.</p>
+      <div class="space-y-1 mt-12">
+        {processSteps.map((step, index) => (
+          <div class="flex items-baseline gap-4 md:gap-8 py-6 border-b border-gray-200 dark:border-neutral-800 last:border-b-0 -mx-4 px-4 rounded-[4px]">
+            <span class="text-sm font-medium text-gray-400 dark:text-neutral-500 tabular-nums min-w-[2rem]">{(index + 1).toString().padStart(2, '0')}</span>
+            <div class="flex-1 min-w-0">
+              <span class="text-lg md:text-xl font-medium text-gray-900 dark:text-white">{step.title}</span>
+              <p class="text-gray-500 dark:text-neutral-400 mt-1">{step.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-  <FAQ faqItems={faqItems} />
+  <!-- Testimonials -->
+  <section class="py-24 px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300 border-t border-gray-200 dark:border-neutral-900">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-medium text-gray-900 dark:text-white mb-12">What our clients say</h2>
+      <div class="space-y-1">
+        {testimonials.map((t, index) => (
+          <div class="py-6 border-b border-gray-200 dark:border-neutral-800 last:border-b-0 -mx-4 px-4 rounded-[4px]">
+            <p class="text-gray-600 dark:text-neutral-400 leading-relaxed mb-4">"{t.quote}"</p>
+            <p class="text-sm font-medium text-gray-900 dark:text-white">{t.name}</p>
+            <p class="text-sm text-gray-500 dark:text-neutral-500">{t.business}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-12 flex flex-wrap gap-8 text-caption text-tertiary">
+        <span>30+ Projects Completed</span>
+        <span>2–4 Week Average Delivery</span>
+        <span>B-BBEE Level 1</span>
+      </div>
+    </div>
+  </section>
+
+  <FAQ faqItems={faqItems} heading="Common questions" />
 
   <CTA />
 

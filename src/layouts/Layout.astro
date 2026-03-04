@@ -8,7 +8,7 @@ export interface Props {
 
 const { 
   title, 
-  description = "Trusted partner in building effective brands, efficient websites, scalable systems, targeted insights, and smart strategies.",
+  description = "Cape Town design studio specialising in brand identity, websites, print and signage for South African businesses. Fast turnaround. Fixed quotes. B-BBEE Level 1.",
   image = "/assets/logos/L7-logo-blk.png",
   canonical
 } = Astro.props;
@@ -19,6 +19,7 @@ const socialImage = new URL(image, Astro.site);
 // Import design tokens
 import '../styles/design-tokens.css';
 import Header from '../components/Header.astro';
+import WhatsAppFloating from '../components/WhatsAppFloating.astro';
 ---
 
 <!doctype html>
@@ -81,7 +82,7 @@ import Header from '../components/Header.astro';
         "name": "Lumina7",
         "url": "https://lumina7.co.za",
         "logo": "https://lumina7.co.za/assets/logos/L7-logo-blk.png",
-        "description": "Strategic design studio specializing in brand identity, UI/UX design, and web development for South African businesses.",
+        "description": "Cape Town design studio specialising in brand identity, websites, print and signage for South African businesses.",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Cape Town",
@@ -115,6 +116,7 @@ import Header from '../components/Header.astro';
     <div id="main-content">
       <slot />
     </div>
+    <WhatsAppFloating />
   </body>
   <style is:global>
     * {

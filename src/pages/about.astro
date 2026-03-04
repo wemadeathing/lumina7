@@ -2,96 +2,43 @@
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 import CTA from '../components/CTA.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
 
 const whyLumina7 = [
   {
     number: "01",
-    title: "Innovation-Powered Approach",
-    description: "We combine cutting-edge AI tools with expert insight to deliver breakthrough solutions. Our AI-augmented workflows enable more exploration, better outcomes, and innovative thinking—accelerating the creative process without sacrificing quality or focused execution.",
-    image: "/assets/images/about/founder-led.jpg"
+    title: "Full-service studio",
+    description: "We handle brand identity, websites, print, signage, and installations. Our clients are owner-run businesses, growing SMEs, and ambitious founders who want professional results without agency timelines or agency pricing."
   },
   {
-    number: "02", 
-    title: "Speed of Light Delivery",
-    description: "Like light itself (Lumina), we move fast—but with precision. Our rapid iteration and development processes deliver professional results without the traditional agency timeline. Precision speed means we're efficient, not rushed—every project receives expert attention throughout.",
-    image: "/assets/images/about/collab.jpg"
+    number: "02",
+    title: "Lean and focused",
+    description: "Faster turnarounds, direct communication, and real accountability — you'll always know who's working on your project and when to expect results."
   },
   {
     number: "03",
-    title: "Business-Focused Partnership", 
-    description: "Every decision drives business outcomes. We create brand experiences that attract customers and fuel growth. Our approach combines innovation and speed with deep business insight, ensuring solutions work for your goals both now and as you scale.",
-    image: "/assets/images/about/future.jpg"
+    title: "Led by experience",
+    description: "Nasif Salaam, a designer and strategist with 20 years of experience building brands and digital products for businesses across South Africa and internationally."
   }
 ];
 
 const capabilities = [
-  {
-    category: "Visual Identity",
-    services: [
-      "Logo Design",
-      "Visual Systems",
-      "Brand Guidelines",
-      "Color & Typography"
-    ]
-  },
-  {
-    category: "Digital Design",
-    services: [
-      "User Research",
-      "Interface Design",
-      "Design Systems",
-      "Responsive Design"
-    ]
-  },
-  {
-    category: "Web Development",
-    services: [
-      "Websites & Web Apps",
-      "Micro-Apps",
-      "Performance Optimization",
-      "Modern Frameworks"
-    ]
-  },
-  {
-    category: "Graphic Design",
-    services: [
-      "Posters & Illustrations",
-      "Marketing Materials",
-      "Annual Reports",
-      "Typesetting"
-    ]
-  },
-  {
-    category: "Branding & Production",
-    services: [
-      "Print Materials",
-      "Large Format Printing",
-      "Signage & Billboards",
-      "Installation"
-    ]
-  },
-  {
-    category: "Digital Marketing",
-    services: [
-      "SEO Strategy",
-      "Content Marketing",
-      "Social Media",
-      "Performance Analytics"
-    ]
-  }
+  { category: "Brand Identity", services: ["Logo Design", "Visual Systems", "Brand Guidelines", "Colour & Typography"] },
+  { category: "Websites", services: ["Custom Design", "Mobile-first", "SEO Setup", "Contact & WhatsApp"] },
+  { category: "Print & Signage", services: ["Business Cards", "Flyers & Brochures", "Menus", "Shopfront Signage", "Vehicle Branding"] }
 ];
 ---
 
 <Layout 
-  title="About Lumina7 | Innovation-Powered Design Studio"
-  description="Learn about Lumina7's innovation and speed approach. We combine AI-augmented workflows with strategic expertise to deliver breakthrough brand experiences at the speed of light."
+  title="About Lumina7 | Cape Town Design Studio"
+  description="Lumina7 is a Cape Town-based design studio helping South African businesses look their best. Brand identity, websites, print, signage, and installations."
 >
   <!-- Hero Section -->
   <section class="pt-24 pb-20 px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
       <div class="max-w-3xl">
         <h1 class="text-4xl md:text-6xl font-medium text-gray-900 dark:text-white mb-8 leading-tight mt-8 tracking-tight transition-colors duration-300" style="letter-spacing: -0.05rem;">
-          Innovation-powered design studio operating at the speed of light
+          About Lumina7
         </h1>
       </div>
     </div>
@@ -119,10 +66,10 @@ const capabilities = [
         
         <div class="space-y-6">
           <p class="text-lg text-gray-600 dark:text-neutral-400 leading-relaxed transition-colors">
-            Lumina7 is an innovation-powered design studio that operates at the speed of light. We help ambitious businesses compete through professional brand experiences—delivered faster than traditional agencies through AI-augmented workflows.
+            Lumina7 is a Cape Town-based design studio helping South African businesses look their best — online and in the real world.
           </p>
           <p class="text-lg text-gray-600 dark:text-neutral-400 leading-relaxed transition-colors">
-            Our name reflects our approach: Lumina (light) represents both illumination and speed—we bring clarity and rapid execution to every project. By combining breakthrough thinking with expert insight, we deliver professional results without the traditional timeline.
+            We handle brand identity, websites, print, signage, and installations. Our clients are owner-run businesses, growing SMEs, and ambitious founders who want professional results without agency timelines or agency pricing.
           </p>
         </div>
       </div>
@@ -135,26 +82,12 @@ const capabilities = [
       <h2 class="text-3xl md:text-4xl font-medium text-gray-900 dark:text-white mb-16 transition-colors">Why Lumina7</h2>
       
       <div class="space-y-20">
-        {whyLumina7.map((item, index) => (
-          <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <div class={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-              <div class="aspect-[4/3] bg-gray-100 dark:bg-neutral-900 overflow-hidden rounded-2xl">
-                <img 
-                  src={item.image} 
-                  alt={item.title}
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-            </div>
-            
-            <div class={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-              <div class="flex items-start gap-6 mb-6">
-                <span class="text-sm text-gray-500 dark:text-neutral-500 font-medium mt-1">{item.number}</span>
-                <div>
-                  <h3 class="text-2xl font-medium text-gray-900 dark:text-white mb-4 transition-colors">{item.title}</h3>
-                  <p class="text-gray-600 dark:text-neutral-400 leading-relaxed transition-colors">{item.description}</p>
-                </div>
-              </div>
+        {whyLumina7.map((item) => (
+          <div class="flex items-start gap-6">
+            <span class="text-sm text-gray-500 dark:text-neutral-500 font-medium mt-1">{item.number}</span>
+            <div>
+              <h3 class="text-2xl font-medium text-gray-900 dark:text-white mb-4 transition-colors">{item.title}</h3>
+              <p class="text-gray-600 dark:text-neutral-400 leading-relaxed transition-colors">{item.description}</p>
             </div>
           </div>
         ))}
@@ -162,39 +95,44 @@ const capabilities = [
     </div>
   </section>
 
-  <!-- Capabilities Section -->
+  <!-- Credentials Block -->
   <section class="py-20 px-6 lg:px-8 bg-gray-50 dark:bg-neutral-900 transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-medium text-gray-900 dark:text-white mb-16 transition-colors">Capabilities</h2>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-        {capabilities.map(capability => (
-          <div class="space-y-6">
-            <h3 class="text-xl font-medium text-gray-900 dark:text-white transition-colors">{capability.category}</h3>
-            <ul class="space-y-3">
-              {capability.services.map(service => (
-                <li class="text-gray-600 dark:text-neutral-400 leading-relaxed transition-colors">{service}</li>
-              ))}
-            </ul>
+      <div class="grid lg:grid-cols-2 gap-16">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-medium text-gray-900 dark:text-white mb-8 transition-colors">Credentials</h2>
+          <p class="text-sm font-medium text-gray-900 dark:text-white mb-2">B-BBEE Level 1 Contributor</p>
+          <p class="text-sm text-gray-600 dark:text-neutral-400">Registered: Nexevo Studios (Pty) Ltd t/a Lumina7 Studio</p>
+          <p class="text-sm text-gray-600 dark:text-neutral-400">Reg: 2025/019491/07</p>
+          <p class="text-sm text-gray-600 dark:text-neutral-400">Cape Town, South Africa</p>
+        </div>
+        <div>
+          <h2 class="text-3xl md:text-4xl font-medium text-gray-900 dark:text-white mb-8 transition-colors">Capabilities</h2>
+          <div class="grid md:grid-cols-2 gap-12">
+            {capabilities.map(capability => (
+              <div class="space-y-6">
+                <h3 class="text-xl font-medium text-gray-900 dark:text-white transition-colors">{capability.category}</h3>
+                <ul class="space-y-3">
+                  {capability.services.map(service => (
+                    <li class="text-gray-600 dark:text-neutral-400 leading-relaxed transition-colors">{service}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6 lg:px-8 bg-white dark:bg-black border-t border-gray-200 dark:border-neutral-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-medium text-gray-900 dark:text-white mb-6">Want to work together?</h2>
+      <WhatsAppButton label="WhatsApp us" />
     </div>
   </section>
 
   <CTA />
   <Footer />
 </Layout>
-
-<style>
-  /* Scroll effect for images */
-  @media (prefers-reduced-motion: no-preference) {
-    .aspect-\[4\/3\] img {
-      transition: transform 0.5s ease;
-    }
-    
-    .aspect-\[4\/3\]:hover img {
-      transform: scale(1.05);
-    }
-  }
-</style>

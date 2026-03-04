@@ -10,9 +10,15 @@ import ThemeToggle from './ThemeToggle.astro';
       <img src="/assets/logos/L7-logo-blk.svg" alt="Lumina7" class="header-logo-light h-7 dark:hidden" />
       <img src="/assets/logos/L7-logo-wht.png" alt="Lumina7" class="header-logo-dark h-7 hidden dark:block" />
     </a>
-    <a href="/book" class="header-cta pointer-events-auto relative z-10 px-5 py-2.5 text-sm font-medium rounded-full transition-colors duration-200">
-      Book a call
-    </a>
+    <div class="flex items-center gap-3 pointer-events-auto relative z-10">
+      <a href="https://wa.me/27814623628?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20your%20design%20services" target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">
+        WhatsApp Us
+        <span aria-hidden="true">→</span>
+      </a>
+      <a href="/book" class="header-cta px-5 py-2.5 text-sm font-medium rounded-full transition-colors duration-200">
+        Book a call
+      </a>
+    </div>
   </div>
 </header>
 

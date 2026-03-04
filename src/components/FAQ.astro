@@ -5,9 +5,10 @@ export interface Props {
     question: string;
     answer: string;
   }>;
+  heading?: string;
 }
 
-const { faqItems } = Astro.props;
+const { faqItems, heading = "Frequently Asked Questions" } = Astro.props;
 ---
 
 <!-- FAQ Section - Becklyn minimal -->
@@ -15,7 +16,7 @@ const { faqItems } = Astro.props;
   <div class="max-w-[1400px] mx-auto">
     <div class="mb-16">
       <h2 class="text-heading-2 text-gray-900 dark:text-white max-w-2xl">
-        Frequently Asked Questions
+        {heading}
       </h2>
     </div>
       

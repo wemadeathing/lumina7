@@ -2,36 +2,20 @@
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 import FAQ from '../components/FAQ.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
 
 const faqItems = [
-  {
-    number: "01",
-    question: "How quickly will you respond to my inquiry?",
-    answer: "We typically respond within 24 hours to emails and 2 hours to WhatsApp messages during business hours."
-  },
-  {
-    number: "02",
-    question: "Do I need to have a detailed project plan?",
-    answer: "No. Just tell us what you're thinking about. We'll ask questions and help refine the concept during our discovery conversation."
-  },
-  {
-    number: "03",
-    question: "What if I don't know what service I need?",
-    answer: "That's exactly what the discovery call is for. We'll ask about your goals and recommend the right solution."
-  },
-  {
-    number: "04",
-    question: "Can you work with my budget?",
-    answer: "We work with a range of budgets. If you share what you're working with, we can tell you what's possible at that investment level."
-  }
+  { number: "01", question: "How quickly will you respond to my inquiry?", answer: "We typically respond within 24 hours to emails and 2 hours to WhatsApp messages during business hours." },
+  { number: "02", question: "Do I need to have a detailed project plan?", answer: "No. Just tell us what you're thinking about. We'll ask questions and help refine the concept during our discovery conversation." },
+  { number: "03", question: "What if I don't know what service I need?", answer: "That's exactly what the discovery call is for. We'll ask about your goals and recommend the right solution." },
+  { number: "04", question: "Can you work with my budget?", answer: "We work with a range of budgets. If you share what you're working with, we can tell you what's possible at that investment level." }
 ];
 ---
 
 <Layout 
-  title="Contact | Lumina7 - Get in Touch with Our Design Studio"
-  description="Ready to work with Lumina7? Send us an email or chat via WhatsApp. Let's discuss your design project. Mon-Fri 9am-5pm SAST."
+  title="Contact | Lumina7 - Get in Touch"
+  description="The fastest way to reach us is WhatsApp. Send us a message and we'll usually respond within a few hours. Mon-Fri 9am-5pm SAST."
 >
-  <!-- LocalBusiness Structured Data -->
   <script type="application/ld+json" slot="head">
     {JSON.stringify({
       "@context": "https://schema.org",
@@ -41,42 +25,12 @@ const faqItems = [
       "url": "https://lumina7.co.za",
       "telephone": "+27814623628",
       "email": "hello@lumina7.co.za",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Cape Town",
-        "addressRegion": "Western Cape",
-        "addressCountry": "ZA"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": -33.9249,
-        "longitude": 18.4241
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday"
-        ],
-        "opens": "09:00",
-        "closes": "17:00"
-      },
+      "address": { "@type": "PostalAddress", "addressLocality": "Cape Town", "addressRegion": "Western Cape", "addressCountry": "ZA" },
+      "geo": { "@type": "GeoCoordinates", "latitude": -33.9249, "longitude": 18.4241 },
+      "openingHoursSpecification": { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "17:00" },
       "priceRange": "$$",
-      "areaServed": {
-        "@type": "Country",
-        "name": "South Africa"
-      },
-      "serviceType": [
-        "Brand Design",
-        "Visual Identity",
-        "UI/UX Design",
-        "Web Development",
-        "Graphic Design",
-        "Digital Marketing"
-      ]
+      "areaServed": { "@type": "Country", "name": "South Africa" },
+      "serviceType": ["Brand Design", "Visual Identity", "Web Development", "Graphic Design", "Print", "Signage"]
     })}
   </script>
   
@@ -87,51 +41,46 @@ const faqItems = [
         
         <!-- Left side - Hero Content and Contact Options -->
         <div class="space-y-16">
-          <!-- Hero Content -->
           <div>
             <h1 class="text-4xl md:text-6xl font-medium text-gray-900 dark:text-white mb-8 leading-tight mt-8 tracking-tight transition-colors duration-300" style="letter-spacing: -0.05rem;">
-              Let's Talk
+              Let's talk
             </h1>
-            <p class="text-lg text-gray-600 dark:text-neutral-400 leading-relaxed mb-16 transition-colors">
-              We'd love to learn more about you and what we can design and build together.
+            <p class="text-lg text-gray-600 dark:text-neutral-400 leading-relaxed mb-12 transition-colors">
+              The fastest way to reach us is WhatsApp. Send us a message and we'll usually respond within a few hours.
             </p>
           </div>
 
-          <!-- Contact Options -->
-          <div class="space-y-12">
-            <!-- Email -->
-            <div class="space-y-4">
-              <h2 class="text-lg text-gray-500 dark:text-neutral-500 font-medium">
-                Send us an email
-              </h2>
-              <p class="text-sm text-gray-600 dark:text-neutral-400 leading-relaxed">
-                For detailed inquiries or project briefs. We typically respond within 24 hours.
-              </p>
-              <a 
-                href="mailto:hello@lumina7.co.za" 
-                class="block text-xl text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-neutral-300 transition-colors font-medium underline"
-              >
-                hello@lumina7.co.za
-              </a>
-            </div>
+          <!-- Primary CTA: WhatsApp -->
+          <div class="space-y-4">
+            <h2 class="text-lg text-gray-500 dark:text-neutral-500 font-medium">Chat via WhatsApp</h2>
+            <p class="text-sm text-gray-600 dark:text-neutral-400 leading-relaxed">
+              For quick questions or to get started immediately. We typically respond within 2 hours during business hours.
+            </p>
+            <WhatsAppButton label="WhatsApp: +27 81 462 3628" size="lg" />
+          </div>
 
-            <!-- WhatsApp -->
-            <div class="space-y-4">
-              <h2 class="text-lg text-gray-500 dark:text-neutral-500 font-medium">
-                Chat via WhatsApp
-              </h2>
-              <p class="text-sm text-gray-600 dark:text-neutral-400 leading-relaxed">
-                For quick questions or to get started immediately. We typically respond within 2 hours during business hours.
-              </p>
-              <a 
-                href="https://wa.me/27814623628" 
-                target="_blank"
-                rel="noopener noreferrer"
-                class="block text-xl text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-neutral-300 transition-colors font-medium underline"
-              >
-                +27 81 462 3628
-              </a>
-            </div>
+          <!-- Contact Form -->
+          <div class="space-y-4">
+            <h2 class="text-lg text-gray-500 dark:text-neutral-500 font-medium">Or send us a message</h2>
+            <form action="https://formsubmit.co/hello@lumina7.co.za" method="POST" class="space-y-4">
+              <input type="hidden" name="_next" value="https://lumina7.co.za/success" />
+              <input type="hidden" name="_subject" value="New Contact Form Enquiry - Lumina7" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="text" name="name" required placeholder="Name" class="w-full bg-white dark:bg-black border border-gray-300 dark:border-gray-700 rounded px-4 py-3 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-600 transition-colors" />
+              <input type="email" name="email" required placeholder="Email" class="w-full bg-white dark:bg-black border border-gray-300 dark:border-gray-700 rounded px-4 py-3 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-600 transition-colors" />
+              <textarea name="message" required rows={4} placeholder="Tell us about your project" class="w-full bg-white dark:bg-black border border-gray-300 dark:border-gray-700 rounded px-4 py-3 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-600 transition-colors resize-none"></textarea>
+              <button type="submit" class="px-6 py-3 text-sm font-medium text-white bg-gray-900 dark:bg-white dark:text-gray-900 rounded-full hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors">
+                Send message
+              </button>
+            </form>
+          </div>
+
+          <!-- Email -->
+          <div class="space-y-4">
+            <h2 class="text-lg text-gray-500 dark:text-neutral-500 font-medium">Send us an email</h2>
+            <a href="mailto:hello@lumina7.co.za" class="block text-xl text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-neutral-300 transition-colors font-medium underline">
+              hello@lumina7.co.za
+            </a>
           </div>
         </div>
 
@@ -152,8 +101,6 @@ const faqItems = [
   <section class="py-20 px-6 lg:px-8 bg-gray-50 dark:bg-neutral-900 transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-        
-        <!-- Business Hours -->
         <div class="space-y-4">
           <h3 class="text-xl font-medium text-gray-900 dark:text-white transition-colors">Our Hours</h3>
           <div class="text-gray-600 dark:text-neutral-400 space-y-2 transition-colors">
@@ -162,8 +109,6 @@ const faqItems = [
             <p class="text-sm">Saturday - Sunday: Closed</p>
           </div>
         </div>
-
-        <!-- Response Times -->
         <div class="space-y-4">
           <h3 class="text-xl font-medium text-gray-900 dark:text-white transition-colors">Response Times</h3>
           <div class="text-gray-600 dark:text-neutral-400 space-y-2 transition-colors">
@@ -172,8 +117,6 @@ const faqItems = [
             <p class="text-sm text-gray-500">(during business hours)</p>
           </div>
         </div>
-
-        <!-- Location -->
         <div class="space-y-4">
           <h3 class="text-xl font-medium text-gray-900 dark:text-white transition-colors">Where we are</h3>
           <div class="text-gray-600 dark:text-neutral-400 space-y-2 transition-colors">
@@ -181,12 +124,10 @@ const faqItems = [
             <p class="text-sm text-gray-500">We serve South African businesses and work with international clients</p>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- FAQ Section -->
   <FAQ faqItems={faqItems} />
 
   <!-- Privacy Note -->

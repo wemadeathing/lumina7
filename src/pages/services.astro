@@ -3,177 +3,75 @@ import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 import CTA from '../components/CTA.astro';
 import FAQ from '../components/FAQ.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
 
 const services = [
   {
-    number: "01",
-    duration: "Delivered with innovative speed", 
+    duration: "From R5,000",
     title: "Brand Identity",
-    description: "Build a brand that commands trust. We create visual systems that make your brand instantly recognizable and professional. From logos and colors to typography and imagery, we design cohesive identities that help your business stand out and build genuine trust with customers.",
-    capabilities: [
-      "Logo Design",
-      "Visual System",
-      "Brand Guidelines",
-      "Brand Applications"
-    ]
+    description: "Your brand is the first thing potential customers judge you on. We build visual identities that make your business look credible, memorable, and worth choosing over the competition. From a single logo to a complete brand system — we create the visual language your business needs to stand out.",
+    capabilities: ["Logo design (primary + variations)", "Colour palette", "Typography selection", "Brand guidelines", "All final files (AI, EPS, SVG, PNG, PDF)"],
+    link: "/services/brand-identity"
   },
   {
-    number: "02",
-    duration: "Developed at the speed of light",
-    title: "Digital Design", 
-    description: "Digital presence that converts. We design digital experiences that your customers will love. By combining research, interface design, and testing, we create websites and applications that are both professional and functional, driving real business results.",
-    capabilities: [
-      "User Research",
-      "Interface Design",
-      "Design System",
-      "Usability Testing",
-      "Responsive Design"
-    ]
+    duration: "From R800 per item",
+    title: "Print & Marketing Materials",
+    description: "Print isn't dead — it's how your brand shows up in the physical world. From business cards handed over at a meeting to menus that make food look irresistible, we design materials that do real work for your business.",
+    capabilities: ["Business cards", "Flyers and leaflets", "Brochures", "Menus and price lists", "Presentations", "Print production management"],
+    link: "/services/print"
   },
   {
-    number: "03",
-    duration: "Faster than traditional development",
-    title: "Rapid Prototyping",
-    description: "Innovative ideas to working reality. Turn your ideas into working prototypes that you can test and demonstrate. We build interactive web and mobile prototypes that let you validate concepts, gather feedback, and prove value before investing in full development.",
-    capabilities: [
-      "Interactive Web Prototypes",
-      "Mobile App Prototypes",
-      "User Testing Tools",
-      "Stakeholder Demos",
-      "Concept Validation",
-      "Fast Iteration"
-    ]
+    duration: "From R1,500",
+    title: "Signage & Installations",
+    description: "Your physical space is part of your brand. Whether it's a shopfront sign, a trade show banner, or a full office installation, we design and produce signage that makes your location unmistakable.",
+    capabilities: ["Shopfront signage", "Banners and pull-up displays", "Vehicle wraps", "Large format printing", "Wayfinding", "Production and installation"],
+    link: "/services/signage"
   },
   {
-    number: "04",
-    duration: "Rapid development",
-    title: "Web Development",
-    description: "We build fast, scalable websites, micro-apps, and web applications that perform flawlessly across all devices. Using modern technologies and best practices, with thorough developer testing built in.",
-    capabilities: [
-      "Websites & Web Apps",
-      "Micro-Apps",
-      "Developer Testing",
-      "Performance Optimization",
-      "SEO Implementation",
-      "Agile/Scrum Workflows",
-      "Modern Developer Frameworks"
-    ]
+    duration: "From R8,000",
+    title: "Website Design & Development",
+    description: "Your website is your most important salesperson — it works 24 hours a day and most potential clients will check it before they call you. We design and build professional websites that look great, load fast, and turn visitors into enquiries.",
+    capabilities: ["Custom design (mobile-first)", "Up to 8 pages", "Contact form and WhatsApp", "Basic SEO", "Google Analytics", "30 days post-launch support"],
+    link: "/services/websites"
   },
   {
-    number: "05",
-    duration: "With seamless execution",
-    title: "Design & Production",
-    description: "Professional materials that reinforce your brand. From graphic design and illustrations to marketing materials and brand presentations. We also handle print production, large format printing, signage, and installation—bringing your brand to life across all touchpoints.",
-    capabilities: [
-      "Posters & Illustrations",
-      "Marketing Materials",
-      "Brand Presentations",
-      "Annual Reports",
-      "User Manuals & Guides",
-      "Business Cards & Stationery",
-      "Large Format Printing",
-      "Indoor & Outdoor Signage",
-      "Installation & Fitting"
-    ]
+    duration: "From R1,200",
+    title: "Social Media & Digital Assets",
+    description: "Inconsistent social media visuals undermine the brand you've worked hard to build. We create templates, graphics, and assets that keep your digital presence looking sharp — whether you're posting daily or just occasionally.",
+    capabilities: ["Profile setup", "Post templates", "Cover images", "Digital ad designs", "Email signature design"],
+    link: "/services/print"
   }
 ];
 
 const processSteps = [
-  {
-    number: "01",
-    phase: "Discovery & Planning",
-    title: "Understanding Your Goals and Opportunities",
-    duration: "01-04",
-    description: "We start by understanding your business goals, challenges, and opportunities. Through collaborative discussions and focused analysis, we establish clear objectives and define what success looks like for your project.",
-    details: [
-      "Project kickoff and goal alignment",
-      "Business context and market understanding", 
-      "Opportunity identification",
-      "Clear direction setting"
-    ]
-  },
-  {
-    number: "02", 
-    phase: "AI-Augmented Innovation",
-    title: "Rapid Exploration and Creative Development",
-    duration: "02-04",
-    description: "Using AI-augmented workflows, we rapidly explore creative possibilities and develop breakthrough solutions. This accelerated innovation phase enables more exploration and better outcomes in less time.",
-    details: [
-      "AI-powered design exploration",
-      "Rapid concept generation", 
-      "Multiple solution iterations",
-      "Innovation without traditional timelines"
-    ]
-  },
-  {
-    number: "03",
-    phase: "Expert Refinement", 
-    title: "Expert Insight Ensures Business-Focused Outcomes",
-    duration: "03-04",
-    description: "We apply expert thinking and careful refinement to ensure solutions drive business results. Every decision is evaluated against your goals, combining innovative approaches with proven business fundamentals.",
-    details: [
-      "Expert evaluation and refinement",
-      "Business outcome alignment",
-      "Quality assurance and testing",
-      "Professional polish and optimization"
-    ]
-  },
-  {
-    number: "04",
-    phase: "Speed-of-Light Delivery",
-    title: "Professional Execution Without Traditional Timeline", 
-    duration: "04-04",
-    description: "Like light itself, we deliver rapidly—but with precision. Final implementation happens quickly through efficient workflows, giving you professional results without the traditional agency timeline.",
-    details: [
-      "Rapid implementation and deployment",
-      "Complete deliverables package", 
-      "Documentation and guidelines",
-      "Launch support and handover",
-      "Ongoing partnership support"
-    ]
-  }
+  { number: "01", phase: "We talk", title: "Tell us what you need", duration: "24 hours", description: "We ask the right questions and come back with a fixed quote within 24 hours.", details: ["Brief and discovery", "Clear scope", "Fixed quote"] },
+  { number: "02", phase: "We design", title: "You approve, we build", duration: "2–4 weeks", description: "You approve the direction, we build it. Regular check-ins, structured feedback rounds, no guessing games.", details: ["Regular check-ins", "Structured feedback", "Clear milestones"] },
+  { number: "03", phase: "You launch", title: "Handover complete", duration: "Final", description: "Final files, live site, print-ready artwork — whatever the project needs, handed over once final payment clears.", details: ["All files", "Full ownership", "Ongoing support"] }
 ];
 
 const faqItems = [
-  {
-    number: "01",
-    question: "I only have an idea, is that enough?",
-    answer: "Yes! Just an idea is enough. We'll help you structure it and bring it to life through our AI-augmented design and development process. We can start with a discovery session to understand your vision, then rapidly explore and develop the concept into reality."
-  },
-  {
-    number: "02", 
-    question: "What do you specialize in?",
-    answer: "We specialize in innovation-powered design across brand identity, digital design, rapid prototyping, web development, and design production. Our AI-augmented workflows enable us to deliver breakthrough solutions faster than traditional studios, without compromising thoughtful execution or quality."
-  },
-  {
-    number: "03",
-    question: "How does your AI-augmented process work?",
-    answer: "We use cutting-edge AI tools to enhance our creative process—enabling more exploration, faster iteration, and breakthrough thinking. This accelerates our innovation phase while our expert refinement ensures every solution drives business outcomes. You get the best of both innovation and expertise."
-  },
-  {
-    number: "04",
-    question: "What's required to start a project?", 
-    answer: "Not much! Tell us about your business goals and what you're looking to create. Through our rapid discovery process, we'll quickly understand your needs and outline a clear path forward. Our speed-of-light approach means we can start delivering value fast."
-  },
-  {
-    number: "05",
-    question: "What sets you apart from other design studios?",
-    answer: "We combine innovation and speed like no other studio. Our AI-augmented workflows enable breakthrough thinking and rapid execution—without traditional timelines. Like our name (Lumina = light), we move at the speed of light while maintaining focused execution and professional quality throughout."
-  }
+  { number: "01", question: "How much does a website cost?", answer: "Our websites start from R8,000 for a professional 5-page brochure site. Custom or e-commerce sites are quoted based on scope. We always provide a fixed quote before starting — no surprises." },
+  { number: "02", question: "How much does a logo or brand identity cost?", answer: "Logo and brand identity packages start from R5,000 and include logo files, colour palette, typography, and basic brand guidelines. Full brand identity systems with comprehensive guidelines start from R12,000." },
+  { number: "03", question: "How long does a project take?", answer: "Most projects are completed within 2–4 working weeks from the day we receive your deposit and brief. Timeline depends on scope and how quickly you can review and approve work. We'll agree on a specific timeline before we start." },
+  { number: "04", question: "Do I own my website and logo after the project?", answer: "Yes. All intellectual property transfers to you in full once final payment is received. You own everything — files, code, domain, and hosting credentials." },
+  { number: "05", question: "Can you handle print production as well as design?", answer: "Yes. We design and manage print production for flyers, menus, signage, business cards, brochures, and large format. We work with trusted SA print suppliers and can manage the full process on your behalf." }
 ];
 ---
 
 <Layout 
-  title="Services | Lumina7 - Innovation-Powered Design & Development"
-  description="AI-augmented design services delivered at the speed of light. Brand identity, website design, rapid prototyping, and development—with breakthrough innovation and strategic speed."
+  title="Design Services | Lumina7 Cape Town"
+  description="Brand identity from R5,000. Websites from R8,000. Print, signage, and social media assets. Fixed quotes, 2–4 week delivery."
 >
   <!-- Hero Section -->
   <section class="pt-24 pb-20 px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
       <div class="max-w-3xl">
-        <h1 class="text-4xl md:text-6xl font-medium text-gray-900 dark:text-white mb-8 leading-tight mt-8 tracking-tight transition-colors duration-300" style="letter-spacing: -0.05rem;">
-          Innovation-powered design services delivered at the speed of light
+        <h1 class="text-4xl md:text-6xl font-medium text-gray-900 dark:text-white mb-6 leading-tight mt-8 tracking-tight transition-colors duration-300" style="letter-spacing: -0.05rem;">
+          Our Services
         </h1>
+        <p class="text-lg text-gray-600 dark:text-neutral-400 leading-relaxed">
+          Everything your business needs to look professional and grow — under one roof, with one point of contact.
+        </p>
       </div>
     </div>
   </section>
@@ -183,10 +81,9 @@ const faqItems = [
     <div class="max-w-7xl mx-auto">
       <div class="space-y-0">
         {services.map((service, index) => (
-          <div class="service-card group cursor-pointer" data-service={index}>
+          <a href={service.link} class="service-card group block" data-service={index}>
             <div class="px-6 lg:px-8 py-12">
               <div class="grid lg:grid-cols-12 gap-8 items-start">
-                <!-- Left side - Duration and Title -->
                 <div class="lg:col-span-5">
                   <span class="text-caption text-gray-900 dark:text-white bg-gray-200 dark:bg-white px-3 py-1 mb-4 inline-block rounded-full">
                     {service.duration}
@@ -195,13 +92,10 @@ const faqItems = [
                     {service.title}
                   </h2>
                 </div>
-                
-                <!-- Right side - Description and Capabilities -->
                 <div class="lg:col-span-7">
                   <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-lg mb-6">
                     {service.description}
                   </p>
-                  
                   <div class="flex flex-wrap gap-3 mb-6">
                     {service.capabilities.map(capability => (
                       <span class="text-xs text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 px-4 py-2 hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors cursor-pointer uppercase tracking-wide rounded-full">
@@ -209,51 +103,50 @@ const faqItems = [
                       </span>
                     ))}
                   </div>
-                  
-                  <button class="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors flex items-center gap-2 group">
+                  <span class="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors flex items-center gap-2 group">
                     <span class="text-2xl group-hover:translate-x-2 transition-transform duration-300">→</span>
-                  </button>
+                  </span>
                 </div>
               </div>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>
   </section>
 
+  <!-- Not sure CTA -->
+  <section class="py-16 px-6 lg:px-8 bg-gray-50 dark:bg-neutral-900 transition-colors duration-300">
+    <div class="max-w-4xl mx-auto text-center">
+      <h3 class="text-2xl font-medium text-gray-900 dark:text-white mb-4">Not sure what you need?</h3>
+      <p class="text-gray-600 dark:text-neutral-400 mb-6 max-w-xl mx-auto">
+        WhatsApp us and describe your business. We'll tell you exactly what we'd recommend and what it would cost.
+      </p>
+      <WhatsAppButton label="Start the conversation" />
+    </div>
+  </section>
+
   <!-- Process Section -->
-  <section class="py-32 px-6 lg:px-8 bg-gray-50 dark:bg-neutral-900 transition-colors duration-300">
+  <section class="py-32 px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300 border-t border-gray-200 dark:border-neutral-900">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-20">
         <h2 class="text-heading-1 text-primary mb-8">
           Get to know our process
         </h2>
       </div>
-      
       <div class="space-y-8">
-        {processSteps.map((step, index) => (
+        {processSteps.map((step) => (
           <div class="process-step bg-white dark:bg-neutral-800 p-8 lg:p-12 rounded-2xl border border-gray-200 dark:border-neutral-700 transition-colors duration-300">
             <div class="grid lg:grid-cols-12 gap-8 items-start">
-              <!-- Left side - Number, Phase, Title -->
               <div class="lg:col-span-4">
-                <h2 class="text-2xl md:text-3xl font-bold text-primary leading-none mb-4">
-                  {step.number}
-                </h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-primary leading-none mb-4">{step.number}</h2>
                 <h2 class="text-heading-2 text-primary mb-4">{step.phase}</h2>
                 <h3 class="text-body-lg text-primary mb-4">{step.title}</h3>
                 <p class="text-caption text-tertiary">{step.duration}</p>
               </div>
-              
-              <!-- Spacer -->
               <div class="lg:col-span-1"></div>
-              
-              <!-- Right side - Description and Details -->
               <div class="lg:col-span-7">
-                <p class="text-body text-secondary mb-6">
-                  {step.description}
-                </p>
-                
+                <p class="text-body text-secondary mb-6">{step.description}</p>
                 <ul class="space-y-3">
                   {step.details.map(detail => (
                     <li class="text-body-sm text-secondary flex items-start gap-3">
@@ -278,16 +171,13 @@ const faqItems = [
 </Layout>
 
 <script>
-  // Service card hover effects
   document.addEventListener('DOMContentLoaded', function() {
     const serviceCards = document.querySelectorAll('.service-card');
-    
     serviceCards.forEach((card) => {
       card.addEventListener('mouseenter', () => {
         (card as HTMLElement).style.transform = 'translateY(-2px)';
         (card as HTMLElement).style.transition = 'transform 0.3s ease';
       });
-      
       card.addEventListener('mouseleave', () => {
         (card as HTMLElement).style.transform = 'translateY(0)';
       });
@@ -299,7 +189,6 @@ const faqItems = [
   .services-hero {
     background-color: inherit;
   }
-
   .services-hero::before,
   .services-hero::after {
     content: '';
@@ -307,11 +196,9 @@ const faqItems = [
     inset: 0;
     pointer-events: none;
   }
-
   .services-hero::before {
     display: none;
   }
-
   .services-hero::after {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320' viewBox='0 0 320 320'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23noise)' opacity='0.35'/%3E%3C/svg%3E");
     background-size: 80px 80px;
@@ -319,7 +206,6 @@ const faqItems = [
     opacity: 0.65;
     mix-blend-mode: overlay;
   }
-
   .services-hero > .max-w-7xl {
     position: relative;
     z-index: 1;
