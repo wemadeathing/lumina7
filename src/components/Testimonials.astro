@@ -14,7 +14,7 @@ const {
 } = Astro.props;
 ---
 
-<section class="pt-16 pb-6 md:pt-20 md:pb-10 px-6 lg:px-8 bg-primary transition-colors duration-300" data-testimonials>
+<section class="pt-16 pb-6 md:pt-20 md:pb-10 px-4 sm:px-6 lg:px-8 bg-primary transition-colors duration-300" data-testimonials>
   <div class="max-w-7xl mx-auto">
     <p class="text-caption text-tertiary mb-3">Testimonials</p>
     <h2 class="text-heading-2 text-primary mb-7 md:mb-8">{heading}</h2>
@@ -42,7 +42,7 @@ const {
             <div class="flex items-center gap-5 md:gap-6 shrink-0">
               {testimonials.map((_, i) => (
                 <button
-                  class="testimonial-step group text-left rounded-[4px] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60"
+                  class="testimonial-step group text-left min-h-[44px] min-w-[44px] flex items-center justify-center rounded-[4px] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60"
                   type="button"
                   aria-label={`Show testimonial ${i + 1}`}
                   data-testimonial-step

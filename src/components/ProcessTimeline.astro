@@ -23,7 +23,7 @@ const {
 ---
 
 <section
-  class={`py-20 px-6 lg:px-8 bg-primary transition-colors duration-300 ${className}`}
+  class={`py-20 px-4 sm:px-6 lg:px-8 bg-primary transition-colors duration-300 ${className}`}
   data-process-timeline
   data-interval={autoRotateMs}
 >
@@ -49,13 +49,13 @@ const {
     </div>
 
     <div class="mt-12">
-      <div class="relative h-6">
+      <div class="relative h-11">
         <div class="absolute left-0 right-0 top-1/2 h-px bg-gray-200 dark:bg-neutral-800 -translate-y-1/2"></div>
         <div class="relative flex items-center justify-between">
           {steps.map((step, index) => (
             <button
               type="button"
-              class={`process-marker h-6 w-6 border border-primary bg-secondary flex items-center justify-center transition-all duration-300 focus:outline-none focus-visible:ring-1 focus-visible:ring-white/80 focus-visible:border-white/80 ${
+              class={`process-marker min-h-[44px] min-w-[44px] h-11 w-11 border border-primary bg-secondary flex items-center justify-center transition-all duration-300 focus:outline-none focus-visible:ring-1 focus-visible:ring-white/80 focus-visible:border-white/80 ${
                 index === 0 ? 'ring-1 ring-white/80 border-white/80' : 'hover:bg-tertiary'
               }`}
               aria-label={`Show ${step.label}`}
