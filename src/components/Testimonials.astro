@@ -14,10 +14,10 @@ const {
 } = Astro.props;
 ---
 
-<section class="py-16 md:py-20 px-6 lg:px-8 bg-primary transition-colors duration-300" data-testimonials>
+<section class="py-20 px-6 lg:px-8 bg-primary transition-colors duration-300" data-testimonials>
   <div class="max-w-7xl mx-auto">
-    <p class="text-caption text-tertiary mb-4">Testimonials</p>
-    <h2 class="text-heading-2 text-primary mb-9 md:mb-10">{heading}</h2>
+    <p class="text-caption text-tertiary mb-3">Testimonials</p>
+    <h2 class="text-heading-2 text-primary mb-7 md:mb-8">{heading}</h2>
 
     <div class="relative min-h-[16rem] md:min-h-[18rem] lg:min-h-[19rem] overflow-hidden">
       {testimonials.map((testimonial, index) => (
@@ -29,12 +29,12 @@ const {
           data-index={index}
         >
           <div>
-            <p class="text-[1.5rem] leading-[1.12] sm:text-[1.8rem] md:text-[2.6rem] md:leading-[1.08] font-medium text-primary tracking-tight max-w-6xl">
+            <p class="text-[1.4rem] leading-[1.14] sm:text-[1.65rem] md:text-[2.25rem] md:leading-[1.1] font-medium text-primary tracking-tight max-w-5xl">
               “{testimonial.quote}”
             </p>
           </div>
 
-          <div class="mt-9 md:mt-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+          <div class="mt-7 md:mt-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
             <div>
               <p class="text-caption text-primary tracking-[0.16em] uppercase">{testimonial.name}</p>
               <p class="text-caption text-tertiary tracking-[0.14em] uppercase mt-1">Client</p>
@@ -60,7 +60,7 @@ const {
       ))}
     </div>
 
-    <div class="mt-4 md:mt-6">
+    <div class="mt-4 md:mt-5">
       <div class="relative h-[2px] w-full max-w-2xl overflow-hidden rounded-full bg-primary/20">
         <span
           class="testimonial-progress absolute inset-y-0 left-0 w-0 rounded-full bg-primary"

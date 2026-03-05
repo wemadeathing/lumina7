@@ -23,18 +23,18 @@ const {
 ---
 
 <section
-  class={`py-24 px-6 lg:px-8 bg-primary transition-colors duration-300 ${className}`}
+  class={`py-20 px-6 lg:px-8 bg-primary transition-colors duration-300 ${className}`}
   data-process-timeline
   data-interval={autoRotateMs}
 >
   <div class="max-w-7xl mx-auto">
-    <p class="text-caption text-secondary mb-6">{eyebrow}</p>
-    <h2 class="text-heading-1 text-primary max-w-5xl">{title}</h2>
+    <p class="text-caption text-secondary mb-3">{eyebrow}</p>
+    <h2 class="text-heading-2 text-primary max-w-5xl">{title}</h2>
     {subtitle && (
-      <p class="text-heading-2 text-secondary mt-2 max-w-5xl">{subtitle}</p>
+      <p class="text-body-lg text-secondary mt-4 max-w-3xl">{subtitle}</p>
     )}
 
-    <div class="mt-16 grid md:grid-cols-3 gap-10 md:gap-12">
+    <div class="mt-12 grid md:grid-cols-3 gap-10 md:gap-12">
       {steps.map((step, index) => (
         <article
           class={`process-step transition-opacity duration-300 ${index === 0 ? 'opacity-100' : 'opacity-35'}`}
@@ -48,7 +48,7 @@ const {
       ))}
     </div>
 
-    <div class="mt-14">
+    <div class="mt-12">
       <div class="relative h-6">
         <div class="absolute left-0 right-0 top-1/2 h-px bg-gray-200 dark:bg-neutral-800 -translate-y-1/2"></div>
         <div class="relative flex items-center justify-between">
