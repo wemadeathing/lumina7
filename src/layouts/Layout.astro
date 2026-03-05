@@ -4,13 +4,15 @@ export interface Props {
   description?: string;
   image?: string;
   canonical?: string;
+  useGlobalTopGradient?: boolean;
 }
 
 const { 
   title, 
   description = "Cape Town design studio specialising in brand identity, websites, print and signage for South African businesses. Fast turnaround. Fixed quotes. B-BBEE Level 1.",
   image = "/assets/logos/L7-logo-blk.png",
-  canonical
+  canonical,
+  useGlobalTopGradient = false
 } = Astro.props;
 
 const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site);
@@ -113,7 +115,10 @@ import WhatsAppFloating from '../components/WhatsAppFloating.astro';
   </head>
   <body class="min-h-screen antialiased transition-colors duration-300 bg-primary text-primary">
     <Header />
-    <div id="main-content">
+    <div id="main-content" class="relative isolate bg-primary">
+      {useGlobalTopGradient && (
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-64 bg-gradient-to-r from-blue-600/60 via-purple-600/60 to-pink-600/60 blur-[100px] opacity-100 dark:opacity-80 -z-10 pointer-events-none" aria-hidden="true"></div>
+      )}
       <slot />
     </div>
     <WhatsAppFloating />

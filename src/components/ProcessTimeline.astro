@@ -55,14 +55,14 @@ const {
           {steps.map((step, index) => (
             <button
               type="button"
-              class={`process-marker h-6 w-6 border border-primary bg-secondary flex items-center justify-center transition-all duration-200 focus:outline-none focus-visible:ring-1 focus-visible:ring-white/80 focus-visible:border-white/80 ${
+              class={`process-marker h-6 w-6 border border-primary bg-secondary flex items-center justify-center transition-all duration-300 focus:outline-none focus-visible:ring-1 focus-visible:ring-white/80 focus-visible:border-white/80 ${
                 index === 0 ? 'ring-1 ring-white/80 border-white/80' : 'hover:bg-tertiary'
               }`}
               aria-label={`Show ${step.label}`}
               data-process-marker
               data-index={index}
             >
-              <span class={`process-marker-dot h-1.5 w-1.5 rounded-full bg-primary transition-opacity duration-200 ${index === 0 ? 'opacity-100' : 'opacity-0'}`}></span>
+              <span class={`process-marker-dot h-1.5 w-1.5 rounded-full bg-primary transition-opacity duration-300 ${index === 0 ? 'opacity-100' : 'opacity-0'}`}></span>
             </button>
           ))}
         </div>
@@ -72,87 +72,7 @@ const {
 </section>
 
 <script>
-  function initProcessTimelines() {
-    const sections = document.querySelectorAll('[data-process-timeline]');
-
-    sections.forEach((section) => {
-      if (section.getAttribute('data-initialized') === 'true') return;
-      section.setAttribute('data-initialized', 'true');
-
-      const steps = section.querySelectorAll('[data-process-step]');
-      const markers = section.querySelectorAll('[data-process-marker]');
-
-      if (!steps.length || markers.length !== steps.length) return;
-
-      let current = 0;
-      let rafId = 0;
-
-      const setActive = (index) => {
-        const total = steps.length;
-        current = ((index % total) + total) % total;
-
-        steps.forEach((step, stepIndex) => {
-          const isActive = stepIndex === current;
-          step.classList.toggle('opacity-100', isActive);
-          step.classList.toggle('opacity-35', !isActive);
-
-          const title = step.querySelector('.process-step-title');
-          if (title) {
-            title.classList.toggle('text-primary', isActive);
-            title.classList.toggle('text-secondary', !isActive);
-          }
-        });
-
-        markers.forEach((marker, markerIndex) => {
-          const isActive = markerIndex === current;
-          marker.classList.toggle('ring-1', isActive);
-          marker.classList.toggle('ring-white/80', isActive);
-          marker.classList.toggle('border-white/80', isActive);
-          marker.classList.toggle('border-primary', !isActive);
-
-          const dot = marker.querySelector('.process-marker-dot');
-          if (dot) {
-            dot.classList.toggle('opacity-100', isActive);
-            dot.classList.toggle('opacity-0', !isActive);
-          }
-        });
-      };
-
-      const getScrollIndex = () => {
-        const rect = section.getBoundingClientRect();
-        const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-        const triggerLine = viewportHeight * 0.35;
-        const rawProgress = (triggerLine - rect.top) / Math.max(1, rect.height);
-        const progress = Math.min(1, Math.max(0, rawProgress));
-        return Math.min(steps.length - 1, Math.max(0, Math.floor(progress * steps.length)));
-      };
-
-      const updateFromScroll = () => {
-        const index = getScrollIndex();
-        if (index !== current) setActive(index);
-      };
-
-      const onScroll = () => {
-        if (rafId) return;
-        rafId = window.requestAnimationFrame(() => {
-          updateFromScroll();
-          rafId = 0;
-        });
-      };
-
-      markers.forEach((marker) => {
-        marker.addEventListener('click', () => {
-          const index = Number(marker.getAttribute('data-index') || '0');
-          setActive(index);
-        });
-      });
-
-      setActive(0);
-      updateFromScroll();
-      window.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', onScroll);
-    });
-  }
+  import { initProcessTimelines } from './process-timeline';
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initProcessTimelines);

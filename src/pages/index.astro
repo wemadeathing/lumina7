@@ -25,7 +25,7 @@ const services = [
 const processSteps = [
   { label: 'Day 1', title: 'Tell us what you need.', description: "We'll ask the right questions and come back with a fixed quote within 24 hours." },
   { label: 'Day 14', title: 'Review and refine.', description: "You approve the direction while we design and build with structured feedback rounds." },
-  { label: 'Day 21', title: 'Launch with confidence.', description: "Final files, live site, and handover complete — ready for your next phase of growth." }
+  { label: 'Day 21', title: 'Launch with confidence.', description: "Final files, live site, and handover complete. Ready for your next phase of growth." }
 ];
 
 const testimonials = [
@@ -43,28 +43,29 @@ const clientLogos = [
 ];
 
 const faqItems = [
-  { number: "01", question: "How much does a website cost?", answer: "Our websites start from R8,000 for a professional 5-page brochure site. Custom or e-commerce sites are quoted based on scope. We always provide a fixed quote before starting — no surprises." },
+  { number: "01", question: "How much does a website cost?", answer: "Our websites start from R8,000 for a professional 5-page brochure site. Custom or e-commerce sites are quoted based on scope. We always provide a fixed quote before starting. No surprises." },
   { number: "02", question: "How much does a logo or brand identity cost?", answer: "Logo and brand identity packages start from R5,000 and include logo files, colour palette, typography, and basic brand guidelines. Full brand identity systems with comprehensive guidelines start from R12,000." },
   { number: "03", question: "How long does a project take?", answer: "Most projects are completed within 2–4 working weeks from the day we receive your deposit and brief. Timeline depends on scope and how quickly you can review and approve work. We'll agree on a specific timeline before we start." },
-  { number: "04", question: "Do I own my website and logo after the project?", answer: "Yes. All intellectual property transfers to you in full once final payment is received. You own everything — files, code, domain, and hosting credentials." },
+  { number: "04", question: "Do I own my website and logo after the project?", answer: "Yes. All intellectual property transfers to you in full once final payment is received. You own everything: files, code, domain, and hosting credentials." },
   { number: "05", question: "Can you handle print production as well as design?", answer: "Yes. We design and manage print production for flyers, menus, signage, business cards, brochures, and large format. We work with trusted SA print suppliers and can manage the full process on your behalf." },
-  { number: "06", question: "Do you work with small businesses and startups?", answer: "Yes — most of our clients are owner-run businesses and growing SMEs. We work with businesses at all stages, from brand new startups to established companies refreshing their identity." }
+  { number: "06", question: "Do you work with small businesses and startups?", answer: "Yes, most of our clients are owner-run businesses and growing SMEs. We work with businesses at all stages, from brand new startups to established companies refreshing their identity." }
 ];
 ---
 
 <Layout 
-  title="Lumina7 | Brand Identity, Websites & Print Design — Cape Town"
+  title="Lumina7 | Brand Identity, Websites & Print Design | Cape Town"
   description="Cape Town design studio specialising in brand identity, websites, print and signage for South African businesses. Fast turnaround. Fixed quotes. B-BBEE Level 1."
+  useGlobalTopGradient={true}
 >
   <!-- Hero Section -->
-  <section class="pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-primary">
+  <section class="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
       <div class="max-w-4xl">
         <h1 class="text-[2.75rem] sm:text-[3.3rem] md:text-[4.95rem] font-medium text-gray-900 dark:text-gray-100 mb-8 leading-[0.95] mt-8 tracking-tight transition-colors duration-300">
           <span class="block">We design brands and websites for South African businesses.</span>
         </h1>
         <p class="text-body-lg text-primary max-w-3xl">
-          Branding, print, signage, and websites — delivered in weeks, not months.
+          Branding, print, signage, and websites, delivered in weeks, not months.
         </p>
         <div class="mt-8">
           <WhatsAppButton label="WhatsApp Us" size="lg" prefillText="Hi%2C%20I%27d%20like%20to%20enquire%20about%20your%20design%20services" />
@@ -82,7 +83,7 @@ const faqItems = [
           <img
             src={logo.src}
             alt={logo.alt}
-            class={`object-contain opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-200 flex-shrink-0 ${i === 0 ? 'h-[2.2rem]' : 'h-8'}`}
+            class={`object-contain opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300 flex-shrink-0 ${i === 0 ? 'h-[2.2rem]' : 'h-8'}`}
             loading="lazy"
           />
         ))}
@@ -95,11 +96,11 @@ const faqItems = [
     <div class="max-w-7xl mx-auto">
       <div class="pb-10">
         <h2 class="text-heading-2 text-primary mb-4">How we help</h2>
-        <p class="text-body text-secondary max-w-2xl">From first impression to final install — we handle every design touchpoint.</p>
+        <p class="text-body text-secondary max-w-2xl">From first impression to final install, we handle every design touchpoint.</p>
       </div>
       <div class="space-y-1 mt-12">
         {services.map((service, index) => (
-          <a href={service.link} class="group grid grid-cols-[2rem_1fr_auto] md:grid-cols-[2rem_minmax(0,1fr)_minmax(0,1.4fr)_1rem] gap-x-4 md:gap-x-8 gap-y-2 items-baseline py-6 border-b border-gray-200 dark:border-neutral-800 last:border-b-0 hover:bg-gray-50 dark:hover:bg-neutral-900/50 transition-colors duration-200 -mx-4 px-4 rounded-[4px]">
+          <a href={service.link} class="group grid grid-cols-[2rem_1fr_auto] md:grid-cols-[2rem_minmax(0,1fr)_minmax(0,1.4fr)_1rem] gap-x-4 md:gap-x-8 gap-y-2 items-baseline py-6 border-b border-gray-200 dark:border-neutral-800 last:border-b-0 hover:bg-gray-50 dark:hover:bg-neutral-900/50 transition-colors duration-300 -mx-4 px-4 rounded-[4px]">
             <span class="text-sm font-medium text-gray-400 dark:text-neutral-500 tabular-nums">{(index + 1).toString().padStart(2, '0')}</span>
             <span class="text-lg md:text-xl font-medium text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-neutral-300 transition-colors">{service.title}</span>
             <p class="col-start-2 col-span-2 md:col-start-3 md:col-span-1 text-body text-secondary md:text-right">{service.tagline}</p>
@@ -121,7 +122,7 @@ const faqItems = [
         {featuredProjects.map((project, index) => (
           <a href={`/work/${project.slug}`} class={`group block rounded-2xl overflow-hidden bg-gray-200 dark:bg-neutral-800 ${index === 0 ? 'w-full' : 'w-full md:w-[calc(50%-1rem)]'}`}>
             <div class="relative aspect-square md:aspect-video overflow-hidden">
-              <img src={project.data.heroImage} alt={project.data.title} class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+              <img src={project.data.heroImage} alt={project.data.title} class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" loading="lazy" />
               <div class="hidden md:flex absolute inset-0 p-8 lg:p-12 flex-col justify-between bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div class="flex flex-wrap gap-2">
                   {project.data.services.slice(0, 3).map((service) => (
@@ -156,7 +157,8 @@ const faqItems = [
     steps={processSteps}
   />
 
-  <Testimonials testimonials={testimonials} />
+  <!-- Testimonials hidden for now -->
+  <!-- <Testimonials testimonials={testimonials} /> -->
 
   <FAQ faqItems={faqItems} heading="Common questions" />
 

@@ -6,7 +6,7 @@ const title = "Book a Discovery Call | Lumina7";
 const description = "Book your 30-minute discovery call. Let's talk about your project, timeline, and how we can help.";
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} useGlobalTopGradient={false}>
   <main class="bg-primary min-h-screen text-gray-900 dark:text-white pt-24 pb-20 md:pt-32 md:pb-28 px-6 lg:px-8 relative isolate">
     <!-- Top Glow Effect -->
     <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[120%] h-64 bg-gradient-to-r from-blue-600/60 via-purple-600/60 to-pink-600/60 blur-[100px] opacity-100 dark:opacity-80 -z-10 pointer-events-none"></div>
@@ -25,28 +25,27 @@ const description = "Book your 30-minute discovery call. Let's talk about your p
         </h2>
         
         <p class="text-gray-600 dark:text-gray-400 text-lg md:text-xl font-normal max-w-2xl leading-relaxed">
-          Let's talk about your sprint. No pressure, no sales pitch—just a conversation about your project, timeline, and how we can help.
+          No pressure, no sales pitch. Just a conversation about your project, timeline, and how we can help.
         </p>
       </div>
 
       <!-- FORM SECTION -->
       <div class="mb-20">
         <div class="border border-gray-200 dark:border-gray-800 rounded-3xl p-10 bg-white/60 dark:bg-gray-900/30 backdrop-blur-md">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Tell us about your project</h2>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Request a discovery call</h2>
           <p class="text-gray-600 dark:text-gray-400 mb-8">
-            We'll get back within 24 hours to confirm your call.
+            Share your details and we'll get back within 24 hours to schedule your call.
           </p>
           
           <form 
             name="discovery-call" 
             method="POST" 
-            action="/success"
+            action="https://formsubmit.co/hello@lumina7.co.za"
             data-netlify="true" 
             data-netlify-honeypot="bot-field"
             class="space-y-6"
             id="discovery-form"
             novalidate
-            action="https://formsubmit.co/hello@lumina7.co.za"
           >
             <p class="hidden">
               <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
@@ -110,69 +109,101 @@ const description = "Book your 30-minute discovery call. Let's talk about your p
               </div>
             </div>
 
-            <!-- Service Interest (Radio) -->
+            <!-- Service Interest -->
             <div>
-              <p class="text-sm text-gray-500 dark:text-gray-400 mb-3 font-medium">I'm interested in:</p>
-              <div class="flex flex-col sm:flex-row gap-4 sm:gap-8">
+              <p class="text-sm text-gray-500 dark:text-gray-400 mb-3 font-medium">Service I'm interested in:</p>
+              <div class="flex flex-wrap gap-4 sm:gap-6">
                 <label class="flex items-center cursor-pointer group">
-                  <input type="radio" name="interest" value="Brand Sprint" class="sr-only peer" />
+                  <input type="radio" name="interest" value="Brand Identity" class="sr-only peer" />
                   <div class="w-5 h-5 border border-gray-400 dark:border-gray-600 rounded-full mr-3 flex items-center justify-center peer-checked:border-black dark:peer-checked:border-white peer-checked:bg-black dark:peer-checked:bg-white transition-colors">
                     <div class="w-2.5 h-2.5 bg-white dark:bg-[#0a0a0a] rounded-full opacity-0 peer-checked:opacity-100"></div>
                   </div>
-                  <span class="text-gray-600 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors">Brand Sprint</span>
+                  <span class="text-gray-600 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors">Brand Identity</span>
                 </label>
-                
                 <label class="flex items-center cursor-pointer group">
-                  <input type="radio" name="interest" value="Website Sprint" class="sr-only peer" />
+                  <input type="radio" name="interest" value="Print & Marketing" class="sr-only peer" />
                   <div class="w-5 h-5 border border-gray-400 dark:border-gray-600 rounded-full mr-3 flex items-center justify-center peer-checked:border-black dark:peer-checked:border-white peer-checked:bg-black dark:peer-checked:bg-white transition-colors">
                     <div class="w-2.5 h-2.5 bg-white dark:bg-[#0a0a0a] rounded-full opacity-0 peer-checked:opacity-100"></div>
                   </div>
-                  <span class="text-gray-600 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors">Website Sprint</span>
+                  <span class="text-gray-600 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors">Print & Marketing</span>
                 </label>
-
                 <label class="flex items-center cursor-pointer group">
-                  <input type="radio" name="interest" value="Both" class="sr-only peer" />
+                  <input type="radio" name="interest" value="Signage & Installations" class="sr-only peer" />
                   <div class="w-5 h-5 border border-gray-400 dark:border-gray-600 rounded-full mr-3 flex items-center justify-center peer-checked:border-black dark:peer-checked:border-white peer-checked:bg-black dark:peer-checked:bg-white transition-colors">
                     <div class="w-2.5 h-2.5 bg-white dark:bg-[#0a0a0a] rounded-full opacity-0 peer-checked:opacity-100"></div>
                   </div>
-                  <span class="text-gray-600 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors">Both</span>
+                  <span class="text-gray-600 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors">Signage</span>
+                </label>
+                <label class="flex items-center cursor-pointer group">
+                  <input type="radio" name="interest" value="Website Design" class="sr-only peer" />
+                  <div class="w-5 h-5 border border-gray-400 dark:border-gray-600 rounded-full mr-3 flex items-center justify-center peer-checked:border-black dark:peer-checked:border-white peer-checked:bg-black dark:peer-checked:bg-white transition-colors">
+                    <div class="w-2.5 h-2.5 bg-white dark:bg-[#0a0a0a] rounded-full opacity-0 peer-checked:opacity-100"></div>
+                  </div>
+                  <span class="text-gray-600 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors">Website</span>
+                </label>
+                <label class="flex items-center cursor-pointer group">
+                  <input type="radio" name="interest" value="Social Media & Digital" class="sr-only peer" />
+                  <div class="w-5 h-5 border border-gray-400 dark:border-gray-600 rounded-full mr-3 flex items-center justify-center peer-checked:border-black dark:peer-checked:border-white peer-checked:bg-black dark:peer-checked:bg-white transition-colors">
+                    <div class="w-2.5 h-2.5 bg-white dark:bg-[#0a0a0a] rounded-full opacity-0 peer-checked:opacity-100"></div>
+                  </div>
+                  <span class="text-gray-600 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors">Social & Digital</span>
+                </label>
+                <label class="flex items-center cursor-pointer group">
+                  <input type="radio" name="interest" value="Not sure yet" class="sr-only peer" />
+                  <div class="w-5 h-5 border border-gray-400 dark:border-gray-600 rounded-full mr-3 flex items-center justify-center peer-checked:border-black dark:peer-checked:border-white peer-checked:bg-black dark:peer-checked:bg-white transition-colors">
+                    <div class="w-2.5 h-2.5 bg-white dark:bg-[#0a0a0a] rounded-full opacity-0 peer-checked:opacity-100"></div>
+                  </div>
+                  <span class="text-gray-600 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors">Not sure yet</span>
                 </label>
               </div>
             </div>
 
             <!-- Project Details -->
             <div>
-              <label for="project-details" class="sr-only">Tell us briefly about your project</label>
+              <label for="project-details" class="block text-sm text-gray-500 dark:text-gray-400 mb-2 font-medium">Project details</label>
               <textarea 
                 id="project-details" 
                 name="project-details" 
                 rows="3" 
                 maxlength="300"
-                placeholder="Tell us briefly about your project..."
+                placeholder="Briefly describe your project, goals, or timeline. What do you need help with?"
                 class="w-full bg-white dark:bg-[#0a0a0a] border border-gray-300 dark:border-gray-800 rounded p-3 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:border-gray-400 dark:focus:border-gray-600 transition-colors resize-none"
               ></textarea>
             </div>
 
-            <!-- Preferred Contact Method & Times -->
-            <div class="space-y-6">
-              <div>
-                <label for="preferred-time" class="sr-only">Preferred days/times</label>
-                <div class="relative">
-                  <select 
-                    id="preferred-time" 
-                    name="preferred-time" 
-                    class="w-full bg-white dark:bg-[#0a0a0a] border border-gray-300 dark:border-gray-800 rounded p-3 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:border-gray-400 dark:focus:border-gray-600 transition-colors appearance-none cursor-pointer"
-                  >
-                    <option value="" disabled selected>Preferred days/times for call</option>
-                    <option value="Mon-Fri Morning">Mon-Fri Morning</option>
-                    <option value="Mon-Fri Afternoon">Mon-Fri Afternoon</option>
-                    <option value="Mon-Fri Evening">Mon-Fri Evening</option>
-                  </select>
-                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 dark:text-gray-400">
-                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                  </div>
+            <!-- Preferred Time (Custom Dropdown) -->
+            <div>
+              <label for="preferred-time-input" class="block text-sm text-gray-500 dark:text-gray-400 mb-2 font-medium">Preferred days/times for call</label>
+              <input type="hidden" name="preferred-time" id="preferred-time-input" value="" />
+              <div class="relative" id="preferred-time-dropdown">
+                <button
+                  type="button"
+                  id="preferred-time-trigger"
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                  aria-labelledby="preferred-time-label"
+                  class="w-full bg-white dark:bg-[#0a0a0a] border border-gray-300 dark:border-gray-800 rounded p-3 text-left text-gray-900 dark:text-white focus:outline-none focus:border-gray-400 dark:focus:border-gray-600 focus-visible:ring-1 focus-visible:ring-primary/60 transition-colors flex items-center justify-between"
+                >
+                  <span id="preferred-time-label" class="text-gray-500 dark:text-gray-400">Select preferred time</span>
+                  <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 shrink-0 ml-2 transition-transform duration-200" aria-hidden="true" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </button>
+                <div
+                  id="preferred-time-listbox"
+                  role="listbox"
+                  aria-labelledby="preferred-time-label"
+                  class="absolute top-full left-0 right-0 mt-1 py-1 bg-white dark:bg-[#0a0a0a] border border-gray-300 dark:border-gray-800 rounded-[4px] shadow-lg z-50 opacity-0 invisible transition-all duration-200"
+                >
+                  <div role="option" data-value="Mon-Fri Morning" class="px-3 py-2.5 text-gray-900 dark:text-white cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Mon-Fri Morning</div>
+                  <div role="option" data-value="Mon-Fri Afternoon" class="px-3 py-2.5 text-gray-900 dark:text-white cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Mon-Fri Afternoon</div>
+                  <div role="option" data-value="Mon-Fri Evening" class="px-3 py-2.5 text-gray-900 dark:text-white cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Mon-Fri Evening</div>
                 </div>
               </div>
+            </div>
+
+            <!-- Preferred Contact Method -->
+            <div class="space-y-6">
 
               <div>
                 <p class="text-sm text-gray-500 dark:text-gray-400 mb-3 font-medium">Preferred contact method:</p>
@@ -214,7 +245,7 @@ const description = "Book your 30-minute discovery call. Let's talk about your p
               type="submit" 
               class="w-full bg-black dark:bg-white text-white dark:text-black font-bold py-3.5 px-8 rounded-full cursor-pointer hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors mt-4"
             >
-              Send Message
+              Request Discovery Call
             </button>
             
             <p class="text-xs text-gray-500 dark:text-gray-400 text-center mt-3">
@@ -237,16 +268,69 @@ const description = "Book your 30-minute discovery call. Let's talk about your p
   <Footer />
 
   <script>
-    // Pre-select service interest based on URL query parameter
     document.addEventListener('DOMContentLoaded', () => {
+      // Pre-select service interest based on URL query parameter
       const urlParams = new URLSearchParams(window.location.search);
       const interest = urlParams.get('interest');
-      
       if (interest) {
         const radio = document.querySelector(`input[name="interest"][value="${interest}"]`);
         if (radio) {
           (radio as HTMLInputElement).checked = true;
         }
+      }
+
+      // Custom dropdown for preferred time
+      const trigger = document.getElementById('preferred-time-trigger');
+      const listbox = document.getElementById('preferred-time-listbox');
+      const hiddenInput = document.getElementById('preferred-time-input') as HTMLInputElement;
+      const labelEl = document.getElementById('preferred-time-label');
+
+      if (trigger && listbox && hiddenInput && labelEl) {
+        const options = listbox.querySelectorAll('[role="option"]');
+
+        const open = () => {
+          listbox.classList.remove('opacity-0', 'invisible');
+          trigger?.setAttribute('aria-expanded', 'true');
+          (trigger?.querySelector('svg') as SVGElement)?.classList.add('rotate-180');
+        };
+
+        const close = () => {
+          listbox.classList.add('opacity-0', 'invisible');
+          trigger?.setAttribute('aria-expanded', 'false');
+          (trigger?.querySelector('svg') as SVGElement)?.classList.remove('rotate-180');
+        };
+
+        const select = (value: string, label: string) => {
+          hiddenInput.value = value;
+          labelEl.textContent = label;
+          labelEl.classList.remove('text-gray-500', 'dark:text-gray-400');
+          labelEl.classList.add('text-gray-900', 'dark:text-white');
+          close();
+        };
+
+        trigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          const isOpen = !listbox.classList.contains('invisible');
+          if (isOpen) close();
+          else open();
+        });
+
+        options.forEach((opt) => {
+          opt.addEventListener('click', () => {
+            const value = opt.getAttribute('data-value');
+            const text = opt.textContent?.trim();
+            if (value && text) select(value, text);
+          });
+        });
+
+        document.addEventListener('click', (e) => {
+          const container = document.getElementById('preferred-time-dropdown');
+          if (container && !container.contains(e.target as Node)) close();
+        });
+
+        listbox.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') close();
+        });
       }
 
       // Form Validation
