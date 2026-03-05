@@ -4,6 +4,8 @@ import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import CTA from '../components/CTA.astro';
 import FAQ from '../components/FAQ.astro';
+import Testimonials from '../components/Testimonials.astro';
+import ProcessTimeline from '../components/ProcessTimeline.astro';
 import { getCollection } from 'astro:content';
 
 const allProjects = await getCollection('portfolio');
@@ -21,9 +23,9 @@ const services = [
 ];
 
 const processSteps = [
-  { title: 'We talk', body: "Tell us what you need. We'll ask the right questions and come back with a fixed quote within 24 hours." },
-  { title: 'We design', body: "You approve the direction, we build it. Regular check-ins, structured feedback rounds, no guessing games." },
-  { title: 'You launch', body: "Final files, live site, print-ready artwork — whatever the project needs, handed over once final payment clears." }
+  { label: 'Day 1', title: 'Tell us what you need.', description: "We'll ask the right questions and come back with a fixed quote within 24 hours." },
+  { label: 'Day 14', title: 'Review and refine.', description: "You approve the direction while we design and build with structured feedback rounds." },
+  { label: 'Day 21', title: 'Launch with confidence.', description: "Final files, live site, and handover complete — ready for your next phase of growth." }
 ];
 
 const testimonials = [
@@ -67,9 +69,6 @@ const faqItems = [
         <div class="mt-8">
           <WhatsAppButton label="WhatsApp Us" size="lg" prefillText="Hi%2C%20I%27d%20like%20to%20enquire%20about%20your%20design%20services" />
         </div>
-        <p class="mt-6 text-caption text-tertiary">
-          Fixed quotes   Fast turnaround   B-BBEE Level 1
-        </p>
       </div>
     </div>
   </section>
@@ -93,22 +92,21 @@ const faqItems = [
 
   <!-- Services Section - Becklyn style numbered list -->
   <section class="py-24 px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300 border-t border-gray-200 dark:border-neutral-900">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl md:text-3xl font-medium text-gray-900 dark:text-white mb-4">How we help</h2>
-      <p class="text-gray-600 dark:text-neutral-400 leading-relaxed max-w-2xl mb-8">From first impression to final install — we handle every design touchpoint.</p>
+    <div class="max-w-7xl mx-auto">
+      <div class="pb-10">
+        <h2 class="text-heading-2 text-primary mb-4">How we help</h2>
+        <p class="text-body text-secondary max-w-2xl">From first impression to final install — we handle every design touchpoint.</p>
+      </div>
       <div class="space-y-1 mt-12">
         {services.map((service, index) => (
-          <a href={service.link} class="group flex items-baseline gap-4 md:gap-8 py-6 border-b border-gray-200 dark:border-neutral-800 last:border-b-0 hover:bg-gray-50 dark:hover:bg-neutral-900/50 transition-colors duration-200 -mx-4 px-4 rounded-[4px]">
-            <span class="text-sm font-medium text-gray-400 dark:text-neutral-500 tabular-nums min-w-[2rem]">{(index + 1).toString().padStart(2, '0')}</span>
-            <div class="flex-1 min-w-0">
-              <span class="text-lg md:text-xl font-medium text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-neutral-300 transition-colors">{service.title}</span>
-              <span class="text-gray-500 dark:text-neutral-400 ml-2">{service.tagline}</span>
-            </div>
-            <span class="text-gray-400 dark:text-neutral-500 group-hover:translate-x-1 transition-transform">→</span>
+          <a href={service.link} class="group grid grid-cols-[2rem_1fr_auto] md:grid-cols-[2rem_minmax(0,1fr)_minmax(0,1.4fr)_1rem] gap-x-4 md:gap-x-8 gap-y-2 items-baseline py-6 border-b border-gray-200 dark:border-neutral-800 last:border-b-0 hover:bg-gray-50 dark:hover:bg-neutral-900/50 transition-colors duration-200 -mx-4 px-4 rounded-[4px]">
+            <span class="text-sm font-medium text-gray-400 dark:text-neutral-500 tabular-nums">{(index + 1).toString().padStart(2, '0')}</span>
+            <span class="text-lg md:text-xl font-medium text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-neutral-300 transition-colors">{service.title}</span>
+            <p class="col-start-2 col-span-2 md:col-start-3 md:col-span-1 text-body text-secondary md:text-right">{service.tagline}</p>
+            <span class="col-start-3 md:col-start-4 row-span-2 md:row-span-1 self-center justify-self-end text-gray-400 dark:text-neutral-500 group-hover:translate-x-1 transition-transform">→</span>
           </a>
         ))}
       </div>
-      <p class="mt-16 text-gray-600 dark:text-neutral-400 leading-relaxed max-w-2xl">All projects include a fixed quote before we start. No surprises.</p>
     </div>
   </section>
 
@@ -151,45 +149,14 @@ const faqItems = [
     </div>
   </section>
 
-  <!-- How It Works -->
-  <section class="py-24 px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300 border-t border-gray-200 dark:border-neutral-900">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl md:text-3xl font-medium text-gray-900 dark:text-white mb-4">Simple process. Fast results.</h2>
-      <p class="text-gray-600 dark:text-neutral-400 leading-relaxed max-w-2xl mb-12">Most clients go from first conversation to final delivery in 2–4 weeks.</p>
-      <div class="space-y-1 mt-12">
-        {processSteps.map((step, index) => (
-          <div class="flex items-baseline gap-4 md:gap-8 py-6 border-b border-gray-200 dark:border-neutral-800 last:border-b-0 -mx-4 px-4 rounded-[4px]">
-            <span class="text-sm font-medium text-gray-400 dark:text-neutral-500 tabular-nums min-w-[2rem]">{(index + 1).toString().padStart(2, '0')}</span>
-            <div class="flex-1 min-w-0">
-              <span class="text-lg md:text-xl font-medium text-gray-900 dark:text-white">{step.title}</span>
-              <p class="text-gray-500 dark:text-neutral-400 mt-1">{step.body}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <ProcessTimeline
+    eyebrow="Let's get started"
+    title="Simple process. Fast results."
+    subtitle="Most clients go from first conversation to final delivery in 2–4 weeks."
+    steps={processSteps}
+  />
 
-  <!-- Testimonials -->
-  <section class="py-24 px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300 border-t border-gray-200 dark:border-neutral-900">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl md:text-3xl font-medium text-gray-900 dark:text-white mb-12">What our clients say</h2>
-      <div class="space-y-1">
-        {testimonials.map((t, index) => (
-          <div class="py-6 border-b border-gray-200 dark:border-neutral-800 last:border-b-0 -mx-4 px-4 rounded-[4px]">
-            <p class="text-gray-600 dark:text-neutral-400 leading-relaxed mb-4">"{t.quote}"</p>
-            <p class="text-sm font-medium text-gray-900 dark:text-white">{t.name}</p>
-            <p class="text-sm text-gray-500 dark:text-neutral-500">{t.business}</p>
-          </div>
-        ))}
-      </div>
-      <div class="mt-12 flex flex-wrap gap-8 text-caption text-tertiary">
-        <span>30+ Projects Completed</span>
-        <span>2–4 Week Average Delivery</span>
-        <span>B-BBEE Level 1</span>
-      </div>
-    </div>
-  </section>
+  <Testimonials testimonials={testimonials} />
 
   <FAQ faqItems={faqItems} heading="Common questions" />
 

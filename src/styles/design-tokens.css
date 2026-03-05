@@ -224,6 +224,18 @@ body {
   @apply bg-gray-100 dark:bg-gray-800;
 }
 
+.border-primary {
+  @apply border-gray-200 dark:border-neutral-800;
+}
+
+.border-secondary {
+  @apply border-gray-100 dark:border-neutral-900;
+}
+
+.divide-primary > :not([hidden]) ~ :not([hidden]) {
+  @apply border-gray-200 dark:border-neutral-800;
+}
+
 /* Transition Utilities */
 .transition-smooth {
   transition: all var(--transition-normal);

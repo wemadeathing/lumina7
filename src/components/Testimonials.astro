@@ -1,0 +1,165 @@
+---
+export interface Props {
+  testimonials: Array<{
+    quote: string;
+    name: string;
+    business: string;
+  }>;
+  heading?: string;
+}
+
+const {
+  testimonials,
+  heading = 'What our clients say'
+} = Astro.props;
+---
+
+<section class="py-24 px-6 lg:px-8 bg-primary transition-colors duration-300 border-t border-primary" data-testimonials>
+  <div class="max-w-7xl mx-auto">
+    <p class="text-caption text-tertiary mb-4">Testimonials</p>
+    <h2 class="text-heading-2 text-primary mb-10">{heading}</h2>
+
+    <div class="rounded-2xl border border-primary bg-secondary p-8 md:p-10 min-h-[280px] flex flex-col justify-between">
+      <div class="relative">
+        {testimonials.map((testimonial, index) => (
+          <article
+            id={`testimonial-panel-${index}`}
+            class={`testimonial-panel ${index === 0 ? 'block' : 'hidden'}`}
+            role="tabpanel"
+            data-testimonial-panel
+            data-index={index}
+          >
+            <p class="text-heading-3 text-primary leading-snug">“{testimonial.quote}”</p>
+            <div class="mt-8">
+              <p class="text-body font-medium text-primary">{testimonial.name}</p>
+              <p class="text-body-sm text-tertiary">{testimonial.business}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="mt-10 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          {testimonials.map((_, index) => (
+            <button
+              class={`testimonial-dot h-2.5 w-2.5 rounded-full transition-colors ${
+                index === 0 ? 'bg-primary' : 'bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600'
+              }`}
+              type="button"
+              aria-label={`Go to testimonial ${index + 1}`}
+              data-testimonial-dot
+              data-index={index}
+            ></button>
+          ))}
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button
+            type="button"
+            class="testimonial-prev inline-flex items-center justify-center h-10 w-10 rounded-full border border-primary text-primary hover:bg-primary hover:text-inverse transition-colors"
+            aria-label="Previous testimonial"
+            data-testimonial-prev
+          >
+            ←
+          </button>
+          <button
+            type="button"
+            class="testimonial-next inline-flex items-center justify-center h-10 w-10 rounded-full border border-primary text-primary hover:bg-primary hover:text-inverse transition-colors"
+            aria-label="Next testimonial"
+            data-testimonial-next
+          >
+            →
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 flex flex-wrap gap-8 text-caption text-tertiary">
+      <span>30+ Projects Completed</span>
+      <span>2–4 Week Average Delivery</span>
+      <span>B-BBEE Level 1</span>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initTestimonials() {
+    const testimonialSections = document.querySelectorAll('[data-testimonials]');
+
+    testimonialSections.forEach((section) => {
+      if (section.getAttribute('data-initialized') === 'true') return;
+      section.setAttribute('data-initialized', 'true');
+
+      const panels = section.querySelectorAll('[data-testimonial-panel]');
+      const dots = section.querySelectorAll('[data-testimonial-dot]');
+      const prevButton = section.querySelector('[data-testimonial-prev]');
+      const nextButton = section.querySelector('[data-testimonial-next]');
+      if (!panels.length) return;
+
+      let current = 0;
+      let intervalId;
+
+      const setActive = (index) => {
+        const total = panels.length;
+        current = ((index % total) + total) % total;
+
+
+        panels.forEach((panel, panelIndex) => {
+          const isActive = panelIndex === current;
+          panel.classList.toggle('block', isActive);
+          panel.classList.toggle('hidden', !isActive);
+        });
+
+        dots.forEach((dot, dotIndex) => {
+          const isActive = dotIndex === current;
+          dot.classList.toggle('bg-primary', isActive);
+          dot.classList.toggle('bg-gray-300', !isActive);
+          dot.classList.toggle('dark:bg-gray-700', !isActive);
+        });
+      };
+
+      const stopAutoRotate = () => {
+        if (intervalId) window.clearInterval(intervalId);
+      };
+
+      const startAutoRotate = () => {
+        stopAutoRotate();
+        intervalId = window.setInterval(() => {
+          setActive(current + 1);
+        }, 7000);
+      };
+
+
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+          const targetIndex = Number(dot.getAttribute('data-index') || '0');
+          setActive(targetIndex);
+          startAutoRotate();
+        });
+      });
+
+      prevButton?.addEventListener('click', () => {
+        setActive(current - 1);
+        startAutoRotate();
+      });
+
+      nextButton?.addEventListener('click', () => {
+        setActive(current + 1);
+        startAutoRotate();
+      });
+
+      section.addEventListener('mouseenter', stopAutoRotate);
+      section.addEventListener('mouseleave', startAutoRotate);
+
+      setActive(0);
+      startAutoRotate();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTestimonials);
+  } else {
+    initTestimonials();
+  }
+  document.addEventListener('astro:page-load', initTestimonials);
+</script>

@@ -9,6 +9,7 @@ const services = [
   {
     duration: "From R5,000",
     title: "Brand Identity",
+    outcome: "Build a brand people trust at first glance.",
     description: "Your brand is the first thing potential customers judge you on. We build visual identities that make your business look credible, memorable, and worth choosing over the competition. From a single logo to a complete brand system — we create the visual language your business needs to stand out.",
     capabilities: ["Logo design (primary + variations)", "Colour palette", "Typography selection", "Brand guidelines", "All final files (AI, EPS, SVG, PNG, PDF)"],
     link: "/services/brand-identity"
@@ -16,6 +17,7 @@ const services = [
   {
     duration: "From R800 per item",
     title: "Print & Marketing Materials",
+    outcome: "Turn every printed touchpoint into a sales asset.",
     description: "Print isn't dead — it's how your brand shows up in the physical world. From business cards handed over at a meeting to menus that make food look irresistible, we design materials that do real work for your business.",
     capabilities: ["Business cards", "Flyers and leaflets", "Brochures", "Menus and price lists", "Presentations", "Print production management"],
     link: "/services/print"
@@ -23,6 +25,7 @@ const services = [
   {
     duration: "From R1,500",
     title: "Signage & Installations",
+    outcome: "Make your physical space easy to find and hard to forget.",
     description: "Your physical space is part of your brand. Whether it's a shopfront sign, a trade show banner, or a full office installation, we design and produce signage that makes your location unmistakable.",
     capabilities: ["Shopfront signage", "Banners and pull-up displays", "Vehicle wraps", "Large format printing", "Wayfinding", "Production and installation"],
     link: "/services/signage"
@@ -30,6 +33,7 @@ const services = [
   {
     duration: "From R8,000",
     title: "Website Design & Development",
+    outcome: "Create a fast, credible website that converts visits into enquiries.",
     description: "Your website is your most important salesperson — it works 24 hours a day and most potential clients will check it before they call you. We design and build professional websites that look great, load fast, and turn visitors into enquiries.",
     capabilities: ["Custom design (mobile-first)", "Up to 8 pages", "Contact form and WhatsApp", "Basic SEO", "Google Analytics", "30 days post-launch support"],
     link: "/services/websites"
@@ -37,6 +41,7 @@ const services = [
   {
     duration: "From R1,200",
     title: "Social Media & Digital Assets",
+    outcome: "Keep your digital presence consistent and instantly recognizable.",
     description: "Inconsistent social media visuals undermine the brand you've worked hard to build. We create templates, graphics, and assets that keep your digital presence looking sharp — whether you're posting daily or just occasionally.",
     capabilities: ["Profile setup", "Post templates", "Cover images", "Digital ad designs", "Email signature design"],
     link: "/services/print"
@@ -63,13 +68,14 @@ const faqItems = [
   description="Brand identity from R5,000. Websites from R8,000. Print, signage, and social media assets. Fixed quotes, 2–4 week delivery."
 >
   <!-- Hero Section -->
-  <section class="pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-primary">
+  <section class="pt-24 pb-20 px-6 lg:px-8 bg-primary border-b border-primary">
     <div class="max-w-7xl mx-auto">
-      <div class="max-w-4xl">
-        <h1 class="text-[2.75rem] sm:text-[3.3rem] md:text-[4.95rem] font-medium text-gray-900 dark:text-gray-100 mb-8 leading-[0.95] mt-8 tracking-tight transition-colors duration-300" style="letter-spacing: -0.05rem;">
+      <div class="max-w-5xl mt-8">
+        <p class="text-caption text-secondary mb-6">Services</p>
+        <h2 class="text-heading-1 text-primary mb-8">
           Our Services
-        </h1>
-        <p class="text-body-lg text-primary max-w-3xl">
+        </h2>
+        <p class="text-body-lg text-secondary max-w-3xl">
           Everything your business needs to look professional and grow — under one roof, with one point of contact.
         </p>
       </div>
@@ -77,49 +83,54 @@ const faqItems = [
   </section>
 
   <!-- Services Section -->
-  <section class="services-hero bg-white dark:bg-black text-gray-900 dark:text-white relative overflow-hidden transition-colors duration-300 border-t border-gray-200 dark:border-neutral-900">
+  <section class="services-hero bg-primary relative overflow-hidden transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
-      <div class="space-y-0">
-        {services.map((service, index) => (
-          <a href={service.link} class="service-card group block" data-service={index}>
-            <div class="px-6 lg:px-8 py-12">
-              <div class="grid lg:grid-cols-12 gap-8 items-start">
-                <div class="lg:col-span-5">
-                  <span class="text-caption text-gray-900 dark:text-white bg-gray-200 dark:bg-white px-3 py-1 mb-4 inline-block rounded-full">
-                    {service.duration}
-                  </span>
-                  <h2 class="text-heading-2 text-gray-900 dark:text-white leading-tight">
-                    {service.title}
-                  </h2>
-                </div>
-                <div class="lg:col-span-7">
-                  <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-lg mb-6">
-                    {service.description}
-                  </p>
-                  <div class="flex flex-wrap gap-3 mb-6">
-                    {service.capabilities.map(capability => (
-                      <span class="text-xs text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 px-4 py-2 hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors cursor-pointer uppercase tracking-wide rounded-full">
-                        {capability}
-                      </span>
-                    ))}
-                  </div>
-                  <span class="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors flex items-center gap-2 group">
-                    <span class="text-2xl group-hover:translate-x-2 transition-transform duration-300">→</span>
-                  </span>
-                </div>
-              </div>
+      <div class="py-20 px-6 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-8 items-end pb-12 border-b border-primary">
+          <div class="lg:col-span-7">
+            <p class="text-caption text-secondary mb-4">Services overview</p>
+            <h2 class="text-heading-1 text-primary">Our Services & Solutions</h2>
+          </div>
+          <p class="lg:col-span-5 text-body text-secondary lg:text-right">
+            Fixed quotes before we start, clear scope up front, and delivery in 2–4 weeks for most projects.
+          </p>
+        </div>
+
+        <div class="mt-12 border-y border-primary">
+          <div class="hidden md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)_3rem] gap-8 py-4 border-b border-primary text-caption text-secondary">
+            <p>Service</p>
+            <p>Outcome</p>
+            <p class="text-right">No</p>
+          </div>
+
+          <div class="divide-y divide-primary">
+            <div class="grid grid-cols-[1fr_auto] md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)_3rem] gap-4 md:gap-8 py-6 md:py-7 items-start">
+              <p class="text-heading-3 text-primary">Overview</p>
+              <p class="text-heading-3 text-primary text-right md:text-right">00</p>
+              <p class="col-span-2 md:col-span-1 text-body text-secondary">Everything your business needs to look professional and grow — under one roof, with one point of contact.</p>
             </div>
-          </a>
-        ))}
+
+            {services.map((service, index) => (
+              <div class="grid grid-cols-[1fr_auto] md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)_3rem] gap-4 md:gap-8 py-6 md:py-7 items-start">
+                <div class="col-span-1">
+                  <h3 class="text-heading-3 text-primary">{service.title}</h3>
+                  <p class="text-caption text-tertiary mt-2">{service.duration}</p>
+                </div>
+                <p class="text-heading-3 text-primary text-right md:text-right">{String(index + 1).padStart(2, '0')}</p>
+                <p class="col-span-2 md:col-span-1 text-body text-secondary">{service.outcome}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Not sure CTA -->
-  <section class="py-24 px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300 border-t border-gray-200 dark:border-neutral-900">
+  <section class="py-24 px-6 lg:px-8 bg-primary transition-colors duration-300 border-t border-primary">
     <div class="max-w-4xl mx-auto text-center">
-      <h3 class="text-2xl font-medium text-gray-900 dark:text-white mb-4">Not sure what you need?</h3>
-      <p class="text-gray-600 dark:text-neutral-400 mb-6 max-w-xl mx-auto">
+      <h3 class="text-heading-3 text-primary mb-4">Not sure what you need?</h3>
+      <p class="text-body text-secondary mb-6 max-w-xl mx-auto">
         WhatsApp us and describe your business. We'll tell you exactly what we'd recommend and what it would cost.
       </p>
       <WhatsAppButton label="Start the conversation" />
@@ -127,30 +138,29 @@ const faqItems = [
   </section>
 
   <!-- Process Section -->
-  <section class="py-24 px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300 border-t border-gray-200 dark:border-neutral-900">
+  <section class="py-24 px-6 lg:px-8 bg-secondary transition-colors duration-300 border-t border-primary">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-20">
+        <p class="text-caption text-secondary mb-4">Process</p>
         <h2 class="text-heading-1 text-primary mb-8">
           Get to know our process
         </h2>
       </div>
       <div class="space-y-8">
         {processSteps.map((step) => (
-          <div class="process-step bg-white dark:bg-neutral-800 p-8 lg:p-12 rounded-2xl border border-gray-200 dark:border-neutral-700 transition-colors duration-300">
+          <div class="process-step bg-primary p-8 lg:p-12 rounded-2xl border border-primary transition-colors duration-300">
             <div class="grid lg:grid-cols-12 gap-8 items-start">
-              <div class="lg:col-span-4">
-                <h2 class="text-2xl md:text-3xl font-bold text-primary leading-none mb-4">{step.number}</h2>
-                <h2 class="text-heading-2 text-primary mb-4">{step.phase}</h2>
-                <h3 class="text-body-lg text-primary mb-4">{step.title}</h3>
-                <p class="text-caption text-tertiary">{step.duration}</p>
+              <div class="lg:col-span-3">
+                <p class="text-caption text-secondary mb-3">Step {step.number}</p>
+                <h3 class="text-heading-3 text-primary mb-3">{step.phase}</h3>
+                <p class="text-caption text-secondary">{step.duration}</p>
               </div>
-              <div class="lg:col-span-1"></div>
-              <div class="lg:col-span-7">
-                <p class="text-body text-secondary mb-6">{step.description}</p>
-                <ul class="space-y-3">
+              <div class="lg:col-span-9">
+                <h4 class="text-body-lg text-primary mb-4">{step.title}</h4>
+                <p class="text-body text-secondary mb-6 max-w-3xl">{step.description}</p>
+                <ul class="grid sm:grid-cols-3 gap-3">
                   {step.details.map(detail => (
-                    <li class="text-body-sm text-secondary flex items-start gap-3">
-                      <span class="w-1 h-1 bg-gray-600 dark:bg-gray-400 rounded-full mt-2 flex-shrink-0"></span>
+                    <li class="text-body-sm text-secondary border border-primary bg-secondary rounded-md px-4 py-3">
                       {detail}
                     </li>
                   ))}
@@ -170,41 +180,22 @@ const faqItems = [
   <Footer />
 </Layout>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const serviceCards = document.querySelectorAll('.service-card');
-    serviceCards.forEach((card) => {
-      card.addEventListener('mouseenter', () => {
-        (card as HTMLElement).style.transform = 'translateY(-2px)';
-        (card as HTMLElement).style.transition = 'transform 0.3s ease';
-      });
-      card.addEventListener('mouseleave', () => {
-        (card as HTMLElement).style.transform = 'translateY(0)';
-      });
-    });
-  });
-</script>
-
 <style>
   .services-hero {
     background-color: inherit;
   }
-  .services-hero::before,
   .services-hero::after {
     content: '';
     position: absolute;
     inset: 0;
     pointer-events: none;
   }
-  .services-hero::before {
-    display: none;
-  }
   .services-hero::after {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320' viewBox='0 0 320 320'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23noise)' opacity='0.35'/%3E%3C/svg%3E");
     background-size: 80px 80px;
     background-repeat: repeat;
-    opacity: 0.65;
-    mix-blend-mode: overlay;
+    opacity: 0.28;
+    mix-blend-mode: soft-light;
   }
   .services-hero > .max-w-7xl {
     position: relative;
