@@ -102,12 +102,12 @@
   --z-tooltip: 1070;
 }
 
-/* Dark Mode Colors */
+/* Dark Mode Colors - unified surface (hero color) */
 html.dark {
   --bg-primary: #0a0a0a;
-  --bg-secondary: #141414;
-  --bg-tertiary: #1a1a1a;
-  --bg-elevated: #141414;
+  --bg-secondary: #0a0a0a;
+  --bg-tertiary: #0a0a0a;
+  --bg-elevated: #0a0a0a;
   --bg-overlay: rgba(0, 0, 0, 0.8);
   
   --text-primary: #fafafa;
@@ -120,8 +120,8 @@ html.dark {
   --border-hover: #404040;
   
   --surface-base: #0a0a0a;
-  --surface-raised: #141414;
-  --surface-overlay: #262626;
+  --surface-raised: #0a0a0a;
+  --surface-overlay: #0a0a0a;
   
   --color-accent: #fafafa;
 }
@@ -217,7 +217,7 @@ body {
 }
 
 .bg-secondary {
-  @apply bg-gray-50 dark:bg-[#18181b];
+  @apply bg-gray-50 dark:bg-[#0a0a0a];
 }
 
 .bg-tertiary {

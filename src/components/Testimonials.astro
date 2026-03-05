@@ -14,70 +14,59 @@ const {
 } = Astro.props;
 ---
 
-<section class="py-24 px-6 lg:px-8 bg-primary transition-colors duration-300 border-t border-primary" data-testimonials>
+<section class="py-16 md:py-20 px-6 lg:px-8 bg-primary transition-colors duration-300" data-testimonials>
   <div class="max-w-7xl mx-auto">
     <p class="text-caption text-tertiary mb-4">Testimonials</p>
-    <h2 class="text-heading-2 text-primary mb-10">{heading}</h2>
+    <h2 class="text-heading-2 text-primary mb-9 md:mb-10">{heading}</h2>
 
-    <div class="rounded-2xl border border-primary bg-secondary p-8 md:p-10 min-h-[280px] flex flex-col justify-between">
-      <div class="relative">
-        {testimonials.map((testimonial, index) => (
-          <article
-            id={`testimonial-panel-${index}`}
-            class={`testimonial-panel ${index === 0 ? 'block' : 'hidden'}`}
-            role="tabpanel"
-            data-testimonial-panel
-            data-index={index}
-          >
-            <p class="text-heading-3 text-primary leading-snug">“{testimonial.quote}”</p>
-            <div class="mt-8">
-              <p class="text-body font-medium text-primary">{testimonial.name}</p>
-              <p class="text-body-sm text-tertiary">{testimonial.business}</p>
+    <div class="relative min-h-[16rem] md:min-h-[18rem] lg:min-h-[19rem] overflow-hidden">
+      {testimonials.map((testimonial, index) => (
+        <article
+          class={`testimonial-slide absolute inset-0 transition-opacity duration-500 ease-out ${index === 0 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+          role="tabpanel"
+          aria-hidden={index === 0 ? 'false' : 'true'}
+          data-testimonial-slide
+          data-index={index}
+        >
+          <div>
+            <p class="text-[1.5rem] leading-[1.12] sm:text-[1.8rem] md:text-[2.6rem] md:leading-[1.08] font-medium text-primary tracking-tight max-w-6xl">
+              “{testimonial.quote}”
+            </p>
+          </div>
+
+          <div class="mt-9 md:mt-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+            <div>
+              <p class="text-caption text-primary tracking-[0.16em] uppercase">{testimonial.name}</p>
+              <p class="text-caption text-tertiary tracking-[0.14em] uppercase mt-1">Client</p>
             </div>
-          </article>
-        ))}
-      </div>
-
-      <div class="mt-10 flex items-center justify-between gap-4">
-        <div class="flex items-center gap-2">
-          {testimonials.map((_, index) => (
-            <button
-              class={`testimonial-dot h-2.5 w-2.5 rounded-full transition-colors ${
-                index === 0 ? 'bg-primary' : 'bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600'
-              }`}
-              type="button"
-              aria-label={`Go to testimonial ${index + 1}`}
-              data-testimonial-dot
-              data-index={index}
-            ></button>
-          ))}
-        </div>
-
-        <div class="flex items-center gap-2">
-          <button
-            type="button"
-            class="testimonial-prev inline-flex items-center justify-center h-10 w-10 rounded-full border border-primary text-primary hover:bg-primary hover:text-inverse transition-colors"
-            aria-label="Previous testimonial"
-            data-testimonial-prev
-          >
-            ←
-          </button>
-          <button
-            type="button"
-            class="testimonial-next inline-flex items-center justify-center h-10 w-10 rounded-full border border-primary text-primary hover:bg-primary hover:text-inverse transition-colors"
-            aria-label="Next testimonial"
-            data-testimonial-next
-          >
-            →
-          </button>
-        </div>
-      </div>
+            <div class="flex items-center gap-5 md:gap-6 shrink-0">
+              {testimonials.map((_, i) => (
+                <button
+                  class="testimonial-step group text-left"
+                  type="button"
+                  aria-label={`Show testimonial ${i + 1}`}
+                  data-testimonial-step
+                  data-index={i}
+                  aria-current={i === 0 ? 'true' : 'false'}
+                >
+                  <span class={`inline-block text-caption transition-colors ${i === 0 ? 'text-primary' : 'text-tertiary group-hover:text-secondary'}`}>
+                    {(i + 1).toString().padStart(2, '0')}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
     </div>
 
-    <div class="mt-8 flex flex-wrap gap-8 text-caption text-tertiary">
-      <span>30+ Projects Completed</span>
-      <span>2–4 Week Average Delivery</span>
-      <span>B-BBEE Level 1</span>
+    <div class="mt-4 md:mt-6">
+      <div class="relative h-[2px] w-full max-w-2xl overflow-hidden rounded-full bg-primary/20">
+        <span
+          class="testimonial-progress absolute inset-y-0 left-0 w-0 rounded-full bg-primary"
+          data-testimonial-progress
+        ></span>
+      </div>
     </div>
   </div>
 </section>
@@ -90,69 +79,87 @@ const {
       if (section.getAttribute('data-initialized') === 'true') return;
       section.setAttribute('data-initialized', 'true');
 
-      const panels = section.querySelectorAll('[data-testimonial-panel]');
-      const dots = section.querySelectorAll('[data-testimonial-dot]');
-      const prevButton = section.querySelector('[data-testimonial-prev]');
-      const nextButton = section.querySelector('[data-testimonial-next]');
-      if (!panels.length) return;
+      const slides = section.querySelectorAll('[data-testimonial-slide]');
+      const steps = section.querySelectorAll('[data-testimonial-step]');
+      const progressBar = section.querySelector('[data-testimonial-progress]');
+      if (!slides.length) return;
 
       let current = 0;
-      let intervalId;
+      let rafId;
+      let startedAt = 0;
+      const autoplayMs = 5600;
 
-      const setActive = (index) => {
-        const total = panels.length;
+      const clearProgress = () => {
+        if (progressBar) progressBar.style.width = '0%';
+      };
+
+      const setActive = (index, resetProgress = true) => {
+        const total = slides.length;
         current = ((index % total) + total) % total;
 
-
-        panels.forEach((panel, panelIndex) => {
-          const isActive = panelIndex === current;
-          panel.classList.toggle('block', isActive);
-          panel.classList.toggle('hidden', !isActive);
+        slides.forEach((slide, slideIndex) => {
+          const isActive = slideIndex === current;
+          slide.classList.toggle('opacity-100', isActive);
+          slide.classList.toggle('opacity-0', !isActive);
+          slide.classList.toggle('pointer-events-none', !isActive);
+          slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
         });
 
-        dots.forEach((dot, dotIndex) => {
-          const isActive = dotIndex === current;
-          dot.classList.toggle('bg-primary', isActive);
-          dot.classList.toggle('bg-gray-300', !isActive);
-          dot.classList.toggle('dark:bg-gray-700', !isActive);
+        steps.forEach((step, stepIndex) => {
+          const isActive = stepIndex === current;
+          step.setAttribute('aria-current', isActive ? 'true' : 'false');
+          const label = step.querySelector('span');
+          label?.classList.toggle('text-primary', isActive);
+          label?.classList.toggle('text-tertiary', !isActive);
         });
+
+        if (resetProgress) clearProgress();
       };
 
-      const stopAutoRotate = () => {
-        if (intervalId) window.clearInterval(intervalId);
+      const stop = () => {
+        if (rafId) window.cancelAnimationFrame(rafId);
       };
 
-      const startAutoRotate = () => {
-        stopAutoRotate();
-        intervalId = window.setInterval(() => {
+      const run = (timestamp) => {
+        if (!startedAt) startedAt = timestamp;
+        const progress = Math.min((timestamp - startedAt) / autoplayMs, 1);
+        if (progressBar) progressBar.style.width = `${progress * 100}%`;
+
+        if (progress >= 1) {
+          startedAt = 0;
           setActive(current + 1);
-        }, 7000);
+          rafId = window.requestAnimationFrame(run);
+          return;
+        }
+
+        rafId = window.requestAnimationFrame(run);
       };
 
+      const start = () => {
+        stop();
+        startedAt = 0;
+        rafId = window.requestAnimationFrame(run);
+      };
 
-      dots.forEach((dot) => {
-        dot.addEventListener('click', () => {
-          const targetIndex = Number(dot.getAttribute('data-index') || '0');
+      steps.forEach((step) => {
+        step.addEventListener('click', () => {
+          const targetIndex = Number(step.getAttribute('data-index') || '0');
           setActive(targetIndex);
-          startAutoRotate();
+          start();
         });
       });
 
-      prevButton?.addEventListener('click', () => {
-        setActive(current - 1);
-        startAutoRotate();
+      section.addEventListener('mouseenter', stop);
+      section.addEventListener('mouseleave', start);
+      section.addEventListener('focusin', stop);
+      section.addEventListener('focusout', (event) => {
+        const nextTarget = event.relatedTarget;
+        if (nextTarget && section.contains(nextTarget)) return;
+        start();
       });
-
-      nextButton?.addEventListener('click', () => {
-        setActive(current + 1);
-        startAutoRotate();
-      });
-
-      section.addEventListener('mouseenter', stopAutoRotate);
-      section.addEventListener('mouseleave', startAutoRotate);
 
       setActive(0);
-      startAutoRotate();
+      start();
     });
   }
 
@@ -161,5 +168,6 @@ const {
   } else {
     initTestimonials();
   }
+
   document.addEventListener('astro:page-load', initTestimonials);
 </script>

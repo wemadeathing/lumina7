@@ -33,7 +33,7 @@ const categories = ['ALL', ...new Set(allProjects.map(project => project.categor
   </section>
 
   <!-- Filter Section -->
-  <section class="py-8 px-6 lg:px-8 bg-white dark:bg-black border-t border-gray-200 dark:border-neutral-900 transition-colors duration-300">
+  <section class="py-8 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a]  transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
       <div class="flex flex-wrap gap-4 justify-start">
         {categories.map(category => (
@@ -49,7 +49,7 @@ const categories = ['ALL', ...new Set(allProjects.map(project => project.categor
   </section>
 
   <!-- Projects Grid -->
-  <section class="py-24 px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300 border-t border-gray-200 dark:border-neutral-900">
+  <section class="py-24 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a] transition-colors duration-300 ">
     <div class="max-w-7xl mx-auto">
       <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {allProjects.map(project => (
