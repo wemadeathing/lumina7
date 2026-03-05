@@ -117,7 +117,7 @@ const relatedProjects = allProjects
   </section>
 
   <!-- Project Overview -->
-  <section class="py-24 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a]  transition-colors duration-300">
+  <section class="py-20 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a]  transition-colors duration-300">
     <div class="max-w-6xl mx-auto grid md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-12">
       <aside class="space-y-8 md:sticky md:top-32 self-start">
         <div>
@@ -148,7 +148,7 @@ const relatedProjects = allProjects
   </section>
 
   <!-- Project Content -->
-  <section class="py-24 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a]  transition-colors duration-300">
+  <section class="py-20 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a]  transition-colors duration-300">
     <div class="max-w-6xl mx-auto">
       {project.data.images && project.data.images.length > 0 && (
         <div class="grid gap-10 md:grid-cols-2">
@@ -189,10 +189,10 @@ const relatedProjects = allProjects
 
   <!-- Related Projects -->
   {relatedProjects.length > 0 && (
-    <section class="py-24 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a]  transition-colors duration-300">
+    <section class="py-20 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a]  transition-colors duration-300">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-16">
-          <h2 class="text-3xl md:text-4xl font-medium mb-4 text-gray-900 dark:text-gray-100 transition-colors duration-300">More {project.data.category} Work</h2>
+          <h2 class="text-heading-2 text-primary mb-4">More {project.data.category} Work</h2>
           <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto transition-colors duration-300">Explore other projects in this category</p>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">

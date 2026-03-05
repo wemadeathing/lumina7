@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 import CTA from '../components/CTA.astro';
 import FAQ from '../components/FAQ.astro';
-import WhatsAppButton from '../components/WhatsAppButton.astro';
+import ProcessTimeline from '../components/ProcessTimeline.astro';
 
 const services = [
   {
@@ -49,9 +49,9 @@ const services = [
 ];
 
 const processSteps = [
-  { number: "01", phase: "We talk", title: "Tell us what you need", duration: "24 hours", description: "We ask the right questions and come back with a fixed quote within 24 hours.", details: ["Brief and discovery", "Clear scope", "Fixed quote"] },
-  { number: "02", phase: "We design", title: "You approve, we build", duration: "2–4 weeks", description: "You approve the direction, we build it. Regular check-ins, structured feedback rounds, no guessing games.", details: ["Regular check-ins", "Structured feedback", "Clear milestones"] },
-  { number: "03", phase: "You launch", title: "Handover complete", duration: "Final", description: "Final files, live site, print-ready artwork — whatever the project needs, handed over once final payment clears.", details: ["All files", "Full ownership", "Ongoing support"] }
+  { label: 'Day 1', title: 'Tell us what you need.', description: "We'll ask the right questions and come back with a fixed quote within 24 hours." },
+  { label: 'Day 14', title: 'Review and refine.', description: "You approve the direction while we design and build with structured feedback rounds." },
+  { label: 'Day 21', title: 'Launch with confidence.', description: "Final files, live site, and handover complete — ready for your next phase of growth." }
 ];
 
 const faqItems = [
@@ -68,11 +68,11 @@ const faqItems = [
   description="Brand identity from R5,000. Websites from R8,000. Print, signage, and social media assets. Fixed quotes, 2–4 week delivery."
 >
   <!-- Hero Section -->
-  <section class="pt-24 pb-20 px-6 lg:px-8 bg-primary ">
+  <section class="pt-24 pb-8 px-6 lg:px-8 bg-primary">
     <div class="max-w-7xl mx-auto">
       <div class="max-w-5xl mt-8">
-        <p class="text-caption text-secondary mb-6">Services</p>
-        <h2 class="text-heading-1 text-primary mb-8">
+        <p class="text-caption text-secondary mb-4">Services</p>
+        <h2 class="text-heading-1 text-primary mb-4">
           Our Services
         </h2>
         <p class="text-body-lg text-secondary max-w-3xl">
@@ -85,39 +85,29 @@ const faqItems = [
   <!-- Services Section -->
   <section class="services-hero bg-primary relative overflow-hidden transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
-      <div class="py-20 px-6 lg:px-8">
-        <div class="grid lg:grid-cols-12 gap-8 items-end pb-12 ">
-          <div class="lg:col-span-7">
-            <p class="text-caption text-secondary mb-4">Services overview</p>
-            <h2 class="text-heading-1 text-primary">Our Services & Solutions</h2>
-          </div>
-          <p class="lg:col-span-5 text-body text-secondary lg:text-right">
-            Fixed quotes before we start, clear scope up front, and delivery in 2–4 weeks for most projects.
-          </p>
-        </div>
-
-        <div class="mt-12 border-y border-primary">
-          <div class="hidden md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)_3rem] gap-8 py-4  text-caption text-secondary">
+      <div class="py-12 px-6 lg:px-8">
+        <div class="border-y border-primary">
+          <div class="hidden md:grid md:grid-cols-[minmax(0,1.4fr)_minmax(0,2fr)_3rem] gap-6 lg:gap-8 py-4 text-caption text-secondary">
             <p>Service</p>
             <p>Outcome</p>
             <p class="text-right">No</p>
           </div>
 
           <div class="divide-y divide-primary">
-            <div class="grid grid-cols-[1fr_auto] md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)_3rem] gap-4 md:gap-8 py-6 md:py-7 items-start">
+            <div class="grid grid-cols-1 md:grid-cols-[minmax(0,1.4fr)_minmax(0,2fr)_3rem] gap-4 md:gap-6 lg:gap-8 py-6 md:py-7 items-start">
               <p class="text-heading-3 text-primary">Overview</p>
+              <p class="text-body text-secondary">Everything your business needs to look professional and grow — under one roof, with one point of contact.</p>
               <p class="text-heading-3 text-primary text-right md:text-right">00</p>
-              <p class="col-span-2 md:col-span-1 text-body text-secondary">Everything your business needs to look professional and grow — under one roof, with one point of contact.</p>
             </div>
 
             {services.map((service, index) => (
-              <div class="grid grid-cols-[1fr_auto] md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)_3rem] gap-4 md:gap-8 py-6 md:py-7 items-start">
-                <div class="col-span-1">
+              <div class="grid grid-cols-1 md:grid-cols-[minmax(0,1.4fr)_minmax(0,2fr)_3rem] gap-4 md:gap-6 lg:gap-8 py-6 md:py-7 items-start">
+                <div>
                   <h3 class="text-heading-3 text-primary">{service.title}</h3>
                   <p class="text-caption text-tertiary mt-2">{service.duration}</p>
                 </div>
+                <p class="text-body text-secondary">{service.outcome}</p>
                 <p class="text-heading-3 text-primary text-right md:text-right">{String(index + 1).padStart(2, '0')}</p>
-                <p class="col-span-2 md:col-span-1 text-body text-secondary">{service.outcome}</p>
               </div>
             ))}
           </div>
@@ -126,52 +116,12 @@ const faqItems = [
     </div>
   </section>
 
-  <!-- Not sure CTA -->
-  <section class="py-24 px-6 lg:px-8 bg-primary transition-colors duration-300 ">
-    <div class="max-w-4xl mx-auto text-center">
-      <h3 class="text-heading-3 text-primary mb-4">Not sure what you need?</h3>
-      <p class="text-body text-secondary mb-6 max-w-xl mx-auto">
-        WhatsApp us and describe your business. We'll tell you exactly what we'd recommend and what it would cost.
-      </p>
-      <WhatsAppButton label="Start the conversation" />
-    </div>
-  </section>
-
-  <!-- Process Section -->
-  <section class="py-24 px-6 lg:px-8 bg-secondary transition-colors duration-300 ">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-20">
-        <p class="text-caption text-secondary mb-4">Process</p>
-        <h2 class="text-heading-1 text-primary mb-8">
-          Get to know our process
-        </h2>
-      </div>
-      <div class="space-y-8">
-        {processSteps.map((step) => (
-          <div class="process-step bg-primary p-8 lg:p-12 rounded-2xl border border-primary transition-colors duration-300">
-            <div class="grid lg:grid-cols-12 gap-8 items-start">
-              <div class="lg:col-span-3">
-                <p class="text-caption text-secondary mb-3">Step {step.number}</p>
-                <h3 class="text-heading-3 text-primary mb-3">{step.phase}</h3>
-                <p class="text-caption text-secondary">{step.duration}</p>
-              </div>
-              <div class="lg:col-span-9">
-                <h4 class="text-body-lg text-primary mb-4">{step.title}</h4>
-                <p class="text-body text-secondary mb-6 max-w-3xl">{step.description}</p>
-                <ul class="grid sm:grid-cols-3 gap-3">
-                  {step.details.map(detail => (
-                    <li class="text-body-sm text-secondary border border-primary bg-secondary rounded-md px-4 py-3">
-                      {detail}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <ProcessTimeline
+    eyebrow="Let's get started"
+    title="Simple process. Fast results."
+    subtitle="Most clients go from first conversation to final delivery in 2–4 weeks."
+    steps={processSteps}
+  />
 
   <FAQ faqItems={faqItems} />
 

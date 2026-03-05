@@ -23,17 +23,17 @@ const categories = ['ALL', ...new Set(allProjects.map(project => project.categor
   description="Brand identity, websites, print, and signage — built for South African businesses."
 >
   <!-- Hero Section -->
-  <section class="pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-primary">
+  <section class="pt-24 pb-8 px-4 sm:px-6 lg:px-8 bg-primary">
     <div class="max-w-7xl mx-auto">
       <div class="max-w-4xl">
-        <h2 class="text-heading-1 text-primary mb-8 mt-8">Our Work</h2>
-        <p class="text-body-lg text-primary max-w-2xl">Brand identity, websites, print, and signage — built for South African businesses.</p>
+        <h2 class="text-heading-1 text-primary mb-4 mt-8">Our Work</h2>
+        <p class="text-body-lg text-primary max-w-2xl mb-8">Brand identity, websites, print, and signage — built for South African businesses.</p>
       </div>
     </div>
   </section>
 
   <!-- Filter Section -->
-  <section class="py-8 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a]  transition-colors duration-300">
+  <section class="py-6 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
       <div class="flex flex-wrap gap-4 justify-start">
         {categories.map(category => (
@@ -49,7 +49,7 @@ const categories = ['ALL', ...new Set(allProjects.map(project => project.categor
   </section>
 
   <!-- Projects Grid -->
-  <section class="py-24 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a] transition-colors duration-300 ">
+  <section class="pt-8 pb-20 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
       <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {allProjects.map(project => (
