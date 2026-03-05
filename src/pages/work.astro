@@ -38,7 +38,7 @@ const categories = ['ALL', ...new Set(allProjects.map(project => project.categor
       <div class="flex flex-wrap gap-4 justify-start">
         {categories.map(category => (
           <button 
-            class="filter-btn px-6 py-3 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors uppercase tracking-wide"
+            class="filter-btn px-6 py-3 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 rounded-[2px] transition-colors uppercase tracking-wide"
             data-filter={category.toLowerCase()}
           >
             {category}
