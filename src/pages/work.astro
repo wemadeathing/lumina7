@@ -94,15 +94,24 @@ const categories = ['ALL', ...new Set(allProjects.map(project => project.categor
 
 
 <script>
-  // Portfolio filtering functionality
-  document.addEventListener('DOMContentLoaded', function() {
+  function initPortfolioFilters() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectItems = document.querySelectorAll('.project-item');
+    if (!filterButtons.length || !projectItems.length) return;
     
     // Set initial active state
-    filterButtons[0].classList.add('text-gray-900', 'dark:text-white', 'font-semibold');
+    filterButtons.forEach((button, index) => {
+      button.classList.toggle('text-gray-900', index === 0);
+      button.classList.toggle('dark:text-white', index === 0);
+      button.classList.toggle('font-semibold', index === 0);
+      button.classList.toggle('text-gray-600', index !== 0);
+      button.classList.toggle('dark:text-gray-400', index !== 0);
+      button.setAttribute('aria-pressed', index === 0 ? 'true' : 'false');
+    });
     
     filterButtons.forEach((button) => {
+      if ((button as HTMLElement).dataset.filterBound === 'true') return;
+      (button as HTMLElement).dataset.filterBound = 'true';
       button.addEventListener('click', () => {
         const filter = button.getAttribute('data-filter');
         
@@ -110,9 +119,11 @@ const categories = ['ALL', ...new Set(allProjects.map(project => project.categor
         filterButtons.forEach((btn) => {
           btn.classList.remove('text-gray-900', 'dark:text-white', 'font-semibold');
           btn.classList.add('text-gray-600', 'dark:text-gray-400');
+          btn.setAttribute('aria-pressed', 'false');
         });
         button.classList.add('text-gray-900', 'dark:text-white', 'font-semibold');
         button.classList.remove('text-gray-600', 'dark:text-gray-400');
+        button.setAttribute('aria-pressed', 'true');
         
         // Filter projects
         projectItems.forEach((item) => {
@@ -126,5 +137,12 @@ const categories = ['ALL', ...new Set(allProjects.map(project => project.categor
         });
       });
     });
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPortfolioFilters, { once: true });
+  } else {
+    initPortfolioFilters();
+  }
+  document.addEventListener('astro:page-load', initPortfolioFilters);
 </script>

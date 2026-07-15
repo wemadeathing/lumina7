@@ -22,6 +22,7 @@ const socialImage = new URL(image, Astro.site);
 import '../styles/design-tokens.css';
 import Header from '../components/Header.astro';
 import WhatsAppFloating from '../components/WhatsAppFloating.astro';
+import { ClientRouter } from 'astro:transitions';
 ---
 
 <!doctype html>
@@ -112,6 +113,7 @@ import WhatsAppFloating from '../components/WhatsAppFloating.astro';
     
     <!-- Named slot for additional head content (e.g., structured data) -->
     <slot name="head" />
+    <ClientRouter />
   </head>
   <body class="min-h-screen antialiased transition-colors duration-300 bg-primary text-primary">
     <Header />
@@ -122,6 +124,11 @@ import WhatsAppFloating from '../components/WhatsAppFloating.astro';
       <slot />
     </div>
     <WhatsAppFloating />
+    <script>
+      import { startMicroInteractions } from '../scripts/micro-interactions.ts';
+
+      startMicroInteractions();
+    </script>
   </body>
   <style is:global>
     * {
@@ -147,20 +154,6 @@ import WhatsAppFloating from '../components/WhatsAppFloating.astro';
       font-weight: 500;
       line-height: 1.2;
       letter-spacing: -0.025em;
-    }
-
-    /* H1 entrance animation */
-    h1 {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.6s ease-out forwards;
-    }
-
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     .text-display {
@@ -190,19 +183,35 @@ import WhatsAppFloating from '../components/WhatsAppFloating.astro';
     a:not([class*="transition"]) {
       transition: color 0.2s ease-in-out;
     }
+
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation-duration: 180ms;
+      animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      ::view-transition-old(root),
+      ::view-transition-new(root) {
+        animation-duration: 1ms;
+      }
+    }
   </style>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Simple fade-in on page load
-      const mainContent = document.getElementById('main-content');
-      if (mainContent) {
-        mainContent.style.opacity = '0';
-        requestAnimationFrame(() => {
-          mainContent.style.transition = 'opacity 0.3s ease-out';
-          mainContent.style.opacity = '1';
-        });
+    function syncThemeClass(root = document.documentElement) {
+      const storedTheme = localStorage.getItem('color-theme');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      if (storedTheme === 'dark' || (!storedTheme && systemPrefersDark)) {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
       }
+    }
+
+    document.addEventListener('astro:before-swap', function(event) {
+      syncThemeClass(event.newDocument.documentElement);
     });
 
     // Smooth scroll for anchor links

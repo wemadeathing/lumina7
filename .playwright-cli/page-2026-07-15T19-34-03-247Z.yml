@@ -1,0 +1,139 @@
+- generic [ref=e1]:
+  - banner:
+    - generic:
+      - link [ref=e2] [cursor=pointer]:
+        - /url: /
+        - img "Lumina7" [ref=e3]
+      - link "WhatsApp Us" [ref=e5] [cursor=pointer]:
+        - /url: https://wa.me/27814623628?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20your%20design%20services
+        - text: WhatsApp Us
+        - generic [ref=e6]: →
+  - navigation "Main navigation" [ref=e7]:
+    - link "Home" [ref=e8] [cursor=pointer]:
+      - /url: /
+    - link "About" [ref=e9] [cursor=pointer]:
+      - /url: /about
+    - link "Services" [ref=e10] [cursor=pointer]:
+      - /url: /services
+    - link "Work" [ref=e11] [cursor=pointer]:
+      - /url: /work
+    - button "More options" [ref=e12] [cursor=pointer]
+  - generic [ref=e16]:
+    - generic [ref=e18]:
+      - navigation [ref=e19]:
+        - generic [ref=e20]:
+          - link "Home" [ref=e21] [cursor=pointer]:
+            - /url: /
+          - generic [ref=e22]: /
+          - link "Work" [ref=e23] [cursor=pointer]:
+            - /url: /work
+          - generic [ref=e24]: /
+          - generic [ref=e25]: Brand Marks
+      - generic [ref=e26]:
+        - generic [ref=e27]: Branding
+        - heading "Brand Marks" [level=1] [ref=e28]
+        - paragraph [ref=e29]: Logo and identity work built to hold up across websites, signage, stationery, packaging, uniforms, and social channels.
+    - img "Brand Marks - Logo and Identity Work" [ref=e33]
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e37]:
+          - paragraph [ref=e38]: Marks
+          - paragraph [ref=e39]: 17+
+        - generic [ref=e40]:
+          - paragraph [ref=e41]: Scope
+          - paragraph [ref=e42]: Brand Identity, Logo Design, Visual Systems
+        - generic [ref=e43]:
+          - paragraph [ref=e44]: Clients
+          - paragraph [ref=e45]: Various Clients
+      - generic [ref=e46]:
+        - paragraph [ref=e47]: This collection brings together logo and identity work created for businesses across hospitality, healthcare, technology, events, retail, and professional services.
+        - heading "The Brief" [level=2] [ref=e48]
+        - paragraph [ref=e49]: Each business needed a clear visual anchor that could work beyond a single logo file. These marks had to show up consistently across websites, signage, stationery, social profiles, uniforms, packaging, presentations, and customer-facing materials.
+        - heading "What We Delivered" [level=2] [ref=e50]
+        - paragraph [ref=e51]: We developed marks that balance recognition, clarity, and flexibility. Some are quiet and professional. Others are more expressive. In each case, the design direction was shaped around the business category, audience, and practical places the brand needed to appear.
+        - heading "Why It Works" [level=2] [ref=e52]
+        - paragraph [ref=e53]: A strong mark gives a business something to build around. It helps customers recognise the brand faster and gives teams a consistent foundation for future design work.
+        - heading "Outcome" [level=2] [ref=e54]
+        - paragraph [ref=e55]: The result is a broad identity showcase that demonstrates how Lumina7 approaches logo design as part of a usable brand system, not as an isolated graphic.
+    - generic [ref=e58]:
+      - button "View Brand Marks logo 1" [active] [ref=e59]:
+        - img "Brand Marks logo 1" [ref=e60]
+      - button "View Brand Marks logo 2" [ref=e61]:
+        - img "Brand Marks logo 2" [ref=e62]
+      - button "View Brand Marks logo 3" [ref=e63]:
+        - img "Brand Marks logo 3" [ref=e64]
+      - button "View Brand Marks logo 4" [ref=e65]:
+        - img "Brand Marks logo 4" [ref=e66]
+      - button "View Brand Marks logo 5" [ref=e67]:
+        - img "Brand Marks logo 5" [ref=e68]
+      - button "View Brand Marks logo 6" [ref=e69]:
+        - img "Brand Marks logo 6" [ref=e70]
+      - button "View Brand Marks logo 7" [ref=e71]:
+        - img "Brand Marks logo 7" [ref=e72]
+      - button "View Brand Marks logo 8" [ref=e73]:
+        - img "Brand Marks logo 8" [ref=e74]
+      - button "View Brand Marks logo 9" [ref=e75]:
+        - img "Brand Marks logo 9" [ref=e76]
+      - button "View Brand Marks logo 10" [ref=e77]:
+        - img "Brand Marks logo 10" [ref=e78]
+      - button "View Brand Marks logo 11" [ref=e79]:
+        - img "Brand Marks logo 11" [ref=e80]
+      - button "View Brand Marks logo 12" [ref=e81]:
+        - img "Brand Marks logo 12" [ref=e82]
+      - button "View Brand Marks logo 13" [ref=e83]:
+        - img "Brand Marks logo 13" [ref=e84]
+      - button "View Brand Marks logo 14" [ref=e85]:
+        - img "Brand Marks logo 14" [ref=e86]
+      - button "View Brand Marks logo 15" [ref=e87]:
+        - img "Brand Marks logo 15" [ref=e88]
+      - button "View Brand Marks logo 16" [ref=e89]:
+        - img "Brand Marks logo 16" [ref=e90]
+      - button "View Brand Marks logo 17" [ref=e91]:
+        - img "Brand Marks logo 17" [ref=e92]
+    - generic [ref=e156]:
+      - button "Close modal" [ref=e157] [cursor=pointer]
+      - img "Full size image" [ref=e161]
+    - generic [ref=e96]:
+      - heading "Ready to get started? Let's talk." [level=2] [ref=e98]
+      - generic [ref=e99]:
+        - paragraph [ref=e100]: Tell us what you need and we'll come back to you within a few hours, usually on WhatsApp. No long forms, no commitment.
+        - link "WhatsApp Us +" [ref=e101] [cursor=pointer]:
+          - /url: https://wa.me/27814623628?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20Lumina7
+          - generic [ref=e102]: WhatsApp Us
+          - generic [ref=e103]: +
+    - contentinfo [ref=e104]:
+      - generic [ref=e105]:
+        - generic [ref=e106]:
+          - generic [ref=e107]:
+            - link [ref=e108] [cursor=pointer]:
+              - /url: /
+              - img "Lumina7" [ref=e109]
+            - paragraph [ref=e110]: Professional design for South African businesses.
+          - generic [ref=e111]:
+            - heading "Company" [level=4] [ref=e112]
+            - navigation [ref=e113]:
+              - link "About" [ref=e114] [cursor=pointer]:
+                - /url: /about
+              - link "Services" [ref=e115] [cursor=pointer]:
+                - /url: /services
+          - generic [ref=e116]:
+            - heading "Contact" [level=4] [ref=e117]
+            - generic [ref=e118]:
+              - paragraph [ref=e119]: Cape Town, South Africa
+              - link "hello@lumina7.co.za" [ref=e120] [cursor=pointer]:
+                - /url: mailto:hello@lumina7.co.za
+              - link "+27 81 462 3628" [ref=e121] [cursor=pointer]:
+                - /url: https://wa.me/27814623628
+        - generic [ref=e122]:
+          - generic [ref=e123]:
+            - generic [ref=e124]: Nexevo Studios (Pty) Ltd t/a Lumina7 Studio
+            - generic [ref=e125]: "Registration: 2025/019491/07"
+            - generic [ref=e126]:
+              - generic [ref=e127]: B-BBEE Level 1
+              - generic [ref=e128]: Contributor
+          - generic [ref=e129]: © 2026 Lumina7
+  - generic [ref=e132]:
+    - button [ref=e133]
+    - button [ref=e139]
+    - button [ref=e143]
+    - button [ref=e151]

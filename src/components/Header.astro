@@ -83,6 +83,8 @@ import ThemeToggle from './ThemeToggle.astro';
       return pathname === linkPath || pathname.startsWith(linkPath + '/');
     }
     navLinks.forEach(link => {
+      link.classList.remove('bg-gray-200/90', 'text-gray-900', 'dark:bg-gray-700/60', 'dark:text-gray-100');
+      link.classList.add('text-gray-700', 'dark:text-gray-300', 'hover:bg-gray-100/80', 'dark:hover:bg-gray-800/80');
       const linkPath = link.getAttribute('data-path');
       if (linkPath && isActive(linkPath)) {
         link.classList.add('bg-gray-200/90', 'text-gray-900', 'dark:bg-gray-700/60', 'dark:text-gray-100');
@@ -92,21 +94,29 @@ import ThemeToggle from './ThemeToggle.astro';
 
     // More button toggle
     if (moreBtn && morePanel && backdrop) {
+      function closeMorePanel() {
+        morePanel.classList.add('opacity-0', 'invisible', 'translate-y-2');
+        backdrop.classList.add('opacity-0', 'invisible');
+        moreBtn.setAttribute('aria-expanded', 'false');
+      }
+      moreBtn.setAttribute('aria-expanded', morePanel.classList.contains('invisible') ? 'false' : 'true');
+      if ((moreBtn as HTMLElement).dataset.navBound === 'true') return;
+      (moreBtn as HTMLElement).dataset.navBound = 'true';
       moreBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         const isOpen = !morePanel.classList.contains('invisible');
         if (isOpen) {
-          morePanel.classList.add('opacity-0', 'invisible', 'translate-y-2');
-          backdrop.classList.add('opacity-0', 'invisible');
+          closeMorePanel();
         } else {
           morePanel.classList.remove('opacity-0', 'invisible', 'translate-y-2');
           backdrop.classList.remove('opacity-0', 'invisible');
           backdrop.classList.add('opacity-100', 'visible');
+          moreBtn.setAttribute('aria-expanded', 'true');
         }
       });
-      backdrop.addEventListener('click', () => {
-        morePanel.classList.add('opacity-0', 'invisible', 'translate-y-2');
-        backdrop.classList.add('opacity-0', 'invisible');
+      backdrop.addEventListener('click', closeMorePanel);
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMorePanel();
       });
     }
   }

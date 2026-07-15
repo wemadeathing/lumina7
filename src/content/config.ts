@@ -31,6 +31,7 @@ const portfolio = defineCollection({
     outcome: z.string().optional(),
     featured: z.boolean().default(false),
     order: z.number().default(0),
+    caseStudyLayout: z.enum(['standard', 'gallery']).default('standard'),
   }),
 });
 

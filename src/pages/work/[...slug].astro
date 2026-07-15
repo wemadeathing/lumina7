@@ -22,6 +22,9 @@ const allProjects = await getCollection('portfolio');
 const relatedProjects = allProjects
   .filter(p => p.slug !== project.slug && p.data.category === project.data.category)
   .slice(0, 3);
+
+const isGalleryLayout = project.data.caseStudyLayout === 'gallery';
+const galleryImages = project.data.images.length > 0 ? project.data.images : [project.data.heroImage];
 ---
 
 <Layout title={`${project.data.title} | Lumina7`} description={project.data.description}>
@@ -72,108 +75,197 @@ const relatedProjects = allProjects
     })}
   </script>
   
-  <!-- Hero Section -->
-  <section class="pt-24 pb-0 px-6 lg:px-8">
-    <div class="max-w-6xl mx-auto">
-      <!-- Breadcrumb -->
-      <nav class="mb-10">
-        <div class="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
-          <a href="/" class="hover:text-gray-900 dark:hover:text-gray-100 transition-colors">Home</a>
-          <span>/</span>
-          <a href="/work" class="hover:text-gray-900 dark:hover:text-gray-100 transition-colors">Work</a>
-          <span>/</span>
-          <span class="text-gray-900 dark:text-gray-100">{project.data.company}</span>
-        </div>
-      </nav>
+  {isGalleryLayout ? (
+    <>
+      <!-- Gallery Hero -->
+      <section class="pt-16 pb-8 px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+          <nav class="mb-8">
+            <div class="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
+              <a href="/" class="hover:text-gray-900 dark:hover:text-gray-100 transition-colors">Home</a>
+              <span>/</span>
+              <a href="/work" class="hover:text-gray-900 dark:hover:text-gray-100 transition-colors">Work</a>
+              <span>/</span>
+              <span class="text-gray-900 dark:text-gray-100">{project.data.company}</span>
+            </div>
+          </nav>
 
-      <!-- Hero Content -->
-      <div class="mb-12">
-        <div class="max-w-5xl">
-          <span class="text-xs uppercase tracking-[0.5em] text-gray-500 dark:text-gray-400 block mb-8 transition-colors duration-300">
-            {project.data.category}
-          </span>
-          <h2 class="text-heading-1 text-primary mb-6">
-            {project.data.company}
-          </h2>
-          <p class="text-2xl md:text-[2rem] text-gray-600 dark:text-gray-400 leading-tight max-w-3xl transition-colors duration-300">
-            {project.data.title}
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Hero Image -->
-  <section class="px-6 lg:px-8 py-0 bg-white dark:bg-[#0a0a0a]  transition-colors duration-300">
-    <div class="max-w-6xl mx-auto">
-      <div class="relative overflow-hidden bg-gray-100 dark:bg-[#0a0a0a] rounded-2xl transition-colors duration-300">
-        <img 
-          src={project.data.heroImage} 
-          alt={project.data.title}
-          class="w-full h-[280px] sm:h-[400px] md:h-[500px] lg:h-[600px] object-cover"
-        />
-      </div>
-    </div>
-  </section>
-
-  <!-- Project Overview -->
-  <section class="py-20 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a]  transition-colors duration-300">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-12">
-      <aside class="space-y-8 md:sticky md:top-32 self-start">
-        <div>
-          <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3 transition-colors duration-300">Year</h3>
-          <p class="text-gray-900 dark:text-gray-100 text-sm transition-colors duration-300">{project.data.year}</p>
-        </div>
-        <div>
-          <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3 transition-colors duration-300">Scope</h3>
-          <ul class="space-y-2">
-            {project.data.services.map(service => (
-              <li class="text-gray-700 dark:text-gray-300 text-sm tracking-wide transition-colors duration-300">{service}</li>
-            ))}
-          </ul>
-        </div>
-        {project.data.client && (
-          <div>
-            <h4 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3 transition-colors duration-300">Client</h4>
-            <p class="text-gray-700 dark:text-gray-300 text-sm tracking-wide transition-colors duration-300">{project.data.client}</p>
+          <div class="max-w-5xl">
+            <span class="text-xs uppercase tracking-[0.5em] text-gray-500 dark:text-gray-400 block mb-8 transition-colors duration-300">
+              {project.data.category}
+            </span>
+            <h1 class="text-heading-1 text-primary mb-6">
+              {project.data.company}
+            </h1>
+            <p class="text-2xl md:text-[2rem] text-gray-600 dark:text-gray-400 leading-tight max-w-3xl transition-colors duration-300">
+              Logo and identity work built to hold up across websites, signage, stationery, packaging, uniforms, and social channels.
+            </p>
           </div>
-        )}
-      </aside>
-      <div class="space-y-10">
-        <div class="leading-relaxed text-lg text-gray-700 dark:text-gray-300 space-y-8 transition-colors duration-300">
-          <Content />
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- Project Content -->
-  <section class="py-20 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a]  transition-colors duration-300">
-    <div class="max-w-6xl mx-auto">
-      {project.data.images && project.data.images.length > 0 && (
-        <div class="grid gap-10 md:grid-cols-2">
-          {project.data.images.slice(0, 6).map((image, index) => (
-            <figure class="bg-gray-100 dark:bg-neutral-900 overflow-hidden group cursor-pointer rounded-2xl transition-colors duration-300" data-modal-image={image}>
-              <img 
-                src={image} 
-                alt={`${project.data.company} project image ${index + 1}`}
-                class="w-full aspect-[4/3] object-cover group-hover:scale-[1.03] transition-transform duration-500"
-              />
-            </figure>
-          ))}
+      <!-- Featured Image -->
+      <section class="px-6 lg:px-8 py-0 bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
+        <div class="max-w-6xl mx-auto">
+          <div class="relative overflow-hidden bg-gray-100 dark:bg-neutral-100 rounded-2xl transition-colors duration-300">
+            <img
+              src={project.data.heroImage}
+              alt={project.data.title}
+              class="w-full h-[240px] sm:h-[360px] md:h-[480px] lg:h-[560px] object-cover"
+            />
+          </div>
         </div>
-      )}
-    </div>
-  </section>
+      </section>
+
+      <!-- Gallery Explainer -->
+      <section class="py-16 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-[minmax(260px,0.8fr)_minmax(0,1.2fr)] gap-12 lg:gap-20">
+          <aside class="grid sm:grid-cols-2 lg:grid-cols-1 gap-6 self-start">
+            <div class="border-t border-gray-200 dark:border-neutral-800 pt-5">
+              <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2 transition-colors duration-300">Marks</p>
+              <p class="text-3xl font-medium text-gray-900 dark:text-gray-100 transition-colors duration-300">{galleryImages.length}+</p>
+            </div>
+            <div class="border-t border-gray-200 dark:border-neutral-800 pt-5">
+              <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2 transition-colors duration-300">Scope</p>
+              <p class="text-gray-700 dark:text-gray-300 text-sm tracking-wide transition-colors duration-300">{project.data.services.join(', ')}</p>
+            </div>
+            <div class="border-t border-gray-200 dark:border-neutral-800 pt-5">
+              <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2 transition-colors duration-300">Clients</p>
+              <p class="text-gray-700 dark:text-gray-300 text-sm tracking-wide transition-colors duration-300">{project.data.client}</p>
+            </div>
+          </aside>
+
+          <div class="leading-relaxed text-lg text-gray-700 dark:text-gray-300 space-y-8 transition-colors duration-300">
+            <Content />
+          </div>
+        </div>
+      </section>
+
+      <!-- Logo Gallery -->
+      <section class="pb-20 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
+        <div class="max-w-7xl mx-auto">
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+            {galleryImages.map((image, index) => (
+              <button type="button" class="bg-gray-50 dark:bg-neutral-100 p-3 sm:p-4 cursor-zoom-in group rounded transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0a0a0a]" data-modal-image={image} aria-label={`View ${project.data.company} logo ${index + 1}`}>
+                <img
+                  src={image}
+                  alt={`${project.data.company} logo ${index + 1}`}
+                  class="w-full aspect-[4/3] object-contain group-hover:scale-[1.03] transition-transform duration-500"
+                  loading="lazy"
+                />
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  ) : (
+    <>
+      <!-- Hero Section -->
+      <section class="pt-24 pb-0 px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+          <!-- Breadcrumb -->
+          <nav class="mb-10">
+            <div class="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
+              <a href="/" class="hover:text-gray-900 dark:hover:text-gray-100 transition-colors">Home</a>
+              <span>/</span>
+              <a href="/work" class="hover:text-gray-900 dark:hover:text-gray-100 transition-colors">Work</a>
+              <span>/</span>
+              <span class="text-gray-900 dark:text-gray-100">{project.data.company}</span>
+            </div>
+          </nav>
+
+          <!-- Hero Content -->
+          <div class="mb-12">
+            <div class="max-w-5xl">
+              <span class="text-xs uppercase tracking-[0.5em] text-gray-500 dark:text-gray-400 block mb-8 transition-colors duration-300">
+                {project.data.category}
+              </span>
+              <h2 class="text-heading-1 text-primary mb-6">
+                {project.data.company}
+              </h2>
+              <p class="text-2xl md:text-[2rem] text-gray-600 dark:text-gray-400 leading-tight max-w-3xl transition-colors duration-300">
+                {project.data.title}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hero Image -->
+      <section class="px-6 lg:px-8 py-0 bg-white dark:bg-[#0a0a0a]  transition-colors duration-300">
+        <div class="max-w-6xl mx-auto">
+          <div class="relative overflow-hidden bg-gray-100 dark:bg-[#0a0a0a] rounded-2xl transition-colors duration-300">
+            <img 
+              src={project.data.heroImage} 
+              alt={project.data.title}
+              class="w-full h-[280px] sm:h-[400px] md:h-[500px] lg:h-[600px] object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Project Overview -->
+      <section class="py-20 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a]  transition-colors duration-300">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-12">
+          <aside class="space-y-8 md:sticky md:top-32 self-start">
+            <div>
+              <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3 transition-colors duration-300">Year</h3>
+              <p class="text-gray-900 dark:text-gray-100 text-sm transition-colors duration-300">{project.data.year}</p>
+            </div>
+            <div>
+              <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3 transition-colors duration-300">Scope</h3>
+              <ul class="space-y-2">
+                {project.data.services.map(service => (
+                  <li class="text-gray-700 dark:text-gray-300 text-sm tracking-wide transition-colors duration-300">{service}</li>
+                ))}
+              </ul>
+            </div>
+            {project.data.client && (
+              <div>
+                <h4 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3 transition-colors duration-300">Client</h4>
+                <p class="text-gray-700 dark:text-gray-300 text-sm tracking-wide transition-colors duration-300">{project.data.client}</p>
+              </div>
+            )}
+          </aside>
+          <div class="space-y-10">
+            <div class="leading-relaxed text-lg text-gray-700 dark:text-gray-300 space-y-8 transition-colors duration-300">
+              <Content />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project Content -->
+      <section class="py-20 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a]  transition-colors duration-300">
+        <div class="max-w-6xl mx-auto">
+          {project.data.images && project.data.images.length > 0 && (
+            <div class="grid gap-10 md:grid-cols-2">
+              {project.data.images.slice(0, 6).map((image, index) => (
+                <button type="button" class="bg-gray-100 dark:bg-neutral-900 overflow-hidden group cursor-zoom-in rounded-2xl transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0a0a0a]" data-modal-image={image} aria-label={`View ${project.data.company} project image ${index + 1}`}>
+                  <img 
+                    src={image} 
+                    alt={`${project.data.company} project image ${index + 1}`}
+                    class="w-full aspect-[4/3] object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+    </>
+  )}
 
   <!-- Image Modal -->
-  <div id="imageModal" class="fixed inset-0 bg-black dark:bg-[#0a0a0a] bg-opacity-90 z-50 hidden items-center justify-center p-4">
+  <div id="imageModal" class="fixed inset-0 bg-black dark:bg-[#0a0a0a] bg-opacity-90 z-[10000] hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Project image preview">
     <button 
       id="closeModal" 
-      class="absolute top-6 right-6 text-white hover:text-gray-300 dark:hover:text-gray-200 transition-colors z-10"
+      class="absolute top-6 right-6 text-white hover:text-gray-300 dark:hover:text-gray-200 transition-colors z-[10020]"
+      type="button"
       aria-label="Close modal"
     >
-      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-8 h-8 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
       </svg>
     </button>
@@ -182,7 +274,7 @@ const relatedProjects = allProjects
         id="modalImage" 
         src="" 
         alt="Full size image"
-        class="max-w-full max-h-full object-contain"
+        class="max-w-full max-h-full object-contain bg-white/95 rounded-2xl p-4 sm:p-6"
       />
     </div>
   </div>
@@ -236,56 +328,6 @@ const relatedProjects = allProjects
 
   <Footer />
 </Layout>
-
-<script>
-  // Image Modal functionality
-  const modal = document.getElementById('imageModal') as HTMLElement;
-  const modalImage = document.getElementById('modalImage') as HTMLImageElement;
-  const closeModalBtn = document.getElementById('closeModal') as HTMLButtonElement;
-  const imageElements = document.querySelectorAll('[data-modal-image]');
-
-  // Open modal when clicking on an image
-  imageElements.forEach((element) => {
-    element.addEventListener('click', () => {
-      const imageSrc = element.getAttribute('data-modal-image');
-      if (imageSrc && modal && modalImage) {
-        modalImage.src = imageSrc;
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
-      }
-    });
-  });
-
-  // Close modal when clicking the close button
-  if (closeModalBtn && modal) {
-    closeModalBtn.addEventListener('click', () => {
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-      document.body.style.overflow = ''; // Restore scrolling
-    });
-  }
-
-  // Close modal when clicking outside the image
-  if (modal) {
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        document.body.style.overflow = ''; // Restore scrolling
-      }
-    });
-  }
-
-  // Close modal with Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-      document.body.style.overflow = ''; // Restore scrolling
-    }
-  });
-</script>
 
 <style>
   .prose {
