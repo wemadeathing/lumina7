@@ -92,6 +92,24 @@ function initMicroInteractions() {
   setupImageModal();
 }
 
+// Fires named CTA events to whichever analytics is present (GA4 dataLayer or PostHog).
+// Neither is loaded by default: this only activates once a GA4 tag or the PostHog
+// snippet is added to the site, so no traffic is sent anywhere until then.
+function trackEvent(eventName: string, source: string) {
+  const w = window as typeof window & {
+    dataLayer?: unknown[];
+    posthog?: { capture: (event: string, props?: Record<string, unknown>) => void };
+  };
+
+  if (Array.isArray(w.dataLayer)) {
+    w.dataLayer.push({ event: eventName, event_source: source });
+  }
+
+  if (w.posthog && typeof w.posthog.capture === 'function') {
+    w.posthog.capture(eventName, { source });
+  }
+}
+
 function bindGlobalModalEvents() {
   if (document.documentElement.dataset.microInteractionsBound === 'true') return;
   document.documentElement.dataset.microInteractionsBound = 'true';
@@ -99,6 +117,13 @@ function bindGlobalModalEvents() {
   document.addEventListener('click', (event) => {
     const target = event.target as HTMLElement | null;
     if (!target) return;
+
+    const eventTrigger = target.closest<HTMLElement>('[data-event]');
+    if (eventTrigger) {
+      const eventName = eventTrigger.getAttribute('data-event');
+      const source = eventTrigger.getAttribute('data-event-source') || 'unspecified';
+      if (eventName) trackEvent(eventName, source);
+    }
 
     if (target.closest('#closeModal')) {
       event.preventDefault();

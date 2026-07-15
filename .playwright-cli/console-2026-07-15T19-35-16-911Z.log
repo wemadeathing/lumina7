@@ -1,0 +1,63 @@
+[10122471ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/edge-cycles-c.png:0
+[10122472ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/dr-logo.jpg:0
+[10122472ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/ecos-logo.jpg:0
+[10122475ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/edge-logo.jpg:0
+[10122476ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/expo-logo.jpg:0
+[10122481ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/kota-logo.jpg:0
+[10122533ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/mizan-logo.jpg:0
+[10122533ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/passiflora-logo.jpg:0
+[10122536ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/pastelle-logo.jpg:0
+[10122548ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/qamar-logo.jpg:0
+[10122565ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/ridenote-logo.jpg:0
+[10122567ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/ses-logo.jpg:0
+[10122571ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/straptec-logo.jpg:0
+[10122574ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/zahra-logo.jpg:0
+[10122802ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/amra-logo.jpg:0
+[10122803ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/arabica-logo.jpg:0
+[10122804ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/clicks-hc-conf-logo.jpg:0
+[10122804ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/cloud-logo.jpg:0
+[10122806ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/edge-cycles-c.png:0
+[10122890ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/amra-logo.jpg:0
+[10122905ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/arabica-logo.jpg:0
+[10122923ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/clicks-hc-conf-logo.jpg:0
+[10122975ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/cloud-logo.jpg:0
+[10123007ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/dr-logo.jpg:0
+[10123019ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/ecos-logo.jpg:0
+[10123041ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/edge-logo.jpg:0
+[10123050ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/expo-logo.jpg:0
+[10123057ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/kota-logo.jpg:0
+[10123066ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/mizan-logo.jpg:0
+[10123075ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/passiflora-logo.jpg:0
+[10123082ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/pastelle-logo.jpg:0
+[10123090ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/qamar-logo.jpg:0
+[10123108ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/ridenote-logo.jpg:0
+[10123118ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/ses-logo.jpg:0
+[10123123ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/straptec-logo.jpg:0
+[10123127ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/assets/work/brand-marks/zahra-logo.jpg:0
+[10558914ms] [ERROR] WebSocket connection to 'ws://localhost:4321/?token=F1LR5FjTFfeM' failed:  @ http://localhost:4321/@vite/client:1533
+[10558917ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:4321/@vite/client:1695
+[10559075ms] [ERROR] WebSocket connection to 'ws://localhost:4321/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:1766
+[10560078ms] [ERROR] WebSocket connection to 'ws://localhost:4321/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:1766
+[10708794ms] [ERROR] WebSocket connection to 'ws://localhost:4321/?token=oKCgvUlW6dbk' failed:  @ http://localhost:4321/@vite/client:1533
+[10708797ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:4321/@vite/client:1695
+[10708902ms] [ERROR] WebSocket connection to 'ws://localhost:4321/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:1766
+[10709905ms] [ERROR] WebSocket connection to 'ws://localhost:4321/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:1766
+[10710908ms] [ERROR] WebSocket connection to 'ws://localhost:4321/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:1766
+[10711912ms] [ERROR] WebSocket connection to 'ws://localhost:4321/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:1766
+[10712922ms] [ERROR] WebSocket connection to 'ws://localhost:4321/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:1766
+[10713928ms] [ERROR] WebSocket connection to 'ws://localhost:4321/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:1766
+[10714938ms] [ERROR] WebSocket connection to 'ws://localhost:4321/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:1766
+[10715955ms] [ERROR] WebSocket connection to 'ws://localhost:4321/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:1766
+[10716987ms] [ERROR] WebSocket connection to 'ws://localhost:4321/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:1766
+[10718053ms] [ERROR] WebSocket connection to 'ws://localhost:4321/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:1766
+[10719132ms] [ERROR] WebSocket connection to 'ws://localhost:4321/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:1766
+[10720352ms] [ERROR] WebSocket connection to 'ws://localhost:4321/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:1766
+[10721804ms] [ERROR] WebSocket connection to 'ws://localhost:4321/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:1766
+[10723780ms] [ERROR] WebSocket connection to 'ws://localhost:4321/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:1766
+[10725543ms] [ERROR] WebSocket connection to 'ws://localhost:4321/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:1766
+[10728668ms] [ERROR] WebSocket connection to 'ws://localhost:4321/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:1766
+[10731281ms] [ERROR] WebSocket connection to 'ws://localhost:4321/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:1766
+[10735609ms] [ERROR] WebSocket connection to 'ws://localhost:4321/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:1766
+[10739541ms] [ERROR] WebSocket connection to 'ws://localhost:4321/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:1766
+[10742558ms] [ERROR] WebSocket connection to 'ws://localhost:4321/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:1766
+[10747502ms] [ERROR] WebSocket connection to 'ws://localhost:4321/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4321/@vite/client:1766

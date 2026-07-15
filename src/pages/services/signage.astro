@@ -28,21 +28,35 @@ const faqs = [
   { q: "Do you handle installation?", a: "Yes. We can manage production and installation for shopfront signs, interior graphics, and other signage. We work with trusted suppliers across South Africa." },
   { q: "What about vehicle branding?", a: "We design vehicle wraps and vinyl graphics. We'll prepare print-ready files and can recommend production partners who specialise in vehicle applications." }
 ];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((item) => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.a
+    }
+  }))
+};
 ---
 
 <Layout 
   title="Signage & Installations | Lumina7 Cape Town"
   description="Shopfront signage, banners, vehicle branding, and large format, designed and produced. From R1,500."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <section class="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-heading-1 text-primary mb-6">
+      <h1 class="text-heading-1 text-primary mb-6">
         Signage & Installations
-      </h2>
+      </h1>
       <p class="text-lg text-gray-600 dark:text-neutral-400 mb-8">
         Shopfront signage, banners, vehicle branding, and large format, designed and produced.
       </p>
-      <WhatsAppButton label="Get a quote" />
+      <WhatsAppButton label="Get a quote" eventSource="signage_hero" />
     </div>
   </section>
 
@@ -112,7 +126,7 @@ const faqs = [
   <section class="py-20 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a]  transition-colors duration-300">
     <div class="max-w-2xl mx-auto text-center">
       <h2 class="text-heading-2 text-primary mb-4">Ready to get started?</h2>
-      <WhatsAppButton label="Get a quote" />
+      <WhatsAppButton label="Get a quote" eventSource="signage_bottom_cta" />
     </div>
   </section>
 

@@ -29,21 +29,35 @@ const faqs = [
   { q: "How much does a website cost?", a: "Our websites start from R8,000 for a professional 5-page brochure site. Custom or e-commerce sites are quoted based on scope. We always provide a fixed quote before starting. No surprises." },
   { q: "Do I own my website after the project?", a: "Yes. All intellectual property transfers to you in full once final payment is received. You own the code, design files, and everything we create." }
 ];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((item) => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.a
+    }
+  }))
+};
 ---
 
 <Layout 
   title="Website Design & Development | Lumina7 Cape Town"
   description="Professional websites that look great, load fast, and work on any device. From R8,000. Fixed quotes."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <section class="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-heading-1 text-primary mb-6">
+      <h1 class="text-heading-1 text-primary mb-6">
         Website Design & Development
-      </h2>
+      </h1>
       <p class="text-lg text-gray-600 dark:text-neutral-400 mb-8">
         Professional websites that look great, load fast, and turn visitors into enquiries.
       </p>
-      <WhatsAppButton label="Get a quote" />
+      <WhatsAppButton label="Get a quote" eventSource="websites_hero" />
     </div>
   </section>
 
@@ -113,7 +127,7 @@ const faqs = [
   <section class="py-20 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a]  transition-colors duration-300">
     <div class="max-w-2xl mx-auto text-center">
       <h2 class="text-heading-2 text-primary mb-4">Ready to get started?</h2>
-      <WhatsAppButton label="Get a quote" />
+      <WhatsAppButton label="Get a quote" eventSource="websites_bottom_cta" />
     </div>
   </section>
 

@@ -11,7 +11,7 @@ import ThemeToggle from './ThemeToggle.astro';
       <img src="/assets/logos/L7-logo-wht.png" alt="Lumina7" class="header-logo-dark h-7 hidden dark:block" />
     </a>
     <div class="flex items-center gap-3 pointer-events-auto relative z-10">
-      <a href="https://wa.me/27814623628?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20your%20design%20services" target="_blank" rel="noopener noreferrer" class="header-cta px-5 py-2.5 text-sm font-medium rounded-full transition-colors duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 focus-visible:ring-offset-2 inline-flex items-center gap-2">
+      <a href="https://wa.me/27814623628?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20your%20design%20services" target="_blank" rel="noopener noreferrer" class="header-cta px-5 py-2.5 text-sm font-medium rounded-full transition-colors duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 focus-visible:ring-offset-2 inline-flex items-center gap-2" data-event="whatsapp_click" data-event-source="header">
         WhatsApp Us
         <span aria-hidden="true">→</span>
       </a>
@@ -54,13 +54,14 @@ import ThemeToggle from './ThemeToggle.astro';
   class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 w-64 p-4 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-xl opacity-0 invisible translate-y-2 transition-all duration-300 ease-out"
 >
   <div class="space-y-3">
-    <a href="mailto:hello@lumina7.co.za" class="block text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white py-2 px-1 -mx-1 rounded-[4px] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 focus-visible:ring-offset-2">hello@lumina7.co.za</a>
-    <a href="https://wa.me/27814623628" target="_blank" rel="noopener noreferrer" class="block text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white py-2 px-1 -mx-1 rounded-[4px] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 focus-visible:ring-offset-2">+27 81 462 3628</a>
+    <a href="mailto:hello@lumina7.co.za" class="block text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white py-2 px-1 -mx-1 rounded-[4px] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 focus-visible:ring-offset-2" data-event="email_click" data-event-source="header_more">hello@lumina7.co.za</a>
+    <a href="https://wa.me/27814623628" target="_blank" rel="noopener noreferrer" class="block text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white py-2 px-1 -mx-1 rounded-[4px] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 focus-visible:ring-offset-2" data-event="whatsapp_click" data-event-source="header_more">+27 81 462 3628</a>
+    <a href="/contact" class="block text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white py-2 px-1 -mx-1 rounded-[4px] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 focus-visible:ring-offset-2" data-event="contact_form_link_click" data-event-source="header_more">Contact form</a>
     <div class="pt-2 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between">
       <span class="text-sm text-gray-600 dark:text-gray-400">Theme</span>
       <ThemeToggle />
     </div>
-    <a href="https://wa.me/27814623628?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20your%20design%20services" target="_blank" rel="noopener noreferrer" class="block text-sm font-medium text-gray-900 dark:text-white py-2 px-1 -mx-1 rounded-[4px] hover:opacity-80 transition-opacity duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 focus-visible:ring-offset-2">WhatsApp Us</a>
+    <a href="https://wa.me/27814623628?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20your%20design%20services" target="_blank" rel="noopener noreferrer" class="block text-sm font-medium text-gray-900 dark:text-white py-2 px-1 -mx-1 rounded-[4px] hover:opacity-80 transition-opacity duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 focus-visible:ring-offset-2" data-event="whatsapp_click" data-event-source="header_more">WhatsApp Us</a>
   </div>
 </div>
 

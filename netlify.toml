@@ -3,7 +3,7 @@
   command = "npm run build"
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
 
 [[redirects]]
   from = "/blog/*"
@@ -20,18 +20,7 @@
   to = "/insights"
   status = 301
 
-# Handle client-side routing for dynamic pages
-[[redirects]]
-  from = "/work/*"
-  to = "/work/:splat"
-  status = 200
-
-[[redirects]]
-  from = "/insights/*"
-  to = "/insights/:splat"
-  status = 200
-
-# Fallback for SPA-like behavior
+# Fallback for unmatched routes (site is fully static; no client-side routing needed)
 [[redirects]]
   from = "/*"
   to = "/404.html"

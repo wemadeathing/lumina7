@@ -27,21 +27,35 @@ const faqs = [
   { q: "How long does a brand identity project take?", a: "Most brand identity projects are completed within 2–3 weeks from brief to final delivery. Timeline depends on the scope and how quickly you can review and approve concepts." },
   { q: "What file formats do I receive?", a: "You receive logo files in AI, EPS, SVG, PNG, and PDF formats, suitable for print, web, and any future use. We also provide a brand guidelines document." }
 ];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((item) => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.a
+    }
+  }))
+};
 ---
 
 <Layout 
   title="Brand Identity | Lumina7 Cape Town"
   description="Logo, colour, typography and brand guidelines that make your business instantly recognisable. From R5,000. Fixed quotes."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <section class="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-heading-1 text-primary mb-6">
+      <h1 class="text-heading-1 text-primary mb-6">
         Brand Identity
-      </h2>
+      </h1>
       <p class="text-lg text-gray-600 dark:text-neutral-400 mb-8">
         Logo, colour, typography and brand guidelines that make your business instantly recognisable.
       </p>
-      <WhatsAppButton label="Get a quote" />
+      <WhatsAppButton label="Get a quote" eventSource="brand_identity_hero" />
     </div>
   </section>
 
@@ -111,7 +125,7 @@ const faqs = [
   <section class="py-20 px-6 lg:px-8 bg-gray-50 dark:bg-neutral-900 transition-colors duration-300">
     <div class="max-w-2xl mx-auto text-center">
       <h2 class="text-heading-2 text-primary mb-4">Ready to get started?</h2>
-      <WhatsAppButton label="Get a quote" />
+      <WhatsAppButton label="Get a quote" eventSource="brand_identity_bottom_cta" />
     </div>
   </section>
 

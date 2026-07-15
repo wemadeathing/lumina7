@@ -49,7 +49,13 @@ Allow: /
 User-agent: GPTBot
 Allow: /
 
-User-agent: Anthropic- Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
 Allow: /
 
 User-agent: PerplexityBot
@@ -79,9 +85,6 @@ Allow: /
 
 # Sitemap location (required for search engines)
 Sitemap: https://lumina7.co.za/sitemap-index.xml
-
-# Crawl delay for respectful crawling (1 second)
-Crawl-delay: 1
 
 # Block access to admin/private areas (if any in future)
 # Disallow: /admin/

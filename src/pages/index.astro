@@ -68,7 +68,7 @@ const faqItems = [
           Branding, print, signage, and websites, delivered in weeks, not months.
         </p>
         <div class="mt-8">
-          <WhatsAppButton label="WhatsApp Us" size="lg" prefillText="Hi%2C%20I%27d%20like%20to%20enquire%20about%20your%20design%20services" />
+          <WhatsAppButton label="WhatsApp Us" size="lg" prefillText="Hi%2C%20I%27d%20like%20to%20enquire%20about%20your%20design%20services" eventSource="homepage_hero" />
         </div>
       </div>
     </div>
@@ -77,7 +77,13 @@ const faqItems = [
   <!-- Client Logo Bar -->
   <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
     <div class="max-w-7xl mx-auto overflow-hidden">
-      <p class="text-caption text-tertiary mb-8 text-center">Trusted by South African businesses</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
+        <p class="text-caption text-tertiary text-center">Trusted by South African businesses</p>
+        <span class="inline-flex items-center gap-1.5 text-xs">
+          <span class="px-2 py-0.5 rounded bg-secondary text-primary border border-primary font-medium">B-BBEE Level 1</span>
+          <span class="text-tertiary">Contributor</span>
+        </span>
+      </div>
       <div class="flex flex-wrap gap-8 sm:gap-12 md:gap-16 justify-center items-center py-4">
         {clientLogos.map((logo, i) => (
           <img

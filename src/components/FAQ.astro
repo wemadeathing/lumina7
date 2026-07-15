@@ -9,7 +9,23 @@ export interface Props {
 }
 
 const { faqItems, heading = "Frequently Asked Questions" } = Astro.props;
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map((item) => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+};
 ---
+
+<!-- FAQPage Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
 <!-- FAQ Section - Becklyn minimal -->
 <section class="pt-8 pb-16 md:pt-12 md:pb-20 px-4 sm:px-6 lg:px-8 bg-primary transition-colors duration-300" id="faq">
