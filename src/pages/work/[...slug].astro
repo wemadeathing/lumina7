@@ -108,7 +108,7 @@ function clientNameFromImagePath(path: string) {
               {project.data.company}
             </h1>
             <p class="text-2xl md:text-[2rem] text-gray-600 dark:text-gray-400 leading-tight max-w-3xl transition-colors duration-300">
-              Logo and identity work built to hold up across websites, signage, stationery, packaging, uniforms, and social channels.
+              {project.data.description}
             </p>
           </div>
         </div>
@@ -257,6 +257,7 @@ function clientNameFromImagePath(path: string) {
                     src={image}
                     alt={`${project.data.company} ${project.data.category} project photo ${index + 1}`}
                     class="w-full aspect-[4/3] object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                    loading="lazy"
                   />
                 </button>
               ))}
@@ -302,10 +303,11 @@ function clientNameFromImagePath(path: string) {
             <article class="group cursor-pointer">
               <a href={`/work/${relatedProject.slug}`} class="block">
                 <div class="relative overflow-hidden bg-gray-100 dark:bg-neutral-900 mb-6 rounded-2xl transition-colors duration-300">
-                  <img 
-                    src={relatedProject.data.heroImage} 
+                  <img
+                    src={relatedProject.data.heroImage}
                     alt={relatedProject.data.title}
                     class="w-full h-64 object-cover"
+                    loading="lazy"
                   />
                 </div>
                 <div>

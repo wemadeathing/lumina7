@@ -19,7 +19,7 @@ const services = [
   { title: 'Print & Marketing Materials', tagline: 'Flyers, brochures, business cards, menus. From R800', link: '/services/print' },
   { title: 'Signage & Installations', tagline: 'Shopfront signage, banners, vehicle branding. From R1,500', link: '/services/signage' },
   { title: 'Website Design & Development', tagline: 'Professional websites that look great and load fast. From R8,000', link: '/services/websites' },
-  { title: 'Social Media & Digital Assets', tagline: 'Profile graphics, post templates, digital ads. From R1,200', link: '/services/print' }
+  { title: 'Social Media & Digital Assets', tagline: 'Profile graphics, post templates, digital ads. From R1,200', link: '/services' }
 ];
 
 const processSteps = [
@@ -70,6 +70,9 @@ const faqItems = [
         <div class="mt-8">
           <WhatsAppButton label="WhatsApp Us" size="lg" prefillText="Hi%2C%20I%27d%20like%20to%20enquire%20about%20your%20design%20services" eventSource="homepage_hero" />
         </div>
+        <p class="mt-6 text-sm text-gray-500 dark:text-neutral-500">
+          Fixed quote within 24 hours&ensp;·&ensp;Delivery in 2–4 weeks&ensp;·&ensp;You own everything we make
+        </p>
       </div>
     </div>
   </section>
@@ -126,29 +129,16 @@ const faqItems = [
       </div>
       <div class="flex flex-col md:flex-row md:flex-wrap gap-6 md:gap-8">
         {featuredProjects.map((project, index) => (
-          <a href={`/work/${project.slug}`} class={`group block rounded-2xl overflow-hidden bg-gray-200 dark:bg-neutral-800 ${index === 0 ? 'w-full' : 'w-full md:w-[calc(50%-1rem)]'}`}>
-            <div class="relative aspect-square md:aspect-video overflow-hidden">
-              <img src={project.data.heroImage} alt={project.data.title} class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" loading="lazy" />
-              <div class="hidden md:flex absolute inset-0 p-8 lg:p-12 flex-col justify-between bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div class="flex flex-wrap gap-2">
-                  {project.data.services.slice(0, 3).map((service) => (
-                    <span class="inline-flex items-center px-4 py-2 rounded-full text-xs font-medium bg-white/95 dark:bg-neutral-100 text-gray-900 min-h-[2.25rem]">{service}</span>
-                  ))}
-                </div>
-                <div>
-                  <h3 class="text-2xl md:text-3xl font-medium text-white mb-2 tracking-tight" style="letter-spacing: -0.05rem;">{project.data.company}</h3>
-                  <p class="text-white/90 text-sm md:text-base leading-relaxed max-w-xl">{project.data.description}</p>
-                </div>
-              </div>
+          <a href={`/work/${project.slug}`} class={`group block ${index === 0 ? 'w-full' : 'w-full md:w-[calc(50%-1rem)]'}`}>
+            <div class="relative aspect-square md:aspect-video overflow-hidden rounded-2xl bg-gray-200 dark:bg-neutral-800">
+              <img src={project.data.heroImage} alt={`${project.data.company} — ${project.data.description}`} class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" loading="lazy" />
             </div>
-            <div class="md:hidden p-6 bg-gray-100 dark:bg-neutral-900">
-              <div class="flex flex-wrap gap-2 mb-3">
-                {project.data.services.slice(0, 3).map((service) => (
-                  <span class="inline-flex items-center px-4 py-2 rounded-full text-xs font-medium bg-white dark:bg-neutral-800 text-gray-900 dark:text-white">{service}</span>
-                ))}
+            <div class="pt-5 pb-2 flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 md:gap-8">
+              <div class="min-w-0">
+                <h3 class="text-xl md:text-2xl font-medium text-gray-900 dark:text-white mb-1 tracking-tight group-hover:text-gray-600 dark:group-hover:text-neutral-300 transition-colors">{project.data.company}</h3>
+                <p class="text-sm md:text-base text-gray-600 dark:text-neutral-400 leading-relaxed max-w-2xl">{project.data.description}</p>
               </div>
-              <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-2">{project.data.company}</h3>
-              <p class="text-sm text-gray-600 dark:text-neutral-400 leading-relaxed">{project.data.description}</p>
+              <p class="text-sm text-gray-500 dark:text-neutral-500 md:text-right md:flex-shrink-0 whitespace-nowrap">{project.data.services.slice(0, 2).join(' · ')}</p>
             </div>
           </a>
         ))}

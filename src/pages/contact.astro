@@ -24,8 +24,10 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
           name="contact"
           method="POST"
           action="/success"
+          enctype="application/x-www-form-urlencoded"
           data-netlify="true"
           netlify-honeypot="bot-field"
+          data-astro-reload
           class="space-y-6"
         >
           <input type="hidden" name="form-name" value="contact" />
