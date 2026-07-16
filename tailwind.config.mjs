@@ -38,10 +38,13 @@ export default {
           900: '#1D1A16',
           950: '#0E0D0A',
         },
-        // Spot colour - used like a spot ink: CTAs, highlights, outcome chips
+        // Spot colour - used like a spot ink: CTAs, highlights, outcome chips.
+        // Routed through CSS vars so the accent picker can re-ink the site live.
+        // Note: var-based colours don't support Tailwind opacity modifiers (spot/25);
+        // ink stays literal so text-spot-ink/60 keeps working.
         spot: {
-          DEFAULT: '#FFB200',
-          hover: '#F0A800',
+          DEFAULT: 'var(--color-spot)',
+          hover: 'var(--color-spot-hover)',
           ink: '#16140F',
         },
         paper: '#F6F4EF',

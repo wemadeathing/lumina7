@@ -1,0 +1,232 @@
+---
+// Accent picker - re-inks the site's spot colour live.
+// "dropdown" renders the header button + panel; "inline" renders a flat swatch row
+// (used in the mobile more-panel). Both share one delegated script.
+export interface Props {
+  variant?: 'dropdown' | 'inline';
+}
+
+const { variant = 'dropdown' } = Astro.props;
+
+type Swatch = {
+  id: string;
+  name: string;
+  solid: string;   // representative colour: text, underlines, ticks, glows
+  hover: string;
+  surface: string; // background: colour, gradient, or texture
+};
+
+const pastels: Swatch[] = [
+  { id: 'peach', name: 'Peach', solid: '#FFC29E', hover: '#F5B48C', surface: '#FFC29E' },
+  { id: 'mint', name: 'Mint', solid: '#A9E5BE', hover: '#97DBAF', surface: '#A9E5BE' },
+  { id: 'sky', name: 'Sky', solid: '#AFD6F7', hover: '#9CC9F0', surface: '#AFD6F7' },
+  { id: 'lilac', name: 'Lilac', solid: '#CFBCF2', hover: '#C0A9EC', surface: '#CFBCF2' },
+  { id: 'rose', name: 'Rose', solid: '#F7BFD3', hover: '#F0ABC4', surface: '#F7BFD3' },
+  { id: 'lemon', name: 'Lemon', solid: '#F2E28E', hover: '#EBD778', surface: '#F2E28E' },
+];
+
+const gradients: Swatch[] = [
+  { id: 'sunset', name: 'Sunset', solid: '#F9A69E', hover: '#F09189', surface: 'linear-gradient(135deg, #FFB88C 0%, #F58EB4 100%)' },
+  { id: 'ocean', name: 'Ocean', solid: '#99C8E6', hover: '#86BADD', surface: 'linear-gradient(135deg, #9FE0DC 0%, #93AFF0 100%)' },
+  { id: 'meadow', name: 'Meadow', solid: '#B4E0A8', hover: '#A2D594', surface: 'linear-gradient(135deg, #D9EDA2 0%, #8FDDB4 100%)' },
+];
+
+const textures: Swatch[] = [
+  { id: 'aurora', name: 'Aurora', solid: '#BBC8EF', hover: '#A9B8E8', surface: 'linear-gradient(115deg, #9FE8D2 0%, #A9C4F5 32%, #D3B4F0 65%, #F7BFD3 100%)' },
+  { id: 'silver', name: 'Silver', solid: '#C9C9D0', hover: '#B9B9C2', surface: 'linear-gradient(135deg, #C6C6CD 0%, #F2F2F5 28%, #ACACB5 52%, #E8E8EC 78%, #BFBFC7 100%)' },
+  { id: 'gold', name: 'Gold', solid: '#D4A94F', hover: '#C79B3F', surface: 'linear-gradient(135deg, #D9A94E 0%, #F2DD9E 28%, #BE8D33 52%, #EFD68C 78%, #CDA044 100%)' },
+];
+
+const amber: Swatch = { id: 'amber', name: 'House amber', solid: '#FFB200', hover: '#F0A800', surface: '#FFB200' };
+
+const groups: Array<{ label: string; swatches: Swatch[] }> = [
+  { label: 'Pastels', swatches: pastels },
+  { label: 'Gradients', swatches: gradients },
+  { label: 'Textures', swatches: textures },
+];
+
+const allSwatches = [amber, ...pastels, ...gradients, ...textures];
+---
+
+{variant === 'dropdown' ? (
+  <div class="accent-picker relative">
+    <button
+      type="button"
+      class="accent-btn flex items-center justify-center w-9 h-9 min-w-[36px] rounded-full transition-transform duration-300 hover:scale-105 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 focus-visible:ring-offset-2"
+      aria-label="Change accent colour"
+      aria-haspopup="true"
+      aria-expanded="false"
+      data-accent-toggle
+    >
+      <span class="accent-dot block w-6 h-6 rounded-full border border-black/15 dark:border-white/20" aria-hidden="true"></span>
+    </button>
+
+    <div
+      class="accent-panel absolute right-0 top-[calc(100%+12px)] z-50 w-[17.5rem] p-5 rounded-2xl bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-800 shadow-xl opacity-0 invisible translate-y-2 transition-all duration-300 ease-out"
+      role="menu"
+      aria-label="Accent colour"
+      data-accent-panel
+    >
+      <div class="space-y-4">
+        {groups.map((group) => (
+          <div>
+            <p class="label-mono text-tertiary mb-2.5">{group.label}</p>
+            <div class="flex flex-wrap gap-2.5">
+              {group.swatches.map((swatch) => (
+                <button
+                  type="button"
+                  class="swatch w-8 h-8 min-w-[32px] rounded-full border border-black/10 dark:border-white/15 transition-transform duration-200 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2"
+                  style={`background: ${swatch.surface};`}
+                  title={swatch.name}
+                  aria-label={`Accent: ${swatch.name}`}
+                  data-accent-id={swatch.id}
+                  data-solid={swatch.solid}
+                  data-hover={swatch.hover}
+                  data-surface={swatch.surface}
+                ></button>
+              ))}
+            </div>
+          </div>
+        ))}
+
+        <div class="pt-3 border-t border-gray-200 dark:border-neutral-800 flex items-center justify-between">
+          <span class="text-xs text-secondary">Feeling different today?</span>
+          <button
+            type="button"
+            class="swatch inline-flex items-center gap-2 text-xs font-medium text-primary hover:opacity-75 transition-opacity focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 rounded-[4px] px-1 py-1"
+            data-accent-id={amber.id}
+            data-solid={amber.solid}
+            data-hover={amber.hover}
+            data-surface={amber.surface}
+          >
+            <span class="w-4 h-4 rounded-full border border-black/10" style={`background: ${amber.surface};`} aria-hidden="true"></span>
+            Reset to amber
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+) : (
+  <div class="flex flex-wrap gap-2">
+    {allSwatches.map((swatch) => (
+      <button
+        type="button"
+        class="swatch w-7 h-7 min-w-[28px] rounded-full border border-black/10 dark:border-white/15 transition-transform duration-200 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+        style={`background: ${swatch.surface};`}
+        title={swatch.name}
+        aria-label={`Accent: ${swatch.name}`}
+        data-accent-id={swatch.id}
+        data-solid={swatch.solid}
+        data-hover={swatch.hover}
+        data-surface={swatch.surface}
+      ></button>
+    ))}
+  </div>
+)}
+
+<style>
+  .accent-dot {
+    background: var(--spot-surface);
+  }
+
+  .swatch[data-selected='true'] {
+    box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--text-primary);
+  }
+</style>
+
+<script>
+  const STORAGE_KEY = 'accent-theme';
+
+  function applyAccent(accent: { id: string; solid: string; hover: string; surface: string } | null) {
+    const s = document.documentElement.style;
+    if (accent) {
+      s.setProperty('--color-spot', accent.solid);
+      s.setProperty('--color-spot-hover', accent.hover);
+      s.setProperty('--spot-surface', accent.surface);
+      s.setProperty('--color-accent', accent.solid);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(accent));
+    } else {
+      s.removeProperty('--color-spot');
+      s.removeProperty('--color-spot-hover');
+      s.removeProperty('--spot-surface');
+      s.removeProperty('--color-accent');
+      localStorage.removeItem(STORAGE_KEY);
+    }
+    markSelected();
+  }
+
+  function currentAccentId(): string {
+    try {
+      const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+      return stored?.id || 'amber';
+    } catch {
+      return 'amber';
+    }
+  }
+
+  function markSelected() {
+    const id = currentAccentId();
+    document.querySelectorAll<HTMLElement>('[data-accent-id]').forEach((el) => {
+      el.dataset.selected = el.dataset.accentId === id ? 'true' : 'false';
+    });
+  }
+
+  function closePanels() {
+    document.querySelectorAll<HTMLElement>('[data-accent-panel]').forEach((panel) => {
+      panel.classList.add('opacity-0', 'invisible', 'translate-y-2');
+    });
+    document.querySelectorAll<HTMLElement>('[data-accent-toggle]').forEach((btn) => {
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  function bindAccentPicker() {
+    if (document.documentElement.dataset.accentBound === 'true') {
+      markSelected();
+      return;
+    }
+    document.documentElement.dataset.accentBound = 'true';
+
+    document.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement | null;
+      if (!target) return;
+
+      const toggle = target.closest<HTMLElement>('[data-accent-toggle]');
+      if (toggle) {
+        const panel = toggle.parentElement?.querySelector<HTMLElement>('[data-accent-panel]');
+        if (!panel) return;
+        const isOpen = !panel.classList.contains('invisible');
+        closePanels();
+        if (!isOpen) {
+          panel.classList.remove('opacity-0', 'invisible', 'translate-y-2');
+          toggle.setAttribute('aria-expanded', 'true');
+        }
+        return;
+      }
+
+      const swatch = target.closest<HTMLElement>('[data-accent-id]');
+      if (swatch) {
+        const { accentId, solid, hover, surface } = swatch.dataset;
+        if (accentId === 'amber') {
+          applyAccent(null);
+        } else if (accentId && solid && hover && surface) {
+          applyAccent({ id: accentId, solid, hover, surface });
+        }
+        return;
+      }
+
+      if (!target.closest('[data-accent-panel]')) closePanels();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closePanels();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindAccentPicker, { once: true });
+  } else {
+    bindAccentPicker();
+  }
+  document.addEventListener('astro:page-load', bindAccentPicker);
+</script>

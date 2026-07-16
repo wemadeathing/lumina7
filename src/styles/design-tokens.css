@@ -6,7 +6,10 @@
   --color-brand-light: #F6F4EF;
   --color-accent: #C68A00;
   --color-spot: #FFB200;
+  --color-spot-hover: #F0A800;
   --color-spot-ink: #16140F;
+  /* accent surface: plain colour by default, may hold a gradient/texture via the accent picker */
+  --spot-surface: var(--color-spot);
 
   /* Semantic Colors - Light Mode (uncoated paper) */
   --bg-primary: #F6F4EF;
@@ -215,11 +218,24 @@ body {
 }
 
 .chip-spot {
-  background-color: var(--color-spot);
+  background: var(--spot-surface);
   color: var(--color-spot-ink);
   padding: 2px 10px;
   border-radius: 2px;
   font-weight: 600;
+}
+
+/* accent surface + interaction helpers (gradient-safe: filter instead of colour swap) */
+.bg-spot-surface {
+  background: var(--spot-surface);
+}
+
+.hover-dim:hover {
+  filter: brightness(0.96);
+}
+
+.glow-spot:hover {
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--color-spot) 35%, transparent);
 }
 
 /* Crop marks - print-proof corners; wrap needs position:relative and an inner <span class="crop-b"> */

@@ -32,12 +32,23 @@ import { ClientRouter } from 'astro:transitions';
       (function() {
         const storedTheme = localStorage.getItem('color-theme');
         const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        
+
         if (storedTheme === 'dark' || (!storedTheme && systemPrefersDark)) {
           document.documentElement.classList.add('dark');
         } else {
           document.documentElement.classList.remove('dark');
         }
+
+        try {
+          const accent = JSON.parse(localStorage.getItem('accent-theme') || 'null');
+          if (accent && accent.solid) {
+            const s = document.documentElement.style;
+            s.setProperty('--color-spot', accent.solid);
+            s.setProperty('--color-spot-hover', accent.hover);
+            s.setProperty('--spot-surface', accent.surface);
+            s.setProperty('--color-accent', accent.solid);
+          }
+        } catch (e) { /* corrupt storage: fall back to house amber */ }
       })();
     </script>
     
@@ -207,7 +218,7 @@ import { ClientRouter } from 'astro:transitions';
     <Header />
     <div id="main-content" class="relative isolate bg-primary">
       {useGlobalTopGradient && (
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-64 bg-gradient-to-r from-spot/25 via-spot/10 to-transparent blur-[100px] opacity-100 dark:opacity-40 -z-10 pointer-events-none" aria-hidden="true"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-64 bg-gradient-to-r from-[#FFB200]/25 via-[#FFB200]/10 to-transparent blur-[100px] opacity-100 dark:opacity-40 -z-10 pointer-events-none" aria-hidden="true"></div>
       )}
       <slot />
     </div>
@@ -246,7 +257,7 @@ import { ClientRouter } from 'astro:transitions';
     }
 
     ::selection {
-      background: #FFB200;
+      background: var(--color-spot);
       color: #16140F;
     }
 
@@ -308,8 +319,21 @@ import { ClientRouter } from 'astro:transitions';
       }
     }
 
+    function syncAccent(root = document.documentElement) {
+      try {
+        const accent = JSON.parse(localStorage.getItem('accent-theme') || 'null');
+        if (accent && accent.solid) {
+          root.style.setProperty('--color-spot', accent.solid);
+          root.style.setProperty('--color-spot-hover', accent.hover);
+          root.style.setProperty('--spot-surface', accent.surface);
+          root.style.setProperty('--color-accent', accent.solid);
+        }
+      } catch (e) { /* ignore */ }
+    }
+
     document.addEventListener('astro:before-swap', function(event) {
       syncThemeClass(event.newDocument.documentElement);
+      syncAccent(event.newDocument.documentElement);
     });
 
     // Smooth scroll for anchor links
