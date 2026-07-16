@@ -45,6 +45,7 @@ import { ClientRouter } from 'astro:transitions';
             const s = document.documentElement.style;
             s.setProperty('--color-spot', accent.solid);
             s.setProperty('--color-spot-hover', accent.hover);
+            s.setProperty('--color-spot-ink', accent.ink || 'oklch(0.18 0.004 260)');
             s.setProperty('--spot-surface', accent.surface);
             s.setProperty('--color-accent', accent.solid);
           }
@@ -258,7 +259,7 @@ import { ClientRouter } from 'astro:transitions';
 
     ::selection {
       background: var(--color-spot);
-      color: #16140F;
+      color: var(--color-brand-dark);
     }
 
     .text-display {
@@ -325,6 +326,7 @@ import { ClientRouter } from 'astro:transitions';
         if (accent && accent.solid) {
           root.style.setProperty('--color-spot', accent.solid);
           root.style.setProperty('--color-spot-hover', accent.hover);
+          root.style.setProperty('--color-spot-ink', accent.ink || 'oklch(0.18 0.004 260)');
           root.style.setProperty('--spot-surface', accent.surface);
           root.style.setProperty('--color-accent', accent.solid);
         }

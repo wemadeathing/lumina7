@@ -31,7 +31,7 @@ import AccentPicker from './AccentPicker.astro';
 <!-- Bottom floating menu -->
 <nav
   id="floating-nav"
-  class="lg:hidden fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center gap-0.5 w-[calc(100vw-2rem)] max-w-md px-2 sm:px-3 py-2 sm:py-2.5 rounded-full bg-white/85 dark:bg-gray-900/85 backdrop-blur-xl border border-gray-200/80 dark:border-gray-700/50 shadow-sm overflow-hidden"
+  class="floating-nav-surface lg:hidden fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center gap-0.5 w-[calc(100vw-2rem)] max-w-md px-2 sm:px-3 py-2 sm:py-2.5 rounded-full backdrop-blur-xl border overflow-hidden"
   aria-label="Main navigation"
 >
   <a href="/" class="nav-link px-3 py-3 min-h-[44px] flex items-center rounded-full text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100/80 dark:hover:bg-gray-800/80 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 whitespace-nowrap" data-path="/">
@@ -164,10 +164,22 @@ import AccentPicker from './AccentPicker.astro';
 </script>
 
 <style>
+  .floating-nav-surface {
+    background: color-mix(in srgb, var(--bg-elevated) 88%, transparent);
+    border-color: color-mix(in srgb, var(--text-primary) 10%, transparent);
+    box-shadow: 0 10px 30px rgb(18 18 20 / 0.12);
+  }
+
+  :global(html.dark) .floating-nav-surface {
+    background: color-mix(in srgb, var(--bg-elevated) 96%, transparent);
+    border-color: color-mix(in srgb, var(--text-primary) 18%, transparent);
+    box-shadow: 0 14px 40px rgb(0 0 0 / 0.48);
+  }
+
   /* Top header CTA - accent surface (colour or gradient) in both modes */
   .header-cta {
     background: var(--spot-surface);
-    color: #16140F;
+    color: var(--color-spot-ink);
   }
   .header-cta:hover {
     filter: brightness(0.96);

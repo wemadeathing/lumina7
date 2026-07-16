@@ -55,19 +55,14 @@ const faqItems = [
     <div class="max-w-7xl mx-auto">
       <div class="max-w-5xl">
         <h1 class="font-display text-[2.75rem] sm:text-[3.3rem] md:text-[4.6rem] leading-[1.02] tracking-[-0.03em] text-primary mb-8 mt-6" style="font-weight: 760; text-wrap: balance;">
-          We design brands and websites for <span class="hl-spot">South African businesses.</span>
+          We design brands &amp; websites for South African businesses.
         </h1>
         <p class="text-body-lg text-secondary max-w-3xl mb-9">
           Branding, print, signage, and websites, delivered in weeks, not months.
         </p>
-        <div class="flex flex-wrap items-center gap-6 mb-10">
+        <div class="flex flex-wrap items-center gap-6">
           <WhatsAppButton label="WhatsApp us" size="lg" prefillText="Hi%2C%20I%27d%20like%20to%20enquire%20about%20your%20design%20services" eventSource="homepage_hero" />
           <a href="/contact" class="text-sm font-medium text-secondary hover:text-primary underline underline-offset-4 transition-colors duration-300" data-event="contact_form_link_click" data-event-source="homepage_hero">or send a message</a>
-        </div>
-        <div class="flex flex-wrap gap-x-8 gap-y-2">
-          <span class="label-mono text-tertiary tick-spot">Fixed quote within 24 hours</span>
-          <span class="label-mono text-tertiary tick-spot">Delivery in 2&ndash;4 weeks</span>
-          <span class="label-mono text-tertiary tick-spot">You own everything we make</span>
         </div>
       </div>
     </div>
@@ -144,7 +139,7 @@ const faqItems = [
               {project.data.outcomeShort && (
                 <div class="flex justify-between gap-4 py-1.5 border-b border-primary items-center">
                   <dt class="text-tertiary">Outcome</dt>
-                  <dd class="m-0 chip-spot">{project.data.outcomeShort}</dd>
+                  <dd class="m-0 outcome-chip">{project.data.outcomeShort}</dd>
                 </div>
               )}
             </dl>
@@ -169,16 +164,6 @@ const faqItems = [
 </Layout>
 
 <style>
-  /* proof-row tick squares */
-  .tick-spot::before {
-    content: '';
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    background: var(--color-spot);
-    margin-right: 10px;
-  }
-
   /* client logo marquee */
   .marquee {
     display: flex;

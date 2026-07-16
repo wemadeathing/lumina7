@@ -59,7 +59,7 @@ const categories = ['ALL', ...new Set(allProjects.map(project => project.categor
       <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
         {allProjects.map(project => (
           <article class="project-item" data-category={project.category.toLowerCase()}>
-            <a href={`/work/${project.slug}`} class="work-specimen group relative block h-full bg-white dark:bg-[#1D1A16] p-3.5 crop-marks transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(22,20,15,0.12)] focus-visible:outline-none">
+            <a href={`/work/${project.slug}`} class="work-specimen group relative block h-full bg-elevated p-3.5 crop-marks transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgb(18_18_20_/_0.12)] focus-visible:outline-none">
               <span class="crop-b"></span>
               <div class="overflow-hidden mb-4 bg-secondary">
                   <img
@@ -86,7 +86,7 @@ const categories = ['ALL', ...new Set(allProjects.map(project => project.categor
                   {project.outcomeShort && (
                     <div class="flex justify-between gap-4 py-2 border-b border-primary items-center">
                       <dt class="text-tertiary">Outcome</dt>
-                      <dd class="m-0 chip-spot text-right">{project.outcomeShort}</dd>
+                      <dd class="m-0 outcome-chip text-right">{project.outcomeShort}</dd>
                     </div>
                   )}
                 </dl>

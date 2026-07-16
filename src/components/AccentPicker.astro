@@ -14,68 +14,128 @@ type Swatch = {
   solid: string;   // representative colour: text, underlines, ticks, glows
   hover: string;
   surface: string; // background: colour, gradient, or texture
+  ink?: string;
 };
 
-const pastels: Swatch[] = [
-  { id: 'peach', name: 'Peach', solid: '#FFC29E', hover: '#F5B48C', surface: '#FFC29E' },
-  { id: 'mint', name: 'Mint', solid: '#A9E5BE', hover: '#97DBAF', surface: '#A9E5BE' },
-  { id: 'sky', name: 'Sky', solid: '#AFD6F7', hover: '#9CC9F0', surface: '#AFD6F7' },
-  { id: 'lilac', name: 'Lilac', solid: '#CFBCF2', hover: '#C0A9EC', surface: '#CFBCF2' },
-  { id: 'rose', name: 'Rose', solid: '#F7BFD3', hover: '#F0ABC4', surface: '#F7BFD3' },
-  { id: 'lemon', name: 'Lemon', solid: '#F2E28E', hover: '#EBD778', surface: '#F2E28E' },
+const amber: Swatch = { id: 'amber', name: 'Reset to house amber', solid: '#FFB200', hover: '#F0A800', surface: '#FFB200' };
+
+// Solids lifted from score.motion.dev's grade palette
+const solids: Swatch[] = [
+  { id: 'emerald', name: 'Emerald', solid: '#34D399', hover: '#2CC28A', surface: '#34D399' },
+  { id: 'mint', name: 'Mint', solid: '#8DF0CC', hover: '#79E5BD', surface: '#8DF0CC' },
+  { id: 'yellow', name: 'Yellow', solid: '#FFD60A', hover: '#F2C800', surface: '#FFD60A' },
+  { id: 'blue', name: 'Blue', solid: '#60A5FA', hover: '#4E96F5', surface: '#60A5FA' },
+  { id: 'violet', name: 'Violet', solid: '#A78BFA', hover: '#977AF2', surface: '#A78BFA' },
+  { id: 'fuchsia', name: 'Fuchsia', solid: '#E879F9', hover: '#DC63EE', surface: '#E879F9' },
+  { id: 'rose', name: 'Rose', solid: '#F65D77', hover: '#EC4A66', surface: '#F65D77' },
 ];
 
 const gradients: Swatch[] = [
-  { id: 'sunset', name: 'Sunset', solid: '#F9A69E', hover: '#F09189', surface: 'linear-gradient(135deg, #FFB88C 0%, #F58EB4 100%)' },
-  { id: 'ocean', name: 'Ocean', solid: '#99C8E6', hover: '#86BADD', surface: 'linear-gradient(135deg, #9FE0DC 0%, #93AFF0 100%)' },
-  { id: 'meadow', name: 'Meadow', solid: '#B4E0A8', hover: '#A2D594', surface: 'linear-gradient(135deg, #D9EDA2 0%, #8FDDB4 100%)' },
+  { id: 'tide', name: 'Tide', solid: '#4ABCC9', hover: '#3FADB9', surface: 'linear-gradient(135deg, #34D399 0%, #60A5FA 100%)' },
+  { id: 'orchid', name: 'Orchid', solid: '#C782FA', hover: '#B96FF0', surface: 'linear-gradient(135deg, #A78BFA 0%, #E879F9 100%)' },
+  { id: 'citrus', name: 'Citrus', solid: '#FB9A41', hover: '#EF8B31', surface: 'linear-gradient(135deg, #FFD60A 0%, #F65D77 100%)' },
+  { id: 'prism', name: 'Prism', solid: '#9ABEE3', hover: '#88AEDA', surface: 'linear-gradient(135deg, #8DF0CC 0%, #A78BFA 100%)' },
 ];
 
+const noiseLayer = 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27144%27 height=%27144%27 viewBox=%270 0 144 144%27%3E%3Cfilter id=%27n%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%27.74%27 numOctaves=%274%27 stitchTiles=%27stitch%27/%3E%3CfeColorMatrix type=%27saturate%27 values=%270%27/%3E%3CfeComponentTransfer%3E%3CfeFuncA type=%27table%27 tableValues=%270 .26%27/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23n)%27 opacity=%27.72%27/%3E%3C/svg%3E") 0 0 / 72px 72px repeat';
+
+// Aurora surfaces use layered colour fields plus visible procedural film grain.
 const textures: Swatch[] = [
-  { id: 'aurora', name: 'Aurora', solid: '#BBC8EF', hover: '#A9B8E8', surface: 'linear-gradient(115deg, #9FE8D2 0%, #A9C4F5 32%, #D3B4F0 65%, #F7BFD3 100%)' },
-  { id: 'silver', name: 'Silver', solid: '#C9C9D0', hover: '#B9B9C2', surface: 'linear-gradient(135deg, #C6C6CD 0%, #F2F2F5 28%, #ACACB5 52%, #E8E8EC 78%, #BFBFC7 100%)' },
-  { id: 'gold', name: 'Gold', solid: '#D4A94F', hover: '#C79B3F', surface: 'linear-gradient(135deg, #D9A94E 0%, #F2DD9E 28%, #BE8D33 52%, #EFD68C 78%, #CDA044 100%)' },
+  {
+    id: 'aurora-midnight',
+    name: 'Aurora midnight',
+    solid: '#5146D8',
+    hover: '#463BC7',
+    ink: 'oklch(0.985 0.002 260)',
+    surface: `${noiseLayer}, linear-gradient(170deg, rgba(5, 12, 31, 0.08) 0%, rgba(10, 9, 44, 0.26) 50%, rgba(4, 13, 25, 0.58) 100%), radial-gradient(ellipse at 8% 78%, #20B79B 0 4%, transparent 27%), radial-gradient(ellipse at 72% 40%, #7138C7 0 8%, transparent 38%), radial-gradient(circle at 88% 8%, #4530E5 0 10%, transparent 39%), radial-gradient(circle at 12% 12%, #1C5EC5 0 12%, transparent 43%), linear-gradient(145deg, #081526 0%, #113B83 34%, #3020AF 65%, #180A4A 100%)`
+  },
+  {
+    id: 'aurora-ocean',
+    name: 'Aurora ocean',
+    solid: '#69BBD8',
+    hover: '#57AFCF',
+    surface: `${noiseLayer}, radial-gradient(circle at 16% 18%, #BDF7E5 0 10%, transparent 44%), radial-gradient(circle at 84% 20%, #78C6FF 0 12%, transparent 46%), radial-gradient(circle at 78% 84%, #A78BFA 0 10%, transparent 44%), radial-gradient(circle at 18% 82%, #69E0E0 0 10%, transparent 46%), #A9D9F4`
+  },
+  {
+    id: 'aurora-bloom',
+    name: 'Aurora bloom',
+    solid: '#E978A8',
+    hover: '#DA6898',
+    surface: `${noiseLayer}, radial-gradient(circle at 18% 22%, #FFD1DC 0 10%, transparent 44%), radial-gradient(circle at 82% 18%, #FF8E70 0 12%, transparent 46%), radial-gradient(circle at 80% 84%, #F1A6FF 0 10%, transparent 44%), radial-gradient(circle at 18% 82%, #FFE270 0 9%, transparent 45%), #F5B8D1`
+  },
+  {
+    id: 'aurora-lime',
+    name: 'Aurora lime',
+    solid: '#A8CF4A',
+    hover: '#99BF3C',
+    surface: `${noiseLayer}, radial-gradient(circle at 18% 20%, #F2FF7A 0 11%, transparent 45%), radial-gradient(circle at 84% 18%, #8DF0CC 0 11%, transparent 45%), radial-gradient(circle at 80% 84%, #7FC8FF 0 10%, transparent 45%), radial-gradient(circle at 18% 82%, #FFD60A 0 9%, transparent 44%), #CDEB8D`
+  },
 ];
 
-const amber: Swatch = { id: 'amber', name: 'House amber', solid: '#FFB200', hover: '#F0A800', surface: '#FFB200' };
-
-const groups: Array<{ label: string; swatches: Swatch[] }> = [
-  { label: 'Pastels', swatches: pastels },
+const groups: Array<{ label: string; swatches: Swatch[]; withReset?: boolean }> = [
+  { label: 'Solids', swatches: solids, withReset: true },
   { label: 'Gradients', swatches: gradients },
   { label: 'Textures', swatches: textures },
 ];
 
-const allSwatches = [amber, ...pastels, ...gradients, ...textures];
+const allSwatches = [amber, ...solids, ...gradients, ...textures];
 ---
 
 {variant === 'dropdown' ? (
   <div class="accent-picker relative">
     <button
       type="button"
-      class="accent-btn flex items-center justify-center w-9 h-9 min-w-[36px] rounded-full transition-transform duration-300 hover:scale-105 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 focus-visible:ring-offset-2"
+      class="accent-btn flex items-center justify-center w-10 h-10 min-w-[40px] rounded-full bg-gray-200 dark:bg-gray-700 transition-transform duration-300 hover:scale-105 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 focus-visible:ring-offset-2"
       aria-label="Change accent colour"
       aria-haspopup="true"
       aria-expanded="false"
       data-accent-toggle
     >
-      <span class="accent-dot block w-6 h-6 rounded-full border border-black/15 dark:border-white/20" aria-hidden="true"></span>
+      <span class="accent-dot block w-7 h-7 rounded-full" aria-hidden="true"></span>
     </button>
 
     <div
-      class="accent-panel absolute right-0 top-[calc(100%+12px)] z-50 w-[17.5rem] p-5 rounded-2xl bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-800 shadow-xl opacity-0 invisible translate-y-2 transition-all duration-300 ease-out"
+      class="accent-nudge pointer-events-none absolute right-0 top-[calc(100%+0.7rem)] z-40 opacity-0 invisible translate-y-1 transition-all duration-300 ease-out"
+      aria-hidden="true"
+      data-accent-nudge
+    >
+      <span class="accent-nudge-bubble label-mono inline-flex items-center rounded-full px-3 py-2 text-[0.62rem] uppercase tracking-[0.24em]">Color me bad</span>
+    </div>
+
+    <div
+      class="accent-panel absolute right-0 top-[calc(100%+12px)] z-50 w-52 p-5 rounded-2xl bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-800 shadow-xl opacity-0 invisible translate-y-2 transition-all duration-300 ease-out"
       role="menu"
       aria-label="Accent colour"
       data-accent-panel
     >
-      <div class="space-y-4">
+      <div class="space-y-5">
         {groups.map((group) => (
           <div>
-            <p class="label-mono text-tertiary mb-2.5">{group.label}</p>
-            <div class="flex flex-wrap gap-2.5">
+            <p class="label-mono text-tertiary mb-3 !text-[0.6rem]">{group.label}</p>
+            <div class="grid grid-cols-4 gap-3">
+              {group.withReset && (
+                <button
+                  type="button"
+                  class="swatch flex items-center justify-center w-8 h-8 rounded-full border border-black/10 dark:border-white/15 transition-transform duration-200 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2"
+                  style={`background: ${amber.surface};`}
+                  title={amber.name}
+                  aria-label={amber.name}
+                  data-accent-id={amber.id}
+                  data-solid={amber.solid}
+                  data-hover={amber.hover}
+                  data-surface={amber.surface}
+                  data-ink={amber.ink || 'oklch(0.18 0.004 260)'}
+                >
+                  <svg class="w-3.5 h-3.5 text-brand-dark pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                    <path d="M3 3v5h5" />
+                  </svg>
+                </button>
+              )}
               {group.swatches.map((swatch) => (
                 <button
                   type="button"
-                  class="swatch w-8 h-8 min-w-[32px] rounded-full border border-black/10 dark:border-white/15 transition-transform duration-200 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2"
+                  class="swatch w-8 h-8 rounded-full border border-black/10 dark:border-white/15 transition-transform duration-200 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2"
                   style={`background: ${swatch.surface};`}
                   title={swatch.name}
                   aria-label={`Accent: ${swatch.name}`}
@@ -83,26 +143,12 @@ const allSwatches = [amber, ...pastels, ...gradients, ...textures];
                   data-solid={swatch.solid}
                   data-hover={swatch.hover}
                   data-surface={swatch.surface}
+                  data-ink={swatch.ink || 'oklch(0.18 0.004 260)'}
                 ></button>
               ))}
             </div>
           </div>
         ))}
-
-        <div class="pt-3 border-t border-gray-200 dark:border-neutral-800 flex items-center justify-between">
-          <span class="text-xs text-secondary">Feeling different today?</span>
-          <button
-            type="button"
-            class="swatch inline-flex items-center gap-2 text-xs font-medium text-primary hover:opacity-75 transition-opacity focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 rounded-[4px] px-1 py-1"
-            data-accent-id={amber.id}
-            data-solid={amber.solid}
-            data-hover={amber.hover}
-            data-surface={amber.surface}
-          >
-            <span class="w-4 h-4 rounded-full border border-black/10" style={`background: ${amber.surface};`} aria-hidden="true"></span>
-            Reset to amber
-          </button>
-        </div>
       </div>
     </div>
   </div>
@@ -119,6 +165,7 @@ const allSwatches = [amber, ...pastels, ...gradients, ...textures];
         data-solid={swatch.solid}
         data-hover={swatch.hover}
         data-surface={swatch.surface}
+        data-ink={swatch.ink || 'oklch(0.18 0.004 260)'}
       ></button>
     ))}
   </div>
@@ -129,6 +176,33 @@ const allSwatches = [amber, ...pastels, ...gradients, ...textures];
     background: var(--spot-surface);
   }
 
+  .accent-nudge-bubble {
+    position: relative;
+    color: var(--text-primary);
+    background: color-mix(in srgb, var(--bg-primary) 92%, transparent);
+    border: 1px solid color-mix(in srgb, var(--text-primary) 10%, transparent);
+    box-shadow: 0 12px 28px rgb(15 23 42 / 0.08);
+  }
+
+  .accent-nudge-bubble::after {
+    content: '';
+    position: absolute;
+    top: -0.3rem;
+    right: 1rem;
+    width: 0.6rem;
+    height: 0.6rem;
+    background: inherit;
+    border-top: inherit;
+    border-left: inherit;
+    transform: rotate(45deg);
+  }
+
+  .accent-nudge[data-visible='true'] {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
   .swatch[data-selected='true'] {
     box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--text-primary);
   }
@@ -136,18 +210,68 @@ const allSwatches = [amber, ...pastels, ...gradients, ...textures];
 
 <script>
   const STORAGE_KEY = 'accent-theme';
+  const NUDGE_STORAGE_KEY = 'accent-nudge-dismissed';
+  let showNudgeTimeout = 0;
+  let hideNudgeTimeout = 0;
 
-  function applyAccent(accent: { id: string; solid: string; hover: string; surface: string } | null) {
+  function setNudgeDismissed() {
+    localStorage.setItem(NUDGE_STORAGE_KEY, 'true');
+  }
+
+  function clearNudgeTimers() {
+    window.clearTimeout(showNudgeTimeout);
+    window.clearTimeout(hideNudgeTimeout);
+  }
+
+  function isNudgeVisible() {
+    return Array.from(document.querySelectorAll<HTMLElement>('[data-accent-nudge]'))
+      .some((nudge) => nudge.dataset.visible === 'true');
+  }
+
+  function hideNudge() {
+    clearNudgeTimers();
+    document.querySelectorAll<HTMLElement>('[data-accent-nudge]').forEach((nudge) => {
+      nudge.dataset.visible = 'false';
+      nudge.classList.add('opacity-0', 'invisible', 'translate-y-1');
+    });
+  }
+
+  function dismissNudge() {
+    hideNudge();
+    setNudgeDismissed();
+  }
+
+  function showNudge() {
+    document.querySelectorAll<HTMLElement>('[data-accent-nudge]').forEach((nudge) => {
+      nudge.dataset.visible = 'true';
+      nudge.classList.remove('opacity-0', 'invisible', 'translate-y-1');
+    });
+  }
+
+  function scheduleNudge() {
+    hideNudge();
+    if (window.location.pathname !== '/') return;
+    if (window.innerWidth < 1024) return;
+    if (localStorage.getItem(NUDGE_STORAGE_KEY) === 'true') return;
+    if (currentAccentId() !== 'amber') return;
+
+    showNudgeTimeout = window.setTimeout(showNudge, 2200);
+    hideNudgeTimeout = window.setTimeout(dismissNudge, 6800);
+  }
+
+  function applyAccent(accent: { id: string; solid: string; hover: string; surface: string; ink: string } | null) {
     const s = document.documentElement.style;
     if (accent) {
       s.setProperty('--color-spot', accent.solid);
       s.setProperty('--color-spot-hover', accent.hover);
+      s.setProperty('--color-spot-ink', accent.ink);
       s.setProperty('--spot-surface', accent.surface);
       s.setProperty('--color-accent', accent.solid);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(accent));
     } else {
       s.removeProperty('--color-spot');
       s.removeProperty('--color-spot-hover');
+      s.removeProperty('--color-spot-ink');
       s.removeProperty('--spot-surface');
       s.removeProperty('--color-accent');
       localStorage.removeItem(STORAGE_KEY);
@@ -171,6 +295,24 @@ const allSwatches = [amber, ...pastels, ...gradients, ...textures];
     });
   }
 
+  function resetUnsupportedAccent() {
+    const id = currentAccentId();
+    const swatch = Array.from(document.querySelectorAll<HTMLElement>('[data-accent-id]'))
+      .find((el) => el.dataset.accentId === id);
+    if (!swatch) {
+      applyAccent(null);
+      return;
+    }
+    if (id === 'amber') return;
+
+    const { accentId, solid, hover, surface, ink } = swatch.dataset;
+    if (accentId && solid && hover && surface && ink) {
+      applyAccent({ id: accentId, solid, hover, surface, ink });
+    } else {
+      applyAccent(null);
+    }
+  }
+
   function closePanels() {
     document.querySelectorAll<HTMLElement>('[data-accent-panel]').forEach((panel) => {
       panel.classList.add('opacity-0', 'invisible', 'translate-y-2');
@@ -181,6 +323,7 @@ const allSwatches = [amber, ...pastels, ...gradients, ...textures];
   }
 
   function bindAccentPicker() {
+    resetUnsupportedAccent();
     if (document.documentElement.dataset.accentBound === 'true') {
       markSelected();
       return;
@@ -194,33 +337,41 @@ const allSwatches = [amber, ...pastels, ...gradients, ...textures];
       const toggle = target.closest<HTMLElement>('[data-accent-toggle]');
       if (toggle) {
         const panel = toggle.parentElement?.querySelector<HTMLElement>('[data-accent-panel]');
-        if (!panel) return;
-        const isOpen = !panel.classList.contains('invisible');
-        closePanels();
-        if (!isOpen) {
-          panel.classList.remove('opacity-0', 'invisible', 'translate-y-2');
-          toggle.setAttribute('aria-expanded', 'true');
-        }
+          if (!panel) return;
+          const isOpen = !panel.classList.contains('invisible');
+          closePanels();
+          dismissNudge();
+          if (!isOpen) {
+            panel.classList.remove('opacity-0', 'invisible', 'translate-y-2');
+            toggle.setAttribute('aria-expanded', 'true');
+          }
         return;
       }
 
       const swatch = target.closest<HTMLElement>('[data-accent-id]');
-      if (swatch) {
-        const { accentId, solid, hover, surface } = swatch.dataset;
-        if (accentId === 'amber') {
-          applyAccent(null);
-        } else if (accentId && solid && hover && surface) {
-          applyAccent({ id: accentId, solid, hover, surface });
+        if (swatch) {
+          const { accentId, solid, hover, surface, ink } = swatch.dataset;
+          if (accentId === 'amber') {
+            applyAccent(null);
+          } else if (accentId && solid && hover && surface && ink) {
+            applyAccent({ id: accentId, solid, hover, surface, ink });
+          }
+          dismissNudge();
+          return;
         }
-        return;
-      }
 
-      if (!target.closest('[data-accent-panel]')) closePanels();
-    });
+        if (!target.closest('[data-accent-panel]')) closePanels();
+        if (!target.closest('.accent-picker') && isNudgeVisible()) dismissNudge();
+      });
 
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') closePanels();
-    });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closePanels();
+        if (isNudgeVisible()) dismissNudge();
+      });
+
+    window.addEventListener('scroll', () => {
+      if (isNudgeVisible()) dismissNudge();
+    }, { passive: true });
   }
 
   if (document.readyState === 'loading') {
@@ -229,4 +380,11 @@ const allSwatches = [amber, ...pastels, ...gradients, ...textures];
     bindAccentPicker();
   }
   document.addEventListener('astro:page-load', bindAccentPicker);
+  document.addEventListener('astro:page-load', scheduleNudge);
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', scheduleNudge, { once: true });
+  } else {
+    scheduleNudge();
+  }
 </script>
