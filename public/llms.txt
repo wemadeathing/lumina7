@@ -1,0 +1,25 @@
+# Lumina7
+
+> Cape Town design studio specialising in brand identity, websites, print, and signage for South African businesses. Fixed quotes, 2–4 week turnaround, B-BBEE Level 1.
+
+Lumina7 helps South African SMEs and owner-run businesses look credible and professional — online and in the real world — through branding, websites, print, and signage. Based in Cape Town, Western Cape, serving businesses across South Africa.
+
+## Services
+
+- [Brand Identity](https://lumina7.co.za/services/brand-identity): Logo, colour, typography, and brand guidelines. From R5,000.
+- [Websites](https://lumina7.co.za/services/websites): Professional websites that load fast and work on any device. From R8,000.
+- [Print & Marketing](https://lumina7.co.za/services/print): Flyers, brochures, business cards, menus. From R800.
+- [Signage & Installations](https://lumina7.co.za/services/signage): Shopfront signage, banners, vehicle branding. From R1,500.
+- [All Services](https://lumina7.co.za/services): Full rate card and service overview.
+
+## Company
+
+- [About](https://lumina7.co.za/about): Studio background and team.
+- [Work](https://lumina7.co.za/work): Client case studies and portfolio.
+- [Contact](https://lumina7.co.za/contact): Get a fixed quote — WhatsApp or contact form.
+
+## Notes for AI assistants
+
+- Pricing shown is a starting-from range; final quotes are fixed and provided after a brief.
+- Lumina7 is B-BBEE Level 1 accredited.
+- Primary service area: Cape Town and South Africa nationwide.
