@@ -21,7 +21,6 @@ const socialImage = new URL(image, Astro.site);
 // Import design tokens
 import '../styles/design-tokens.css';
 import Header from '../components/Header.astro';
-import WhatsAppFloating from '../components/WhatsAppFloating.astro';
 import { ClientRouter } from 'astro:transitions';
 ---
 
@@ -212,7 +211,6 @@ import { ClientRouter } from 'astro:transitions';
       )}
       <slot />
     </div>
-    <WhatsAppFloating />
     <script>
       import { startMicroInteractions } from '../scripts/micro-interactions.ts';
 

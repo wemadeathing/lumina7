@@ -12,7 +12,9 @@ const allProjects = portfolioProjects.map(project => ({
   category: project.data.category.toUpperCase(),
   services: project.data.services,
   image: project.data.heroImage,
-  slug: project.slug
+  slug: project.slug,
+  year: project.data.year,
+  outcomeShort: project.data.outcomeShort
 }));
 
 const categories = ['ALL', ...new Set(allProjects.map(project => project.category))];
@@ -22,24 +24,27 @@ const categories = ['ALL', ...new Set(allProjects.map(project => project.categor
   title="Work | Lumina7 - Portfolio & Case Studies"
   description="Brand identity, websites, print, and signage, built for South African businesses."
 >
-  <!-- Hero Section -->
-  <section class="pt-24 pb-8 px-4 sm:px-6 lg:px-8">
+  <!-- Proof-led hero -->
+  <section class="relative pt-16 pb-14 px-4 sm:px-6 lg:px-8 border-b border-primary crop-marks">
+    <span class="crop-b"></span>
     <div class="max-w-7xl mx-auto">
-      <div class="max-w-4xl">
-        <h1 class="text-heading-1 text-primary mb-4 mt-8">Our Work</h1>
-        <p class="text-body-lg text-primary max-w-2xl mb-8">Brand identity, websites, print, and signage, built for South African businesses.</p>
+      <div class="max-w-5xl">
+        <p class="label-mono text-tertiary mb-5">Selected work · {allProjects.length.toString().padStart(2, '0')} projects</p>
+        <h1 class="text-heading-1 text-primary mb-5">Work that <span class="hl-spot">proves the point.</span></h1>
+        <p class="text-body-lg text-secondary max-w-2xl">Brand identity, websites, print, and signage, built to help South African businesses look credible and move forward.</p>
       </div>
     </div>
   </section>
 
-  <!-- Filter Section -->
-  <section class="py-6 px-4 sm:px-6 lg:px-8 bg-[#F6F4EF] dark:bg-[#141210] transition-colors duration-300">
+  <!-- Project filters -->
+  <section class="px-4 sm:px-6 lg:px-8 border-b border-primary">
     <div class="max-w-7xl mx-auto">
-      <div class="flex flex-wrap gap-4 justify-start">
+      <div class="flex gap-2 py-4 overflow-x-auto scrollbar-hide" aria-label="Filter projects">
         {categories.map(category => (
           <button 
-            class="filter-btn px-6 py-3 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 rounded-[4px] transition-colors uppercase tracking-wide"
+            class="filter-btn label-mono min-h-[44px] px-4 py-2 text-tertiary border border-primary rounded whitespace-nowrap hover:text-primary hover:border-current focus-visible:outline-none"
             data-filter={category.toLowerCase()}
+            type="button"
           >
             {category}
           </button>
@@ -48,43 +53,46 @@ const categories = ['ALL', ...new Set(allProjects.map(project => project.categor
     </div>
   </section>
 
-  <!-- Projects Grid -->
-  <section class="pt-8 pb-20 px-4 sm:px-6 lg:px-8 bg-[#F6F4EF] dark:bg-[#141210] transition-colors duration-300">
+  <!-- Work specimens -->
+  <section class="py-14 sm:py-20 px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
-      <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
         {allProjects.map(project => (
-          <div class="project-item group cursor-pointer" data-category={project.category.toLowerCase()}>
-            <a href={`/work/${project.slug}`} class="block">
-              <div class="mb-6">
-                <div class="aspect-[4/3] bg-gray-100 dark:bg-neutral-900 overflow-hidden mb-6 rounded-2xl">
+          <article class="project-item" data-category={project.category.toLowerCase()}>
+            <a href={`/work/${project.slug}`} class="work-specimen group relative block h-full bg-white dark:bg-[#1D1A16] p-3.5 crop-marks transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(22,20,15,0.12)] focus-visible:outline-none">
+              <span class="crop-b"></span>
+              <div class="overflow-hidden mb-4 bg-secondary">
                   <img
                     src={project.image}
                     alt={project.title}
-                    class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                    class="w-full aspect-[4/3] object-cover group-hover:scale-[1.03] transition-transform duration-500"
                     loading="lazy"
                   />
+              </div>
+
+              <div class="px-1">
+                <div class="flex items-center justify-between gap-4 mb-3">
+                  <span class="label-mono text-tertiary">{project.category}</span>
+                  <span class="label-mono text-tertiary tabular-nums">{project.year}</span>
                 </div>
-                
-                <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-2 group-hover:text-gray-600 dark:group-hover:text-neutral-300 transition-colors leading-tight">
-                  {project.company || project.title}
-                </h3>
-                
-                <p class="text-sm text-gray-600 dark:text-neutral-400 mb-4">
-                  {project.title}
-                </p>
-                
-                <div class="services-container">
-                  <div class="services-list flex flex-wrap gap-x-2 gap-y-1 text-sm text-gray-600 dark:text-neutral-400">
-                    {project.services.map((service, index) => (
-                      <span>
-                        {service}{index < project.services.length - 1 ? ',' : ''}
-                      </span>
-                    ))}
+                <h2 class="font-display text-xl text-primary mb-2" style="font-weight: 660;">{project.company || project.title}</h2>
+                <p class="text-body-sm text-secondary mb-5 min-h-[2.75rem]">{project.title}</p>
+
+                <dl class="border-t border-primary label-mono">
+                  <div class="flex justify-between gap-4 py-2 border-b border-primary">
+                    <dt class="text-tertiary">Scope</dt>
+                    <dd class="m-0 text-right text-primary">{project.services.slice(0, 2).join(' + ')}</dd>
                   </div>
-                </div>
+                  {project.outcomeShort && (
+                    <div class="flex justify-between gap-4 py-2 border-b border-primary items-center">
+                      <dt class="text-tertiary">Outcome</dt>
+                      <dd class="m-0 chip-spot text-right">{project.outcomeShort}</dd>
+                    </div>
+                  )}
+                </dl>
               </div>
             </a>
-          </div>
+          </article>
         ))}
       </div>
     </div>
@@ -102,11 +110,6 @@ const categories = ['ALL', ...new Set(allProjects.map(project => project.categor
     
     // Set initial active state
     filterButtons.forEach((button, index) => {
-      button.classList.toggle('text-gray-900', index === 0);
-      button.classList.toggle('dark:text-white', index === 0);
-      button.classList.toggle('font-semibold', index === 0);
-      button.classList.toggle('text-gray-600', index !== 0);
-      button.classList.toggle('dark:text-gray-400', index !== 0);
       button.setAttribute('aria-pressed', index === 0 ? 'true' : 'false');
     });
     
@@ -118,12 +121,8 @@ const categories = ['ALL', ...new Set(allProjects.map(project => project.categor
         
         // Update active button
         filterButtons.forEach((btn) => {
-          btn.classList.remove('text-gray-900', 'dark:text-white', 'font-semibold');
-          btn.classList.add('text-gray-600', 'dark:text-gray-400');
           btn.setAttribute('aria-pressed', 'false');
         });
-        button.classList.add('text-gray-900', 'dark:text-white', 'font-semibold');
-        button.classList.remove('text-gray-600', 'dark:text-gray-400');
         button.setAttribute('aria-pressed', 'true');
         
         // Filter projects
@@ -147,3 +146,12 @@ const categories = ['ALL', ...new Set(allProjects.map(project => project.categor
   }
   document.addEventListener('astro:page-load', initPortfolioFilters);
 </script>
+
+<style>
+  .filter-btn[aria-pressed='true'] {
+    background: var(--color-spot);
+    border-color: var(--color-spot);
+    color: var(--color-spot-ink);
+    font-weight: 600;
+  }
+</style>
