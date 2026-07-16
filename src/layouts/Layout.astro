@@ -50,7 +50,7 @@ import { ClientRouter } from 'astro:transitions';
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
     <meta name="generator" content={Astro.generator} />
     
     <!-- Canonical URL -->
@@ -208,7 +208,7 @@ import { ClientRouter } from 'astro:transitions';
     <Header />
     <div id="main-content" class="relative isolate bg-primary">
       {useGlobalTopGradient && (
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-64 bg-gradient-to-r from-blue-600/60 via-purple-600/60 to-pink-600/60 blur-[100px] opacity-100 dark:opacity-80 -z-10 pointer-events-none" aria-hidden="true"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-64 bg-gradient-to-r from-spot/25 via-spot/10 to-transparent blur-[100px] opacity-100 dark:opacity-40 -z-10 pointer-events-none" aria-hidden="true"></div>
       )}
       <slot />
     </div>
@@ -238,23 +238,34 @@ import { ClientRouter } from 'astro:transitions';
       scroll-behavior: smooth;
     }
 
-    /* 247studio inspired typography */
+    /* "The Proof" typography - Archivo display (signage lettering) over Instrument Sans body */
     h1, h2, h3, h4, h5, h6 {
-      font-weight: 500;
-      line-height: 1.2;
-      letter-spacing: -0.025em;
+      font-family: 'Archivo', 'Instrument Sans', -apple-system, sans-serif;
+      font-stretch: 112%;
+      font-weight: 660;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    ::selection {
+      background: #FFB200;
+      color: #16140F;
     }
 
     .text-display {
+      font-family: 'Archivo', 'Instrument Sans', sans-serif;
+      font-stretch: 112%;
       font-size: clamp(2.5rem, 8vw, 6rem);
-      font-weight: 500;
-      line-height: 0.9;
-      letter-spacing: -0.04em;
+      font-weight: 740;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
     }
 
     .text-large {
+      font-family: 'Archivo', 'Instrument Sans', sans-serif;
+      font-stretch: 112%;
       font-size: clamp(1.5rem, 4vw, 2.5rem);
-      font-weight: 500;
+      font-weight: 660;
       line-height: 1.1;
       letter-spacing: -0.02em;
     }

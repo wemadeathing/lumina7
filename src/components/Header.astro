@@ -10,8 +10,15 @@ import ThemeToggle from './ThemeToggle.astro';
       <img src="/assets/logos/L7-logo-blk.svg" alt="Lumina7" class="header-logo-light h-7 dark:hidden" />
       <img src="/assets/logos/L7-logo-wht.png" alt="Lumina7" class="header-logo-dark h-7 hidden dark:block" />
     </a>
-    <div class="flex items-center gap-3 pointer-events-auto relative z-10">
-      <a href="https://wa.me/27814623628?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20your%20design%20services" target="_blank" rel="noopener noreferrer" class="header-cta px-5 py-2.5 text-sm font-medium rounded-full transition-colors duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 focus-visible:ring-offset-2 inline-flex items-center gap-2" data-event="whatsapp_click" data-event-source="header">
+    <div class="flex items-center gap-8 pointer-events-auto relative z-10">
+      <nav class="hidden lg:flex items-center gap-7" aria-label="Primary">
+        <a href="/work" class="label-mono text-gray-600 dark:text-neutral-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300 py-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 rounded-[4px]">Work</a>
+        <a href="/services" class="label-mono text-gray-600 dark:text-neutral-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300 py-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 rounded-[4px]">Services</a>
+        <a href="/about" class="label-mono text-gray-600 dark:text-neutral-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300 py-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 rounded-[4px]">About</a>
+        <a href="/contact" class="label-mono text-gray-600 dark:text-neutral-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300 py-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 rounded-[4px]">Contact</a>
+      </nav>
+      <div class="hidden lg:block"><ThemeToggle /></div>
+      <a href="https://wa.me/27814623628?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20your%20design%20services" target="_blank" rel="noopener noreferrer" class="header-cta px-5 py-2.5 text-sm font-semibold rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 focus-visible:ring-offset-2 inline-flex items-center gap-2" data-event="whatsapp_click" data-event-source="header">
         WhatsApp Us
         <span aria-hidden="true">→</span>
       </a>
@@ -22,7 +29,7 @@ import ThemeToggle from './ThemeToggle.astro';
 <!-- Bottom floating menu -->
 <nav
   id="floating-nav"
-  class="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-0.5 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-gray-200/80 dark:border-gray-700/50 shadow-sm max-w-[calc(100vw-6rem)] md:max-w-[calc(100vw-2rem)] overflow-x-auto scrollbar-hide"
+  class="lg:hidden fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-0.5 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-gray-200/80 dark:border-gray-700/50 shadow-sm max-w-[calc(100vw-6rem)] md:max-w-[calc(100vw-2rem)] overflow-x-auto scrollbar-hide"
   aria-label="Main navigation"
 >
   <a href="/" class="nav-link px-4 py-3 min-h-[44px] flex items-center rounded-full text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100/80 dark:hover:bg-gray-800/80 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 whitespace-nowrap" data-path="/">
@@ -51,7 +58,7 @@ import ThemeToggle from './ThemeToggle.astro';
 <!-- More dropdown (contact, theme) -->
 <div
   id="nav-more-panel"
-  class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 w-64 p-4 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-xl opacity-0 invisible translate-y-2 transition-all duration-300 ease-out"
+  class="lg:hidden fixed bottom-20 left-1/2 -translate-x-1/2 z-50 w-64 p-4 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-xl opacity-0 invisible translate-y-2 transition-all duration-300 ease-out"
 >
   <div class="space-y-3">
     <a href="mailto:hello@lumina7.co.za" class="block text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white py-2 px-1 -mx-1 rounded-[4px] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 focus-visible:ring-offset-2" data-event="email_click" data-event-source="header_more">hello@lumina7.co.za</a>
@@ -150,20 +157,15 @@ import ThemeToggle from './ThemeToggle.astro';
 </script>
 
 <style>
-  /* Top header content - explicit light/dark mode colors for visibility */
+  /* Top header CTA - spot amber in both modes */
   .header-cta {
-    background-color: #18181b;
-    color: white;
+    background-color: #FFB200;
+    color: #16140F;
   }
   .header-cta:hover {
-    background-color: #27272a;
-  }
-  :global(.dark) .header-cta {
-    background-color: white;
-    color: #18181b;
-  }
-  :global(.dark) .header-cta:hover {
-    background-color: #f4f4f5;
+    background-color: #F0A800;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(255, 178, 0, 0.35);
   }
 
   /* Top header - transparent on load in both modes; backdrop shows on scroll only */

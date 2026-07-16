@@ -1,37 +1,35 @@
 ---
-import Section from './Section.astro';
+// "The Proof" amber CTA slab - ink on spot colour, glows in dark mode
 ---
-<Section variant="default" padding="lg" id="contact">
-  <div class="w-full">
-    <div class="w-full flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10">
-      <div>
-        <h2 class="text-heading-2 text-primary leading-tight max-w-2xl">
-          Ready to get started? Let's talk.
-        </h2>
-      </div>
-      <div class="border-t lg:border-t-0 lg:border-l border-primary pt-10 lg:pt-0 lg:pl-10 w-full lg:max-w-md">
-        <p class="text-sm text-secondary leading-relaxed mb-6">
-          Tell us what you need and we'll come back to you within a few hours, usually on WhatsApp. No long forms, no commitment.
-        </p>
-        <div class="flex flex-wrap items-center gap-4">
-          <a
-            href="https://wa.me/27814623628?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20Lumina7"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-gray-900 dark:bg-white dark:text-gray-900 rounded-full hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors duration-300 group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 focus-visible:ring-offset-2"
-            data-event="whatsapp_click"
-          >
-            <span>WhatsApp Us</span>
-            <span class="group-hover:translate-x-0.5 transition-transform duration-300">+</span>
-          </a>
-          <a
-            href="/contact"
-            class="text-sm font-medium text-secondary hover:text-primary underline underline-offset-4 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60 rounded-[4px]"
-          >
-            Or send us a message
-          </a>
-        </div>
-      </div>
+<section id="contact" class="bg-spot py-20 md:py-24 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    <p class="label-mono text-spot-ink/60 mb-6">Enquiries &mdash; replies within a few hours</p>
+    <h2 class="font-display text-spot-ink text-4xl md:text-5xl lg:text-6xl leading-[1] tracking-[-0.03em] max-w-[14ch] mb-7" style="font-weight: 780;">
+      Ready when you are.
+    </h2>
+    <p class="text-spot-ink/75 text-lg max-w-xl mb-9 leading-relaxed">
+      Tell us what you need and we'll come back with a fixed quote. No long forms, no commitment.
+    </p>
+    <div class="flex flex-wrap items-center gap-6">
+      <a
+        href="https://wa.me/27814623628?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20Lumina7"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-[#F6F4EF] bg-[#16140F] rounded-full hover:-translate-y-px transition-transform duration-300 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#16140F] focus-visible:ring-offset-2 focus-visible:ring-offset-spot"
+        data-event="whatsapp_click"
+        data-event-source="cta_slab"
+      >
+        <span>WhatsApp us</span>
+        <span class="group-hover:translate-x-0.5 transition-transform duration-300" aria-hidden="true">&rarr;</span>
+      </a>
+      <a
+        href="/contact"
+        class="text-sm font-medium text-spot-ink/75 hover:text-spot-ink underline underline-offset-4 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#16140F] rounded-[4px]"
+        data-event="contact_form_link_click"
+        data-event-source="cta_slab"
+      >
+        or send us a message
+      </a>
     </div>
   </div>
-</Section>
+</section>

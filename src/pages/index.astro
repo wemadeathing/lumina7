@@ -4,7 +4,6 @@ import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import CTA from '../components/CTA.astro';
 import FAQ from '../components/FAQ.astro';
-import Testimonials from '../components/Testimonials.astro';
 import ProcessTimeline from '../components/ProcessTimeline.astro';
 import { getCollection } from 'astro:content';
 
@@ -14,12 +13,12 @@ const featuredProjects = allProjects
   .sort((a, b) => a.data.order - b.data.order)
   .slice(0, 3);
 
-const services = [
-  { title: 'Brand Identity', tagline: 'Logo, colour, typography and brand guidelines. From R5,000', link: '/services/brand-identity' },
-  { title: 'Print & Marketing Materials', tagline: 'Flyers, brochures, business cards, menus. From R800', link: '/services/print' },
-  { title: 'Signage & Installations', tagline: 'Shopfront signage, banners, vehicle branding. From R1,500', link: '/services/signage' },
-  { title: 'Website Design & Development', tagline: 'Professional websites that look great and load fast. From R8,000', link: '/services/websites' },
-  { title: 'Social Media & Digital Assets', tagline: 'Profile graphics, post templates, digital ads. From R1,200', link: '/services' }
+const rateCard = [
+  { name: 'Brand identity', desc: 'Logo, colour, typography and brand guidelines.', price: 'from R5,000', link: '/services/brand-identity' },
+  { name: 'Print & marketing', desc: 'Flyers, brochures, business cards, menus.', price: 'from R800', link: '/services/print' },
+  { name: 'Signage & installations', desc: 'Shopfront signage, banners, vehicle branding.', price: 'from R1,500', link: '/services/signage' },
+  { name: 'Websites', desc: 'Fast, credible websites that convert visits into enquiries.', price: 'from R8,000', link: '/services/websites' },
+  { name: 'Social & digital assets', desc: 'Profile graphics, post templates, digital ads.', price: 'from R1,200', link: '/services' }
 ];
 
 const processSteps = [
@@ -28,18 +27,12 @@ const processSteps = [
   { label: 'Day 21', title: 'Launch with confidence.', description: "Final files, live site, and handover complete. Ready for your next phase of growth." }
 ];
 
-const testimonials = [
-  { quote: "Lumina7 delivered our full rebrand in under three weeks. The quality was exceptional and Nasif really understood what we were trying to achieve.", name: "Client Name", business: "Business Name" },
-  { quote: "We needed a website fast before a big corporate event. They delivered on time and it looked better than agencies charging three times as much.", name: "Client Name", business: "Business Name" },
-  { quote: "Professional, communicative and genuinely good at what they do. I've already referred two other businesses.", name: "Client Name", business: "Business Name" }
-];
-
 const clientLogos = [
   { src: '/assets/logos/clients/Arabica Logo Dark.png', alt: 'Arabica Coffee' },
   { src: '/assets/logos/clients/ECOS Logo dark.png', alt: 'ECOS' },
   { src: '/assets/logos/clients/HP Logo dark.png', alt: 'HP' },
   { src: '/assets/logos/clients/Straptec-logo.png', alt: 'Straptec' },
-  { src: '/assets/logos/clients/YP_Logo_Dark.png', alt: 'YP' }
+  { src: '/assets/logos/clients/YP_Logo_Dark.png', alt: 'YourPractiz' }
 ];
 
 const faqItems = [
@@ -52,94 +45,119 @@ const faqItems = [
 ];
 ---
 
-<Layout 
+<Layout
   title="Lumina7 | Brand Identity, Websites & Print Design | Cape Town"
   description="Cape Town design studio specialising in brand identity, websites, print and signage for South African businesses. Fast turnaround. Fixed quotes. B-BBEE Level 1."
-  useGlobalTopGradient={true}
 >
-  <!-- Hero Section -->
-  <section class="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
+  <!-- Job ticket strip -->
+  <div class="border-b border-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap items-center justify-between gap-x-8 gap-y-1">
+      <span class="label-mono text-tertiary">Cape Town design studio</span>
+      <span class="label-mono text-tertiary hidden md:inline">Brand &middot; Print &middot; Signage &middot; Web</span>
+      <span class="label-mono text-tertiary hidden sm:inline">Fixed quotes &middot; 2&ndash;4 week delivery</span>
+      <span class="chip-spot label-mono">B-BBEE Level 1</span>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="relative pt-20 pb-20 px-4 sm:px-6 lg:px-8 border-b border-primary crop-marks">
+    <span class="crop-b"></span>
     <div class="max-w-7xl mx-auto">
-      <div class="max-w-4xl">
-        <h1 class="text-[2.75rem] sm:text-[3.3rem] md:text-[4.95rem] font-medium text-gray-900 dark:text-gray-100 mb-8 leading-[0.95] mt-8 tracking-tight transition-colors duration-300">
-          <span class="block">We design brands and websites for South African businesses.</span>
+      <div class="max-w-5xl">
+        <h1 class="font-display text-[2.75rem] sm:text-[3.3rem] md:text-[4.6rem] leading-[1.02] tracking-[-0.03em] text-primary mb-8 mt-6" style="font-weight: 760; text-wrap: balance;">
+          We design brands and websites for <span class="hl-spot">South African businesses.</span>
         </h1>
-        <p class="text-body-lg text-primary max-w-3xl">
+        <p class="text-body-lg text-secondary max-w-3xl mb-9">
           Branding, print, signage, and websites, delivered in weeks, not months.
         </p>
-        <div class="mt-8">
-          <WhatsAppButton label="WhatsApp Us" size="lg" prefillText="Hi%2C%20I%27d%20like%20to%20enquire%20about%20your%20design%20services" eventSource="homepage_hero" />
+        <div class="flex flex-wrap items-center gap-6 mb-10">
+          <WhatsAppButton label="WhatsApp us" size="lg" prefillText="Hi%2C%20I%27d%20like%20to%20enquire%20about%20your%20design%20services" eventSource="homepage_hero" />
+          <a href="/contact" class="text-sm font-medium text-secondary hover:text-primary underline underline-offset-4 transition-colors duration-300" data-event="contact_form_link_click" data-event-source="homepage_hero">or send a message</a>
         </div>
-        <p class="mt-6 text-sm text-gray-500 dark:text-neutral-500">
-          Fixed quote within 24 hours&ensp;·&ensp;Delivery in 2–4 weeks&ensp;·&ensp;You own everything we make
-        </p>
+        <div class="flex flex-wrap gap-x-8 gap-y-2">
+          <span class="label-mono text-tertiary tick-spot">Fixed quote within 24 hours</span>
+          <span class="label-mono text-tertiary tick-spot">Delivery in 2&ndash;4 weeks</span>
+          <span class="label-mono text-tertiary tick-spot">You own everything we make</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Client Logo Bar -->
-  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
-    <div class="max-w-7xl mx-auto overflow-hidden">
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
-        <p class="text-caption text-tertiary text-center">Trusted by South African businesses</p>
-        <span class="inline-flex items-center gap-1.5 text-xs">
-          <span class="px-2 py-0.5 rounded bg-secondary text-primary border border-primary font-medium">B-BBEE Level 1</span>
-          <span class="text-tertiary">Contributor</span>
-        </span>
-      </div>
-      <div class="flex flex-wrap gap-8 sm:gap-12 md:gap-16 justify-center items-center py-4">
-        {clientLogos.map((logo, i) => (
-          <img
-            src={logo.src}
-            alt={logo.alt}
-            class={`object-contain opacity-60 grayscale dark:invert dark:opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300 flex-shrink-0 ${i === 0 ? 'h-[2.2rem]' : 'h-8'}`}
-            loading="lazy"
-          />
+  <!-- Client marquee -->
+  <section class="border-b border-primary py-8 overflow-hidden" aria-label="Trusted by South African businesses">
+    <div class="marquee" role="presentation">
+      <div class="marquee-inner">
+        {clientLogos.map((logo) => (
+          <img src={logo.src} alt={logo.alt} class="h-8 object-contain opacity-60 grayscale dark:invert dark:opacity-70" loading="lazy" />
         ))}
+        <span class="label-mono text-tertiary whitespace-nowrap">Trusted by South African businesses</span>
+      </div>
+      <div class="marquee-inner" aria-hidden="true">
+        {clientLogos.map((logo) => (
+          <img src={logo.src} alt="" class="h-8 object-contain opacity-60 grayscale dark:invert dark:opacity-70" loading="lazy" />
+        ))}
+        <span class="label-mono text-tertiary whitespace-nowrap">Trusted by South African businesses</span>
       </div>
     </div>
   </section>
 
-  <!-- Services Section - Becklyn style numbered list -->
-  <section class="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#0a0a0a] transition-colors duration-300 ">
+  <!-- Rate card -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8 border-b border-primary">
     <div class="max-w-7xl mx-auto">
-      <div class="pb-10">
-        <h2 class="text-heading-2 text-primary mb-4">How we help</h2>
-        <p class="text-body text-secondary max-w-2xl">From first impression to final install, we handle every design touchpoint.</p>
+      <div class="flex flex-wrap items-baseline justify-between gap-x-10 gap-y-3 mb-12">
+        <h2 class="text-heading-2 md:text-heading-1 text-primary">The rate card.</h2>
+        <p class="label-mono text-tertiary">Fixed quotes &middot; No surprises &middot; Prices in ZAR</p>
       </div>
-      <div class="space-y-1 mt-12">
-        {services.map((service, index) => (
-          <a href={service.link} class="group grid grid-cols-[2rem_1fr_auto] md:grid-cols-[2rem_minmax(0,1fr)_minmax(0,1.4fr)_1rem] gap-x-4 md:gap-x-8 gap-y-2 items-baseline py-6 border-b border-gray-200 dark:border-neutral-800 last:border-b-0 hover:bg-gray-50 dark:hover:bg-neutral-900/50 transition-colors duration-300 -mx-4 px-4 rounded-[4px]">
-            <span class="text-sm font-medium text-gray-400 dark:text-neutral-500 tabular-nums">{(index + 1).toString().padStart(2, '0')}</span>
-            <span class="text-lg md:text-xl font-medium text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-neutral-300 transition-colors">{service.title}</span>
-            <p class="col-start-2 col-span-2 md:col-start-3 md:col-span-1 text-body text-secondary md:text-right">{service.tagline}</p>
-            <span class="col-start-3 md:col-start-4 row-span-2 md:row-span-1 self-center justify-self-end text-gray-400 dark:text-neutral-500 group-hover:translate-x-1 transition-transform">→</span>
+      <div>
+        {rateCard.map((service, index) => (
+          <a href={service.link} class="rate-row group grid grid-cols-[2.4rem_minmax(0,1fr)_auto] md:grid-cols-[3rem_minmax(0,1.1fr)_minmax(0,1.6fr)_auto_2rem] gap-x-5 md:gap-x-8 gap-y-1 items-baseline py-6 px-3 -mx-3 border-t border-primary last:border-b transition-colors duration-300 hover:bg-white dark:hover:bg-neutral-900">
+            <span class="label-mono text-tertiary">{(index + 1).toString().padStart(2, '0')}</span>
+            <span class="font-display text-lg md:text-xl text-primary" style="font-weight: 620;">{service.name}</span>
+            <span class="col-start-2 md:col-start-3 col-span-2 md:col-span-1 text-body-sm text-secondary">{service.desc}</span>
+            <span class="label-mono text-primary tabular-nums whitespace-nowrap row-start-1 col-start-3 md:col-start-4 justify-self-end">{service.price}</span>
+            <span class="hidden md:inline text-tertiary group-hover:text-spot group-hover:translate-x-1 transition-all duration-300 justify-self-end" aria-hidden="true">&rarr;</span>
           </a>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Cases Section - Becklyn style: first full-width, rest 2-col grid -->
-  <section class="py-20 bg-white dark:bg-[#0a0a0a] transition-colors duration-300 ">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="mb-16 flex items-end justify-between">
-        <h2 class="text-heading-2 md:text-heading-1 text-primary">Recent work</h2>
-        <a href="/work" class="text-sm font-medium text-gray-500 dark:text-neutral-400 hover:text-gray-900 dark:hover:text-white transition-colors">View all projects</a>
+  <!-- Work specimens -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8 border-b border-primary">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-wrap items-baseline justify-between gap-x-10 gap-y-3 mb-12">
+        <h2 class="text-heading-2 md:text-heading-1 text-primary">Recent work, pulled as proofs.</h2>
+        <a href="/work" class="label-mono text-tertiary hover:text-primary transition-colors duration-300">Full portfolio &rarr;</a>
       </div>
-      <div class="flex flex-col md:flex-row md:flex-wrap gap-6 md:gap-8">
-        {featuredProjects.map((project, index) => (
-          <a href={`/work/${project.slug}`} class={`group block ${index === 0 ? 'w-full' : 'w-full md:w-[calc(50%-1rem)]'}`}>
-            <div class="relative aspect-square md:aspect-video overflow-hidden rounded-2xl bg-gray-200 dark:bg-neutral-800">
-              <img src={project.data.heroImage} alt={`${project.data.company} — ${project.data.description}`} class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" loading="lazy" />
+      <div class="grid md:grid-cols-3 gap-7">
+        {featuredProjects.map((project) => (
+          <a href={`/work/${project.slug}`} class="specimen group relative block bg-white dark:bg-neutral-900 p-3.5 crop-marks transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(22,20,15,0.12)]">
+            <span class="crop-b"></span>
+            <div class="overflow-hidden mb-4">
+              <img
+                src={project.data.heroImage}
+                alt={`${project.data.company} — ${project.data.description}`}
+                class="w-full aspect-[4/3] object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                loading="lazy"
+              />
             </div>
-            <div class="pt-5 pb-2 flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 md:gap-8">
-              <div class="min-w-0">
-                <h3 class="text-xl md:text-2xl font-medium text-gray-900 dark:text-white mb-1 tracking-tight group-hover:text-gray-600 dark:group-hover:text-neutral-300 transition-colors">{project.data.company}</h3>
-                <p class="text-sm md:text-base text-gray-600 dark:text-neutral-400 leading-relaxed max-w-2xl">{project.data.description}</p>
+            <h3 class="font-display text-lg text-primary px-1 mb-3" style="font-weight: 660;">{project.data.company}</h3>
+            <dl class="mx-1 mb-1 border-t border-primary label-mono">
+              <div class="flex justify-between gap-4 py-1.5 border-b border-primary">
+                <dt class="text-tertiary">Scope</dt>
+                <dd class="m-0 text-right text-primary">{project.data.services.slice(0, 2).join(' + ')}</dd>
               </div>
-              <p class="text-sm text-gray-500 dark:text-neutral-500 md:text-right md:flex-shrink-0 whitespace-nowrap">{project.data.services.slice(0, 2).join(' · ')}</p>
-            </div>
+              <div class="flex justify-between gap-4 py-1.5 border-b border-primary">
+                <dt class="text-tertiary">Year</dt>
+                <dd class="m-0 text-right text-primary tabular-nums">{project.data.year}</dd>
+              </div>
+              {project.data.outcomeShort && (
+                <div class="flex justify-between gap-4 py-1.5 border-b border-primary items-center">
+                  <dt class="text-tertiary">Outcome</dt>
+                  <dd class="m-0 chip-spot">{project.data.outcomeShort}</dd>
+                </div>
+              )}
+            </dl>
           </a>
         ))}
       </div>
@@ -153,12 +171,47 @@ const faqItems = [
     steps={processSteps}
   />
 
-  <!-- Testimonials hidden for now -->
-  <!-- <Testimonials testimonials={testimonials} /> -->
-
   <FAQ faqItems={faqItems} heading="Common questions" />
 
   <CTA />
 
   <Footer />
 </Layout>
+
+<style>
+  /* proof-row tick squares */
+  .tick-spot::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--color-spot);
+    margin-right: 10px;
+  }
+
+  /* client logo marquee */
+  .marquee {
+    display: flex;
+    width: max-content;
+  }
+  .marquee-inner {
+    display: flex;
+    align-items: center;
+    gap: 56px;
+    padding-right: 56px;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .marquee {
+      animation: marquee-scroll 38s linear infinite;
+    }
+  }
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee { flex-wrap: wrap; width: 100%; justify-content: center; }
+    .marquee-inner[aria-hidden="true"] { display: none; }
+    .marquee-inner { flex-wrap: wrap; justify-content: center; padding: 0 24px; }
+  }
+</style>

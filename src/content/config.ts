@@ -29,6 +29,7 @@ const portfolio = defineCollection({
     client: z.string().optional(),
     website: z.string().optional(),
     outcome: z.string().optional(),
+    outcomeShort: z.string().optional(),
     featured: z.boolean().default(false),
     order: z.number().default(0),
     caseStudyLayout: z.enum(['standard', 'gallery']).default('standard'),

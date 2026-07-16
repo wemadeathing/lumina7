@@ -1,34 +1,37 @@
-/* Design Tokens for Lumina7 - Becklyn-inspired minimal design system */
+/* Design Tokens for Lumina7 - "The Proof" design system: ink on paper, spot amber */
 
 :root {
-  /* Core Brand Colors - Minimal monochrome palette */
-  --color-brand-dark: #0a0a0a;
-  --color-brand-light: #fafafa;
-  --color-accent: #0a0a0a;
-  
-  /* Semantic Colors - Light Mode */
-  --bg-primary: #ffffff;
-  --bg-secondary: #fafafa;
-  --bg-tertiary: #f5f5f5;
-  --bg-elevated: #ffffff;
-  --bg-overlay: rgba(0, 0, 0, 0.5);
-  
-  --text-primary: #0a0a0a;
-  --text-secondary: #525252;
-  --text-tertiary: #737373;
-  --text-inverse: #ffffff;
-  
-  --border-primary: #e5e5e5;
-  --border-secondary: #f5f5f5;
-  --border-hover: #d4d4d4;
-  
-  --surface-base: #ffffff;
-  --surface-raised: #fafafa;
-  --surface-overlay: #ffffff;
-  
-  /* Typography - Becklyn-style geometric sans-serif */
-  --font-family-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-family-serif: 'Plus Jakarta Sans', Georgia, sans-serif;
+  /* Core Brand Colors - warm ink, warm paper, spot amber */
+  --color-brand-dark: #16140F;
+  --color-brand-light: #F6F4EF;
+  --color-accent: #C68A00;
+  --color-spot: #FFB200;
+  --color-spot-ink: #16140F;
+
+  /* Semantic Colors - Light Mode (uncoated paper) */
+  --bg-primary: #F6F4EF;
+  --bg-secondary: #EFECE4;
+  --bg-tertiary: #E9E5DB;
+  --bg-elevated: #FFFFFF;
+  --bg-overlay: rgba(22, 20, 15, 0.5);
+
+  --text-primary: #16140F;
+  --text-secondary: #57534A;
+  --text-tertiary: #6E6A5E;
+  --text-inverse: #F6F4EF;
+
+  --border-primary: #DDD8CB;
+  --border-secondary: #E9E5DB;
+  --border-hover: #C9C3B4;
+
+  --surface-base: #F6F4EF;
+  --surface-raised: #FFFFFF;
+  --surface-overlay: #FFFFFF;
+
+  /* Typography - Archivo display (signage lettering) over Instrument Sans body */
+  --font-family-sans: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-display: 'Archivo', 'Instrument Sans', sans-serif;
+  --font-family-mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, monospace;
   
   /* Font Sizes */
   --text-xs: 0.75rem;
@@ -102,28 +105,28 @@
   --z-tooltip: 1070;
 }
 
-/* Dark Mode Colors - unified surface (hero color) */
+/* Dark Mode Colors - backlit sign at night: warm near-black, amber stays lit */
 html.dark {
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #0a0a0a;
-  --bg-tertiary: #0a0a0a;
-  --bg-elevated: #0a0a0a;
+  --bg-primary: #141210;
+  --bg-secondary: #191713;
+  --bg-tertiary: #1D1A16;
+  --bg-elevated: #1D1A16;
   --bg-overlay: rgba(0, 0, 0, 0.8);
-  
-  --text-primary: #fafafa;
-  --text-secondary: #a3a3a3;
-  --text-tertiary: #737373;
-  --text-inverse: #0a0a0a;
-  
-  --border-primary: #262626;
-  --border-secondary: #1a1a1a;
-  --border-hover: #404040;
-  
-  --surface-base: #0a0a0a;
-  --surface-raised: #0a0a0a;
-  --surface-overlay: #0a0a0a;
-  
-  --color-accent: #fafafa;
+
+  --text-primary: #EFECE3;
+  --text-secondary: #B4AE9D;
+  --text-tertiary: #9A947F;
+  --text-inverse: #16140F;
+
+  --border-primary: #2A2721;
+  --border-secondary: #211E19;
+  --border-hover: #3E3A31;
+
+  --surface-base: #141210;
+  --surface-raised: #1D1A16;
+  --surface-overlay: #1D1A16;
+
+  --color-accent: #FFB200;
 }
 
 /* Twingate-style utilities */
@@ -166,22 +169,78 @@ body {
 
 /* Utility Classes */
 
-/* Typography Hierarchy - Becklyn-style large display, tight tracking */
+/* Typography Hierarchy - Archivo display, tight tracking */
 .text-display {
-  @apply text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[0.9] tracking-[-0.04em];
+  @apply text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[0.95] tracking-[-0.03em];
+  font-family: var(--font-family-display);
+  font-stretch: 112%;
+  font-weight: 760;
 }
 
 .text-heading-1 {
-  @apply text-3xl md:text-4xl lg:text-5xl font-medium leading-[1.05] tracking-[-0.03em];
+  @apply text-3xl md:text-4xl lg:text-5xl leading-[1.02] tracking-[-0.025em];
+  font-family: var(--font-family-display);
+  font-stretch: 112%;
+  font-weight: 740;
 }
 
 .text-heading-2 {
-  @apply text-2xl md:text-3xl font-medium leading-tight tracking-[-0.02em];
+  @apply text-2xl md:text-3xl leading-tight tracking-[-0.02em];
+  font-family: var(--font-family-display);
+  font-stretch: 112%;
+  font-weight: 680;
 }
 
 .text-heading-3 {
-  @apply text-xl md:text-2xl font-medium leading-tight tracking-[-0.02em];
+  @apply text-xl md:text-2xl leading-tight tracking-[-0.015em];
+  font-family: var(--font-family-display);
+  font-stretch: 112%;
+  font-weight: 640;
 }
+
+.font-display {
+  font-family: var(--font-family-display);
+}
+
+/* Proof-language utilities */
+.label-mono {
+  font-family: var(--font-family-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hl-spot {
+  background: linear-gradient(var(--color-spot), var(--color-spot)) no-repeat 0 92% / 100% 0.09em;
+}
+
+.chip-spot {
+  background-color: var(--color-spot);
+  color: var(--color-spot-ink);
+  padding: 2px 10px;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+/* Crop marks - print-proof corners; wrap needs position:relative and an inner <span class="crop-b"> */
+.crop-marks::before,
+.crop-marks::after,
+.crop-marks > .crop-b::before,
+.crop-marks > .crop-b::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--text-primary);
+  border-style: solid;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 1;
+}
+.crop-marks::before { top: 0; left: 0; border-width: 1px 0 0 1px; }
+.crop-marks::after { top: 0; right: 0; border-width: 1px 1px 0 0; }
+.crop-marks > .crop-b::before { bottom: 0; left: 0; border-width: 0 0 1px 1px; }
+.crop-marks > .crop-b::after { bottom: 0; right: 0; border-width: 0 1px 1px 0; }
 
 .text-body-lg {
   @apply text-lg leading-relaxed;
@@ -213,11 +272,11 @@ body {
 }
 
 .bg-primary {
-  @apply bg-white dark:bg-[#0a0a0a];
+  @apply bg-[#F6F4EF] dark:bg-[#141210];
 }
 
 .bg-secondary {
-  @apply bg-gray-50 dark:bg-[#0a0a0a];
+  @apply bg-gray-50 dark:bg-[#141210];
 }
 
 .bg-tertiary {
@@ -436,11 +495,11 @@ button:focus-visible {
 
 /* Responsive Utilities */
 .glass {
-  @apply bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-md border border-white/20 dark:border-white/10;
+  @apply bg-white/80 dark:bg-[#141210]/80 backdrop-blur-md border border-white/20 dark:border-white/10;
 }
 
 .glass-hover {
-  @apply hover:bg-white/90 dark:hover:bg-[#0a0a0a]/90 transition-colors duration-300;
+  @apply hover:bg-white/90 dark:hover:bg-[#141210]/90 transition-colors duration-300;
 }
 
 .responsive-grid {

@@ -5,28 +5,50 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
-        serif: ['Plus Jakarta Sans', 'Georgia', 'sans-serif'],
+        sans: ['Instrument Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        display: ['Archivo', 'Instrument Sans', 'sans-serif'],
+        mono: ['ui-monospace', 'SF Mono', 'Cascadia Mono', 'Menlo', 'Consolas', 'monospace'],
       },
       colors: {
-        // Primary gray scale - use this consistently
+        // Warm ink-on-paper ramp ("The Proof" reskin) - light-mode text/borders
         gray: {
-          50: '#fafafa',
-          100: '#f4f4f5',
-          200: '#e4e4e7',
-          300: '#d4d4d8',
-          400: '#a1a1aa',
-          500: '#71717a',
-          600: '#52525b',
-          700: '#3f3f46',
-          800: '#27272a',
-          900: '#18181b',
-          950: '#09090b',
+          50: '#EFECE4',
+          100: '#E9E5DB',
+          200: '#DDD8CB',
+          300: '#C9C3B4',
+          400: '#98917F',
+          500: '#6E6A5E',
+          600: '#57534A',
+          700: '#3E3A31',
+          800: '#2A2721',
+          900: '#16140F',
+          950: '#0E0D0A',
         },
-        // Semantic color aliases for better maintainability
+        // Warm dark-mode ramp - dark:bg/border/text classes
+        neutral: {
+          50: '#F3F0E9',
+          100: '#EFECE4',
+          200: '#DDD8CB',
+          300: '#C9C3B4',
+          400: '#9A947F',
+          500: '#6F6959',
+          600: '#57534A',
+          700: '#3E3A31',
+          800: '#2A2721',
+          900: '#1D1A16',
+          950: '#0E0D0A',
+        },
+        // Spot colour - used like a spot ink: CTAs, highlights, outcome chips
+        spot: {
+          DEFAULT: '#FFB200',
+          hover: '#F0A800',
+          ink: '#16140F',
+        },
+        paper: '#F6F4EF',
+        card: '#FFFFFF',
         brand: {
-          dark: '#18181b',
-          light: '#fafafa',
+          dark: '#16140F',
+          light: '#F6F4EF',
         },
       },
       // Custom font sizes for design system

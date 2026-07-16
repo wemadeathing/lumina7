@@ -115,7 +115,7 @@ function clientNameFromImagePath(path: string) {
       </section>
 
       <!-- Featured Image -->
-      <section class="px-6 lg:px-8 py-0 bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
+      <section class="px-6 lg:px-8 py-0 bg-[#F6F4EF] dark:bg-[#141210] transition-colors duration-300">
         <div class="max-w-6xl mx-auto">
           <div class="relative overflow-hidden bg-gray-100 dark:bg-neutral-100 rounded-2xl transition-colors duration-300">
             <img
@@ -128,7 +128,7 @@ function clientNameFromImagePath(path: string) {
       </section>
 
       <!-- Gallery Explainer -->
-      <section class="py-16 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
+      <section class="py-16 px-6 lg:px-8 bg-[#F6F4EF] dark:bg-[#141210] transition-colors duration-300">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-[minmax(260px,0.8fr)_minmax(0,1.2fr)] gap-12 lg:gap-20">
           <aside class="grid sm:grid-cols-2 lg:grid-cols-1 gap-6 self-start">
             <div class="border-t border-gray-200 dark:border-neutral-800 pt-5">
@@ -152,11 +152,11 @@ function clientNameFromImagePath(path: string) {
       </section>
 
       <!-- Logo Gallery -->
-      <section class="pb-20 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
+      <section class="pb-20 px-6 lg:px-8 bg-[#F6F4EF] dark:bg-[#141210] transition-colors duration-300">
         <div class="max-w-7xl mx-auto">
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
             {galleryImages.map((image, index) => (
-              <button type="button" class="bg-gray-50 dark:bg-neutral-100 p-3 sm:p-4 cursor-zoom-in group rounded transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0a0a0a]" data-modal-image={image} aria-label={`View ${clientNameFromImagePath(image)} logo design`}>
+              <button type="button" class="bg-gray-50 dark:bg-neutral-100 p-3 sm:p-4 cursor-zoom-in group rounded transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#141210]" data-modal-image={image} aria-label={`View ${clientNameFromImagePath(image)} logo design`}>
                 <img
                   src={image}
                   alt={`${clientNameFromImagePath(image)} logo design by Lumina7`}
@@ -203,9 +203,9 @@ function clientNameFromImagePath(path: string) {
       </section>
 
       <!-- Hero Image -->
-      <section class="px-6 lg:px-8 py-0 bg-white dark:bg-[#0a0a0a]  transition-colors duration-300">
+      <section class="px-6 lg:px-8 py-0 bg-[#F6F4EF] dark:bg-[#141210]  transition-colors duration-300">
         <div class="max-w-6xl mx-auto">
-          <div class="relative overflow-hidden bg-gray-100 dark:bg-[#0a0a0a] rounded-2xl transition-colors duration-300">
+          <div class="relative overflow-hidden bg-gray-100 dark:bg-[#141210] rounded-2xl transition-colors duration-300">
             <img 
               src={project.data.heroImage} 
               alt={project.data.title}
@@ -216,7 +216,7 @@ function clientNameFromImagePath(path: string) {
       </section>
 
       <!-- Project Overview -->
-      <section class="py-20 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a]  transition-colors duration-300">
+      <section class="py-20 px-6 lg:px-8 bg-[#F6F4EF] dark:bg-[#141210]  transition-colors duration-300">
         <div class="max-w-6xl mx-auto grid md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-12">
           <aside class="space-y-8 md:sticky md:top-32 self-start">
             <div>
@@ -247,12 +247,12 @@ function clientNameFromImagePath(path: string) {
       </section>
 
       <!-- Project Content -->
-      <section class="py-20 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a]  transition-colors duration-300">
+      <section class="py-20 px-6 lg:px-8 bg-[#F6F4EF] dark:bg-[#141210]  transition-colors duration-300">
         <div class="max-w-6xl mx-auto">
           {project.data.images && project.data.images.length > 0 && (
             <div class="grid gap-10 md:grid-cols-2">
               {project.data.images.slice(0, 6).map((image, index) => (
-                <button type="button" class="bg-gray-100 dark:bg-neutral-900 overflow-hidden group cursor-zoom-in rounded-2xl transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0a0a0a]" data-modal-image={image} aria-label={`View ${project.data.company} ${project.data.category} project photo ${index + 1}`}>
+                <button type="button" class="bg-gray-100 dark:bg-neutral-900 overflow-hidden group cursor-zoom-in rounded-2xl transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#141210]" data-modal-image={image} aria-label={`View ${project.data.company} ${project.data.category} project photo ${index + 1}`}>
                   <img
                     src={image}
                     alt={`${project.data.company} ${project.data.category} project photo ${index + 1}`}
@@ -269,7 +269,7 @@ function clientNameFromImagePath(path: string) {
   )}
 
   <!-- Image Modal -->
-  <div id="imageModal" class="fixed inset-0 bg-black dark:bg-[#0a0a0a] bg-opacity-90 z-[10000] hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Project image preview">
+  <div id="imageModal" class="fixed inset-0 bg-black dark:bg-[#141210] bg-opacity-90 z-[10000] hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Project image preview">
     <button 
       id="closeModal" 
       class="absolute top-6 right-6 text-white hover:text-gray-300 dark:hover:text-gray-200 transition-colors z-[10020]"
@@ -292,7 +292,7 @@ function clientNameFromImagePath(path: string) {
 
   <!-- Related Projects -->
   {relatedProjects.length > 0 && (
-    <section class="py-20 px-6 lg:px-8 bg-white dark:bg-[#0a0a0a]  transition-colors duration-300">
+    <section class="py-20 px-6 lg:px-8 bg-[#F6F4EF] dark:bg-[#141210]  transition-colors duration-300">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-16">
           <h2 class="text-heading-2 text-primary mb-4">More {project.data.category} Work</h2>
